@@ -10,6 +10,5 @@ urlpatterns = [
     path("affiliatec", TemplateView.as_view(template_name='affiliatecasestudy.html')),
     path("affiliatep", TemplateView.as_view(template_name='affiliate_program.html')),
     path("services", TemplateView.as_view(template_name='services.html')),
-
 ]
 
