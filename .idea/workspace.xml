@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="implemented use of templates">
-      <change afterPath="$PROJECT_DIR$/back/api/templates/index2.html" afterDir="false" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="static">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/affiliate_program.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/affiliate_program.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/affiliatecasestudy.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/affiliatecasestudy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/articles.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,7 @@
       <workItem from="1724679153660" duration="35000" />
       <workItem from="1724679195908" duration="57000" />
       <workItem from="1724805064152" duration="2869000" />
-      <workItem from="1724838858363" duration="18175000" />
+      <workItem from="1724838858363" duration="19235000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -114,7 +110,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724846124254</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=" &quot;use of templates&quot;: done">
+      <option name="closed" value="true" />
+      <created>1724885921588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724885921588</updated>
+    </task>
+    <task id="LOCAL-00005" summary="static">
+      <option name="closed" value="true" />
+      <created>1724886414787</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724886414787</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +162,8 @@
     <MESSAGE value="startapp api" />
     <MESSAGE value="1st try to use templates" />
     <MESSAGE value="implemented use of templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented use of templates" />
+    <MESSAGE value=" &quot;use of templates&quot;: done" />
+    <MESSAGE value="static" />
+    <option name="LAST_COMMIT_MESSAGE" value="static" />
   </component>
 </project>
