@@ -1,7 +1,8 @@
-<!doctype html>
 <html lang="ru-RU" class="html">
 
 <head>
+        {% load static %}
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -33,7 +34,7 @@
   <link rel="dns-prefetch" href="//ajax.googleapis.com" />
   <link rel="dns-prefetch" href="//yastatic.net" />
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link rel="stylesheet" id="wp-block-library-css" href="wp-includes/css/dist/block-library/style.min.css"
+  <link rel="stylesheet" id="wp-block-library-css" href="https://protraffic.com/wp-includes/css/dist/block-library/style.min.css"
     media="all" />
   <style id="global-styles-inline-css">
     body {
@@ -410,6 +411,37 @@
       box-shadow: 0 0 0 2px #3663e0;
       border-color: transparent;
     }
+
+    @media (min-width: 991px) {
+    .d-lg-block {
+        height: 45px;
+        display: block !important;
+    }
+}
+
+    .d-lg-block mr-2 d-none {
+        height: 30px;
+    }
+
+    .logo2 {
+        width: 35px;
+        padding-bottom: 0px;
+    }
+    .logo {
+        width: 35px;
+        padding-bottom: 15px;
+    }
+    .logo-wrapper{
+        padding-left: 50px;
+    }
+    .text-logo{
+
+        bottom: 0px;
+        font-size: 35px;
+        font-family: Sans-serif;
+        font-weight: 700;
+
+    }
   </style>
   <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-32x32.png" sizes="32x32" />
   <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-192x192.png" sizes="192x192" />
@@ -432,6 +464,7 @@
       g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
     })();
   </script>
+    {% load static %}
 
 </head>
 
@@ -441,16 +474,15 @@
     <div class="container">
       <div class="d-flex align-items-stretch justify-content-between">
         <div class="col-item site-header__logo d-flex js-header__logo align-items-center mr-3">
-          <a href="index.html" data-wpel-link="internal">
+          <a href="/" data-wpel-link="internal"class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
-
-              <img src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark.svg"
-                data-dark-src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark.svg" alt="Protraffic" />
+                <span class="text-logo">RUARB</span>
+                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
             </span>
             <span class="d-lg-none mr-1 d-block">
 
-              <img src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark-sm.svg"
-                data-dark-src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark-sm.svg" alt="Protraffic" />
+              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
+                data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
         </div>
@@ -493,14 +525,14 @@
         <div class="mr-3 d-none d-lg-block site-header__menu-container align-items-s">
           <ul class="site-header__menu site-header__menu- js-menu list--unstylped">
             <li id="menu-item-109" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-109"><a
-                href="articles.html" data-wpel-link="internal">Статьи</a></li>
+                href="articles" data-wpel-link="internal">Статьи</a></li>
             <li id="menu-item-6353" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6353"><a
-                href="/affiliate_program.html" data-wpel-link="internal">Партнерки</a></li>
+                href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
             <li id="menu-item-42692"
               class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-42692"><a
-                href="services.html" data-wpel-link="internal">Сервисы</a></li>
+                href="services" data-wpel-link="internal">Сервисы</a></li>
             <li id="menu-item-42431" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42431"><a
-                href="affiliatecasestudy.html" data-wpel-link="internal">Кейсы</a></li>
+                href="affiliatec" data-wpel-link="internal">Кейсы</a></li>
 
           </ul>
           <div class="relative site-header__search-container js-float-search__container">
@@ -599,9 +631,12 @@
                 display: none;
               }
             }
+            .new {
+                height: 15px;
+              }
           </style>
           <div class="col-item userlog">
-            <a class="d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
               href="javascript:;" data-action="open" data-wpel-link="internal">Войти
             </a>
             <a class="d-lg-none js-login-popup__toggle" href="javascript:;" data-action="open"
@@ -655,6 +690,22 @@
         /* margin-top: 400px */
       }
 
+
+      @media (min-width: 767px) {
+    .col-md-12 {
+        max-height: 50%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+      .col-md-8 {
+          max-height: 100%;
+      }
+
+      .offer{
+          height: auto;
+      }
       .site-header__menu {
         /* ПОКА ОТКЛЮЧЕНО СЕО СТОИТ ТАК: */
         margin-bottom: 0;
@@ -705,7 +756,7 @@
             </svg>
           </div>
           <div class="title section__title p-0 section__title--blue">
-            Популярные материалы
+            Популярное на сайте
           </div>
         </div>
         <div class="d-lg-flex home__post-big">
@@ -1992,9 +2043,16 @@
         <div class="col-lg-3">
           <div class="d-flex justify-content-between align-items-xs-center align-items-start">
             <div class="col-item">
-              <a href data-wpel-link="internal"><span class="d-xs-block d-none"><img
-                    src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark.svg" alt /></span><span class="d-xs-none"><img
-                    src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark-sm.svg" alt /></span></a>
+              <a href data-wpel-link="internal"><span class="d-lg-block mr-2 d-none">
+                <span class="text-logo">RUARB</span>
+                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
+            </span>
+            <span class="d-lg-none mr-1 d-block">
+
+              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
+                data-dark-src="https://i.imgur.com/6PxidVv.png" />
+            </span></a>
+
             </div>
             <div class="d-lg-none d-block">
               <div class="social d-flex">
@@ -2029,18 +2087,18 @@
           <ul class="list--unstyled site-footer__menu">
             <li id="menu-item-16820"
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
-                href="index.html" data-wpel-link="internal">Главная</a></li>
+                href="/" data-wpel-link="internal">Главная</a></li>
             <li id="menu-item-16821"
               class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item menu-item-16821"><a
-                href="articles.html" aria-current="page" data-wpel-link="internal">Статьи</a></li>
+                href="articles" aria-current="page" data-wpel-link="internal">Статьи</a></li>
             <li id="menu-item-16824"
               class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824"><a
-                href="affiliate_program.html" data-wpel-link="internal">Партнерки</a></li>
+                href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
             <li id="menu-item-16850"
               class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
-                href="services.html" data-wpel-link="internal">Сервисы</a></li>
+                href="services" data-wpel-link="internal">Сервисы</a></li>
             <li id="menu-item-42430" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-                href="affiliatecasestudy.html" data-wpel-link="internal">Кейсы по арбитражу</a></li>
+                href="affiliatec" data-wpel-link="internal">Кейсы по арбитражу</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -2437,16 +2495,16 @@
       <ul class="list--unstyled menu-bar__menu">
         <li
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-16820">
-          <a href="./index.html" aria-current="page" data-wpel-link="internal">Главная</a>
+          <a href="" aria-current="page" data-wpel-link="internal">Главная</a>
         </li>
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-            href="./articles.html" data-wpel-link="internal">Статьи</a></li>
+            href="articles" data-wpel-link="internal">Статьи</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824"><a
-            href="./affiliate_program.html" data-wpel-link="internal">Партнерки</a></li>
+            href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
-            href="./services.html" data-wpel-link="internal">Сервисы</a></li>
+            href="services" data-wpel-link="internal">Сервисы</a></li>
         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-            href="./affiliatecasestudy.html" data-wpel-link="internal">Кейсы по арбитражу</a></li>
+            href="affiliatec" data-wpel-link="internal">Кейсы по арбитражу</a></li>
 
       </ul>
       </ul>
@@ -2465,7 +2523,7 @@
     var tap_gct_vars = { "action_name": "Affiliate Link", "page_slug": "\/", "home_url": "https:\/\/protraffic.com", "script_type": "universal_ga", "ga_func_name": "ga", "event_action": "link_uri" };
   </script>
   <script src="https://protraffic.com/wp-content/plugins/thirstyaffiliates-pro/js/app/tap-gct.js" id="tap-gct-js"></script>
-  <script src="./wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+  <script src="https://protraffic.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/slick.min.js" id="slick-carousel-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/jquery.validate.min.js" id="jquery-validation-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/jquery.fancybox.min.js" id="fancybox-js"></script>

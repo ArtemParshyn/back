@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="1st try to use templates">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="implemented use of templates">
+      <change afterPath="$PROJECT_DIR$/back/api/templates/index2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/affiliate_program.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/affiliate_program.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/affiliatecasestudy.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/affiliatecasestudy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/articles.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/back/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +25,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="create_api" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,22 +45,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "create__api__2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api" />
+      <recent name="E:\API\DJANGO\new_back\back\back" />
+      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
+      <recent name="E:\API\DJANGO\new_back\back\back\staticfiles" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -74,7 +88,7 @@
       <workItem from="1724679153660" duration="35000" />
       <workItem from="1724679195908" duration="57000" />
       <workItem from="1724805064152" duration="2869000" />
-      <workItem from="1724838858363" duration="1223000" />
+      <workItem from="1724838858363" duration="18175000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -92,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724807630413</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="implemented use of templates">
+      <option name="closed" value="true" />
+      <created>1724846124254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724846124254</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +149,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="startapp api" />
     <MESSAGE value="1st try to use templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st try to use templates" />
+    <MESSAGE value="implemented use of templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented use of templates" />
   </component>
 </project>
