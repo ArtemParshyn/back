@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="startapp api">
-      <change afterPath="$PROJECT_DIR$/back/api/templates/affiliate_program.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/affiliatecasestudy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/articles.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/css2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/css2-1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/css2-2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/rtrg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="1st try to use templates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +73,8 @@
       <workItem from="1724671927271" duration="5370000" />
       <workItem from="1724679153660" duration="35000" />
       <workItem from="1724679195908" duration="57000" />
-      <workItem from="1724805064152" duration="2072000" />
+      <workItem from="1724805064152" duration="2869000" />
+      <workItem from="1724838858363" duration="1223000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -96,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724672101920</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1st try to use templates">
+      <option name="closed" value="true" />
+      <created>1724807630413</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724807630413</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="startapp api" />
-    <option name="LAST_COMMIT_MESSAGE" value="startapp api" />
+    <MESSAGE value="1st try to use templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="1st try to use templates" />
   </component>
 </project>
