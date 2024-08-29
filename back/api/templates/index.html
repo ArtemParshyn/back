@@ -1,7 +1,7 @@
 <html lang="ru-RU" class="html">
 
 <head>
-        {% load static %}
+  {% load static %}
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +34,8 @@
   <link rel="dns-prefetch" href="//ajax.googleapis.com" />
   <link rel="dns-prefetch" href="//yastatic.net" />
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link rel="stylesheet" id="wp-block-library-css" href="https://protraffic.com/wp-includes/css/dist/block-library/style.min.css"
-    media="all" />
+  <link rel="stylesheet" id="wp-block-library-css"
+    href="https://protraffic.com/wp-includes/css/dist/block-library/style.min.css" media="all" />
   <style id="global-styles-inline-css">
     body {
       --wp--preset--color--black: #000000;
@@ -286,10 +286,12 @@
   </style>
   <link rel="stylesheet" id="expert-review-style-css"
     href="https://protraffic.com/wp-content/plugins/expert-review/assets/public/css/styles.min.css" media="all" />
-  <link rel="stylesheet" id="wpsm-comptable-styles-css" href="https://protraffic.com/wp-content/plugins/table-maker/css/style.css"
-    media="all" />
-  <link rel="stylesheet" id="ptf-libs-style-css" href="https://protraffic.com/wp-content/themes/ptf/storage/css/libs.css" media="all" />
-  <link rel="stylesheet" id="select2_pa-css-css" href="https://protraffic.com/wp-content/themes/ptf/css/select2.min.css" media />
+  <link rel="stylesheet" id="wpsm-comptable-styles-css"
+    href="https://protraffic.com/wp-content/plugins/table-maker/css/style.css" media="all" />
+  <link rel="stylesheet" id="ptf-libs-style-css"
+    href="https://protraffic.com/wp-content/themes/ptf/storage/css/libs.css" media="all" />
+  <link rel="stylesheet" id="select2_pa-css-css" href="https://protraffic.com/wp-content/themes/ptf/css/select2.min.css"
+    media />
   <link rel="stylesheet" id="ptf-google-fonts-css"
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&#038;display=swap" media="all" />
   <link rel="stylesheet" id="ptf-google-fonts-roboto-css"
@@ -297,16 +299,118 @@
     media="all" />
   <link rel="stylesheet" id="ptf-google-fonts-raleway-css"
     href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;0,700;1,700&#038;display=swap" media="all" />
-  <link rel="stylesheet" id="ptf-main-style-css" href="https://protraffic.com/wp-content/themes/ptf/storage/css/style.css" media="all" />
+  <link rel="stylesheet" id="ptf-main-style-css"
+    href="https://protraffic.com/wp-content/themes/ptf/storage/css/style.css" media="all" />
   <link rel="stylesheet" id="ptf-style-css" href="https://protraffic.com/wp-content/themes/ptf/style.css" media="all" />
-  <link rel="stylesheet" id="wpdreams-asl-basic-css" href="https://protraffic.com/wp-content/plugins/ajax-search-lite/css/style.basic.css"
-    media="all" />
+  <link rel="stylesheet" id="wpdreams-asl-basic-css"
+    href="https://protraffic.com/wp-content/plugins/ajax-search-lite/css/style.basic.css" media="all" />
   <link rel="stylesheet" id="wpdreams-asl-instance-css"
     href="https://protraffic.com/wp-content/plugins/ajax-search-lite/css/style-underline.css" media="all" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" id="jquery-js"></script>
-  <script id="loadmore-js-extra">
-    var loadmore_params = { "ajaxurl": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "posts": "{\"error\":\"\",\"m\":\"\",\"p\":\"2\",\"post_parent\":\"\",\"subpost\":\"\",\"subpost_id\":\"\",\"attachment\":\"\",\"attachment_id\":0,\"name\":\"\",\"pagename\":\"\",\"page_id\":\"2\",\"second\":\"\",\"minute\":\"\",\"hour\":\"\",\"day\":0,\"monthnum\":0,\"year\":0,\"w\":0,\"category_name\":\"\",\"tag\":\"\",\"cat\":\"\",\"tag_id\":\"\",\"author\":\"\",\"author_name\":\"\",\"feed\":\"\",\"tb\":\"\",\"paged\":0,\"meta_key\":\"\",\"meta_value\":\"\",\"preview\":\"\",\"s\":\"\",\"sentence\":\"\",\"title\":\"\",\"fields\":\"\",\"menu_order\":\"\",\"embed\":\"\",\"category__in\":[],\"category__not_in\":[],\"category__and\":[],\"post__in\":[],\"post__not_in\":[],\"post_name__in\":[],\"tag__in\":[],\"tag__not_in\":[],\"tag__and\":[],\"tag_slug__in\":[],\"tag_slug__and\":[],\"post_parent__in\":[],\"post_parent__not_in\":[],\"author__in\":[],\"author__not_in\":[],\"ignore_sticky_posts\":false,\"suppress_filters\":false,\"cache_results\":true,\"update_post_term_cache\":true,\"lazy_load_term_meta\":true,\"update_post_meta_cache\":true,\"post_type\":\"\",\"posts_per_page\":12,\"nopaging\":false,\"comments_per_page\":\"50\",\"no_found_rows\":false,\"order\":\"DESC\"}", "current_page": "1", "max_page": "0" };
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Функция для получения CSRF токена
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      var csrftoken = getCookie('csrftoken');
+
+      // Обработка отправки формы авторизации
+      $('#loginform').on('submit', function (e) {
+        e.preventDefault();
+
+        var $form = $(this);
+        var $submitButton = $form.find('button[type="submit"]');
+        $submitButton.prop('disabled', true);
+
+        $.ajax({
+          url: $form.attr('action'),
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
+          data: $form.serialize(),
+          success: function (response) {
+            if (response.success) {
+              // Заменяем кнопку "Войти" на иконку профиля
+              // Показываем сообщение об успешном входе
+              $('.login-success-message').show();
+              window.location.pathname = '/';
+            } else {
+              // Показываем сообщение об ошибке
+              $('.login-form-errors').text(response.message).show();
+            }
+          },
+          error: function () {
+            alert('Ошибка при авторизации. Попробуйте снова.');
+          },
+          complete: function () {
+            $submitButton.prop('disabled', false);
+          }
+        });
+      });
+
+      $('#ptf_user_register_form').on('submit', function (e) {
+        e.preventDefault();
+
+        var $form = $(this);
+        var $submitButton = $form.find('button[type="submit"]');
+        $submitButton.prop('disabled', true);
+
+        $.ajax({
+          url: $form.attr('action'),
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
+          data: $form.serialize(),
+          success: function (response) {
+            if (response.success) {
+              // Показываем сообщение об успешном входе
+              $('.registration-success-messages').show();
+              window.location.pathname = '/';
+            } else {
+              // Показываем сообщение об ошибке
+              $('.registration-form-errors').text(response.message).show();
+            }
+          },
+          error: function () {
+            alert('Ошибка при регистрации. Попробуйте снова.');
+          },
+          complete: function () {
+            $submitButton.prop('disabled', false);
+          }
+        });
+      });
+
+      // Переключение видимости пароля
+      $('.js-input__toggle-type').on('click', function () {
+        var $input = $(this).siblings('input');
+        var type = $input.attr('type') === 'password' ? 'text' : 'password';
+        $input.attr('type', type);
+      });
+
+    });
+
+
+
+
   </script>
+
   <script src="https://protraffic.com/wp-content/themes/ptf/js/myloadmore.js" id="loadmore-js"></script>
   <link rel="https://api.w.org/" href="wp-json/" />
   <link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/2" />
@@ -413,41 +517,47 @@
     }
 
     @media (min-width: 991px) {
-    .d-lg-block {
+      .d-lg-block {
         height: 45px;
         display: block !important;
+      }
     }
-}
 
     .d-lg-block mr-2 d-none {
-        height: 30px;
+      height: 30px;
     }
 
     .logo2 {
-        width: 35px;
-        padding-bottom: 0px;
+      width: 35px;
+      padding-bottom: 0px;
     }
-    .logo {
-        width: 35px;
-        padding-bottom: 15px;
-    }
-    .logo-wrapper{
-        padding-left: 50px;
-    }
-    .text-logo{
 
-        bottom: 0px;
-        font-size: 35px;
-        font-family: Sans-serif;
-        font-weight: 700;
+    .logo {
+      width: 35px;
+      padding-bottom: 15px;
+    }
+
+    .logo-wrapper {
+      padding-left: 50px;
+    }
+
+    .text-logo {
+
+      bottom: 0px;
+      font-size: 35px;
+      font-family: Sans-serif;
+      font-weight: 700;
 
     }
   </style>
-  <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-32x32.png" sizes="32x32" />
-  <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-192x192.png" sizes="192x192" />
+  <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-32x32.png"
+    sizes="32x32" />
+  <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-192x192.png"
+    sizes="192x192" />
   <link rel="apple-touch-icon"
     href="https://protraffic.com/wp-content/uploads/2020/08/cropp   https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-180x180.png" />
-  <meta name="msapplication-TileImage" content="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-270x270.png" />
+  <meta name="msapplication-TileImage"
+    content="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-270x270.png" />
   <script async id="kama-postviews"
     src="data:text/javascript;base64,c2V0VGltZW91dCgKCWZ1bmN0aW9uKCl7CgkJbGV0IHVybCA9ICdodHRwczovL3Byb3RyYWZmaWMuY29tL3dwLWNvbnRlbnQvcGx1Z2lucy9rYW1hLXBvc3R2aWV3cy9hamF4LWNvdW50LWhhbmRsZXIvemVyby5waHAnCgkJbGV0IGRhdGEgPSB7CgkJCW9ial90eXBlIDogJ2Zyb250X3BhZ2UnLAoJCQl0eXBlX25hbWU6ICcnLAoJCQlvYmpfaWQgICA6ICcwJywKCQkJcmVmZXJyZXIgOiAoJ3JlZmVycmVyJyBpbiBkb2N1bWVudCkgPyBkb2N1bWVudC5yZWZlcnJlciA6ICcnLAoJCQl1c2VyX2lkICA6IDAsCgkJCW9wdGlvbnMgIDogJ3sic2hvd19wcmV2X21fdmlld3MiOiIiLCJfd3Bjb25maWdfZHJvb3RfcmVscGF0aCI6IlwvIiwiaG9sZF9zZWNfYmV0d2Vlbl9jb3VudHMiOiIxMCIsImFsbG93ZWRfbWV0YV9rZXlzIjoidW5pcXVlLG1vYmlsZSxkaXJlY3QsaW5uZXIsZ29vZ2xlLHlhbmRleCx6ZW5feWFuZGV4LGZhY2Vib29rLHZrLHR3aXR0ZXIifScKCQl9CgoJCWZldGNoKCB1cmwsIHsKCQkJbWV0aG9kIDogJ1BPU1QnLAoJCQloZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD1VVEYtOCcgfSwKCQkJYm9keSAgIDogSlNPTi5zdHJpbmdpZnkoIGRhdGEgKQoJCX0gKQoJCQkudGhlbiggcmVzcCA9PiByZXNwLmpzb24oKSApCgkJCS50aGVuKCBqc29uID0+IHsKCQkJCWlmKCAnZXJyb3InID09PSBqc29uLnR5cGUgKXsKCQkJCQljb25zb2xlLmVycm9yKCBgRVJST1I6ICR7IGpzb24ubXNnIH1gICkKCQkJCX0KCQkJCWVsc2UgaWYoICdpbmZvJyA9PT0ganNvbi50eXBlICl7CgkJCQkJY29uc29sZS5sb2coIGpzb24ubXNnICkKCQkJCX0KCQkJCWVsc2UgewoJCQkJCWNvbnNvbGUubG9nKCBqc29uLmV4ZWNfdGltZSApCgoJCQkJCWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoICcuZnJlc2hfdmlld3NfanMnICkuZm9yRWFjaCggZnVuY3Rpb24oIGVsICl7CgkJCQkJCWVsLmlubmVySFRNTCA9IGpzb24ub3V0CgkJCQkJfSApCgkJCQl9CgkJCX0gKQoJCQkuY2F0Y2goIGVycm9yID0+IGNvbnNvbGUuZXJyb3IoICdQb3N0dmlld3MnLCBlcnJvciApICkKCgl9LAoJMjAwMAkJKQ=="></script>
 
@@ -464,7 +574,7 @@
       g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
     })();
   </script>
-    {% load static %}
+  {% load static %}
 
 </head>
 
@@ -474,14 +584,14 @@
     <div class="container">
       <div class="d-flex align-items-stretch justify-content-between">
         <div class="col-item site-header__logo d-flex js-header__logo align-items-center mr-3">
-          <a href="/" data-wpel-link="internal"class="logo-wrapper">
+          <a href="/" data-wpel-link="internal" class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
-                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
+              <span class="text-logo">RUARB</span>
+              <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
             </span>
             <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
+              <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
                 data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
@@ -521,12 +631,13 @@
               margin: 0;
             }
           }
+
           @media (min-width: 991px) {
-    .d-lg-block {
-        display: block !important;
-        height: auto;
-    }
-}
+            .d-lg-block {
+              display: block !important;
+              height: auto;
+            }
+          }
         </style>
         <div class="mr-3 d-none d-lg-block site-header__menu-container align-items-s">
           <ul class="site-header__menu site-header__menu- js-menu list--unstylped">
@@ -637,22 +748,24 @@
                 display: none;
               }
             }
+
             .new {
-                height: 15px;
-              }
+              height: 15px;
+            }
           </style>
           <div class="col-item userlog">
-            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
-              href="javascript:;" data-action="open" data-wpel-link="internal">Войти
-            </a>
-            <a class="d-lg-none js-login-popup__toggle" href="javascript:;" data-action="open"
-              data-wpel-link="internal">
-              <svg viewBox="0 0 20 20" id="signin" width="25" height="25" class="site-header__user-icon ">
-                <path
-                  d="M.25 10C.25 4.62 4.61.25 10 .25c5.38 0 9.75 4.37 9.75 9.75s-4.37 9.75-9.75 9.75c-2.29 0-4.39-.79-6.05-2.11a9.81 9.81 0 01-1.24-1.17A9.71 9.71 0 01.25 10zM10 18.25c2.14 0 4.1-.82 5.56-2.16-1.05-2.53-3.2-4.34-5.56-4.34-2.36 0-4.51 1.81-5.56 4.34A8.21 8.21 0 0010 18.25zM12.25 8c0-1.24-1.01-2.25-2.25-2.25S7.75 6.76 7.75 8s1.01 2.25 2.25 2.25S12.25 9.24 12.25 8zm-4.77 2.78A3.751 3.751 0 0110 4.25a3.751 3.751 0 012.52 6.53c1.74.75 3.2 2.23 4.14 4.09 1-1.37 1.59-3.05 1.59-4.87 0-4.56-3.69-8.25-8.25-8.25-4.56 0-8.25 3.69-8.25 8.25 0 1.82.59 3.51 1.59 4.87.94-1.86 2.4-3.34 4.14-4.09z">
-                </path>
+            {% if success %}
+            <a class="d-lg-block d-none site-header__profile-icon js-profile-icon" href="/profile">
+              <svg viewBox="0 0 20 20" id="profile" width="25" height="25" class="site-header__user-icon">
               </svg>
             </a>
+            {% endif %}
+            {% if not success %}
+            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+              href="javascript:;" data-action="open" data-wpel-link="internal">
+              Войти
+            </a>
+            {% endif %}
           </div>
           <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
             <svg class="d-block " width="49" height="13" viewBox="0 0 49 13" fill="none"
@@ -698,20 +811,21 @@
 
 
       @media (min-width: 767px) {
-    .col-md-12 {
-        max-height: 50%;
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
+        .col-md-12 {
+          max-height: 50%;
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
 
       .col-md-8 {
-          max-height: 100%;
+        max-height: 100%;
       }
 
-      .offer{
-          height: auto;
+      .offer {
+        height: auto;
       }
+
       .site-header__menu {
         /* ПОКА ОТКЛЮЧЕНО СЕО СТОИТ ТАК: */
         margin-bottom: 0;
@@ -784,8 +898,8 @@
                   <div class="post__content d-flex justify-content-between flex-column">
                     <div class="flex-grow-1">
                       <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                        <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                            title="ProTraffic" /></span>
+                        <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
+                            alt="ProTraffic" title="ProTraffic" /></span>
                       </a>
                       <div class="tags d-flex gutter-x-3 gutter-y-7 flex-wrap">
                         <div class="col-item">
@@ -840,8 +954,8 @@
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
                         <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                              title="ProTraffic" /></span>
+                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
+                              alt="ProTraffic" title="ProTraffic" /></span>
                         </a>
                         <div class="col-item">
                           <div class="tags">
@@ -893,8 +1007,8 @@
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
                         <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                              title="ProTraffic" /></span>
+                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
+                              alt="ProTraffic" title="ProTraffic" /></span>
                         </a>
                         <div class="col-item">
                           <div class="tags">
@@ -1038,8 +1152,8 @@
                 </div>
                 <div class="post__content d-flex flex-column justify-content-between">
                   <a class="post__author" href="./author/royalpartners" data-wpel-link="internal">
-                    <span><img src="https://protraffic.com/wp-content/uploads/2024/08/1723550889.png" alt="RoyalPartners"
-                        title="RoyalPartners" /></span>
+                    <span><img src="https://protraffic.com/wp-content/uploads/2024/08/1723550889.png"
+                        alt="RoyalPartners" title="RoyalPartners" /></span>
                   </a>
                   <div class="col-item">
                     <div class="tags">
@@ -1084,8 +1198,8 @@
                 </div>
                 <div class="post__content d-flex flex-column justify-content-between">
                   <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                    <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                        title="ProTraffic" /></span>
+                    <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
+                        alt="ProTraffic" title="ProTraffic" /></span>
                   </a>
                   <div class="col-item">
                     <div class="tags">
@@ -1431,7 +1545,8 @@
               </div>
               <a class="post__thumb" href="./articles/6-prichin-nizkoy-konversii-v-facebook-115281.html"
                 data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1723028709.png" alt="6 причин низкой конверсии в Facebook">
+                <img src="https://protraffic.com/wp-content/uploads/2024/08/1723028709.png"
+                  alt="6 причин низкой конверсии в Facebook">
               </a>
             </div>
             <div class="post__content d-flex flex-column justify-content-between">
@@ -1557,9 +1672,11 @@
             <b class="pda-w3"><i>Бины</i>25+ штук, премиальные (банки США и Европы)</b>
             <strong class="pda-w3">
               <i>Пополнение</i>
-              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png" alt="Crypto">
+              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png"
+                alt="Crypto">
               <img src="https://protraffic.com/wp-content/uploads/2023/06/visa_inc._logo.svg_.png" alt="VISA">
-              <img src="https://protraffic.com/wp-content/uploads/2023/06/mastercard-logo-mastercard-logo-png-vector-download-19.png"
+              <img
+                src="https://protraffic.com/wp-content/uploads/2023/06/mastercard-logo-mastercard-logo-png-vector-download-19.png"
                 alt="MasterCard">
             </strong>
             <b class="pda-w1"><i>Комиссии</i>2-8%</b>
@@ -1587,7 +1704,8 @@
             <b class="pda-w3"><i>Бины</i>UK</b>
             <strong class="pda-w3">
               <i>Пополнение</i>
-              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png" alt="Crypto">
+              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png"
+                alt="Crypto">
               <img src="https://protraffic.com/wp-content/uploads/2023/06/wire-transfer3391.jpg" alt="Wire">
             </strong>
             <b class="pda-w1"><i>Комиссии</i>от 3%</b>
@@ -1614,7 +1732,8 @@
             <b class="pda-w3"><i>Бины</i>Visa GBP/EUR, MasterCard USD/EUR/GBP</b>
             <strong class="pda-w3">
               <i>Пополнение</i>
-              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png" alt="Crypto">
+              <img src="https://protraffic.com/wp-content/uploads/2023/06/tether-crypto-logo-png-clipart.png"
+                alt="Crypto">
             </strong>
             <b class="pda-w1"><i>Комиссии</i>от 1,5%</b>
             <p class="w-100p">
@@ -1702,8 +1821,8 @@
                             <div class="d-md-none offer__desc">Гео:</div>
                             <div class="geos offer__geos flex-wrap">
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png" alt="Казахстан"
-                                  title="Казахстан">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png"
+                                  alt="Казахстан" title="Казахстан">
                               </div>
                             </div>
                           </div>
@@ -1723,56 +1842,64 @@
                             <div class="d-md-none offer__desc">Источник:</div>
                             <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget" title="Mytarget">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget"
+                                  title="Mytarget">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook" title="Facebook">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
+                                  title="Facebook">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png" alt="Instagram"
-                                  title="Instagram">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
+                                  alt="Instagram" title="Instagram">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png" alt="ЯндексДирект"
-                                  title="ЯндексДирект">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png"
+                                  alt="ЯндексДирект" title="ЯндексДирект">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png" alt="Google "
-                                  title="Google ">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png"
+                                  alt="Google " title="Google ">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC" title="UAC">
+                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC"
+                                  title="UAC">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png" alt="Pop-Up" title="Pop-Up">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png"
+                                  alt="Pop-Up" title="Pop-Up">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png" alt="Тизерные сети"
-                                  title="Тизерные сети">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png"
+                                  alt="Тизерные сети" title="Тизерные сети">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы" title="ВК группы">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы"
+                                  title="ВК группы">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ" title="РСЯ">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ"
+                                  title="РСЯ">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png" alt="In-App" title="In-App">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png"
+                                  alt="In-App" title="In-App">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO" title="SEO">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
+                                  title="SEO">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png" alt="Push-уведомления"
-                                  title="Push-уведомления">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png"
+                                  alt="Push-уведомления" title="Push-уведомления">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/target-1.png" alt="Таргетированная реклама"
-                                  title="Таргетированная реклама">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/target-1.png"
+                                  alt="Таргетированная реклама" title="Таргетированная реклама">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png" alt="Email-рассылка"
-                                  title="Email-рассылка">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png"
+                                  alt="Email-рассылка" title="Email-рассылка">
                               </div>
                               <div class="col-item">
                                 <img src="https://protraffic.com/wp-content/uploads/2020/05/bannernaya-reklama.png"
@@ -1830,8 +1957,8 @@
                             <div class="d-md-none offer__desc">Гео:</div>
                             <div class="geos offer__geos flex-wrap">
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png" alt="Казахстан"
-                                  title="Казахстан">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png"
+                                  alt="Казахстан" title="Казахстан">
                               </div>
                             </div>
                           </div>
@@ -1851,56 +1978,64 @@
                             <div class="d-md-none offer__desc">Источник:</div>
                             <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget" title="Mytarget">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget"
+                                  title="Mytarget">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook" title="Facebook">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
+                                  title="Facebook">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png" alt="Instagram"
-                                  title="Instagram">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
+                                  alt="Instagram" title="Instagram">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png" alt="ЯндексДирект"
-                                  title="ЯндексДирект">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png"
+                                  alt="ЯндексДирект" title="ЯндексДирект">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png" alt="Google "
-                                  title="Google ">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png"
+                                  alt="Google " title="Google ">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC" title="UAC">
+                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC"
+                                  title="UAC">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png" alt="Pop-Up" title="Pop-Up">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png"
+                                  alt="Pop-Up" title="Pop-Up">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png" alt="Тизерные сети"
-                                  title="Тизерные сети">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png"
+                                  alt="Тизерные сети" title="Тизерные сети">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы" title="ВК группы">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы"
+                                  title="ВК группы">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ" title="РСЯ">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ"
+                                  title="РСЯ">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png" alt="In-App" title="In-App">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png"
+                                  alt="In-App" title="In-App">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO" title="SEO">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
+                                  title="SEO">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png" alt="Push-уведомления"
-                                  title="Push-уведомления">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png"
+                                  alt="Push-уведомления" title="Push-уведомления">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/target-1.png" alt="Таргетированная реклама"
-                                  title="Таргетированная реклама">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/target-1.png"
+                                  alt="Таргетированная реклама" title="Таргетированная реклама">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png" alt="Email-рассылка"
-                                  title="Email-рассылка">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png"
+                                  alt="Email-рассылка" title="Email-рассылка">
                               </div>
                               <div class="col-item">
                                 <img src="https://protraffic.com/wp-content/uploads/2020/05/bannernaya-reklama.png"
@@ -1960,17 +2095,20 @@
                             <div class="d-md-none offer__desc">Гео:</div>
                             <div class="geos offer__geos flex-wrap">
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/at.png" alt="Австрия" title="Австрия">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/06/at.png" alt="Австрия"
+                                  title="Австрия">
                               </div>
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_germany.png" alt="Германия"
-                                  title="Германия">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_germany.png"
+                                  alt="Германия" title="Германия">
                               </div>
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/it.png" alt="Италия" title="Италия">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/06/it.png" alt="Италия"
+                                  title="Италия">
                               </div>
                               <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/es.png" alt="Испания" title="Испания">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/06/es.png" alt="Испания"
+                                  title="Испания">
                               </div>
                               <div class="geo">
                                 <img src="https://protraffic.com/wp-content/uploads/2020/06/gb.png" alt="Великобритания"
@@ -1995,18 +2133,20 @@
                             <div class="d-md-none offer__desc">Источник:</div>
                             <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook" title="Facebook">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
+                                  title="Facebook">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png" alt="Instagram"
-                                  title="Instagram">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
+                                  alt="Instagram" title="Instagram">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google-ads-poisk.png" alt="Google Ads (поиск)"
-                                  title="Google Ads (поиск)">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google-ads-poisk.png"
+                                  alt="Google Ads (поиск)" title="Google Ads (поиск)">
                               </div>
                               <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO" title="SEO">
+                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
+                                  title="SEO">
                               </div>
                             </div>
                           </div>
@@ -2050,37 +2190,42 @@
           <div class="d-flex justify-content-between align-items-xs-center align-items-start">
             <div class="col-item">
               <a href data-wpel-link="internal"><span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
-                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
-            </span>
-            <span class="d-lg-none mr-1 d-block">
+                  <span class="text-logo">RUARB</span>
+                  <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
+                </span>
+                <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
-                data-dark-src="https://i.imgur.com/6PxidVv.png" />
-            </span></a>
+                  <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
+                    data-dark-src="https://i.imgur.com/6PxidVv.png" />
+                </span></a>
 
             </div>
             <div class="d-lg-none d-block">
               <div class="social d-flex">
                 <a href="https://t.me/protraffic_com" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg" alt="Telegram - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg"
+                    alt="Telegram - ProTraffic" />
                 </a>
                 <a href="https://vk.com/pro_traffic_com" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/vk.svg" alt="Vkontakte  - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/vk.svg"
+                    alt="Vkontakte  - ProTraffic" />
                 </a>
                 <a href="https://www.instagram.com/protraffic_com/?ysclid=lmthsj3fg0443801078" target="_blank"
                   data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg" alt="Instagram - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg"
+                    alt="Instagram - ProTraffic" />
                 </a>
                 <a href="https://www.youtube.com/channel/UCjcq0YcsmbG15UmY_S6EXpA" target="_blank"
                   data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg" alt="YouTube - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg"
+                    alt="YouTube - ProTraffic" />
                 </a>
                 <a href="https://twitter.com/ProtrafficCom" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/twitter.svg" alt="Twitter - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/twitter.svg"
+                    alt="Twitter - ProTraffic" />
                 </a>
               </div>
             </div>
@@ -2114,23 +2259,28 @@
               <div class="social d-flex">
                 <a href="https://t.me/protraffic_com" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg" alt="Telegram - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg"
+                    alt="Telegram - ProTraffic" />
                 </a>
                 <a href="https://vk.com/pro_traffic_com" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/vk.svg" alt="Vkontakte  - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/vk.svg"
+                    alt="Vkontakte  - ProTraffic" />
                 </a>
                 <a href="https://www.instagram.com/protraffic_com/?ysclid=lmthsj3fg0443801078" target="_blank"
                   data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg" alt="Instagram - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg"
+                    alt="Instagram - ProTraffic" />
                 </a>
                 <a href="https://www.youtube.com/channel/UCjcq0YcsmbG15UmY_S6EXpA" target="_blank"
                   data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg" alt="YouTube - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg"
+                    alt="YouTube - ProTraffic" />
                 </a>
                 <a href="https://twitter.com/ProtrafficCom" target="_blank" data-wpel-link="external"
                   rel="nofollow external noopener noreferrer">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/twitter.svg" alt="Twitter - ProTraffic" />
+                  <img src="https://protraffic.com/wp-content/themes/ptf/images/social/twitter.svg"
+                    alt="Twitter - ProTraffic" />
                 </a>
               </div>
             </div>
@@ -2142,7 +2292,8 @@
     </div>
   </footer>
   <div class="marquee ">
-    <img class="marquee__img" src="https://protraffic.com/wp-content/themes/ptf/images/label.png" alt="label" width="344" height="135">
+    <img class="marquee__img" src="https://protraffic.com/wp-content/themes/ptf/images/label.png" alt="label"
+      width="344" height="135">
     <div class="marquee_close">
       <svg viewBox="0 0 25 25" width="15" height="15" fill="none" xmlns="http://www.w3.org/2000/svg" id="close-icon">
         <rect x="2.82861" width="31" height="4" transform="rotate(45 2.82861 0)" fill="#3663E0"></rect>
@@ -2175,13 +2326,18 @@
                     data-action="close" data-show="login" data-wpel-link="internal">Отмена</a></span>
               </div>
             </div>
-            <form class="js-validation__login" name="loginform" id="loginform" action="./wp-login.php" method="post">
+            <form class="js-validation__login" name="loginform" id="loginform" action="{% url 'login' %}" method="post">
+              <div class="login-form-errors" style="display:none;"></div>
+              <div class="login-success-message" style="display:none;">Вы успешно вошли в систему!</div>
+              {% csrf_token %} 
+              {{ form.as_p }}
               <div class="gutter-y-15">
                 <div class="col-item">
                   <div class="js-form__group">
                     <label class="form-label" for="Ваш логин">Ваш логин</label>
                     <div class="relative">
-                      <input class="form-input js-input undefined" name="log" id="user_login" required="required" />
+                      <input name="username" placeholder="username" type="text" class="form-input js-input"
+                        id="{{ form.username.id_for_label }}" required="required" />
                     </div>
                   </div>
                 </div>
@@ -2189,8 +2345,8 @@
                   <div class="js-form__group">
                     <label class="form-label" for="Ваш пароль">Ваш пароль</label>
                     <div class="relative js-input__container">
-                      <input class="form-input js-input undefined" type="password" name="pwd" id="user_pass"
-                        required="required" />
+                      <input autocomplete="new-password" placeholder="password" name="password" type="password"
+                        id="{{ form.password1.id_for_label }}" class="form-input js-input" required="required" />
                       <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
@@ -2200,10 +2356,6 @@
                     </div>
                   </div>
                 </div>
-                <input name="rememberme" type="checkbox" id="rememberme" value="forever">
-                <label for="rememberme" class>
-                  Запомнить меня
-                </label>
               </div>
               <button name="wp-submit" id="wp-submit" class="btn btn--theme-default btn--block"
                 type="submit">Войти</button>
@@ -2226,33 +2378,27 @@
               </p>
               <div class="user-popup__title_register"></div>
             </div>
-            <form id="ptf_user_register_form" class="js-validation__reg">
+            <form id="ptf_user_register_form" action="{% url 'register' %}" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="registration-form-errors" style="display:none;"></div>
+              <div class="registration-success-messages" style="display:none;">Вы успешно зарегистрировались!</div>
               <div class="gutter-y-15">
                 <div class="col-item">
                   <div class="js-form__group">
-                    <label class="form-label" for="Ваш логин">Ваш логин</label>
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Ваш логин</label>
                     <div class="relative">
-
-                      <input name="user_name" type="text" class="form-input js-input undefined" required="required">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-item">
-                  <div class="js-form__group">
-                    <label class="form-label" for="Ваш логин">Ваш E-mail*</label>
-                    <div class="relative">
-                      <input type="email" name="user_email" id="user_email" class="form-input js-input undefined" value
-                        size="25" required="required">
+                      <input name="username" placeholder="username" type="text" class="form-input js-input"
+                        id="{{ form.username.id_for_label }}" required="required">
                     </div>
                   </div>
                 </div>
                 <div class="col-item js-input__container">
                   <div class="js-form__group">
-                    <label class="form-label" for="Ваш пароль">Ваш пароль</label>
+                    <label class="form-label" for="{{ form.password1.id_for_label }}">Ваш пароль</label>
                     <div class="relative js-input__container">
-
-                      <input autocomplete="new-password" name="user_pass" type="password" id="js-password-again"
-                        class="form-input js-input undefined js-input" required="required">
+                      <input autocomplete="new-password" placeholder="password" name="password1" type="password"
+                        id="{{ form.password1.id_for_label }}" class="form-input js-input" required="required">
                       <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
@@ -2264,25 +2410,25 @@
                 </div>
                 <div class="col-item js-input__container">
                   <div class="js-form__group">
-                    <label class="form-label" for="Повторить пароль">Повторить пароль</label>
+                    <label class="form-label" for="{{ form.password2.id_for_label }}">Повторить пароль</label>
                     <div class="relative js-input__container">
-
-                      <input autocomplete="new-password" name="user_pass_confirm" type="password"
-                        class="form-input js-input undefined js-input" required="required">
-                      <div class="js-input__toggle-type form-input__icon ">
+                      <input autocomplete="new-password" placeholder="confirm password" name="password2" type="password"
+                        id="{{ form.password2.id_for_label }}" class="form-input js-input" required="required">
+                      <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
                           </use>
                         </svg>
                       </div>
                     </div>
+                    <div class="js-user-popup__alert mt-1 none color--red pass_err">Пароль и подтверждение пароля не
+                      совпадают</div>
                   </div>
-                  <div class="js-user-popup__alert mt-1 none color--red pass_err">Пароль и подтверждение пароля не
-                    совпадают</div>
                 </div>
               </div>
-              <input type="hidden" id="nonce_user_register" name="nonce_user_register" value="774ecc3990" /><input
-                type="hidden" name="_wp_http_referer" value="/" /> <input name="surname" hidden>
+              <input type="hidden" id="nonce_user_register" name="nonce_user_register" value="774ecc3990" />
+              <input type="hidden" name="_wp_http_referer" value="/" />
+              <input name="surname" hidden>
               <button id="ptf_send_user_register"
                 class="btn btn--theme-default btn--block preloader__container js-preload__container" type="submit">
                 <span class="js-preload__text">Зарегистрироваться</span>
@@ -2292,6 +2438,7 @@
                 </div>
               </button>
             </form>
+
           </div>
         </div>
         <div class="login-popup__form">
@@ -2503,41 +2650,39 @@
           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-16820">
           <a href="" aria-current="page" data-wpel-link="internal">Главная</a>
         </li>
-        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-            href="articles" data-wpel-link="internal">Статьи</a></li>
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="articles"
+            data-wpel-link="internal">Статьи</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824"><a
             href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
             href="services" data-wpel-link="internal">Сервисы</a></li>
-        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-            href="affiliatec" data-wpel-link="internal">Кейсы по арбитражу</a></li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a href="affiliatec"
+            data-wpel-link="internal">Кейсы по арбитражу</a></li>
 
       </ul>
       </ul>
     </div>
   </div>
   <script>var pseudo_links = document.querySelectorAll(".pseudo-clearfy-link"); for (var i = 0; i < pseudo_links.length; i++) { pseudo_links[i].addEventListener("click", function (e) { window.open(e.target.getAttribute("data-uri")); }); }</script>
-  <script id="expert-review-scripts-js-extra">
-    var expert_review_ajax = { "url": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "nonce": "8b9c9aa40b", "comment_to_scroll_selector": null, "ask_question_link_new_tab": null, "i18n": { "question_popup_name": "\u0418\u043c\u044f", "question_popup_email": "Email", "question_popup_phone": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d", "question_popup_question": "\u0412\u043e\u043f\u0440\u043e\u0441", "question_popup_submit": "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c", "question_popup_cancel": "\u041e\u0442\u043c\u0435\u043d\u0430", "question_submitted": "\u0412\u043e\u043f\u0440\u043e\u0441 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d", "legacy_form": "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u043e\u0434 \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u0444\u043e\u0440\u043c\u044b", "field_cannot_be_empty": "\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c", "field_must_be_checked": "\u041f\u043e\u043b\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u0447\u0435\u043d\u043e", "consent": "\u0421\u043e\u0433\u043b\u0430\u0441\u0438\u0435 \u043d\u0430 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0434\u0430\u043d\u043d\u044b\u0445" }, "consent": null };
-  </script>
-  <script src="https://protraffic.com/wp-content/plugins/expert-review/assets/public/js/scripts.min.js" id="expert-review-scripts-js"></script>
-  <script id="ta_main_js-js-extra">
-    var thirsty_global_vars = { "home_url": "\/\/protraffic.com", "ajax_url": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "link_fixer_enabled": "yes", "link_prefix": "go", "link_prefixes": ["recommends", "go"], "post_id": "2", "enable_record_stats": "yes", "enable_js_redirect": "yes", "disable_thirstylink_class": "" };
-  </script>
+
+  <script src="https://protraffic.com/wp-content/plugins/expert-review/assets/public/js/scripts.min.js"
+    id="expert-review-scripts-js"></script>
+
   <script src="https://protraffic.com/wp-content/plugins/thirstyaffiliates/js/app/ta.js" id="ta_main_js-js"></script>
   <script id="tap-gct-js-extra">
     var tap_gct_vars = { "action_name": "Affiliate Link", "page_slug": "\/", "home_url": "https:\/\/protraffic.com", "script_type": "universal_ga", "ga_func_name": "ga", "event_action": "link_uri" };
   </script>
-  <script src="https://protraffic.com/wp-content/plugins/thirstyaffiliates-pro/js/app/tap-gct.js" id="tap-gct-js"></script>
+  <script src="https://protraffic.com/wp-content/plugins/thirstyaffiliates-pro/js/app/tap-gct.js"
+    id="tap-gct-js"></script>
   <script src="https://protraffic.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/slick.min.js" id="slick-carousel-js"></script>
-  <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/jquery.validate.min.js" id="jquery-validation-js"></script>
+  <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/jquery.validate.min.js"
+    id="jquery-validation-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/jquery.fancybox.min.js" id="fancybox-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/svg4everybody.js" id="svg4everybody-js"></script>
   <script src="//yastatic.net/jquery/cookie/1.0/jquery.cookie.min.js" id="cookies-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/storage/js/app.js" id="ptf-app-scripts-js"></script>
   <script id="statistic-js-extra">
-    var clicks_ajax = { "ajaxurl": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php" };
   </script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/statistic.js" id="statistic-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/karma.js" id="karma_counter-js"></script>
@@ -2545,19 +2690,18 @@
   <script src="https://protraffic.com/wp-content/themes/ptf/js/qna.js" id="qna_func-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/modules/events/event.js" id="event_func-js"></script>
   <script id="theme_script-js-extra">
-    var send_object = { "url": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php" };
   </script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/script.js" id="theme_script-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/modules/new_banner/main-cut.js" id="banners-js"></script>
   <script src="https://protraffic.com/wp-content/themes/ptf/js/libs/select2.min.js" id="select2_pa-js-js"></script>
   <script id="wd-asl-ajaxsearchlite-js-before">
-    window.ASL = typeof window.ASL !== 'undefined' ? window.ASL : {}; window.ASL.wp_rocket_exception = "DOMContentLoaded"; window.ASL.ajaxurl = "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php"; window.ASL.backend_ajaxurl = "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php"; window.ASL.js_scope = "jQuery"; window.ASL.asl_url = "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/"; window.ASL.detect_ajax = 1; window.ASL.media_query = 4764; window.ASL.version = 4764; window.ASL.pageHTML = ""; window.ASL.additional_scripts = [{ "handle": "wd-asl-ajaxsearchlite", "src": "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/js\/min\/plugin\/optimized\/asl-prereq.js", "prereq": [] }, { "handle": "wd-asl-ajaxsearchlite-core", "src": "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/js\/min\/plugin\/optimized\/asl-core.js", "prereq": [] }, { "handle": "wd-asl-ajaxsearchlite-vertical", "src": "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/js\/min\/plugin\/optimized\/asl-results-vertical.js", "prereq": ["wd-asl-ajaxsearchlite"] }, { "handle": "wd-asl-ajaxsearchlite-load", "src": "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/js\/min\/plugin\/optimized\/asl-load.js", "prereq": ["wd-asl-ajaxsearchlite-vertical"] }]; window.ASL.script_async_load = false; window.ASL.init_only_in_viewport = true; window.ASL.font_url = "https:\/\/protraffic.com\https://protraffic.com/wp-content\/plugins\/ajax-search-lite\/css\/fonts\/icons2.woff2"; window.ASL.css_async = false; window.ASL.highlight = { "enabled": false, "data": [] }; window.ASL.analytics = { "method": 0, "tracking_id": "", "string": "?ajax_search={asl_term}", "event": { "focus": { "active": 1, "action": "focus", "category": "ASL", "label": "Input focus", "value": "1" }, "search_start": { "active": 0, "action": "search_start", "category": "ASL", "label": "Phrase: {phrase}", "value": "1" }, "search_end": { "active": 1, "action": "search_end", "category": "ASL", "label": "{phrase} | {results_count}", "value": "1" }, "magnifier": { "active": 1, "action": "magnifier", "category": "ASL", "label": "Magnifier clicked", "value": "1" }, "return": { "active": 1, "action": "return", "category": "ASL", "label": "Return button pressed", "value": "1" }, "facet_change": { "active": 0, "action": "facet_change", "category": "ASL", "label": "{option_label} | {option_value}", "value": "1" }, "result_click": { "active": 1, "action": "result_click", "category": "ASL", "label": "{result_title} | {result_url}", "value": "1" } } };
   </script>
   <script src="https://protraffic.com/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-prereq.js"
     id="wd-asl-ajaxsearchlite-js"></script>
   <script src="https://protraffic.com/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-core.js"
     id="wd-asl-ajaxsearchlite-core-js"></script>
-  <script src="https://protraffic.com/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-results-vertical.js"
+  <script
+    src="https://protraffic.com/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-results-vertical.js"
     id="wd-asl-ajaxsearchlite-vertical-js"></script>
   <script src="https://protraffic.com/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-load.js"
     id="wd-asl-ajaxsearchlite-load-js"></script>
