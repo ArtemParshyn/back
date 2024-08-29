@@ -10,6 +10,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <title>Арбитраж трафика и заработок на партнерских программах - ProTraffic</title>
+
   <meta name="description"
     content="ProTraffic — все об арбитраже трафика и заработке в интернете. Актуальные кейсы и интервью, свежие новости, развлекательные тесты, бесплатные курсы, связки, рейтинг партнерок и анонсы предстоящих конференций." />
   <link rel="canonical" href="./" />
@@ -586,12 +587,12 @@
         <div class="col-item site-header__logo d-flex js-header__logo align-items-center mr-3">
           <a href="/" data-wpel-link="internal" class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
-              <span class="text-logo">RUARB</span>
-              <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
+                <span class="text-logo">RUARB</span>
+
             </span>
             <span class="d-lg-none mr-1 d-block">
 
-              <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
+              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
                 data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
@@ -865,6 +866,9 @@
       .gutenberg__close-partner {
         display: none;
       }
+      span.ml-1 {
+        color: darkgray;
+    }
     </style>
     <section>
 
@@ -897,10 +901,7 @@
                   </div>
                   <div class="post__content d-flex justify-content-between flex-column">
                     <div class="flex-grow-1">
-                      <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                        <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
-                            alt="ProTraffic" title="ProTraffic" /></span>
-                      </a>
+
                       <div class="tags d-flex gutter-x-3 gutter-y-7 flex-wrap">
                         <div class="col-item">
                           <a class="ptf-tag" href="./tag/instagram" data-wpel-link="internal">#Instagram</a>
@@ -953,10 +954,7 @@
                         </a>
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
-                        <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
-                              alt="ProTraffic" title="ProTraffic" /></span>
-                        </a>
+
                         <div class="col-item">
                           <div class="tags">
                             <div class="d-flex gutter-x-3 gutter-y-7">
@@ -1006,10 +1004,7 @@
                         </a>
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
-                        <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                          <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
-                              alt="ProTraffic" title="ProTraffic" /></span>
-                        </a>
+
                         <div class="col-item">
                           <div class="tags">
                             <div class="d-flex gutter-x-3 gutter-y-7">
@@ -2329,7 +2324,7 @@
             <form class="js-validation__login" name="loginform" id="loginform" action="{% url 'login' %}" method="post">
               <div class="login-form-errors" style="display:none;"></div>
               <div class="login-success-message" style="display:none;">Вы успешно вошли в систему!</div>
-              {% csrf_token %} 
+              {% csrf_token %}
               {{ form.as_p }}
               <div class="gutter-y-15">
                 <div class="col-item">
