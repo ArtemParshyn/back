@@ -69,7 +69,12 @@ TEMPLATES = [
 ]
 WSGI_APPLICATION = 'back.wsgi.application'
 
-STATIC_URL = 'api/static/'
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "api/static",
+]
 
 
 # Database
