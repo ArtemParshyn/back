@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="settings.py">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="+ templates + static">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -54,11 +54,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api\static\svg" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api" />
       <recent name="E:\API\DJANGO\new_back\back\back" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
-      <recent name="E:\API\DJANGO\new_back\back\back\staticfiles" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -85,7 +85,7 @@
       <workItem from="1724931654042" duration="657000" />
       <workItem from="1724966786714" duration="1400000" />
       <workItem from="1725016309604" duration="741000" />
-      <workItem from="1725044219025" duration="646000" />
+      <workItem from="1725044219025" duration="1086000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -151,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724966536751</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="+ templates + static">
+      <option name="closed" value="true" />
+      <created>1725045116651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725045116651</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +223,7 @@
     <MESSAGE value="templates fix" />
     <MESSAGE value="login reg logic implementation, fixed bugs, templates." />
     <MESSAGE value="settings.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="settings.py" />
+    <MESSAGE value="+ templates + static" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ templates + static" />
   </component>
 </project>
