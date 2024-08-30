@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="initial commmit">
-      <change afterPath="$PROJECT_DIR$/back/api/forms.py" afterDir="false" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="settings.py">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="api2_v2A" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,25 +37,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "api2__v2A",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;api2__v1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api" />
       <recent name="E:\API\DJANGO\new_back\back\back" />
-      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
       <recent name="E:\API\DJANGO\new_back\back\back\staticfiles" />
     </key>
@@ -87,6 +83,9 @@
       <workItem from="1724805064152" duration="2869000" />
       <workItem from="1724838858363" duration="19880000" />
       <workItem from="1724931654042" duration="657000" />
+      <workItem from="1724966786714" duration="1400000" />
+      <workItem from="1725016309604" duration="741000" />
+      <workItem from="1725044219025" duration="646000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -144,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724887374906</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="settings.py">
+      <option name="closed" value="true" />
+      <created>1724966536751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724966536751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,13 +171,36 @@
             </list>
           </value>
         </entry>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -183,6 +213,8 @@
     <MESSAGE value=" &quot;use of templates&quot;: done" />
     <MESSAGE value="static" />
     <MESSAGE value="templates fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="templates fix" />
+    <MESSAGE value="login reg logic implementation, fixed bugs, templates." />
+    <MESSAGE value="settings.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="settings.py" />
   </component>
 </project>
