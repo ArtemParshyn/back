@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="initial commit">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="profile try">
       <change afterPath="$PROJECT_DIR$/back/api/templates/ajax/libs/jquery/3.5.1/jquery.min-1.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/back/api/templates/css-1" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/back/api/templates/css2-3" afterDir="false" />
@@ -341,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725045645682</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="profile try">
+      <option name="closed" value="true" />
+      <created>1725135883006</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725135883006</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,6 +420,7 @@
     <MESSAGE value="settings.py" />
     <MESSAGE value="+ templates + static" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="profile try" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile try" />
   </component>
 </project>
