@@ -1,16 +1,10 @@
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.contrib import auth
-from django.views import View
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView
-
-from .forms import UserLoginForm, UserRegisterForm
-
+from .forms import UserLoginForm
 from django.shortcuts import redirect
-from .forms import UserRegisterForm  # Assuming this is the correct form import
+from .forms import UserRegisterForm
 
 
 def index(request):
@@ -66,4 +60,8 @@ def loginu(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('api:index'))
+    return redirect("/")
+
+
+def profile(request):
+    return render(request, 'personal-account-3.html')

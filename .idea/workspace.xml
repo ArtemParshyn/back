@@ -4,7 +4,175 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="+ templates + static" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/back/api/templates/ajax/libs/jquery/3.5.1/jquery.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/css-1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/css2-3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/css2-4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/css2-5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/jquery/cookie/1.0/jquery.cookie.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/jquery/cookie/1.0/jquery.cookie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/personal-account-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/personal-account-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/personal-account-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/personal-account-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/rtrg-1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w--1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w--1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w--1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVc-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/raleway/v34/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4Y_LPrQ-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/raleway/v34/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pYCP-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/raleway/v34/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvoooCP-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/roboto/v32/KFOkCnqEu92Fr1Mu52xP-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/roboto/v32/KFOlCnqEu92Fr1MmEU9vAw-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/roboto/v32/KFOlCnqEu92Fr1MmWUlvAw-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/s/roboto/v32/KFOmCnqEu92Fr1Me5Q-1.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/watch/88804335-1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/webcopy-origin.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-admin/js/media-upload.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/css/style-underline-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/css/style-underline.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/css/style.basic-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/css/style.basic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-core-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-load-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-load.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-prereq-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-prereq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-results-vertical-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-results-vertical.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-wrapper-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/ajax-search-lite/js/min/plugin/optimized/asl-wrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/expert-review/assets/public/css/styles.min-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/expert-review/assets/public/css/styles.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/expert-review/assets/public/js/scripts.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/expert-review/assets/public/js/scripts.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/table-maker/css/style-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/table-maker/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/thirstyaffiliates-pro/js/app/tap-gct-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/thirstyaffiliates-pro/js/app/tap-gct.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/thirstyaffiliates/js/app/ta-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/plugins/thirstyaffiliates/js/app/ta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/css/select2.min-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/css/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/close-dark-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/close-dark.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/search-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/search-dark-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/search-dark.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/icons/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/label-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/label.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/post_exempl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/protraffic-dark-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/protraffic-dark-sm-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/protraffic-dark-sm.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/protraffic-dark.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/inst-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/inst.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/telegram-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/telegram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/twitter-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/twitter.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/vk-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/vk.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/youtube-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/social/youtube.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/images/user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/karma-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/karma.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/jquery.fancybox.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/jquery.fancybox.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/jquery.validate.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/jquery.validate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/select2.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/select2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/slick.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/slick.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/svg4everybody-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/libs/svg4everybody.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/myloadmore-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/myloadmore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/personal_account-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/personal_account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/qna-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/qna.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/script-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/statistic-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/js/statistic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/modules/events/event-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/modules/events/event.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/modules/new_banner/main-cut-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/modules/new_banner/main-cut.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/css/libs-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/css/libs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/css/style-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/js/app-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/storage/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/style-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-content/themes/ptf/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/css/buttons.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/css/dashicons.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/css/editor.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/css/media-views.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/api-request.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/backbone.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/clipboard.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/comment-reply.min-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/comment-reply.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/imgareaselect/imgareaselect.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/jquery/ui/autocomplete.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/jquery/ui/core.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/jquery/ui/menu.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/jquery/ui/mouse.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/jquery/ui/sortable.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/media-audiovideo.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/media-editor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/media-models.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/media-views.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/mediaelement/mediaelement-and-player.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/mediaelement/mediaelement-migrate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/mediaelement/wp-mediaelement.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/mediaelement/wp-mediaelement.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/plupload/moxie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/plupload/plupload.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/plupload/wp-plupload.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/quicktags.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/shortcode.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/thickbox/thickbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/thickbox/thickbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/underscore.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/wp-backbone.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/wp-embed.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/wp-util.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-includes/js/wplink.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/index-1.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/index.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/oembed/1.0/embed" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/oembed/1.0/embed-1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/oembed/1.0/embed-2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/oembed/1.0/embed-3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/wp/v2/pages/16833" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/api/templates/wp-json/wp/v2/pages/16833-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/back.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/back.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/ajax/libs/jquery/3.5.1/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/ajax/libs/jquery/3.5.1/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/css" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/css2" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/css2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/css2-1" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/css2-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/css2-2" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/css2-2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/index2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/pop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +194,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -34,22 +205,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "api2__v2A",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;api2__v2A&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/API/DJANGO/new_back/back&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\API\DJANGO\new_back\back\back\api\static\svg" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
@@ -83,6 +259,7 @@
       <workItem from="1724966786714" duration="1400000" />
       <workItem from="1725016309604" duration="741000" />
       <workItem from="1725044219025" duration="1086000" />
+      <workItem from="1725131918188" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -156,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725045116651</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1725045645682</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725045645682</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +411,7 @@
     <MESSAGE value="login reg logic implementation, fixed bugs, templates." />
     <MESSAGE value="settings.py" />
     <MESSAGE value="+ templates + static" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ templates + static" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>
