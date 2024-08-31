@@ -65,3 +65,7 @@ def logout(request):
 
 def profile(request):
     return render(request, 'personal-account-3.html')
+
+
+def createblog(request):
+    return render(request, "personal-account-5.html")

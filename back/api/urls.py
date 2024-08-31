@@ -1,6 +1,8 @@
-from django.template.context_processors import static
+from django.conf.urls.static import static
+from django.conf.urls import include
 from django.urls import path
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 from api import views
 from api.views import index
@@ -16,5 +18,9 @@ urlpatterns = [
     path('login', views.loginu, name='login'),
     path('logout', views.logout, name='logout'),
     path('profile', views.profile, name='profile'),
+    path('createblog', views.createblog, name='createblog'),
+
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

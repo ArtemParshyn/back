@@ -3,4 +3,4 @@ from django.db import models
 
 
 class ApiUser(AbstractUser):
-    ...
+    photo = models.ImageField(upload_to='images', default=None)
