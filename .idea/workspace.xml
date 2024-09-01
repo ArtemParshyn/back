@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="profile try">
-      <change afterPath="$PROJECT_DIR$/back/api/templates/blog.html" afterDir="false" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="imagefield">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/media/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/personal-account-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/personal-account-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/back/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/back/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +61,11 @@
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\media" />
       <recent name="E:\API\DJANGO\new_back\back\back" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\media" />
       <recent name="E:\API\DJANGO\new_back\back\back\api" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\static\svg" />
-      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -199,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725135946582</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="imagefield">
+      <option name="closed" value="true" />
+      <created>1725148008431</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725148008431</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,19 +241,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="user">
-                    <value>
-                      <list>
-                        <option value="*" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -271,6 +259,7 @@
     <MESSAGE value="+ templates + static" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="profile try" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile try" />
+    <MESSAGE value="imagefield" />
+    <option name="LAST_COMMIT_MESSAGE" value="imagefield" />
   </component>
 </project>
