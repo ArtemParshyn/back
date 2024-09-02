@@ -9,7 +9,7 @@ from back import settings
 urlpatterns = [
     path('', index),
     path('articles', TemplateView.as_view(template_name='articles.html')),
-    path('profile_main', TemplateView.as_view(template_name='profile_main.html')),
+    path('profile', TemplateView.as_view(template_name='profile_main.html')),
     path('affiliatec', TemplateView.as_view(template_name='affiliatecasestudy.html')),
     path('affiliatep', TemplateView.as_view(template_name='affiliate_program.html')),
     path('services', TemplateView.as_view(template_name='services.html')),
@@ -18,4 +18,3 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('profile', views.profile, name='profile'),
 ]
-

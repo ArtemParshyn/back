@@ -7,6 +7,12 @@ from django.shortcuts import redirect
 from .forms import UserRegisterForm
 
 
+def profile(request):
+    username = request.user.username
+    print(username)
+    return render(request, template_name='profile_main.html', context={"username": username})
+
+
 def index(request):
     print(request.user.is_authenticated)
     print(request.user)
