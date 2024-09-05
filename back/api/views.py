@@ -11,9 +11,9 @@ from .models import Reklama
 
 
 def profile(request):
-    username = request.user.username
+    username = request.user
     print(username)
-    return render(request, template_name='profile_main.html', context={"username": username})
+    return render(request, template_name='profile_main.html', context={"user": username})
 
 
 def index(request):
@@ -86,9 +86,6 @@ def logout(request):
     auth.logout(request)
     return redirect("/")
 
-
-def profile(request):
-    return render(request, 'personal-account-3.html')
 
 
 def createblog(request):

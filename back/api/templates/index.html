@@ -754,7 +754,7 @@
               height: 15px;
             }
           </style>
-          <div class="col-item userlog">
+          <!-- <div class="col-item userlog">
             {% if success %}
             <a href = "profile_main"><svg viewBox="0 0 20 20" id="signin" width="25" height="25" class="site-header__user-icon ">
               <path
@@ -775,7 +775,48 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    {% if success %}
+    <div class="col-item userlog">
+      <div class="user-dropdown">
+      <div class="d-lg-block d-none">
+      <a href="https://protraffic.com/personal-account" class="thumb-author thumb-author--sm" style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)" data-wpel-link="internal"></a>
+      </div>
+      <div class="d-lg-none">
+      <a href="javascript:;" class="thumb-author thumb-author--sm" style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)" data-wpel-link="internal"></a>
+      </div>
+      <div class="user-dropdown__list">
+      <div class="user-dropdown__center">
+      <a href="https://protraffic.com/personal-account" data-view="login" data-wpel-link="internal">Профиль</a>
+      <a href="https://protraffic.com/personal-account?function=blog" data-wpel-link="internal">Статьи</a>
+      <a href="https://protraffic.com/personal-account?function=bundles" data-wpel-link="internal">Связки</a>
+      <a href="https://protraffic.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fprotraffic.com&amp;_wpnonce=ef07b9f76e" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+        <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+      </div>
+      </svg>
+      </div>
+      </div>
+      </div>
+      </div>
+      {% endif %}
+
+            {% if not success %}
+            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+              href="javascript:;" data-action="open" data-wpel-link="internal">
+              Войти
+            </a>
+            <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+              <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+            </div>
+            {% endif %}
+            
+
   </header>
   <main class="site-main js-main-content">
     <style>
