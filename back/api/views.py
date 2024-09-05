@@ -2,9 +2,12 @@ from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib import auth
+
+from back import settings
 from .forms import UserLoginForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
+from .models import Reklama
 
 
 def profile(request):
@@ -16,7 +19,22 @@ def profile(request):
 def index(request):
     print(request.user.is_authenticated)
     print(request.user)
-    return render(request, template_name="index.html", context={"success": request.user.is_authenticated})
+    photo = False
+    url = False
+    print(Reklama.objects.filter(pos_reklama="1"))
+    if Reklama.objects.filter(pos_reklama="1").exists():
+        print(Reklama.objects.filter(pos_reklama="1"))
+        url = Reklama.objects.get(pos_reklama="1").url
+        photo = Reklama.objects.get(pos_reklama="1").photo
+
+    return render(request,
+                  template_name="index.html",
+                  context={"image": photo, "url_image": url,
+                           "success": request.user.is_authenticated,
+                           'MEDIA_URL': settings.MEDIA_URL})
+
+
+
 
 
 def register(request):
@@ -71,3 +89,7 @@ def logout(request):
 
 def profile(request):
     return render(request, 'personal-account-3.html')
+
+
+def createblog(request):
+    return render(request, "personal-account-5.html")
