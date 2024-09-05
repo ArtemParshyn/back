@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="reklama">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/migrations/0002_apiuser_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/migrations/0003_alter_apiuser_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/migrations/0004_alter_apiuser_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/migrations/0005_reklama_alter_apiuser_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/profile_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/profile_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="reklama, profile." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725135883006</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="reklama, profile.">
+      <option name="closed" value="true" />
+      <created>1725567426471</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725567426471</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,19 +231,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="user">
-                    <value>
-                      <list>
-                        <option value="*" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -264,6 +249,7 @@
     <MESSAGE value="+ templates + static" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="profile try" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile try" />
+    <MESSAGE value="reklama, profile." />
+    <option name="LAST_COMMIT_MESSAGE" value="reklama, profile." />
   </component>
 </project>
