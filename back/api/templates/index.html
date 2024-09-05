@@ -2,7 +2,6 @@
 
 <head>
   {% load static %}
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -1028,14 +1027,14 @@
               </div>
             </div>
           </div>
+          
           <div class="home__banner-lg">
             <aside id="secondary" class="widget-area">
-              <div class="rec_banners_container rec_banners_container--h550">
-              </div>
-              <section id="custom_html-7" class="widget_text widget widget_custom_html">
-                <div class="textwidget custom-html-widget"></div>
-              </section>
-
+              {% if image %}
+              <a href="{{ url_image }}">
+                <img src="{{MEDIA_URL}}{{image}}" alt="Menu Icon">
+              </a>
+              {% endif %}
             </aside>
           </div>
         </div>
