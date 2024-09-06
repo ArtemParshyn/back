@@ -3,7 +3,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from api import views
-from api.views import index
+from api.views import index, ProfileView
 from back import settings
 
 urlpatterns = [
@@ -15,9 +15,8 @@ urlpatterns = [
     path('register', views.register, name="register"),
     path('login', views.loginu, name='login'),
     path('logout', views.logout, name='logout'),
-    path('profile', views.profile, name='profile'),
+    path('profile/', ProfileView.as_view(), name='profile'),
     path('createblog', views.createblog, name='createblog'),
-
 ]
 
 if settings.DEBUG:

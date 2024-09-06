@@ -1,19 +1,65 @@
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest, QueryDict
 from django.shortcuts import render
 from django.contrib import auth
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from back import settings
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama
+from .models import Reklama, ApiUser
 
 
-def profile(request):
-    username = request.user
-    print(username)
-    return render(request, template_name='profile_main.html', context={"user": username})
+class ProfileView(View):
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('login')  # Перенаправление на страницу входа, если пользователь не авторизован
+
+        user = request.user
+        data_joined = user.date_joined.strftime('%d.%m.%Y')
+        descr = request.user.descr
+
+        form = UserProfileForm(initial={
+            'user_name': user.username,
+            'user_about': user.photo,
+        })
+
+        # Передаем URL фото пользователя, если оно есть, иначе URL по умолчанию
+        photo_url = user.photo.url if user.photo else 'https://protraffic.com/wp-content/themes/ptf/images/user.svg'
+
+        return render(request, 'profile_main.html', {
+            'form': form,
+            'data_joined': data_joined,
+            'user': user,
+            'photo_url': photo_url,
+            'descr': descr,
+        })
+
+    @method_decorator(csrf_exempt)
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        form = UserProfileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            user_name = form.cleaned_data.get('user_name')
+            user_about = form.cleaned_data.get('user_about')
+            user_ava_img = form.cleaned_data.get('user_ava_img')
+
+            user = request.user
+            user.username = user_name
+            user.descr = user_about
+            if user_ava_img:
+                user.photo = user_ava_img
+            user.save()
+
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error', 'errors': form.errors})
 
 
 def index(request):
@@ -21,9 +67,7 @@ def index(request):
     print(request.user)
     photo = False
     url = False
-    print(Reklama.objects.filter(pos_reklama="1"))
     if Reklama.objects.filter(pos_reklama="1").exists():
-        print(Reklama.objects.filter(pos_reklama="1"))
         url = Reklama.objects.get(pos_reklama="1").url
         photo = Reklama.objects.get(pos_reklama="1").photo
 
@@ -85,7 +129,6 @@ def loginu(request):
 def logout(request):
     auth.logout(request)
     return redirect("/")
-
 
 
 def createblog(request):

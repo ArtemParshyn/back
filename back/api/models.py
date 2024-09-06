@@ -4,6 +4,7 @@ from django.db import models
 
 class ApiUser(AbstractUser):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/avatar', default=None, blank=True)
+    descr = models.CharField(max_length=128, default="Description", blank=True)
 
 
 class Reklama(models.Model):
