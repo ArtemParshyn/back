@@ -586,12 +586,12 @@
         <div class="col-item site-header__logo d-flex js-header__logo align-items-center mr-3">
           <a href="/" data-wpel-link="internal" class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
+              <span class="text-logo">RUARB</span>
 
             </span>
             <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
+              <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
                 data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
@@ -738,7 +738,7 @@
           </div>
         </div>
         <div class="col-item d-flex gutter-x-5">
-          
+
           <style>
             .site-header .btn {
               min-width: auto;
@@ -777,45 +777,52 @@
       </div>
     </div> -->
 
-    {% if success %}
-    <div class="col-item userlog">
-      <div class="user-dropdown">
-      <div class="d-lg-block d-none">
-      <a href="https://protraffic.com/personal-account" class="thumb-author thumb-author--sm" style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)" data-wpel-link="internal"></a>
-      </div>
-      <div class="d-lg-none">
-      <a href="javascript:;" class="thumb-author thumb-author--sm" style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)" data-wpel-link="internal"></a>
-      </div>
-      <div class="user-dropdown__list">
-      <div class="user-dropdown__center">
-      <a href="https://protraffic.com/personal-account" data-view="login" data-wpel-link="internal">Профиль</a>
-      <a href="https://protraffic.com/personal-account?function=blog" data-wpel-link="internal">Статьи</a>
-      <a href="https://protraffic.com/personal-account?function=bundles" data-wpel-link="internal">Связки</a>
-      <a href="https://protraffic.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fprotraffic.com&amp;_wpnonce=ef07b9f76e" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
-      </div>
-      </div>
-      </div>
-      </div>
-      <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
-        <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
-      </div>
-      </svg>
-      </div>
-      </div>
-      </div>
-      </div>
-      {% endif %}
-
-            {% if not success %}
-            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
-              href="javascript:;" data-action="open" data-wpel-link="internal">
-              Войти
-            </a>
-            <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
-              <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+          {% if success %}
+          <div class="col-item userlog">
+            <div class="user-dropdown">
+              <div class="d-lg-block d-none">
+                <a href="https://protraffic.com/personal-account" class="thumb-author thumb-author--sm"
+                  style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                  data-wpel-link="internal"></a>
+              </div>
+              <div class="d-lg-none">
+                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                  style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                  data-wpel-link="internal"></a>
+              </div>
+              <div class="user-dropdown__list">
+                <div class="user-dropdown__center">
+                  <a href="https://protraffic.com/personal-account" data-view="login"
+                    data-wpel-link="internal">Профиль</a>
+                  <a href="https://protraffic.com/personal-account?function=blog" data-wpel-link="internal">Статьи</a>
+                  <a href="https://protraffic.com/personal-account?function=bundles"
+                    data-wpel-link="internal">Связки</a>
+                  <a href="https://protraffic.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fprotraffic.com&amp;_wpnonce=ef07b9f76e"
+                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+                </div>
+              </div>
             </div>
-            {% endif %}
-            
+          </div>
+          <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+            <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+          </div>
+          </svg>
+        </div>
+      </div>
+    </div>
+    </div>
+    {% endif %}
+
+    {% if not success %}
+    <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+      href="javascript:;" data-action="open" data-wpel-link="internal">
+      Войти
+    </a>
+    <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+      <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+    </div>
+    {% endif %}
+
 
   </header>
   <main class="site-main js-main-content">
@@ -906,9 +913,10 @@
       .gutenberg__close-partner {
         display: none;
       }
+
       span.ml-1 {
         color: darkgray;
-    }
+      }
     </style>
     <section>
 
@@ -931,7 +939,7 @@
                   <div class="post__top post__top--full-height">
                     <div class="post__cat">
                       <a class="cat " href="./articles">
-                         </a>
+                      </a>
                     </div>
                     <a class="post__thumb" href="./articles/gajd-kak-zarabatyvat-na-ai-modelyah-115380.html"
                       data-wpel-link="internal">
@@ -967,7 +975,7 @@
                       </div>
                       <div class="post__author-name">
                         <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                          </a>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -980,7 +988,7 @@
                       <div class="post__top">
                         <div class="post__cat">
                           <a class="cat" href="./articles" data-wpel-link="internal">
-                            </a>
+                          </a>
                         </div>
                         <a class="post__thumb" href="./articles/gajd-ubt-facebook-dating-115362.html"
                           data-wpel-link="internal">
@@ -1014,7 +1022,7 @@
                           </div>
                           <div class="post__author-name">
                             <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                              </a>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1025,7 +1033,7 @@
                       <div class="post__top">
                         <div class="post__cat">
                           <a class="cat" href="./articles" data-wpel-link="internal">
-                            </a>
+                          </a>
                         </div>
                         <a class="post__thumb" href="./articles/metod-progreva-youtube-kanalov-s-ubt-115346.html"
                           data-wpel-link="internal">
@@ -1058,7 +1066,7 @@
                           </div>
                           <div class="post__author-name">
                             <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                               </a>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -1068,7 +1076,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="home__banner-lg">
             <aside id="secondary" class="widget-area">
               {% if image %}
@@ -1162,7 +1170,7 @@
                 <div class="post__top">
                   <div class="post__cat">
                     <a class="cat" href="./articles" data-wpel-link="internal">
-                       </a>
+                    </a>
                   </div>
                   <a class="post__thumb" href="./articles/kak-uvelichit-konversiyu-115539.html"
                     data-wpel-link="internal">
@@ -1194,7 +1202,7 @@
                     </div>
                     <div class="post__author-name">
                       <a class="upper-text link--gray" href="./author/royalpartners" data-wpel-link="internal">
-                        </a>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -2558,7 +2566,7 @@
     .site-header__user-icon {
       fill: #3663e0;
     }
-  }
+    }
   </style>
   <div class="menu-bar js-menu-bar">
     <div class="col-item menu-bar__head">

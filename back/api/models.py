@@ -12,3 +12,11 @@ class Reklama(models.Model):
     pos_reklama = models.CharField(choices=choices, max_length=1)
     photo = models.ImageField(upload_to='images/%Y/%m/%d/reklama', default=None)
     url = models.CharField(max_length=64)
+
+
+class Service(models.Model):
+    photo = models.ImageField(upload_to='images/%Y/%m/%d/service')
+    descr = models.CharField(max_length=256)
+    promo = models.CharField(max_length=64, default=None, blank=True)
+    website = models.URLField()
+    costs = models.CharField(max_length=64, default=None, blank=True)
