@@ -9,7 +9,7 @@ from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, ApiUser, Service
+from .models import Reklama, ApiUser, Service, Category
 
 
 class ProfileView(View):
@@ -62,7 +62,16 @@ class ProfileView(View):
 
 
 def services(request):
-    return render(request, "services.html", context={"services": [i for i in Service.objects.all()][:2]})
+    services = {i: {i1 for i1 in Service.objects.all().filter(category=i)} for i in Category.objects.all()}
+    services_prepared = []
+    for outer_key, inner_dict in services.items():
+        services_prepared.append({
+            'outer_key': outer_key,
+            'inner_dict': inner_dict
+        })
+    print(services.items())
+    return render(request, "services.html", context={"services": services_prepared})
+
 
 
 def services_add(request):

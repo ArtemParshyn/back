@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="updating profile done">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="services 1st try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/personal-account-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/personal-account-1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,23 +43,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "api2__v2A__services",
-    "last_opened_file_path": "E:/API/DJANGO/new_back/back",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;api2__v2A__services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/API/DJANGO/new_back/back&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
@@ -214,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725662490392</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="services 1st try">
+      <option name="closed" value="true" />
+      <created>1725831422409</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725831422409</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +282,7 @@
     <MESSAGE value="reklama, profile." />
     <MESSAGE value="images" />
     <MESSAGE value="updating profile done" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating profile done" />
+    <MESSAGE value="services 1st try" />
+    <option name="LAST_COMMIT_MESSAGE" value="services 1st try" />
   </component>
 </project>
