@@ -9,8 +9,6 @@ from back import settings
 urlpatterns = [
     path('', index),
     path('articles', TemplateView.as_view(template_name='articles.html')),
-    path('affiliatec', TemplateView.as_view(template_name='affiliatecasestudy.html')),
-    path('affiliatep', TemplateView.as_view(template_name='affiliate_program.html')),
     path('services', views.services, name='services'),
     path('services/', views.services_add, name='services_add'),
     path('register', views.register, name="register"),
@@ -18,6 +16,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('createblog', views.createblog, name='createblog'),
+    path('services_cat/', views.service_cat, name='services_cat'),
 ]
 
 if settings.DEBUG:

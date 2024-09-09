@@ -15,7 +15,7 @@ from .models import Reklama, ApiUser, Service, Category
 class ProfileView(View):
     def get(self, request):
         if not request.user.is_authenticated:
-            return redirect('login')  # Перенаправление на страницу входа, если пользователь не авторизован
+            return render(request, 'personal-account-1.html')
 
         user = request.user
         data_joined = user.date_joined.strftime('%d.%m.%Y')
@@ -40,7 +40,7 @@ class ProfileView(View):
     @method_decorator(csrf_exempt)
     def post(self, request):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('/')
 
         form = UserProfileForm(request.POST, request.FILES)
 
@@ -62,7 +62,7 @@ class ProfileView(View):
 
 
 def services(request):
-    services = {i: {i1 for i1 in Service.objects.all().filter(category=i)} for i in Category.objects.all()}
+    services = {i: {i1 for i1 in Service.objects.all().filter(category=i)[:5]} for i in Category.objects.all()}
     services_prepared = []
     for outer_key, inner_dict in services.items():
         services_prepared.append({
@@ -71,7 +71,6 @@ def services(request):
         })
     print(services.items())
     return render(request, "services.html", context={"services": services_prepared})
-
 
 
 def services_add(request):
@@ -168,3 +167,8 @@ def logout(request):
 
 def createblog(request):
     return render(request, "personal-account-5.html")
+
+
+def service_cat(request):
+    cat = request.GET.get('cat', 1)
+    return render(request, 'services_cat.html', context={"services": Service.objects.all().filter(category=Category.objects.all().filter(name=cat)[:1]), "category": Category.objects.get(name=cat).perevod})
