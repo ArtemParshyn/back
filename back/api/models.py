@@ -8,6 +8,9 @@ class ApiUser(AbstractUser):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/avatar', default=None, blank=True)
     descr = models.CharField(max_length=128, default="Description", blank=True)
 
+    def __str__(self):
+        return self.username
+
 
 class Reklama(models.Model):
     choices = [("1", "first"), ("2", "second"), ("3", "third")]
@@ -24,3 +27,25 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    def __str__(self):
+        return self.pos_reklama
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=64)
+    perevod = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
+class Service(models.Model):
+    photo = models.ImageField(upload_to='images/%Y/%m/%d/service')
+    descr = models.CharField(max_length=256)
+    promo = models.CharField(max_length=64, default=None, blank=True)
+    website = models.URLField(blank=True, default=None)
+    costs = models.CharField(max_length=64, default=None, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="services")
+
+    def __str__(self):
+        return self.descr

@@ -1,16 +1,15 @@
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse, HttpResponseBadRequest, QueryDict
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib import auth
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-
 from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, ApiUser
+from .models import Reklama, Service, Category
 
 
 from django.shortcuts import get_object_or_404
@@ -24,7 +23,7 @@ from .models import Article
 class ProfileView(View):
     def get(self, request):
         if not request.user.is_authenticated:
-            return redirect('login')  # Перенаправление на страницу входа, если пользователь не авторизован
+            return render(request, 'personal-account-1.html')
 
         user = request.user
         data_joined = user.date_joined.strftime('%d.%m.%Y')
@@ -49,7 +48,7 @@ class ProfileView(View):
     @method_decorator(csrf_exempt)
     def post(self, request):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('/')
 
         form = UserProfileForm(request.POST, request.FILES)
 
@@ -70,6 +69,44 @@ class ProfileView(View):
             return JsonResponse({'status': 'error', 'errors': form.errors})
 
 
+def services(request):
+    services = {i: {i1 for i1 in Service.objects.all().filter(category=i)[:5]} for i in Category.objects.all()}
+    services_prepared = []
+    for outer_key, inner_dict in services.items():
+        services_prepared.append({
+            'outer_key': outer_key,
+            'inner_dict': inner_dict
+        })
+    print(services.items())
+    return render(request, "services.html", context={"services": services_prepared})
+
+
+def services_add(request):
+    page = int(request.GET.get('page', 1))
+    services_per_page = 2
+    start = (page - 1) * services_per_page
+    end = start + services_per_page
+    print(start, end)
+
+    # Рассчитываем начало и конец выборки
+
+    # Получаем сервисы для текущей страницы
+    services_data = []
+    services = Service.objects.all()[start:end]
+
+    for service in services:
+        services_data.append({
+            'id': service.id,
+            'descr': service.descr,
+            'photo': service.photo.url,
+            'website': service.website,
+            'promo': service.promo,
+            'costs': service.costs,
+        })
+
+    return JsonResponse(services_data, safe=False)
+
+
 def index(request):
     print(request.user.is_authenticated)
     print(request.user)
@@ -84,9 +121,6 @@ def index(request):
                   context={"image": photo, "url_image": url,
                            "success": request.user.is_authenticated,
                            'MEDIA_URL': settings.MEDIA_URL})
-
-
-
 
 
 def register(request):
@@ -141,6 +175,14 @@ def logout(request):
 
 def createblog(request):
     return render(request, "personal-account-5.html")
+
+
+def service_cat(request):
+    cat = int(request.GET.get('cat', 1))
+    print(cat)
+    return render(request, 'services_cat.html',
+                  context={"services": Service.objects.all().filter(category=Category.objects.all().filter(id=cat)[:1]),
+                                                         "category": Category.objects.get(id=cat).perevod})
 
 
 

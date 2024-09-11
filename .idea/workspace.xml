@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="images">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="services_cat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/personal-account-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/personal-account-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/templates/profile_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/profile_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="api2_v2A_2" />
+        <entry key="$PROJECT_DIR$" value="api2_v2A" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,7 +49,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;api2__v2A&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;api2__v2A__services&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/API/DJANGO/new_back/back&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -205,7 +202,47 @@
       <option name="project" value="LOCAL" />
       <updated>1725567677570</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updating profile done">
+      <option name="closed" value="true" />
+      <created>1725662490392</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1725662490392</updated>
+    </task>
+    <task id="LOCAL-00015" summary="services 1st try">
+      <option name="closed" value="true" />
+      <created>1725831422409</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725831422409</updated>
+    </task>
+    <task id="LOCAL-00016" summary="services 2st try">
+      <option name="closed" value="true" />
+      <created>1725836161285</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725836161285</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bug fix and 5 max">
+      <option name="closed" value="true" />
+      <created>1725867201788</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725867201788</updated>
+    </task>
+    <task id="LOCAL-00018" summary="services_cat">
+      <option name="closed" value="true" />
+      <created>1725869697050</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725869697050</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +304,11 @@
     <MESSAGE value="profile try" />
     <MESSAGE value="reklama, profile." />
     <MESSAGE value="images" />
-    <option name="LAST_COMMIT_MESSAGE" value="images" />
+    <MESSAGE value="updating profile done" />
+    <MESSAGE value="services 1st try" />
+    <MESSAGE value="services 2st try" />
+    <MESSAGE value="bug fix and 5 max" />
+    <MESSAGE value="services_cat" />
+    <option name="LAST_COMMIT_MESSAGE" value="services_cat" />
   </component>
 </project>
