@@ -1,0 +1,430 @@
+
+<!-- saved from url=(0085)https://w.uptolike.com/widgets/v1/share-counter.html?1ea92d09c43527572b24fe052f11127b -->
+<html><div id="in-page-channel-node-id" data-channel-name="in_page_channel_s_oc_Q"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+
+var JSON;JSON||(JSON={});
+var utils = utils || {};
+utils.JSON = utils.JSON || {};
+var f = function(JSON){function k(a){return a<10?"0"+a:a}function o(a){p.lastIndex=0;return p.test(a)?'"'+a.replace(p,function(a){var c=r[a];return typeof c==="string"?c:"\\u"+("0000"+a.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+a+'"'}function l(a,j){var c,d,h,m,g=e,f,b=j[a];b&&!(b instanceof Array)&&typeof b==="object"&&typeof b.toJSON==="function"&&(b=b.toJSON(a));typeof i==="function"&&(b=i.call(j,a,b));switch(typeof b){case "string":return o(b);case "number":return isFinite(b)?String(b):"null";case "boolean":case "null":return String(b);case "object":if(!b)return"null";
+    e+=n;f=[];if(Object.prototype.toString.apply(b)==="[object Array]"){m=b.length;for(c=0;c<m;c+=1)f[c]=l(c,b)||"null";h=f.length===0?"[]":e?"[\n"+e+f.join(",\n"+e)+"\n"+g+"]":"["+f.join(",")+"]";e=g;return h}if(i&&typeof i==="object"){m=i.length;for(c=0;c<m;c+=1)typeof i[c]==="string"&&(d=i[c],(h=l(d,b))&&f.push(o(d)+(e?": ":":")+h))}else for(d in b)Object.prototype.hasOwnProperty.call(b,d)&&(h=l(d,b))&&f.push(o(d)+(e?": ":":")+h);h=f.length===0?"{}":e?"{\n"+e+f.join(",\n"+e)+"\n"+g+"}":"{"+f.join(",")+
+        "}";e=g;return h}}if(typeof Date.prototype.toJSON!=="function")Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+k(this.getUTCMonth()+1)+"-"+k(this.getUTCDate())+"T"+k(this.getUTCHours())+":"+k(this.getUTCMinutes())+":"+k(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()};var q=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+    p=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,e,n,r={"\u0008":"\\b","\t":"\\t","\n":"\\n","\u000c":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},i;if(typeof JSON.stringify!=="function")JSON.stringify=function(a,j,c){var d;n=e="";if(typeof c==="number")for(d=0;d<c;d+=1)n+=" ";else typeof c==="string"&&(n=c);if((i=j)&&typeof j!=="function"&&(typeof j!=="object"||typeof j.length!=="number"))throw Error("JSON.stringify");return l("",
+    {"":a})};if(typeof JSON.parse!=="function")JSON.parse=function(a,e){function c(a,d){var g,f,b=a[d];if(b&&typeof b==="object")for(g in b)Object.prototype.hasOwnProperty.call(b,g)&&(f=c(b,g),f!==void 0?b[g]=f:delete b[g]);return e.call(a,d,b)}var d,a=String(a);q.lastIndex=0;q.test(a)&&(a=a.replace(q,function(a){return"\\u"+("0000"+a.charCodeAt(0).toString(16)).slice(-4)}));if(/^[\],:{}\s]*$/.test(a.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
+    "]").replace(/(?:^|:|,)(?:\s*\[)+/g,"")))return d=eval("("+a+")"),typeof e==="function"?c({"":d},""):d;throw new SyntaxError("JSON.parse");}};
+
+f(utils.JSON); f(JSON);var JSONP = (function(){
+    var counter = 0, head, window = this, config = {};
+    function load(url, pfnError) {
+        var script = document.createElement('script'),
+            done = false;
+        script.src = url;
+        script.async = true;
+
+        var errorHandler = pfnError || config.error;
+        if ( typeof errorHandler === 'function' ) {
+            script.onerror = function(ex){
+                errorHandler({ url: url, event: ex });
+            };
+        }
+
+        script.onload = script.onreadystatechange = function() {
+            if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                done = true;
+                script.onload = script.onreadystatechange = null;
+                if ( script && script.parentNode ) {
+                    script.parentNode.removeChild( script );
+                }
+            }
+        };
+
+        if ( !head ) {
+            head = document.getElementsByTagName('head')[0];
+        }
+        head.appendChild( script );
+    }
+    function encode(str) {
+        return encodeURIComponent(str);
+    }
+    function jsonp(url, params, callback, callbackName, errorHandler) {
+        var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
+
+
+        var random = Math.round(Math.random()*1000);
+        var callbackSuffix = "__utl_cb_share_" + new Date().getTime()+random;
+
+        callbackName = (callbackName||config['callbackName']||'callback');
+        var uniqueName = callbackName + callbackSuffix;
+
+        params = params || {};
+        for ( key in params ) {
+            if ( params.hasOwnProperty(key) ) {
+                query += encode(key) + "=" + encode(params[key]) + "&";
+            }
+        }
+
+        window[ uniqueName ] = function(data){
+            if (callback) {
+                callback(data);
+            }
+            try {
+                delete window[ uniqueName ];
+            } catch (e) {}
+            window[ uniqueName ] = null;
+        };
+
+        load(url + query + callbackName + '=' + uniqueName, errorHandler);
+        return uniqueName;
+    }
+    function setDefaults(obj){
+        config = obj;
+    }
+    return {
+        get:jsonp,
+        init:setDefaults
+    };
+}());
+
+        function isArray(obj) {
+            if (obj===undefined || obj===null) {
+                return false;
+            }
+            return Object.prototype.toString.call( obj ) === '[object Array]';
+        }
+
+        var counters = {}, initialCounts = {}, countersFetched = {}, fetchedUrls = {};
+
+
+        var protocol = window.location.protocol;
+
+        function update_counter(snid, installs, projectId, url, widgetsUrl) {
+
+
+            if (isNaN(installs)) {
+                return;
+            }
+
+            counters[widgetsUrl][snid] += installs;
+            countersFetched[widgetsUrl][snid]--;
+
+
+            if (countersFetched[widgetsUrl][snid]>0) {
+                return;
+            }
+
+            if (counters[widgetsUrl][snid] != initialCounts[snid] || counters[widgetsUrl][snid] > 0) {
+                JSONP.get("https://w.uptolike.com/widgets/v1/upd", {
+                    id: snid,
+                    pid: projectId,
+                    url: url,
+                    c: counters[widgetsUrl][snid]
+                });
+            }
+
+            var data = {
+                action: 'set_real_value',
+                snid:snid,
+                url:widgetsUrl,
+                c:counters[widgetsUrl][snid]
+            };
+
+            try {
+                parent.postMessage(JSON.stringify(data), "*");
+            } catch (e) {
+                //alert (e);
+            }
+
+        }
+
+        var fbInited = false;
+        var fbCalls = [];
+        var fb_handler = function(projectId, page_url, original_url) {
+
+            var invokeImpl = function() {
+
+                FB.api('/', {fields: 'engagement', id: page_url}, function(response) {
+                    console.log("FB resp: ", response);
+                });
+
+
+/*
+                var url = "https://graph.facebook.com/" + encodeURIComponent(page_url);
+                JSONP.get(url, {}, function (data) {
+                    if (data && data.share && typeof (data.share.share_count) != 'undefined')
+                        update_counter("fb", data.share.share_count, projectId, page_url, original_url);
+                }, "callback");
+*/
+
+
+            };
+
+            if (!fbInited) {
+                fbCalls.push(invokeImpl);
+            } else {
+                invokeImpl();
+            }
+
+
+        };
+
+        var vk_handler = function(projectId, page_url, original_url) {
+            VK = {
+                Share: {
+                    installs: function (e, e2) {
+                        update_counter("vk", e2, projectId, page_url, original_url);
+                    },
+                    count: function (e, e2) {
+                        update_counter("vk", e2, projectId, page_url, original_url);
+                    }
+                }
+            };
+
+            JSONP.get("//vk.com/share.php?act=count&format=json&url=" + encodeURIComponent(page_url));
+        };
+
+        var mr_handler = function(projectId, page_url, original_url) {
+            var random = "mrc__shareInit" + Math.floor( Math.random() * 1000 );
+            window[ random ] = function (data) {
+                if (typeof(data[page_url]) != 'undefined' && typeof (data[page_url].shares) != 'undefined') {
+                    update_counter("mr", data[page_url].shares, projectId, page_url, original_url);
+                }
+                else if (typeof(data[original_url]) != 'undefined' && typeof (data[original_url].shares) != 'undefined') {
+                    update_counter("mr", data[original_url].shares, projectId, page_url, original_url);
+                }
+                else {
+                    update_counter("mr", 0, projectId, page_url, original_url);
+                }
+            };
+
+            JSONP.get("//connect.mail.ru/share_count?func=" + random + "&url_list=" + encodeURIComponent(page_url));
+        };
+
+        var ok_handler = function(projectId, page_url, original_url) {
+            if (page_url.lastIndexOf("/") == page_url.length - 1) {
+                page_url = page_url.substring(0, page_url.length - 1);
+            }
+
+            window.ODKL = {
+                updateCount: function(uid, count) {
+                    update_counter("ok", parseInt(count), projectId, page_url, original_url);
+                }
+            };
+
+            JSONP.get("//connect.ok.ru/dk?st.cmd=extLike&uid=odklcnt0&ref=" + encodeURIComponent(page_url));
+        };
+
+        var gp_handler = function(projectId, page_url, original_url) {
+            var url = "https://plusone.google.com/_/+1/fastbutton?url=" + encodeURIComponent(page_url);
+            JSONP.get(url, {}, function (data) {
+                update_counter("gp", parseInt(data), projectId, page_url, original_url);
+            });
+        };
+
+        var tw_handler = function(projectId, page_url, original_url) {
+            var url = "//urls.api.twitter.com/1/urls/count.json?url=" + encodeURIComponent(page_url);
+            JSONP.get(url, {}, function (data) {
+                update_counter("tw", parseInt(data.count), projectId, page_url, original_url);
+            });
+        };
+
+        var ya_handler = function(projectId, page_url, original_url) {
+            if (protocol === 'https:') {
+                return;
+            }
+
+            window.Ya = {
+                share: function () {
+                },
+                Share: {
+                    showCounter: function (val) {
+                        update_counter("my", parseInt(val), projectId, page_url, original_url);
+                    }
+                }
+            };
+
+            JSONP.get("//wow.ya.ru/ajax/share-counter.xml?url=" + encodeURIComponent(page_url));
+        };
+
+        var pi_handler = function(projectId, page_url, original_url) {
+            JSONP.get("//api.pinterest.com/v1/urls/count.json?&url=" + encodeURIComponent(page_url), {}, function (data) {
+                var cnt = parseInt(data.count);
+                update_counter("ps", parseInt(data.count), projectId, page_url, original_url);
+            });
+
+        };
+
+        var dl_handler = function (projectId, page_url, original_url) {
+
+            if (protocol === 'https:') {
+                return;
+            }
+
+            JSONP.get("//feeds.delicious.com/v2/json/urlinfo/data?url=" +encodeURIComponent(page_url), {}, function (data) {
+                if (typeof data[0] != 'undefined' && typeof data[0]['total_posts'] != 'undefined') {
+                    update_counter("dl", parseInt(data[0]['total_posts']), projectId, page_url, original_url);
+                }
+                else {
+                    update_counter("dl", 0, projectId, page_url, original_url);
+                }
+            });
+        };
+
+
+        var extReady = false;
+        var extCommitReady = false;
+        var extCommit = undefined;
+        function update_ok(data) {
+            if (extCommitReady) {
+                return;
+            }
+            extCommitReady = true;
+            extCommit = data;
+            if (extReady) {
+                window.parent.postMessage({action:"utl_extCommit_ok", data:data}, "*");
+            }
+        }
+
+        var random = Math.round( Math.random() * 1000 );
+        var jsonpCb = '__utl_renderWidgets_' + new Date().getTime() + random;
+
+
+        var sendedRequests = {};
+
+        var checkDHT = function(req, mode){
+            sendedRequests[req[0].url] = sendedRequests[req[0].url] || {};
+            if (!sendedRequests[req[0].url][req[0].pid]) {
+                sendedRequests[req[0].url][req[0].pid] = true;
+                var str = window.btoa(encodeURIComponent(JSON.stringify(req)));
+                var codeMode = mode ? '1' : '0';
+                var onError = function(obj) {
+                    var data = {
+                        action: 'fail_DHT_values',
+                        projectId: req[0].pid
+                    };
+
+                    try {
+                        parent.postMessage(JSON.stringify(data), "*");
+                    } catch (e) {}
+                };
+                JSONP.get('https://w.uptolike.com/widgets/v1/widgets-batch.js?params=' + str + '&mode=' + codeMode,null,
+                        function(obj) {
+
+
+                            obj[0].url = decodeURIComponent( obj[0].url );
+                            obj[0].urlWithToken = decodeURIComponent( obj[0].urlWithToken );
+
+                            if (obj) {
+                                var data = {
+                                    action: 'set_DHT_values',
+                                    data : obj[0],
+                                    originalPid: req[0].pid,
+                                    originalUrl: req[0].url
+                                };
+
+                                try {
+                                    parent.postMessage(JSON.stringify(data), "*");
+                                } catch (e) {}
+                            }
+                        },null,onError);
+            }
+
+        };
+
+        function listener(event) {
+
+            var req;
+            if (typeof event.data === 'string' && event.data[0] === '{') {
+                try {
+                    req = JSON.parse(event.data);
+                }
+                catch(e) {
+                }
+            } else {
+                req = event.data;
+            }
+
+
+            if (req && req.action) {
+                if (req.action === 'checkDHT' && req.url && req.projectId ) {
+                    checkDHT([{
+                        pid : req.projectId,
+                        url : req.url
+                    }], req.mode);
+                }
+                else if (req.action === 'check' && isArray(req.url)) {
+
+                    var originalUrl = req.originalUrl;
+                    counters[originalUrl] = counters[originalUrl] || {};
+                    counters[originalUrl][req.snid] = /*counters[originalUrl][req.snid] ||*/ 0;
+
+                    initialCounts[req.snid] = req.initialCount || 0;
+
+                    countersFetched[originalUrl] = countersFetched[originalUrl] || {};
+                    countersFetched[originalUrl][req.snid] = countersFetched[originalUrl][req.snid] || req.url.length;
+
+
+                    for (var idx = 0; idx < req.url.length; idx++) {
+                        var pageUrl = req.url[idx];
+                        fetchedUrls[pageUrl] = fetchedUrls[pageUrl] || {};
+                        if (!fetchedUrls[pageUrl][req.snid] ) {
+
+                            fetchedUrls[pageUrl][req.snid] = true;
+
+                            switch (req.snid) {
+
+                                case "vk" :
+                                    vk_handler(req.projectId, pageUrl, originalUrl);
+                                    break;
+/*
+                                case "fb" :
+                                    fb_handler(req.projectId, pageUrl, originalUrl);
+*/
+                                case "mr" :
+                                    mr_handler(req.projectId, pageUrl, originalUrl);
+                                    break;
+                                case "ok" :
+                                    ok_handler(req.projectId, pageUrl, originalUrl);
+                                    break;
+                                case "tw" :
+                                    tw_handler(req.projectId, pageUrl, originalUrl);
+                                    break;
+                                case "ps" :
+                                    pi_handler(req.projectId, pageUrl, originalUrl);
+                                    break;
+
+                            }
+                        }
+
+
+
+                    }
+
+                }
+                else if (req.action==='utl_extReady_ok') {
+                    extReady = true;
+                    if (extCommitReady) {
+                        window.parent.postMessage({action:"utl_extCommit_ok", data:extCommit}, "*");
+                    }
+                }
+
+            }
+
+        }
+
+        if (window.addEventListener){
+            window.addEventListener("message", listener, false);
+        } else {
+            window.attachEvent("onmessage", listener);
+        }
+
+
+        window.parent.postMessage(JSON.stringify({action:"__utl_share_counter_initialized"}), "*");
+
+
+    </script>
+
+
+</head>
+<body>
+
+</body></html>

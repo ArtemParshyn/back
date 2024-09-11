@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <img src="{{ article.image.url }}" alt="{{ article.title }}" style="max-width: 100%; height: auto;">
+        <p>{{ article.content | safe }}</p>
+        <a href="{% url 'article_list' %}">Вернуться к списку</a>
+    </div>
+</body>
+</html>

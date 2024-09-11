@@ -13,6 +13,14 @@ from .forms import UserRegisterForm
 from .models import Reklama, ApiUser
 
 
+from django.shortcuts import get_object_or_404
+from .forms import ArticleForm
+
+from django.views.generic.edit import CreateView
+from .models import Article
+
+
+
 class ProfileView(View):
     def get(self, request):
         if not request.user.is_authenticated:
@@ -133,3 +141,34 @@ def logout(request):
 
 def createblog(request):
     return render(request, "personal-account-5.html")
+
+
+
+def create_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('articles')  # Перенаправляем пользователя после создания статьи
+    else:
+        form = ArticleForm()
+
+    return render(request, 'create_article.html', {'form': form})
+
+
+class ArticleCreateView(CreateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'create_article.html'
+    success_url = '/articles'  # Замените на нужный URL
+
+
+
+def article_list(request):
+    articles = Article.objects.all()  # Извлекаем все статьи
+    return render(request, 'articles.html', {'articles': articles})
+
+
+def article_detail(request, article_id):
+    article = get_object_or_404(Article, id=article_id)
+    return render(request, 'article_detail.html', {'article': article})

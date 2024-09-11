@@ -302,7 +302,7 @@
         media="all">
     <link rel="stylesheet" id="wpdreams-asl-instance-css"
         href="{% static 'profile/profile_files/style-underline.css' %}" media="all">
-    <script ./index1_files/jquery.min.js" id="jquery-js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script id="loadmore-js-extra">
         var loadmore_params = { "ajaxurl": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "posts": "{\"page\":0,\"pagename\":\"personal-account\",\"error\":\"\",\"m\":\"\",\"p\":0,\"post_parent\":\"\",\"subpost\":\"\",\"subpost_id\":\"\",\"attachment\":\"\",\"attachment_id\":0,\"name\":\"personal-account\",\"page_id\":0,\"second\":\"\",\"minute\":\"\",\"hour\":\"\",\"day\":0,\"monthnum\":0,\"year\":0,\"w\":0,\"category_name\":\"\",\"tag\":\"\",\"cat\":\"\",\"tag_id\":\"\",\"author\":\"\",\"author_name\":\"\",\"feed\":\"\",\"tb\":\"\",\"paged\":0,\"meta_key\":\"\",\"meta_value\":\"\",\"preview\":\"\",\"s\":\"\",\"sentence\":\"\",\"title\":\"\",\"fields\":\"\",\"menu_order\":\"\",\"embed\":\"\",\"category__in\":[],\"category__not_in\":[],\"category__and\":[],\"post__in\":[],\"post__not_in\":[],\"post_name__in\":[],\"tag__in\":[],\"tag__not_in\":[],\"tag__and\":[],\"tag_slug__in\":[],\"tag_slug__and\":[],\"post_parent__in\":[],\"post_parent__not_in\":[],\"author__in\":[],\"author__not_in\":[],\"ignore_sticky_posts\":false,\"suppress_filters\":false,\"cache_results\":true,\"update_post_term_cache\":true,\"lazy_load_term_meta\":true,\"update_post_meta_cache\":true,\"post_type\":\"\",\"posts_per_page\":12,\"nopaging\":false,\"comments_per_page\":\"50\",\"no_found_rows\":false,\"order\":\"DESC\"}", "current_page": "1", "max_page": "0" };
     </script>
@@ -1244,14 +1244,12 @@
                     <a href="https://protraffic.com/" data-wpel-link="internal">
                         <span class="d-lg-block mr-2 d-none">
 
-                            <img src="{% static 'profile/profile_files/protraffic-dark.svg' %}"
-                                data-dark-src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark.svg"
-                                alt="Protraffic">
+                            <span class="logo-text">RUARB</span>
                         </span>
                         <span class="d-lg-none mr-1 d-block">
 
-                            <img src="{% static 'profile/profile_files/protraffic-dark-sm.svg' %}"
-                                data-dark-src="https://protraffic.com/wp-content/themes/ptf/images/protraffic-dark-sm.svg"
+                            <img class='logo-img' src="https://i.imgur.com/6PxidVv.png"
+                                data-dark-src="https://i.imgur.com/6PxidVv.png"
                                 alt="Protraffic">
                         </span>
                     </a>
@@ -1259,6 +1257,19 @@
                 <style>
                     .site-header__pin img {
                         display: block;
+                    }
+                    
+                    .logo-img {
+                        width: 35px;
+                        padding-bottom: 0px;
+                    }
+
+
+                    .logo-text {
+                        font-size: 35px;
+                        font-weight: 700;
+                        color: #3663e0;
+                        font-family: Montserrat, sans-serif, Arial;
                     }
 
                     .site-header.is--fixed .site-header__pin .ml-2:first-of-type {
@@ -1301,10 +1312,7 @@
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6353"><a
                                 href="https://protraffic.com/affiliate_program" data-wpel-link="internal">Партнерки</a>
                         </li>
-                        <li id="menu-item-11821"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-adv_networks menu-item-11821">
-                            <a href="https://protraffic.com/adv_networks" data-wpel-link="internal">Сети</a>
-                        </li>
+                        
                         <li id="menu-item-42692"
                             class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-42692">
                             <a href="https://protraffic.com/services" data-wpel-link="internal">Сервисы</a>
@@ -1313,15 +1321,9 @@
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42431"><a
                                 href="https://protraffic.com/affiliatecasestudy" data-wpel-link="internal">Кейсы</a>
                         </li>
-                        <li id="menu-item-58016"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-58016"><a
-                                href="https://protraffic.com/baza-znaniy" data-wpel-link="internal">Знания</a></li>
-                        <li id="menu-item-43604"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43604"><a
-                                href="https://protraffic.com/vacancies" data-wpel-link="internal">Вакансии</a></li>
-                        <li id="menu-item-93240"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-93240"><a
-                                href="https://protraffic.com/video" data-wpel-link="internal">Видео</a></li>
+                        
+                        
+                        
                     </ul>
                     <div class="relative site-header__search-container js-float-search__container">
                         <div class="ya-site-form ya-site-form_bg_transparent ya-site-form_inited_yes"
@@ -1333,47 +1335,7 @@
                                             <td class="ya-site-form__search-wrap">
                                                 <table class="ya-site-form__search" cellpadding="0" cellspacing="0">
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="ya-site-form__search-input">
-                                                                <table class="ya-site-form__search-input-layout">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td
-                                                                                class="ya-site-form__search-input-layout-l">
-                                                                                <div class="ya-site-form__input"><input
-                                                                                        name="text" type="search"
-                                                                                        value=""
-                                                                                        class="ya-site-form__input-text"
-                                                                                        placeholder="Поиск по сайту"
-                                                                                        autocomplete="off">
-                                                                                    <div class="ya-site-suggest">
-                                                                                        <div class="ya-site-suggest-popup"
-                                                                                            style="display: none;"><i
-                                                                                                class="ya-site-suggest__opera-gap"></i>
-                                                                                            <div
-                                                                                                class="ya-site-suggest-list">
-                                                                                                <div
-                                                                                                    class="ya-site-suggest__iframe">
-                                                                                                </div>
-                                                                                                <ul
-                                                                                                    class="ya-site-suggest-items">
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td
-                                                                                class="ya-site-form__search-input-layout-r">
-                                                                                <input
-                                                                                    class="ya-site-form__submit ya-site-form__submit_type_image"
-                                                                                    type="button" value="">
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
+                                                        
                                                         <tr>
                                                             <td class="ya-site-form__gap">
                                                                 <div class="ya-site-form__gap-i"></div>
@@ -1443,7 +1405,6 @@
                     </div>
                 </div>
                 <div class="col-item d-flex gutter-x-5">
-                    <div class="d-lg-block d-none site-header__search-icon js-float-search__btn"></div>
                     <style>
                         .site-header .btn {
                             min-width: auto;
@@ -1482,10 +1443,7 @@
                         </div>
                     </div>
                     <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
-                        <svg class="d-block " width="49" height="13" viewBox="0 0 49 13" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#burger">
-                            </use>
+                        <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
                         </svg>
                     </div>
                 </div>
@@ -1730,75 +1688,17 @@
                                         ./index1_files/protraffic-dark-sm.svg" alt=""></span></a>
                         </div>
                         <div class="d-lg-none d-block">
-                            <div class="social d-flex">
-                                <a href="https://t.me/protraffic_com" target="_blank" data-wpel-link="external"
-                                    rel="nofollow external noopener noreferrer">
-                                    <img ./index1_files/telegram.svg" alt="Telegram - ProTraffic">
-                                </a>
-                                <a href="https://vk.com/pro_traffic_com" target="_blank" data-wpel-link="external"
-                                    rel="nofollow external noopener noreferrer">
-                                    <img ./index1_files/vk.svg" alt="Vkontakte  - ProTraffic">
-                                </a>
-                                <a href="https://www.instagram.com/protraffic_com/?ysclid=lmthsj3fg0443801078"
-                                    target="_blank" data-wpel-link="external"
-                                    rel="nofollow external noopener noreferrer">
-                                    <img ./index1_files/inst.svg" alt="Instagram - ProTraffic">
-                                </a>
-                                <a href="https://www.youtube.com/channel/UCjcq0YcsmbG15UmY_S6EXpA" target="_blank"
-                                    data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                                    <img ./index1_files/youtube.svg" alt="YouTube - ProTraffic">
-                                </a>
-                                <a href="https://twitter.com/ProtrafficCom" target="_blank" data-wpel-link="external"
-                                    rel="nofollow external noopener noreferrer">
-                                    <img ./index1_files/twitter.svg" alt="Twitter - ProTraffic">
-                                </a>
-                            </div>
+                            
                         </div>
                     </div>
-                    <div class="site-footer__text">ProTraffic.com — твой путеводитель по арбитражу трафика. Все фишки и
+                    <div class="site-footer__text">RUARB — твой путеводитель по арбитражу трафика. Все фишки и
                         экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
                         лидерами рынка. Лей в плюс с ProTraffic!</div>
                 </div>
                 <div class="col-lg-5 col-md-6">
-                    <ul class="list--unstyled site-footer__menu">
-                        <li id="menu-item-16820"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820">
-                            <a href="https://protraffic.com/" data-wpel-link="internal">Главная</a>
-                        </li>
-                        <li id="menu-item-16821"
-                            class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-                                href="https://protraffic.com/articles" data-wpel-link="internal">Статьи</a></li>
-                        <li id="menu-item-16823"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-adv_networks menu-item-16823">
-                            <a href="https://protraffic.com/adv_networks" data-wpel-link="internal">Сети</a>
-                        </li>
-                        <li id="menu-item-16824"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
-                            <a href="https://protraffic.com/affiliate_program" data-wpel-link="internal">Партнерки</a>
-                        </li>
-                        <li id="menu-item-16850"
-                            class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850">
-                            <a href="https://protraffic.com/services" data-wpel-link="internal">Сервисы</a>
-                        </li>
-                        <li id="menu-item-41094"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41094"><a
-                                href="https://protraffic.com/baza-znaniy" data-wpel-link="internal">База знаний</a></li>
-                        <li id="menu-item-42430"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-                                href="https://protraffic.com/affiliatecasestudy" data-wpel-link="internal">Кейсы по
-                                арбитражу</a></li>
-                        <li id="menu-item-93238"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-93238"><a
-                                href="https://protraffic.com/video" data-wpel-link="internal">Видео</a></li>
-                        <li id="menu-item-41093"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41093"><a
-                                href="https://protraffic.com/qna" data-wpel-link="internal">Вопросы-ответы</a></li>
-                        <li id="menu-item-43702"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43702"><a
-                                href="https://protraffic.com/vacancies" data-wpel-link="internal">Вакансии</a></li>
-                    </ul>
+                    
                 </div>
-                <div class="site-footer__bottom">© 2019-2024, ProTraffic. Все права сохранены. Условия пользовательского
+                <div class="site-footer__bottom">© 2019-2024, RUARB. Все права сохранены. Условия пользовательского
                     соглашения</div>
             </div>
     </footer>
@@ -2142,35 +2042,7 @@
                                                     <td class="ya-site-form__search-input">
                                                         <table class="ya-site-form__search-input-layout">
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="ya-site-form__search-input-layout-l">
-                                                                        <div class="ya-site-form__input"><input
-                                                                                name="text" type="search" value=""
-                                                                                class="ya-site-form__input-text"
-                                                                                placeholder="Поиск по сайту"
-                                                                                autocomplete="off">
-                                                                            <div class="ya-site-suggest">
-                                                                                <div class="ya-site-suggest-popup"
-                                                                                    style="display: none;"><i
-                                                                                        class="ya-site-suggest__opera-gap"></i>
-                                                                                    <div class="ya-site-suggest-list">
-                                                                                        <div
-                                                                                            class="ya-site-suggest__iframe">
-                                                                                        </div>
-                                                                                        <ul
-                                                                                            class="ya-site-suggest-items">
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="ya-site-form__search-input-layout-r">
-                                                                        <input
-                                                                            class="ya-site-form__submit ya-site-form__submit_type_image"
-                                                                            type="button" value="">
-                                                                    </td>
-                                                                </tr>
+                                                                
                                                             </tbody>
                                                         </table>
                                                     </td>
@@ -2241,25 +2113,19 @@
                         href="https://protraffic.com/" data-wpel-link="internal">Главная</a></li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
                         href="https://protraffic.com/articles" data-wpel-link="internal">Статьи</a></li>
-                <li class="menu-item menu-item-type-post_type_archive menu-item-object-adv_networks menu-item-16823"><a
-                        href="https://protraffic.com/adv_networks" data-wpel-link="internal">Сети</a></li>
+    
                 <li
                     class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
                     <a href="https://protraffic.com/affiliate_program" data-wpel-link="internal">Партнерки</a>
                 </li>
                 <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
                         href="https://protraffic.com/services" data-wpel-link="internal">Сервисы</a></li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41094"><a
-                        href="https://protraffic.com/baza-znaniy" data-wpel-link="internal">База знаний</a></li>
+               
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
                         href="https://protraffic.com/affiliatecasestudy" data-wpel-link="internal">Кейсы по
                         арбитражу</a></li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-93238"><a
-                        href="https://protraffic.com/video" data-wpel-link="internal">Видео</a></li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41093"><a
-                        href="https://protraffic.com/qna" data-wpel-link="internal">Вопросы-ответы</a></li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43702"><a
-                        href="https://protraffic.com/vacancies" data-wpel-link="internal">Вакансии</a></li>
+                
+                
             </ul>
 
         </div>
@@ -2318,8 +2184,8 @@
     <script id="expert-review-scripts-js-extra">
         var expert_review_ajax = { "url": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "nonce": "cf7f0db2ef", "comment_to_scroll_selector": null, "ask_question_link_new_tab": null, "i18n": { "question_popup_name": "\u0418\u043c\u044f", "question_popup_email": "Email", "question_popup_phone": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d", "question_popup_question": "\u0412\u043e\u043f\u0440\u043e\u0441", "question_popup_submit": "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c", "question_popup_cancel": "\u041e\u0442\u043c\u0435\u043d\u0430", "question_submitted": "\u0412\u043e\u043f\u0440\u043e\u0441 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d", "legacy_form": "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u043e\u0434 \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u0444\u043e\u0440\u043c\u044b", "field_cannot_be_empty": "\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c", "field_must_be_checked": "\u041f\u043e\u043b\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u0447\u0435\u043d\u043e", "consent": "\u0421\u043e\u0433\u043b\u0430\u0441\u0438\u0435 \u043d\u0430 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0434\u0430\u043d\u043d\u044b\u0445" }, "consent": null };
     </script>
-    <script ./index1_files/scripts.min.js" id="expert-review-scripts-js"></script>
-    <script id="ta_main_js-js-extra">
+   <script ./index1_files/scripts.min.js" id="expert-review-scripts-js"></script>
+    <script cript id="ta_main_js-js-extra">
         var thirsty_global_vars = { "home_url": "\/\/protraffic.com", "ajax_url": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php", "link_fixer_enabled": "yes", "link_prefix": "go", "link_prefixes": ["recommends", "go"], "post_id": "16833", "enable_record_stats": "yes", "enable_js_redirect": "yes", "disable_thirstylink_class": "" };
     </script>
     <script ./index1_files/ta.js" id="ta_main_js-js"></script>
@@ -2333,7 +2199,8 @@
     <script ./index1_files/jquery.fancybox.min.js" id="fancybox-js"></script>
     <script ./index1_files/svg4everybody.js" id="svg4everybody-js"></script>
     <script ./index1_files/jquery.cookie.min.js" id="cookies-js"></script>
-    <script ./index1_files/app.js" id="ptf-app-scripts-js"></script>
+    <script src="https://protraffic.com/wp-content/themes/ptf/storage/js/app.js" id="ptf-app-scripts-js"></script>
+
     <script id="statistic-js-extra">
         var clicks_ajax = { "ajaxurl": "https:\/\/protraffic.com\/wp-admin\/admin-ajax.php" };
     </script>

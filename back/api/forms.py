@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .models import ApiUser
-
+from .models import Article
 
 class UserProfileForm(forms.Form):
     user_ava_img = forms.ImageField(
@@ -55,3 +55,12 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = ApiUser
         fields = ('username', 'password1', 'password2')
+
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ['image', 'title', 'content']  # Поля, которые будут отображаться в форме
+        widgets = {
+            'content': forms.Textarea(attrs={'class': 'ckeditor'}),  # Применяем CSS класс для CKEditor
+        }
