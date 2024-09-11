@@ -32,7 +32,7 @@ class Service(models.Model):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/service')
     descr = models.CharField(max_length=256)
     promo = models.CharField(max_length=64, default=None, blank=True)
-    website = models.URLField()
+    website = models.URLField(blank=True, default=None)
     costs = models.CharField(max_length=64, default=None, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="services")
 

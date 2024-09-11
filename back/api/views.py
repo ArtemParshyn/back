@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse, HttpResponseBadRequest, QueryDict
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib import auth
 from django.utils.decorators import method_decorator
@@ -9,7 +9,7 @@ from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, ApiUser, Service, Category
+from .models import Reklama, Service, Category
 
 
 class ProfileView(View):
@@ -170,5 +170,8 @@ def createblog(request):
 
 
 def service_cat(request):
-    cat = request.GET.get('cat', 1)
-    return render(request, 'services_cat.html', context={"services": Service.objects.all().filter(category=Category.objects.all().filter(name=cat)[:1]), "category": Category.objects.get(name=cat).perevod})
+    cat = int(request.GET.get('cat', 1))
+    print(cat)
+    return render(request, 'services_cat.html',
+                  context={"services": Service.objects.all().filter(category=Category.objects.all().filter(id=cat)[:1]),
+                                                         "category": Category.objects.get(id=cat).perevod})
