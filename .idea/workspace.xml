@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="final changes">
     <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="services_cat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0002_apiuser_descr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0003_article.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0004_article_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0005_alter_article_content.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
