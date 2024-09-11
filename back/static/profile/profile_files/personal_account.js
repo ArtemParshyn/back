@@ -1,0 +1,770 @@
+jQuery(document).ready(function ($) {
+
+  // Preloader
+  let preloader = {
+    $content: '.js-preload__content',
+    $text: '.js-preload__text',
+    activeClass: 'is--preload',
+
+    showPreload(container) {
+      container.addClass(this.activeClass)
+      container.attr('disabled', 'disabled');
+      container.find(this.$text).hide();
+    },
+
+    hidePreload(container) {
+      console.log(container)
+      container.removeClass(this.activeClass)
+      container.removeAttr('disabled');
+      container.find(this.$text).show();
+    }
+  };
+
+  var ajaxurl = clicks_ajax.ajaxurl;
+
+  function readURLgame(input) {
+
+    let userId = $('input[name="userid"]').val();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#user-profile-pre_picture').css('background-image', 'url(' + e.target.result + ')');
+        $('#user-profile-pre_picture').hide();
+        $('#user-profile-pre_picture').fadeIn(650);
+        $('#ava-profile').val(e.target.result);
+        //let newAvatar = e.target.result;
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/edit_personal.php",
+          type: "POST",
+          //data: data,
+          data: {ava_profile: e.target.result, userid: userId, action: 'changeAvatar'},
+          success: function (response) {
+            mess_save();
+          },
+          error: function (response) { // Данные не отправлены
+            mess_err();
+          }
+        })
+      }
+      reader.readAsDataURL(input.files[0]);
+
+    }
+  }
+
+
+  $("#user-profile-picture").change(function () {
+    readURLgame(this);
+
+  });
+
+
+  let userProfileForm = $('#user_profile');
+
+  let userProfileButton = userProfileForm.find('button');
+
+  userProfileForm.submit(function (e) {
+    e.preventDefault();
+
+    let selfButton = $(this).find('.js-button');
+
+    preloader.showPreload(userProfileButton)
+
+    $.ajax({
+      url: "/wp-content/themes/ptf/personal_account/edit_personal.php",
+      type: "POST",
+      data: $('#user_profile').serialize(),
+      success: function (response) {
+        preloader.hidePreload(userProfileButton)
+        mess_save();
+      },
+      error: function (response) { // Данные не отправлены
+        preloader.hidePreload(userProfileButton)
+        mess_err();
+      }
+    });
+  });
+
+//add_post
+  function readURLnewpost(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#image_preview_newpost').css('background-image', 'url(' + e.target.result + ')');
+        $('#image_preview_newpost').hide();
+        $('#image_preview_newpost').fadeIn(650);
+        $('#img_thumb_newpost').val(e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#user-post-file").change(function () {
+    readURLnewpost(this);
+  });
+
+//tiny
+  $(document).on('tinymce-editor-setup', function (e, ed) {
+    ed.on('NodeChange', function (e) {
+      $('#' + field_editor.key).html(wp.editor.getContent(field_editor.key));
+    });
+  });
+
+
+  // add New post
+  let newPostForm = $('#post_form');
+  let editPostForm = $('#edit_post_form');
+  let postPublish = $('#btn_post_publish');
+  let postDraft = $('#btn_post_draft');
+  let postDelete = $('#btn_post_delete');
+  let newPostEdit = $('#btn_edit_save');
+
+  postPublish.click(function () {
+    newPostForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(postPublish);
+
+        $('#type_save').val('pending');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_processing_post.php",
+          type: "POST",
+          data: $('#post_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(postPublish);
+            $('html').scrollTop(0);
+
+            $('#work_user_mess').html(response.data.messege);
+            //console.log(response);
+            setTimeout(function () {
+              location.href = '/personal-account?function=blog';
+              //location.href = '/personal-account?function=post_edit&post_id='+response.data.new_post_id;
+            }, 1500);
+          },
+          error: function (response) {
+            preloader.hidePreload(newPostButton);
+            mess_err();
+          }
+        }).done(function (result) {
+        });
+      }
+    })
+  })
+
+  postDraft.on('click', function (e) {
+    let button = $(this);
+    newPostForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(button);
+        $('#type_save').val('draft');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_processing_post.php",
+          type: "POST",
+          data: $('#post_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(button);
+
+            $('html').scrollTop(0);
+            $('#work_user_mess').html(response.data.messege);
+            setTimeout(function () {
+              location.href = '/personal-account?function=post_edit&post_id=' + response.data.new_post_id;
+            }, 1500);
+          },
+          error: function (response) { // Данные не отправлены
+            preloader.hidePreload(button);
+            mess_err();
+            $('html').scrollTop(0);
+            // $('#work_user_mess').html('<span class="error">Произошла ошибка</span>');
+          }
+        });
+      }
+    });
+  });
+
+  postDelete.on('click', function () {
+    newPostForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(postDelete);
+        $('#type_save').val('delete');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_processing_post.php",
+          type: "POST",
+          data: $('#post_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(postDelete);
+            mess_save();
+            setTimeout(function () {
+              location.href = '/personal-account?function=blog';
+            }, 1500);
+          },
+          error: function (response) { // Данные не отправлены
+            preloader.hidePreload(postDelete);
+            mess_err();
+          }
+        });
+      }
+    })
+  });
+
+
+  $('.user_post__action').on('click', function (e) {
+    preloader.showPreload($(this));
+    let self = $(this);
+    e.preventDefault();
+    var data = {
+      post_action: $(this).attr('data-action'),
+      post_id_action: $(this).attr('data-post_id'),
+    }
+    //console.log(data);
+    $.ajax({
+      url: "/wp-content/themes/ptf/personal_account/function_user_processing_post.php",
+      type: "POST",
+      data: data,
+      success: function (response) {
+        preloader.hidePreload(self)
+
+        if (response == 'private') {
+          mess_save();
+          location.reload();
+        }
+        if (response == 'pending') {
+          mess_moder();
+          location.reload();
+        }
+        if (response == 'draft') {
+          mess_draft();
+          location.reload();
+        }
+      },
+      error: function (response) { // Данные не отправлены
+        mess_err();
+        preloader.hidePreload(self)
+      }
+    }).done(function (response) {
+
+    });
+  });
+
+  function send_post_data() {
+    $.ajax({
+      url: "/wp-content/themes/ptf/personal_account/add_new_user_post.php",
+      type: "POST",
+      data: $('#add_newpost_form').serialize(),
+      success: function (response) {
+
+      }
+    });
+  }
+
+//select2
+  $('.single_select').select2({
+    minimumResultsForSearch: Infinity,
+    'width': '100%',
+    'height': '40px'
+  });
+
+  $('.multy_select').select2({
+    placeholder: $('.multy_select').attr('data-placeholder'),
+    minimumResultsForSearch: Infinity,
+  });
+
+//bundles new
+  let addBundlesButton = $('#btn_bundles_publish');
+  let draftBundlesButton = $('#btn_bundles_draft');
+  let deleteBundlesButton = $('#btn_bundles_delete');
+  let addBundlesForm = $('#add_newbundles_form');
+
+  addBundlesButton.click(function () {
+    if ($('#pre_lp_link').val() !== '' || $('#pre_lp_name').val() !== "") {
+      $('#pre_lp_link').attr('required', 'required');
+      $('#pre_lp_name').attr('required', 'required');
+    } else {
+      $('#pre_lp_link').removeAttr('required');
+      $('#pre_lp_name').removeAttr('required');
+    }
+
+    addBundlesForm.validate({
+      groups: {
+        landing: "lp_name lp_link",
+        prelanding: "pre_lp_name pre_lp_link",
+      },
+      submitHandler: function () {
+        preloader.showPreload(addBundlesButton);
+        $('#type_save').val('pending');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_bundles.php",
+          type: "POST",
+          data: $('#add_newbundles_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(addBundlesButton);
+            mess_moder();
+            setTimeout(function () {
+              location.href = '/personal-account?function=bundles';
+            }, 2000);
+
+          },
+          error: function (response) { // Данные не отправлены
+            preloader.hidePreload(addBundlesButton);
+            mess_err();
+          }
+        })
+          .done(function (result) {
+          });
+      }
+    });
+  })
+
+  draftBundlesButton.click(function () {
+    addBundlesForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(draftBundlesButton);
+        $('#type_save').val('draft');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_bundles.php",
+          type: "POST",
+          data: $('#add_newbundles_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(draftBundlesButton);
+            mess_save();
+            setTimeout(function () {
+              location.href = '/personal-account?function=bundles';
+            }, 2000);
+          },
+          error: function (response) { // Данные не отправлены
+
+            mess_err();
+            preloader.hidePreload(draftBundlesButton);
+          }
+        });
+      }
+    });
+  })
+
+  deleteBundlesButton.click(function () {
+    addBundlesForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(deleteBundlesButton);
+        $('#type_save').val('delete');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_bundles.php",
+          type: "POST",
+          data: $('#add_newbundles_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(deleteBundlesButton);
+            mess_save();
+            setTimeout(function () {
+              location.href = '/personal-account?function=bundles';
+            }, 2000);
+          },
+          error: function (response) { // Данные не отправлены
+
+            mess_err();
+            preloader.hidePreload(deleteBundlesButton);
+          }
+        });
+      }
+    });
+  })
+//bundles new end
+
+//offers new
+  let offerForm = $('#add_newoffers_form');
+  let offerPusblish = $('#btn_offer_publish');
+  let offerDraft = $('#btn_offer_draft');
+  let offerDell = $('#btn_offer_delete');
+
+  offerPusblish.on('click', function () {
+    offerForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(offerPusblish);
+        $('#type_save').val('pending');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_offer.php",
+          type: "POST",
+          data: $('#add_newoffers_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(offerPusblish);
+            mess_moder();
+            setTimeout(function () {
+              location.href = '/personal-account?function=offers';
+            }, 2000);
+
+          },
+          error: function (response) { // Данные не отправлены
+            preloader.hidePreload(offerPusblish);
+            mess_err();
+          }
+        }).done(function (result) {
+        });
+      }
+    })
+  });
+
+  offerDraft.on('click', function () {
+    offerForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(offerDraft);
+        $('#type_save').val('draft');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_offer.php",
+          type: "POST",
+          data: $('#add_newoffers_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(offerDraft);
+
+            mess_save();
+            setTimeout(function () {
+              location.href = '/personal-account?function=offers';
+            }, 1500);
+          },
+          error: function (response) {
+            preloader.hidePreload(offerDraft);
+            mess_err();
+          }
+        });
+      }
+    })
+  })
+
+  offerDell.on('click', function () {
+    offerForm.validate({
+      submitHandler: function () {
+        preloader.showPreload(offerDell);
+        $('#type_save').val('delete');
+        $.ajax({
+          url: "/wp-content/themes/ptf/personal_account/function_user_add_new_offer.php",
+          type: "POST",
+          data: $('#add_newoffers_form').serialize(),
+          success: function (response) {
+            preloader.hidePreload(offerDell);
+
+            mess_save();
+            setTimeout(function () {
+              location.href = '/personal-account?function=offers';
+            }, 1500);
+          },
+          error: function (response) {
+            preloader.hidePreload(offerDell);
+            mess_err();
+          }
+        });
+      }
+    })
+  })
+
+//new role user
+  $('.add_new_user_role').on('click', function (e) {
+    e.preventDefault();
+    var param = $(this).data('user_role');
+    var userid = $(this).data('user_id');
+    var action = 'add_new_role';
+
+    var data = {
+      action: action,
+      param: param,
+      userid: userid,
+    }
+
+    $.ajax({
+      url: "/wp-content/themes/ptf/personal_account/edit_personal.php",
+      type: "POST",
+      data: data,
+      success: function (response) {
+
+        location.reload();
+
+      },
+      error: function (response) { // Данные не отправлены
+
+        mess_err();
+      }
+    });
+  });
+//offers new end
+//end
+//сравнение паролей
+  let userPopup = {
+    $popup: {
+      $content: $('.js-user-popup'),
+      $open: $('.js-user-popup__open'),
+      $close: $('.js-user-popup__close'),
+      $button: $('.js-user-popup__button')
+    },
+    $login: {
+      $content: $('.js-user-popup__login'),
+      $footer: $('.js-user-popup__login-footer'),
+      $open: $('.js-user-popup__login-open'),
+    },
+    $reg: {
+      $content: $('.js-user-popup__reg'),
+      $open: $('.js-user-popup__reg-open'),
+      $footer: $('.js-user-popup__reg-footer'),
+    },
+    activeClass: 'is--open',
+    $validation: {
+      $pass: $('.js-user-popup__pass'),
+      $rpass: $('.js-user-popup__rpass'),
+      $alert: $('.js-user-popup__alert'),
+    },
+
+    init: function () {
+      let self = this;
+
+      this.$popup.$open.click(function () {
+        self.togglePopup('open', $(this).data('view'));
+      });
+
+      this.$popup.$close.click(function () {
+        self.togglePopup('close');
+      });
+
+      this.$login.$open.click(function () {
+        self.toggleView('login')
+      });
+
+      this.$reg.$open.click(function () {
+        self.toggleView('reg')
+      });
+
+      $(document).mouseup(function (e) {
+        if (!self.$popup.$content.is(e.target) && self.$popup.$content.has(e.target).length === 0) {
+          self.togglePopup('close')
+
+          setTimeout(function () {
+            self.toggleView('open', 'login');
+          }, 400)
+        }
+      });
+
+      this.$validation.$rpass.keyup(function () {
+        self.validationPass()
+      })
+    },
+
+    togglePopup: function (action, view) {
+// Show/Hide popup
+      action === 'open' && !this.$popup.$content.hasClass(this.activeClass) ?
+        this.$popup.$content.addClass(this.activeClass) :
+        this.$popup.$content.removeClass(this.activeClass);
+
+      view === '' ?
+        this.toggleView('login') :
+        this.toggleView(view)
+    },
+
+    toggleView: function (view) {
+      if (view === 'reg') {
+        this.$login.$content.hide();
+        this.$login.$footer.hide();
+
+        this.$reg.$content.fadeIn();
+        this.$reg.$footer.fadeIn();
+      } else if (view === 'login') {
+        this.$reg.$content.hide();
+        this.$reg.$footer.hide();
+
+        this.$login.$content.fadeIn();
+        this.$login.$footer.fadeIn();
+      }
+    },
+
+    validationPass: function () {
+      if (this.$validation.$pass.val() !== this.$validation.$rpass.val()) {
+        this.$popup.$button.attr('disabled', 'disabled');
+        this.$validation.$alert.show();
+      } else {
+        this.$popup.$button.removeAttr('disabled');
+        this.$validation.$alert.hide();
+      }
+    }
+  };
+
+  userPopup.init();
+
+  // ------
+  // User registration
+  //----
+  let registerFrom = $('#ptf_user_register_form');
+  let registerButton = $('#ptf_user_register_form').find('button');
+
+  // $.validator.methods.user_name = function( value, element ) {
+  //    return this.optional( element ) || /^[A-Za-z0-9_-]+$/.test( value );
+  // }
+  //
+  // $.validator.methods.user_email = function( value, element ) {
+  //    return this.optional( element ) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test( value );
+  // }
+
+  $.validator.addMethod(
+    "regex",
+    function (value, element, regexp) {
+      var re = new RegExp(regexp);
+      return this.optional(element) || re.test(value);
+    },
+    "Введены некорректные данные"
+  );
+
+  registerFrom.validate({
+    rules: {
+      user_pass: {
+        required: true,
+        minlength: 5,
+      },
+      user_email: {
+        required: true,
+        regex: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,9}$/i
+      },
+      user_pass_confirm: {
+        equalTo: "#js-password-again",
+        minlength: 5,
+      },
+      user_name: {
+        required: true,
+        regex: /^[A-Za-z0-9_-]+$/
+      }
+    },
+    highlight: function (element) {
+      $(element).parent().addClass('is--error');
+    },
+    unhighlight: function (element) {
+      $(element).parent().removeClass('is--error');
+    },
+    submitHandler: function () {
+      preloader.showPreload(registerButton);
+      $.ajax({
+        url: "/wp-content/themes/ptf/personal_account/ptf_user_register.php",
+        type: "POST",
+        data: $('#ptf_user_register_form').serialize(),
+        success: function (response) {
+          preloader.hidePreload(registerButton);
+          if (response !== 'register_success') {
+            $('.user-popup__title_register').html(response);
+          }
+          if (response == 'register_success') {
+            $('.js-register__title').html(' Вы зарегистрированы! ');
+            $('.js-register__text').hide();
+            $('#ptf_user_register_form').hide();
+            $('.user-popup__title_register').html('' +
+              '<div class="register_mess_success">' +
+              '<span>Теперь вам доступен весь функционал сайта ProTraffic. </span></br> ' +
+              '<a class="link--default" href="/personal-account?function=personal" onclick="go_lk()" >Перейти в личный кабинет </a> или ' +
+              '<a class="link--default" href="" onclick="stay()">Остаться на странице</a>  ' +
+              '</div>');
+          }
+        },
+        error: function (response) {
+          preloader.hidePreload(registerButton);
+          $('.user-popup__title_register').html('<span class="error">Произошла ошибка</span>');
+        }
+      }).done(function (result) {
+      });
+    }
+  });
+
+  function go_lk() {
+    location.href = '/personal-account?function=personal';
+  }
+
+  function stay() {
+    location.reload();
+  }
+
+  function mess_save() {
+    $('.status-save').show(200);
+    setTimeout(function () {
+      $('.status-save').hide(300);
+    }, 2000);
+  }
+
+  function mess_draft() {
+    $('.status-draft').show(200);
+    setTimeout(function () {
+      $('.status-draft').hide(300);
+    }, 2000);
+  }
+
+  function mess_moder() {
+    $('.status-moderation').show(200);
+    setTimeout(function () {
+      $('.status-moderation').hide(300);
+    }, 2000);
+  }
+
+  function mess_err() {
+    $('.status-err').show(200);
+    setTimeout(function () {
+      $('.status-err').hide(300);
+    }, 2000);
+  }
+
+  const showFormBtn = document.querySelector('.forgot-pass-show');
+  const forgotPassContainer = document.querySelector('.forgot-pass-container');
+  const forgotPassForm = forgotPassContainer.querySelector('.forgot-pass-form');
+  const forgotPassMess = forgotPassContainer.querySelector('.forgot-pass-mess');
+
+  showFormBtn.addEventListener('click', () => {
+    forgotPassContainer.classList.toggle('d-none');
+    forgotPassContainer.classList.toggle('d-flex');
+  })
+  forgotPassForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetch(ajaxurl + '?action=' + 'forgot_pass', {
+      method: 'POST',
+      body: JSON.stringify(forgotPassForm.querySelector('[name="user"]').value),
+      headers: {'Content-type': 'application/json; charset=UTF-8'}
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        forgotPassMess.textContent = data.data;
+        if (data.success) {
+          forgotPassMess.classList.remove('error');
+          forgotPassMess.classList.add('success');
+        } else {
+          forgotPassMess.classList.add('error');
+        }
+      })
+  })
+
+  if (document.body.classList.contains('page-id-75545')) {
+    const newPassForm = document.querySelector('.new-pass-form');
+    const newPassMess = document.querySelector('.new-pass-mess');
+    const btnGeneratePass = document.querySelector('.generate-pass');
+    const passInput = document.querySelector('.new-pass')
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function getRandomPass(length) {
+      const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_[]{}<>~`+=,.;:/?|';
+      let password = '';
+      for (let i = 0; i < length; i++) password += chars[getRandomInt(0, chars.length)];
+      return password;
+    }
+
+    btnGeneratePass && btnGeneratePass.addEventListener('click', (e) => {
+      e.preventDefault();
+      passInput.value = getRandomPass(12);
+    })
+
+    newPassForm && newPassForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (passInput.value.length > 7) {
+        fetch(ajaxurl + '?action=' + 'new_pass', {
+          method: 'POST',
+          body: JSON.stringify(passInput.value),
+          headers: {'Content-type': 'application/json; charset=UTF-8'}
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            document.querySelector('h1').textContent = data.data;
+            document.querySelector('.new-pass-form-container').remove();
+          })
+      } else {
+        newPassMess.textContent = 'Количество символов меньше 8';
+        newPassMess.classList.add('error');
+      }
+    })
+  }
+});
