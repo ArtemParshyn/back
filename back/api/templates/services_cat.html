@@ -778,7 +778,7 @@
                                     <a class="service__image" href="{{service.website}}" data-wpel-link="external"
                                         target="_blank" rel="nofollow external noopener noreferrer">
                                         <img class="img--responsive img--hover"
-                                            src="{{service.photo.url}}"
+                                            src="{{service.photo}}"
                                             alt="Telemetr для Telegram" />
                                     </a>
                                 </div>
@@ -804,13 +804,19 @@
                                     </div>
                                 </div>
                                 <div class="col-1 d-lg-block d-none">
-                                    <a class="arrow-btn ml-auto" href="{{service.webiste}}" target="_blank"
+                                    <a class="arrow-btn ml-auto" href="{{service.website}}" target="_blank"
                                         data-wpel-link="external" rel="nofollow external noopener noreferrer">
                                         <svg width="13" height="20" viewBox="0 0 13 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
+                                            {% if service.ifwebsite %}
                                             <path
                                                 d="M0.316406 17.6333L7.94974 10L0.316406 2.35L2.66641 0L12.6664 10L2.66641 20L0.316406 17.6333Z"
                                                 fill="white"></path>
+                                            {% else %}
+                                            <p style="color: white;">
+                                                Читать обзор
+                                            </p>
+                                            {% endif %}
                                         </svg>
                                     </a>
                                 </div>

@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
@@ -18,15 +17,6 @@ class Reklama(models.Model):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/reklama', default=None)
     url = models.CharField(max_length=64)
 
-
-class Article(models.Model):
-    image = models.ImageField(null=False, blank=False, default=None)
-    title = models.CharField(max_length=200)
-    content = RichTextUploadingField()  # Поле CKEditor
-    published_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
     def __str__(self):
         return self.pos_reklama
 
@@ -49,3 +39,24 @@ class Service(models.Model):
 
     def __str__(self):
         return self.descr
+
+
+class Article(models.Model):
+    image = models.ImageField(null=False, blank=False)  # Убрали default=None
+    title = models.CharField(max_length=200)
+    content = RichTextUploadingField()  # Поле CKEditor
+    published_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Obzor(models.Model):
+    image = models.ImageField(null=False, blank=False)  # Убрали default=None
+    title = models.CharField(max_length=200)
+    content = RichTextUploadingField()  # Поле CKEditor
+    published_date = models.DateTimeField(auto_now_add=True)
+    to_service = models.ForeignKey(Service, models.CASCADE, null=True, blank=True)  # Сделали ForeignKey необязательным
+
+    def __str__(self):
+        return self.title

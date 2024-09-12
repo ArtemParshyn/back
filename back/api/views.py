@@ -1,23 +1,23 @@
 from django.contrib.auth import authenticate, login
+from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib import auth
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
+
 from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, Service, Category
-
+from .models import Reklama, Service, Category, Obzor
 
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 
 from django.views.generic.edit import CreateView
 from .models import Article
-
 
 
 class ProfileView(View):
@@ -70,14 +70,41 @@ class ProfileView(View):
 
 
 def services(request):
-    services = {i: {i1 for i1 in Service.objects.all().filter(category=i)[:5]} for i in Category.objects.all()}
+    # Fetch categories and services more efficiently
+    categories = Category.objects.all()
+    services = {category: Service.objects.filter(category=category)[:5] for category in categories}
+
     services_prepared = []
-    for outer_key, inner_dict in services.items():
+
+    for category, service_list in services.items():
+        category_services = []
+        for service in service_list:
+            # Try to find an Obzor object related to the current service
+            obzor_id = ''
+            if not service.website:
+                obzor = Obzor.objects.filter(to_service=service).first()
+                if obzor:
+                    obzor_id = obzor.id
+
+            # Prepare the service dictionary
+            service_data = {
+                'id': service.id,
+                'descr': service.descr,
+                'photo': service.photo.url,
+                'website': service.website if service.website else f"/obzor/{obzor_id}",
+                'promo': service.promo,
+                'costs': service.costs,
+                'category': service.category,
+                'ifwebsite': bool(service.website),
+            }
+
+            category_services.append(service_data)
+
         services_prepared.append({
-            'outer_key': outer_key,
-            'inner_dict': inner_dict
+            'category': category,
+            'services': category_services
         })
-    print(services.items())
+
     return render(request, "services.html", context={"services": services_prepared})
 
 
@@ -178,20 +205,35 @@ def createblog(request):
 
 
 def service_cat(request):
-    cat = int(request.GET.get('cat', 1))
-    print(cat)
+    cat = int(request.GET.get('cat'))
+    a = []
+    query = Service.objects.all().filter(category=Category.objects.all().filter(id=cat)[:1])
+    for i in query:
+        a.append({
+            'id': i.id,
+            'descr': i.descr,
+            'photo': i.photo.url,
+            'website': i.website if i.website else f"/obzor/{Obzor.objects.filter(to_service=i)[0].id}",
+            'promo': i.promo,
+            'costs': i.costs,
+            'category': i.category,
+            'ifwebsite': True if i.website else False,
+        })
     return render(request, 'services_cat.html',
-                  context={"services": Service.objects.all().filter(category=Category.objects.all().filter(id=cat)[:1]),
-                                                         "category": Category.objects.get(id=cat).perevod})
-
+                  context={"services": a,
+                           "category": Category.objects.get(id=cat).perevod})
 
 
 def create_article(request):
+    print(1121)
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
+        print(111)
         if form.is_valid():
+            print(form.data.to_service)
+            print(1)
             form.save()
-            return redirect('articles')  # Перенаправляем пользователя после создания статьи
+            return redirect('/articles')  # Перенаправляем пользователя после создания статьи
     else:
         form = ArticleForm()
 
@@ -205,7 +247,6 @@ class ArticleCreateView(CreateView):
     success_url = '/articles'  # Замените на нужный URL
 
 
-
 def article_list(request):
     articles = Article.objects.all()  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
@@ -214,3 +255,8 @@ def article_list(request):
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
     return render(request, 'article_detail.html', {'article': article})
+
+
+def obzor_detail(request, obzor_id):
+    obzor = get_object_or_404(Obzor, id=obzor_id)
+    return render(request, 'obzor.html', {'obzor': obzor})

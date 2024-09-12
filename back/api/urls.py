@@ -11,10 +11,9 @@ from .views import ArticleCreateView
 urlpatterns = [
     path('', index),
     path('articles/', views.article_list, name='article_list'),
-    path('affiliatec', TemplateView.as_view(template_name='affiliatecasestudy.html')),
-    path('affiliatep', TemplateView.as_view(template_name='affiliate_program.html')),
-    path('article1', TemplateView.as_view(template_name='article_details.html')),
-    path('articles', TemplateView.as_view(template_name='articles.html')),
+    #path('affiliatec', TemplateView.as_view(template_name='affiliatecasestudy.html')),
+    #path('affiliatep', TemplateView.as_view(template_name='affiliate_program.html')),
+    #path('article1', TemplateView.as_view(template_name='article_details.html')),
     path('services', views.services, name='services'),
     path('services/', views.services_add, name='services_add'),
     path('register', views.register, name="register"),
@@ -24,10 +23,10 @@ urlpatterns = [
     path('createblog', views.createblog, name='createblog'),
     path('user_articles', TemplateView.as_view(template_name='user_articles.html')),
     path('create_blog', TemplateView.as_view(template_name='create_blog.html')),
-    path('create/', ArticleCreateView.as_view(), name='create_article'),
+    path('create/', views.create_article, name='create_article'),
     path('articles/<int:article_id>/', views.article_detail, name='article_detail'),
-
     path('services_cat/', views.service_cat, name='services_cat'),
+    path('obzor/<int:obzor_id>/', views.obzor_detail, name='obzor_detail'),
 ]
 
 if settings.DEBUG:
