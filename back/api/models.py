@@ -28,6 +28,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Category_partner(models.Model):
     name = models.CharField(max_length=64)
     perevod = models.CharField(max_length=64)
@@ -48,8 +49,6 @@ class Service(models.Model):
         return self.descr
 
 
-
-
 class Partner(models.Model):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/partner')
     descr = models.CharField(max_length=256)
@@ -62,10 +61,8 @@ class Partner(models.Model):
         return self.descr
 
 
-
-
 class Article(models.Model):
-    image = models.ImageField(null=False, blank=False)  # Убрали default=None
+    image = models.ImageField(upload_to="images/%Y/%m/%d/preview", null=False, blank=False)  # Убрали default=None
     title = models.CharField(max_length=200)
     content = RichTextUploadingField()  # Поле CKEditor
     published_date = models.DateTimeField(auto_now_add=True)

@@ -226,7 +226,6 @@ def create_article(request):
         form = ArticleForm(request.POST, request.FILES)
         print(111)
         if form.is_valid():
-            print(form.data.to_service)
             print(1)
             form.save()
             return redirect('/articles')  # Перенаправляем пользователя после создания статьи
