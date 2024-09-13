@@ -1,21 +1,17 @@
 from django.contrib.auth import authenticate, login
-from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib import auth
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-
 from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
 from .models import Reklama, Service, Category, Obzor
-
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
-
 from django.views.generic.edit import CreateView
 from .models import Article
 

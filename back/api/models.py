@@ -28,6 +28,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Category_partner(models.Model):
+    name = models.CharField(max_length=64)
+    perevod = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
 
 class Service(models.Model):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/service')
@@ -39,6 +46,22 @@ class Service(models.Model):
 
     def __str__(self):
         return self.descr
+
+
+
+
+class Partner(models.Model):
+    photo = models.ImageField(upload_to='images/%Y/%m/%d/partner')
+    descr = models.CharField(max_length=256)
+    promo = models.CharField(max_length=64, default=None, blank=True)
+    website = models.URLField(blank=True, default=None)
+    costs = models.CharField(max_length=64, default=None, blank=True)
+    category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="services")
+
+    def __str__(self):
+        return self.descr
+
+
 
 
 class Article(models.Model):
