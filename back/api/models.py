@@ -55,7 +55,8 @@ class Partner(models.Model):
     promo = models.CharField(max_length=64, default=None, blank=True)
     website = models.URLField(blank=True, default=None)
     costs = models.CharField(max_length=64, default=None, blank=True)
-    category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="services")
+    category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="partners")
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     def __str__(self):
         return self.descr
@@ -72,11 +73,22 @@ class Article(models.Model):
 
 
 class Obzor(models.Model):
-    image = models.ImageField(null=False, blank=False)  # Убрали default=None
+    image = models.ImageField(upload_to="images/%Y/%m/%d/obzor", null=False, blank=False)  # Убрали default=None
     title = models.CharField(max_length=200)
     content = RichTextUploadingField()  # Поле CKEditor
     published_date = models.DateTimeField(auto_now_add=True)
     to_service = models.ForeignKey(Service, models.CASCADE, null=True, blank=True)  # Сделали ForeignKey необязательным
+
+    def __str__(self):
+        return self.title
+
+
+class Obzor_partner(models.Model):
+    image = models.ImageField(upload_to="images/%Y/%m/%d/obzor", null=False, blank=False)  # Убрали default=None
+    title = models.CharField(max_length=200)
+    content = RichTextUploadingField()  # Поле CKEditor
+    published_date = models.DateTimeField(auto_now_add=True)
+    to_partner = models.ForeignKey(Partner, models.CASCADE, null=True, blank=True)  # Сделали ForeignKey необязательным
 
     def __str__(self):
         return self.title

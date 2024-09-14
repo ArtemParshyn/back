@@ -9,7 +9,7 @@ from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, Service, Category, Obzor
+from .models import Reklama, Service, Category, Obzor, Category_partner, Partner, Obzor_partner
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
@@ -65,6 +65,67 @@ class ProfileView(View):
             return JsonResponse({'status': 'error', 'errors': form.errors})
 
 
+def partners(request):
+    categories = Category_partner.objects.all()
+    partners = {category: Partner.objects.filter(category_partner=category)[:5] for category in categories}
+
+    partners_prepared = []
+
+    for category, partners_list in partners.items():
+        category_partners = []
+        for partner in partners_list:
+            # Try to find an Obzor object related to the current service
+            obzor_id = ''
+            if not partner.website:
+                obzor = Obzor_partner.objects.filter(to_partner=partner).first()
+                if obzor:
+                    obzor_id = obzor.id
+
+            # Prepare the service dictionary
+            partners_data = {
+                'id': partner.id,
+                'descr': partner.descr,
+                'photo': partner.photo.url,
+                'website': partner.website if partner.website else f"/obzorp/{obzor_id}",
+                'promo': partner.promo,
+                'costs': partner.costs,
+                'category': partner.category_partner,
+                'ifwebsite': bool(partner.website),
+                'rating': partner.rating,
+            }
+
+            category_partners.append(partners_data)
+
+        partners_prepared.append({
+            'category': category,
+            'partners': category_partners,
+        })
+    print(partners_prepared)
+    return render(request, "affiliate_program.html", context={"partners": partners_prepared})
+
+
+def partner_cat(request):
+    cat = int(request.GET.get('cat'))
+    a = []
+    query = Partner.objects.all().filter(category_partner=Category_partner.objects.all().filter(id=cat)[:1])
+    for i in query:
+        a.append({
+            'id': i.id,
+            'descr': i.descr,
+            'photo': i.photo.url,
+            'website': i.website if i.website else f"/obzorp/{Obzor_partner.objects.filter(to_partner=i)[0].id}",
+            'promo': i.promo,
+            'costs': i.costs,
+            'category': i.category_partner,
+            'ifwebsite': bool(i.website),
+            'rating': i.rating,
+
+        })
+    return render(request, 'partners_cat.html',
+                  context={"partners": a,
+                           "category": Category_partner.objects.get(id=cat).perevod})
+
+
 def services(request):
     # Fetch categories and services more efficiently
     categories = Category.objects.all()
@@ -92,6 +153,7 @@ def services(request):
                 'costs': service.costs,
                 'category': service.category,
                 'ifwebsite': bool(service.website),
+
             }
 
             category_services.append(service_data)
@@ -254,4 +316,9 @@ def article_detail(request, article_id):
 
 def obzor_detail(request, obzor_id):
     obzor = get_object_or_404(Obzor, id=obzor_id)
+    return render(request, 'obzor.html', {'obzor': obzor})
+
+
+def obzorp_detail(request, obzor_id):
+    obzor = get_object_or_404(Obzor_partner, id=obzor_id)
     return render(request, 'obzor.html', {'obzor': obzor})

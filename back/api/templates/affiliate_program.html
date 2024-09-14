@@ -2,6 +2,7 @@
 <html lang="ru-RU" class="html">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -404,33 +405,36 @@
     }
 
     @media (min-width: 991px) {
-    .d-lg-block {
+      .d-lg-block {
         height: 45px;
         display: block !important;
+      }
     }
-}
 
     .d-lg-block mr-2 d-none {
-        height: 30px;
+      height: 30px;
     }
 
     .logo2 {
-        width: 35px;
-        padding-bottom: 0px;
+      width: 35px;
+      padding-bottom: 0px;
     }
-    .logo {
-        width: 35px;
-        padding-bottom: 15px;
-    }
-    .logo-wrapper{
-        padding-left: 50px;
-    }
-    .text-logo{
 
-        bottom: 0px;
-        font-size: 35px;
-        font-family: Sans-serif;
-        font-weight: 700;
+    .logo {
+      width: 35px;
+      padding-bottom: 15px;
+    }
+
+    .logo-wrapper {
+      padding-left: 50px;
+    }
+
+    .text-logo {
+
+      bottom: 0px;
+      font-size: 35px;
+      font-family: Sans-serif;
+      font-weight: 700;
 
     }
   </style>
@@ -625,9 +629,10 @@
                 display: none;
               }
             }
+
             .new {
-                height: 15px;
-              }
+              height: 15px;
+            }
           </style>
           <div class="col-item userlog">
             <a class=" new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
@@ -750,9 +755,6 @@
           <h1 class="section__title title section__title--blue">
             CPA партнерские программы </h1>
           <div class="page__text">
-            <p>Список надежных CPA партнерских программ для арбитража трафика. Выбери свою трастовую партнерку в
-              категориях: CPA-сети, Нутра и товарка, Gambling, Betting, Dating, Smartlink, Crypto, Essay, Finance,
-              Travel, Онлайн-образование</p>
             <p>Кликайте на карточки и читайте обзоры, в них мы разобрали: плюсы и минусы, инструменты, ГЕО, офферы,
               способы вывода денег и другие особенности. Читайте отзывы вебмастеров под обзорами арбитражных партнерок и
               оставляйте свои. Сформируем честный рейтинг вместе!</p>
@@ -761,445 +763,78 @@
           </div>
         </div>
       </div>
+      {% for category in partners %}
       <div class="page__section">
         <div class="container" data-count="10">
           <h2 class="h2 mb-35">
-            CPA Сети </h2>
-          <div class="partners">
-            <div class="partner rec_partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a href="https://pu-partners.com/?utm_source=protraffic&amp;utm_medium=referral&amp;utm_campaign=BettingList"
-                    data-wpel-link="external" target="_blank" rel="nofollow external noopener noreferrer">
-                    <img src="https://protraffic.com/wp-content/uploads/2022/12/pin-up.png"
-                      alt="PinUp-cpa-gamb-bet-1place" />
-                  </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div class="partner__status">
-                    <svg width="290" height="260" viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg">
-                      <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#crown"></use>
-                    </svg>
-                  </div>
-                  <div class="partner__text-content">
-                    <a class="h6 link--default" href data-wpel-link="internal">
-                    </a>
-                    <div class="partner__text">
-                      <p>Один из лидеров betting и iGaming-рынка — PIN-UP Partners. Партнерская программа предлагает
-                        арбитражникам широкий выбор ГЕО, адаптированные платежки и лицензионные продукты с высоким
-                        конвертом. Менеджеры ПП обеспечивают всестороннюю поддержку вебов, а выплаты по CPA, RevShare и
-                        RS+ остаются самыми высокими на рынке, статистика при этом остается абсолютно прозрачной.<span
-                          class="Apple-converted-space"> </span></p>
+            {{ category.category.name }}
+          </h2>
+          {% for partner in category.partners %}
+          <div class="partner">
+            <div class="partner__content">
+              <div class="partner__picture">
+                <a href="{{ partner.website }}" data-wpel-link="internal">
+                  <img src="{{ partner.photo }}" alt="Masons Partners" />
+                </a>
+              </div>
+              <div class="partner__wrapper">
+                <div
+                  class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
+                  <div class="col-item">
+                    <div class="partner__rating">
+                      <div class="icon"></div>
+                      <div class="upper-text is--gray">{{ partner.rating }}</div>
                     </div>
-                    <a class="link--arrow partner__link"
-                      href="https://pu-partners.com/?utm_source=protraffic&amp;utm_medium=referral&amp;utm_campaign=BettingList"
-                      data-wpel-link="external" target="_blank" rel="nofollow external noopener noreferrer">перейти
-                      на сайт
-                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M0 9.61111V12.3889H16.6667L9.02778 20.0278L11 22L22 11L11 0L9.02778 1.97222L16.6667 9.61111H0Z"
-                          fill="#434343"></path>
+                  </div>
+                  <div class="col-item">
+                    <a class="upper-text record is--default" href="https://cutt.ly/Qwg5VsuX" target="_blank"
+                      data-wpel-link="external" rel="nofollow external noopener noreferrer">
+                      <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
+                        </use>
+                      </svg>
+                    </a>
+                  </div>
+                  <div class="col-item">
+                    <a class="upper-text record is--grayLight" href="{{ partner.website }}" data-wpel-link="internal">
+                      <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
+                        </use>
                       </svg>
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/pin-up-partners" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2020/07/4214.png" alt="PIN-UP Partners" />
-                    </a>
+                <div class="partner__text">
+                  <p>{{ partner.descr }}</p>
                 </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">10</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://pulinkme.com/ref?referral=44u5z7ys8v"
-                        target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>PIN-UP Partners</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/pin-up-partners#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>16</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p>Один из лидеров iGaming-рынка — PIN-UP Partners. Партнерская программа предлагает арбитражникам
-                      широкий выбор ГЕО, адаптированные платежки и лицензионные продукты с высоким конвертом. Менеджеры
-                      ПП обеспечивают всестороннюю поддержку вебов, а выплаты по CPA, RevShare и RS+ остаются самыми
-                      высокими на рынке. С PIN-UP Partners работать выгодно — это доказывают сотни положительных
-                      отзывов.</p>
-                    <p>&nbsp;</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/masons-partners" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2023/08/mas-part.png" alt="Masons Partners" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.9</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://cutt.ly/Qwg5VsuX" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>masons.partners</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/masons-partners#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>0</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p>Masons Partners — ПП от арбитражной команды Masons Traffic. Саппорт 24/7, офферы на 20+ ГЕО,
-                      полная инфраструктура для успешных заливов.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/n1-partners" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2023/08/n1partnerslist.png" alt="N1 Partners" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.8</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default"
-                        href="https://n1partnersmedia.com/n1f00cfb99?utm_source=text&amp;utm_medium=review&amp;utm_campaign=protraffic"
-                        target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>n1.partners</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/n1-partners#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>0</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p><span id="docs-internal-guid-19446d2c-7fff-3240-f07f-e339ac40b3b3"><span
-                          style="font-size: 11pt; font-family: Arial, sans-serif; color: #000000; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline; white-space-collapse: preserve;">N1
-                          Partners — партнерская программа брендов N1 Casino, N1, Slot Hunter и Joo Casino. 30+ ГЕО,
-                          CPA  €150+, RevShare up to 45%.</span></span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/4rabet-partner" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2021/08/4rabet.png" alt="4RABET Partner" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.8</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default"
-                        href="https://4rabet.partner.alanbase.com/registration?ref=237028" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>4rabetpartner.com</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/4rabet-partner#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>0</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p><span style="font-weight: 400;">4RABET Partner — прямой рекламодатель букмекерской конторы 4RABET
-                        и одноименного онлайн-казино с выплатами до $100 за лид и 50% по RevShare. Партнерка
-                        специализируется на индийском рынке, предлагает профессиональные инструменты для работы и
-                        глубокую экспертизу по работе с этим ГЕО. </span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/uffiliates" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2023/06/uffi.png" alt="UFFILIATES" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.7</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://uffiliates.me/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>uffiliates.me</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/uffiliates#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>9</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p>UFFILIATES — партнерская сеть, в арсенале которой 300+ офферов на гемблинг, беттинг и финансы.
-                      Здесь одни из самых высоких ставок на ЦУПИСные продукты.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/cryptoboss-partners" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2023/07/photo_2566-07-19-17.48.52.jpeg"
-                      alt="CryptoBoss Partners" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.7</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://cryptobossc.online/d964c42a6"
-                        target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>cryptobosspartners.com</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/cryptoboss-partners#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>0</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p><span style="font-weight: 400;">CryptoBoss Partners — прямой рекламодатель бренда CryptoBoss.
-                        Основное ГЕО продукта — RU. Принимают трафик почти из всех источников.</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/alfaleads" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2020/03/alfaleads_logo_color-02.png"
-                      alt="Alfaleads" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.7</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://alfaleads.net/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span> Alfaleads </span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/alfaleads#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>1</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p><a
-                        href="https://alfaleads.net/?utm_source=media&amp;utm_medium=rating&amp;utm_campaign=protraffic&amp;utm_term=alfaleadsrate"
-                        data-wpel-link="external" target="_blank"
-                        rel="nofollow external noopener noreferrer">Alfaleads</a> — международная партнерская сеть с
-                      экспертизой в iGaming, Sports. С 2016 года Alfaleads задает тренды в affiliate-маркетинге, делится
-                      с партнерами глубокими знаниями продуктов и сорсов, предлагает технологии для улучшения работы и
-                      самые конкурентные ставки на рынке.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="partner">
-              <div class="partner__content">
-                <div class="partner__picture">
-                  <a=" /affiliate_program/1win" data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2020/06/dlya-svetlogo-fona.png"
-                      alt="1win Partners" />
-                    </a>
-                </div>
-                <div class="partner__wrapper">
-                  <div
-                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
-                    <div class="col-item">
-                      <div class="partner__rating">
-                        <div class="icon"></div>
-                        <div class="upper-text is--gray">9.6</div>
-                      </div>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--default" href="https://1w.run/contacts?promocode=nufo#register"
-                        target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
-                          </use>
-                        </svg>
-                        <span>1win</span>
-                      </a>
-                    </div>
-                    <div class="col-item">
-                      <a class="upper-text record is--grayLight"="/affiliate_program/1win#comments"
-                        data-wpel-link="internal">
-                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
-                          </use>
-                        </svg>
-                        <span>48</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="partner__text">
-                    <p>1win Partners &#8212; прямой рекламодатель лидера iGaming-индустрии 1win. Выгодная монетизация
-                      трафика, индивидуальные условия.</p>
-                  </div>
-                </div>
+                <a class="link--arrow partner__link" href="{{ partner.website }}" target="_blank"
+                  data-wpel-link="external" rel="nofollow external noopener noreferrer">
+                  {% if partner.ifwebsite %}
+                    перейти на сайт
+                  {% else %}
+                    посмотреть обзор
+                  {% endif %}
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M0 9.61111V12.3889H16.6667L9.02778 20.0278L11 22L22 11L11 0L9.02778 1.97222L16.6667 9.61111H0Z"
+                      fill="#434343"></path>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="pagination">
-          <a class="page-numbers" href="/affiliate_cat/betting-partnerki/page/next" data-wpel-link="internal"><<<</a>
-              <a class="page-numbers" href="/affiliate_cat/betting-partnerki/page/previous"
-                data-wpel-link="internal">>>></a>
-        </div>
+        {% endfor %}
       </div>
-
+      <div class="d-flex justify-content-center">
+        <a href="/partner_cat/?cat={{ category.category.id }}" class="btn btn--theme-default" data-wpel-link="internal">
+          {{ category.category.perevod }}
+        </a>
+      </div>
+      </div>
+      {% endfor %}
       <div class="section--theme-dark py-5 mt-5">
         <div class="container">
           <div class="row justify-content-center">
@@ -1580,14 +1215,14 @@
           <div class="d-flex justify-content-between align-items-xs-center align-items-start">
             <div class="col-item">
               <a href data-wpel-link="internal"><span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
-                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
-            </span>
-            <span class="d-lg-none mr-1 d-block">
+                  <span class="text-logo">RUARB</span>
+                  <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
+                </span>
+                <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
-                data-dark-src="https://i.imgur.com/6PxidVv.png" />
-            </span></a>
+                  <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
+                    data-dark-src="https://i.imgur.com/6PxidVv.png" />
+                </span></a>
 
             </div>
             <div class="d-lg-none d-block">
@@ -1630,8 +1265,8 @@
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
                 href="/" data-wpel-link="internal">Главная</a></li>
             <li id="menu-item-16821"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-                href="articles" data-wpel-link="internal">Статьи</a></li>
+              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="articles"
+                data-wpel-link="internal">Статьи</a></li>
             <li id="menu-item-16824"
               class="menu-item menu-item-type-post_type_archive menu-item-o- current-menu-item menu-item-16824">
               <a href="affiliatep" aria-current="page" data-wpel-link="internal">Партнерки</a>
@@ -2041,8 +1676,8 @@
     </div>
     <div class="menu-bar__content">
       <ul class="list--unstyled menu-bar__menu">
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
-            href="/" data-wpel-link="internal">Главная</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a href="/"
+            data-wpel-link="internal">Главная</a></li>
         <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="articles.html"
             data-wpel-link="internal">Статьи</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-o- current-menu-item menu-item-16824">
@@ -2050,8 +1685,8 @@
         </li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
             href="services" data-wpel-link="internal">Сервисы</a></li>
-        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-            href="affiliatec" data-wpel-link="internal">Кейсы по арбитражу</a></li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a href="affiliatec"
+            data-wpel-link="internal">Кейсы по арбитражу</a></li>
 
       </ul>
       </ul>
