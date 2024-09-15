@@ -16,7 +16,7 @@ urlpatterns = [
     #path('article1', TemplateView.as_view(template_name='article_details.html')),
     path('services', views.services, name='services'),
     path('partners', views.partners, name='partners'),
-    path('services/', views.services_add, name='services_add'),
+    path('article_add/', views.article_add, name='services_add'),
     path('register', views.register, name="register"),
     path('login', views.loginu, name='login'),
     path('logout', views.logout, name='logout'),
@@ -30,6 +30,7 @@ urlpatterns = [
     path('partner_cat/', views.partner_cat, name='partner_cat'),
     path('obzor/<int:obzor_id>/', views.obzor_detail, name='obzor_detail'),
     path('obzorp/<int:obzor_id>/', views.obzorp_detail, name='obzorp_detail'),
+    path('keysi', views.afcases, name='keysi')
 ]
 
 if settings.DEBUG:

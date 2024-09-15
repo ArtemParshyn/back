@@ -67,6 +67,8 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextUploadingField()  # Поле CKEditor
     published_date = models.DateTimeField(auto_now_add=True)
+    is_case = models.BooleanField(default=False, blank=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     def __str__(self):
         return self.title
