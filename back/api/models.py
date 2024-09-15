@@ -71,7 +71,7 @@ class Article(models.Model):
     author = models.ForeignKey(ApiUser, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=False)
     is_case = models.BooleanField(default=False, blank=True)
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, default=1, blank=True)
 
     def __str__(self):
         return self.title

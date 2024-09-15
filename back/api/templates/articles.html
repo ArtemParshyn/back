@@ -872,80 +872,86 @@
 
         <div class="row gutter-y-30">
           {% if articles %}
-              <!-- Цикл по статьям -->
-              {% for article in articles %}
-                  <div class="col-xl-3 col-md-4 col-sm-6">
-                      <div class="post">
-                          <div class="post__top">
-                              <div class="post__cat">
-                                        <a class="cat" href="#" data-wpel-link="internal">
-                                        {{ article.published_date|date:"d E y" }} </a>
-                                        </div>
-                              <a class="post__thumb" href="{% url 'article_detail' article.id %}">
-                                  <img src="{{ article.image.url }}" alt="{{ article.title }}">
-                              </a>
-                          </div>
-                          <div class="post__content d-flex flex-column justify-content-between">
-                                {% if article.author.photo %}
-                              <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
-                                    <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}" class="author-avatar"></span>
-                              </a>
-                                {% else %}
+          <!-- Цикл по статьям -->
+          {% for article in articles %}
+          <div class="col-xl-3 col-md-4 col-sm-6">
+            <div class="post">
+              <div class="post__top">
+                <div class="post__cat">
+                  <a class="cat" href="#" data-wpel-link="internal">
+                    {{ article.published_date|date:"d E y" }} </a>
+                </div>
+                <a class="post__thumb" href="{% url 'article_detail' article.id %}">
+                  <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                </a>
+              </div>
+              <div class="post__content d-flex flex-column justify-content-between">
+                {% if article.author.photo %}
+                <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                  <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}"
+                      class="author-avatar"></span>
+                </a>
+                {% else %}
 
-                                    <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
-                                        <span><img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="ProTraffic" title="ProTraffic"></span>
-                                        </a>
-                              {% endif %}
+                <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                  <span><img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="ProTraffic"
+                      title="ProTraffic"></span>
+                </a>
+                {% endif %}
 
 
-                              <div class="col-item">
-                                  <a class="post__title title" href="{% url 'article_detail' article.id %}">
-                                      {{ article.title }}
-                                  </a>
-                              </div>
-                              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                                    <div class="col-item post_raiting upper-text record is--green">
-                                    <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
-                                    <span class="ml-1"> 19</span>
-                                    </div>
-                                    <div class="post__author-name">
-                                    <a class="upper-text link--gray" href="https://protraffic.com/author/sasha" data-wpel-link="internal">
-                                    {{ article.author.username }} </a>
-                                    </div>
-                                    </div>
-
-                              <style>
-                                  .post__author {
-    width: 53px;
-    height: 53px;
-    border: 3px solid #fff;
-    position: absolute;
-    top: -40px;
-    box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
-    background: #fff;
-    border-radius: 50%;
-    right: 20px;
-    display: block;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-                              </style>
-                          </div>
-                      </div>
+                <div class="col-item">
+                  <a class="post__title title" href="{% url 'article_detail' article.id %}">
+                    {{ article.title }}
+                  </a>
+                </div>
+                <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                  <div class="col-item post_raiting upper-text record is--green">
+                    <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                    <span class="ml-1"> 19</span>
                   </div>
-              {% endfor %}
+                  <div class="post__author-name">
+                    <a class="upper-text link--gray" href="https://protraffic.com/author/sasha"
+                      data-wpel-link="internal">
+                      {{ article.author.username }} </a>
+                  </div>
+                </div>
+
+                <style>
+                  .post__author {
+                    width: 53px;
+                    height: 53px;
+                    border: 3px solid #fff;
+                    position: absolute;
+                    top: -40px;
+                    box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
+                    background: #fff;
+                    border-radius: 50%;
+                    right: 20px;
+                    display: block;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
           {% else %}
-            <p>Пока нет статей.</p>
+          <div style="padding-left: 15px;" class="page__text">
+            <p>Тут пока что пусто.</p>
+          </div>
           {% endif %}
         </div>
 
-
+        {% if articles %}
         <div class="pagination">
-          <a class="page-numbers" href="articles/page/next" data-wpel-link="internal">
+          <a class="page-numbers" data-wpel-link="internal">
             <<<</a>
-              <a class="page-numbers" href="articles/page/previous" data-wpel-link="internal">>>></a>
+              <a class="page-numbers" data-wpel-link="internal">>>></a>
         </div>
+        {% endif %}
         <!-- Проверка, есть ли статьи -->
 
         <script>
@@ -955,7 +961,7 @@
             const prevPageBtn = document.querySelector('.pagination a:first-child');
             const nextPageBtn = document.querySelector('.pagination a:last-child');
             let currentPage = 1;
-            let articlesPerPage = 2;
+            let articlesPerPage = 8;
 
             function loadArticles(page) {
               fetch(`/article_add?page=${page}&category=${category}`)
@@ -970,7 +976,65 @@
                   articlesContainer.innerHTML = '';
 
 
-  </div>
+
+                  data.forEach(article => {
+                    const articleHTML = `
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="post">
+                            <div class="post__top">
+                                <div class="post__cat">
+                                    <a class="cat" href="./articles" data-wpel-link="internal">
+                                        ${new Date(article.published_date).toLocaleDateString()} </a>
+                                </div>
+                                <a class="post__thumb" href="/articles/${article.id}" data-wpel-link="internal">
+                                    <img src="${article.image}">
+                                </a>
+                            </div>
+                            <div class="post__content d-flex flex-column justify-content-between">
+                                <a class="post__author" href="./author/fbkilla" data-wpel-link="internal">
+                                    <span><img src="https://protraffic.com/wp-content/uploads/2023/08/1691054529.jpeg" alt="FB-killa.pro"
+                                        title="FB-killa.pro" /></span>
+                                </a>
+                                <div class="col-item">
+                                    <a class="post__title title" href="/articles/${article.id}" data-wpel-link="internal">
+                                        Кейс: ${article.title} </a>
+                                </div>
+                                <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                                    <div class="col-item post_raiting upper-text record is--green">
+                                        <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
+                                        <span class="ml-1">${article.rating}</span>
+                                    </div>
+                                    <div class="post__author-name">
+                                        <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
+                                            FB-killa.pro </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                    articlesContainer.insertAdjacentHTML('beforeend', articleHTML);
+                  });
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            prevPageBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              if (currentPage > 1) {
+                currentPage--;
+                loadArticles(currentPage);
+              }
+            });
+
+            nextPageBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              if (loadArticles(currentPage + 1) != 1) {
+                currentPage++;
+              }
+            });
+          });
+        </script>
+      </div>
   </main>
   <footer class="site-footer">
     <div class="container">
@@ -1329,7 +1393,6 @@
 
     .site-header__user-icon {
       fill: #3663e0;
-    }
     }
   </style>
   <div class="menu-bar js-menu-bar">

@@ -9,7 +9,7 @@ from back import settings
 from .forms import UserLoginForm, UserProfileForm
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
-from .models import Reklama, Service, Category, Obzor, Category_partner, Partner, Obzor_partner
+from .models import Reklama, Service, Category, Obzor, Category_partner, Partner, Obzor_partner, ApiUser
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
@@ -18,8 +18,6 @@ from .models import Article
 from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
-
 
 
 class ProfileView(View):
@@ -307,6 +305,7 @@ def create_article(request):
 
     return render(request, 'create_article.html', {'form': form})
 
+
 def enable_article_creation(request):
     user = request.user
     user.can_create_articles = True
@@ -325,12 +324,14 @@ def article_list(request):
     articles = Article.objects.filter(is_published=True)[0:8]  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
 
+
 def user_article_list(request):
     # Получаем текущего пользователя
     user = request.user
     # Фильтруем статьи по автору
     articles = Article.objects.all()
     return render(request, 'user_articles.html', {'articles': articles})
+
 
 class UserArticleListView(ListView):
     model = Article
@@ -345,6 +346,7 @@ class UserArticleListView(ListView):
             return Article.objects.filter(author=user)
         else:
             return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
+
 
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)

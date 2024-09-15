@@ -1,9 +1,11 @@
+import math
+
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
 
 from api import views
-from api.views import index, ProfileView
+from api.views import index, ProfileView, UserArticleListView, enable_article_creation
 from back import settings
 
 from .views import ArticleCreateView
@@ -30,7 +32,8 @@ urlpatterns = [
     path('partner_cat/', views.partner_cat, name='partner_cat'),
     path('obzor/<int:obzor_id>/', views.obzor_detail, name='obzor_detail'),
     path('obzorp/<int:obzor_id>/', views.obzorp_detail, name='obzorp_detail'),
-    path('enable-article-creation/', enable_article_creation, name='enable_article_creation')
+    path('enable-article-creation/', enable_article_creation, name='enable_article_creation'),
+    path('keysi', views.afcases, name='cases'),
 ]
 
 if settings.DEBUG:
