@@ -283,13 +283,12 @@ def service_cat(request):
 
 
 def create_article(request):
-    print(1121)
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
-        print(111)
         if form.is_valid():
-            print(1)
-            form.save()
+            article = form.save(commit=False)  # Не сохраняем сразу
+            article.author = request.user  # Устанавливаем текущего пользователя как автора
+            article.save()  # Теперь сохраняем
             return redirect('/articles')  # Перенаправляем пользователя после создания статьи
     else:
         form = ArticleForm()

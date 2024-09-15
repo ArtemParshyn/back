@@ -893,6 +893,7 @@
                               <div class="col-item">
                                   <p></p> 
                                   <a href="{% url 'article_detail' article.id %}">Читать далее</a><!-- Обрезаем текст до 30 слов -->
+                                  <p>Автор: {{ article.author.username }}</p>
                               </div>
                           </div>
                       </div>
