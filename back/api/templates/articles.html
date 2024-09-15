@@ -880,21 +880,60 @@
                   <div class="col-xl-3 col-md-4 col-sm-6">
                       <div class="post">
                           <div class="post__top">
-                              <a class="post__thumb" href="#">
+                              <div class="post__cat">
+                                        <a class="cat" href="#" data-wpel-link="internal">
+                                        {{ article.published_date|date:"d E y" }} </a>
+                                        </div>
+                              <a class="post__thumb" href="{% url 'article_detail' article.id %}">
                                   <img src="{{ article.image.url }}" alt="{{ article.title }}">
                               </a>
                           </div>
                           <div class="post__content d-flex flex-column justify-content-between">
+                                {% if article.author.photo %}
+                              <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                                    <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}" class="author-avatar"></span>
+                              </a>
+                                {% else %}
+
+                                    <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                                        <span><img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="ProTraffic" title="ProTraffic"></span>
+                                        </a>
+                              {% endif %}
+
+
                               <div class="col-item">
-                                  <a class="post__title title" href="#">
+                                  <a class="post__title title" href="{% url 'article_detail' article.id %}">
                                       {{ article.title }}
                                   </a>
                               </div>
-                              <div class="col-item">
-                                  <p></p> 
-                                  <a href="{% url 'article_detail' article.id %}">Читать далее</a><!-- Обрезаем текст до 30 слов -->
-                                  <p>Автор: {{ article.author.username }}</p>
-                              </div>
+                              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                                    <div class="col-item post_raiting upper-text record is--green">
+                                    <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                                    <span class="ml-1"> 19</span>
+                                    </div>
+                                    <div class="post__author-name">
+                                    <a class="upper-text link--gray" href="https://protraffic.com/author/sasha" data-wpel-link="internal">
+                                    {{ article.author.username }} </a>
+                                    </div>
+                                    </div>
+
+                              <style>
+                                  .post__author {
+    width: 53px;
+    height: 53px;
+    border: 3px solid #fff;
+    position: absolute;
+    top: -40px;
+    box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
+    background: #fff;
+    border-radius: 50%;
+    right: 20px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+                              </style>
                           </div>
                       </div>
                   </div>
