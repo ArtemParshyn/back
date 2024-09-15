@@ -6,7 +6,7 @@ from api import views
 from api.views import index, ProfileView
 from back import settings
 
-from .views import ArticleCreateView
+from .views import ArticleCreateView, UserArticleListView
 
 urlpatterns = [
     path('', index),
@@ -22,7 +22,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('createblog', views.createblog, name='createblog'),
-    path('user_articles', TemplateView.as_view(template_name='user_articles.html')),
+    path('user_articles/', UserArticleListView.as_view(), name='user_articles'),
     path('create_blog', TemplateView.as_view(template_name='create_blog.html')),
     path('create/', views.create_article, name='create_article'),
     path('articles/<int:article_id>/', views.article_detail, name='article_detail'),

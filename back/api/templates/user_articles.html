@@ -451,7 +451,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 </div>
 <ul class="list--unstyled breadcrumb">
 </ul>
-<h1 class="section__title title section__title--blue">Личный кабинет пользователя - trafficgeniy</h1>
+<h1 class="section__title title section__title--blue">Личный кабинет пользователя - {{ user }}</h1>
 <div class="mb-4">
 <h2 class="fs--36 m-0 title_lk"></h2>
 <div id="inform_mess"></div>
@@ -475,37 +475,60 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 </div>
 
 <div class="row gutter-y-30">
-<div class="col-lg-3 col-md-4 col-sm-6">
+
+     <style>
+                                  .post__author {
+    width: 53px;
+    height: 53px;
+    border: 3px solid #fff;
+    position: absolute;
+    top: -40px;
+    box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
+    background: #fff;
+    border-radius: 50%;
+    right: 20px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+                              </style>
+
+
+    {% if articles %}
+
+            {% for article in articles %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
 <div class="post">
 <div class="post__top">
 <div class="post__cat">
 <div class="badge badge--gray">Черновик</div> </div>
-<a class="post__thumb" href="https://protraffic.com/?p=115924" data-wpel-link="internal">
-<img width="540" height="623" src="./user_articles_files/1725603580.jpeg" class="attachment-articles size-articles wp-post-image" alt="images" loading="lazy" srcset="https://protraffic.com/wp-content/uploads/2024/09/1725603580.jpeg 540w, https://protraffic.com/wp-content/uploads/2024/09/1725603580-260x300.jpeg 260w" sizes="(max-width: 540px) 100vw, 540px" title="1725603580"> </a>
+<a class="post__thumb" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+<img width="564" height="371" src="{{ article.image.url }}" class="attachment-articles size-articles wp-post-image" alt="images" loading="lazy" srcset="{{ article.image.url }} 564w, {{ article.image.url }} 300w" sizes="(max-width: 564px) 100vw, 564px" title="1726376153"> </a>
 </div>
 <div class="post__content d-flex flex-column justify-content-between">
-<a href="https://protraffic.com/author/trafficgeniy" class="post__author" data-wpel-link="internal">
-<span><img src="./user_articles_files/user.svg" alt="trafficgeniy" title="trafficgeniy"></span>
+<a href="{% url 'article_detail' article.id %}" class="post__author" data-wpel-link="internal">
+<span><img src="{{ article.author.photo.url }}" alt="testuser" title="testuser"></span>
 </a>
 <div class="col-item">
-<a class="post__title title" href="https://protraffic.com/?p=115924" data-wpel-link="internal">
-п </a>
+<a class="post__title title" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+{{ article.title }} </a>
 </div>
 <div class="post__bottom">
 <div class="mb-3">
 <div class="row gutter-x-5 gutter-y-10 justify-content-center">
 <div class="col-12">
-<a href="https://protraffic.com/personal-account?function=post_edit&amp;post_id=115924" class="btn btn--size-lg btn--theme-border btn--block" data-wpel-link="internal">
+<a href="personal-account?function=post_edit&amp;post_id=116633" class="btn btn--size-lg btn--theme-border btn--block" data-wpel-link="internal">
 Редактировать
 </a>
 </div>
 <div class="col-12">
-<a href="https://protraffic.com/personal-account?function=blog" class="btn btn--theme-border btn--size-lg btn--block user_post__action" data-action="pending" data-post_id="115924" data-wpel-link="internal">
+<a href="" class="btn btn--theme-border btn--size-lg btn--block user_post__action" data-action="pending" data-post_id="116633" data-wpel-link="internal">
 Опубликовать
 </a>
 </div>
 <div class="col-12">
-<a href="https://protraffic.com/personal-account?function=blog" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="115924" data-wpel-link="internal">
+<a href="" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
 <span class="mr-1">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="is--red" viewBox="0 0 16 16">
 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
@@ -518,19 +541,22 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 </div>
 <div class="d-flex justify-content-between align-items-center">
 <div class="col-item">
-<a class="upper-text record is--grayLight" href="https://protraffic.com/?p=115924#comments" data-wpel-link="internal">
-<svg class="is--grayLight" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer"></use>
-</svg>
-<span>0</span>
-</a>
+
 </div>
 <div class="upper-text">
-06.09.2024 </div>
+{{ article.published_date|date:"d E y" }} </div>
 </div>
 </div>
 </div>
 </div>
+</div>
+            {% endfor %}
+
+    {% else %}
+        <p>У вас пока нет статей.</p>
+    {% endif %}
+
+
 </div>
 </div>
 </div>

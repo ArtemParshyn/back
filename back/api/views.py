@@ -14,6 +14,7 @@ from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
 from .models import Article
+from django.views.generic import ListView
 
 
 class ProfileView(View):
@@ -307,6 +308,26 @@ def article_list(request):
     articles = Article.objects.all()  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
 
+def user_article_list(request):
+    # Получаем текущего пользователя
+    user = request.user
+    # Фильтруем статьи по автору
+    articles = Article.objects.all()
+    return render(request, 'user_articles.html', {'articles': articles})
+
+class UserArticleListView(ListView):
+    model = Article
+    template_name = 'user_articles.html'
+    context_object_name = 'articles'
+
+    def get_queryset(self):
+        # Получаем текущего пользователя
+        user = self.request.user
+        if user.is_authenticated:
+            # Фильтруем статьи по идентификатору автора
+            return Article.objects.filter(author=user)
+        else:
+            return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
 
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
