@@ -502,13 +502,26 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 <div class="post">
 <div class="post__top">
 <div class="post__cat">
-<div class="badge badge--gray">Черновик</div> </div>
+    {% if article.is_published %}
+<div class="badge badge--green">
+        Опубликовано
+    {% else %}
+    <div class="badge badge--orange">
+        На модерации
+    {% endif %}
+</div> </div>
 <a class="post__thumb" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
 <img width="564" height="371" src="{{ article.image.url }}" class="attachment-articles size-articles wp-post-image" alt="images" loading="lazy" srcset="{{ article.image.url }} 564w, {{ article.image.url }} 300w" sizes="(max-width: 564px) 100vw, 564px" title="1726376153"> </a>
 </div>
 <div class="post__content d-flex flex-column justify-content-between">
 <a href="{% url 'article_detail' article.id %}" class="post__author" data-wpel-link="internal">
-<span><img src="{{ article.author.photo.url }}" alt="testuser" title="testuser"></span>
+<span>
+    {% if article.author.photo %}
+    <img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}" title="{{ article.author.username }}">
+{% else %}
+    <img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="{{ article.author.username }}" title="{{ article.author.username }}">
+{% endif %}
+</span>
 </a>
 <div class="col-item">
 <a class="post__title title" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
@@ -522,11 +535,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 Редактировать
 </a>
 </div>
-<div class="col-12">
-<a href="" class="btn btn--theme-border btn--size-lg btn--block user_post__action" data-action="pending" data-post_id="116633" data-wpel-link="internal">
-Опубликовать
-</a>
-</div>
+
 <div class="col-12">
 <a href="" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
 <span class="mr-1">
@@ -553,7 +562,14 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
             {% endfor %}
 
     {% else %}
-        <p>У вас пока нет статей.</p>
+        <div class="alert alert--warning d-flex align-items-center">
+<div class="mr-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-plus-fill" viewBox="0 0 16 16">
+<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"></path>
+</svg>
+</div>
+Вы не добавили еще ни одной статьи. Не стесняйтесь, нажмите на кнопку <a href="../create" class="ml-1" data-wpel-link="internal">добавить статью</a>
+</div>
     {% endif %}
 
 

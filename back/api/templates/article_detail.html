@@ -4424,10 +4424,23 @@
                                     <div class="col-lg-4 col-sm-5">
                                         <div class="d-flex">
                                             <div class="col-item">
-                                                <a class="thumb-author" href="https://protraffic.com/author/sasha"
+                                                <a class="thumb-author" href="#"
                                                     data-wpel-link="internal">
-                                                    <span><img src="{{ article.author.photo.url }}"
-                                                            alt="ruarb" title="ruarb"></span>
+                                                    <span>
+                                                        {% if article.author.photo %}
+
+                                                        <img src="{{ article.author.photo.url }}"
+                                                            alt="ruarb" title="ruarb">
+
+                                                        {% else %}
+
+                                                        <img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg"
+                                                            alt="ruarb" title="ruarb">
+
+                                                        {% endif %}
+
+
+                                                    </span>
                                                 </a>
                                             </div>
 

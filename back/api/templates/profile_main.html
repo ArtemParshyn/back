@@ -1452,8 +1452,15 @@
                                 <div class="user-dropdown__center">
                                     <a href="../profile" data-view="login"
                                         data-wpel-link="internal">Профиль</a>
+                                    {% if not user.can_create_articles %}
+                                    <a href="../create_blog"
+                                        data-wpel-link="internal">Создать блог</a>
+                                    {% endif %}
+
+                                    {% if user.can_create_articles %}
                                     <a href="../user_articles"
                                         data-wpel-link="internal">Статьи</a>
+                                    {% endif %}
                                     <a href="../logout"
                                         data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
                                 </div>

@@ -4362,9 +4362,29 @@
                                 <div class="single-page__scroll js-post-load"
                                     style="height: 733px; position: sticky; top: 70px;">
                                 </div>
+
+                                <style>
+                                    .wp-block-image {
+    max-width: 500px; /* Устанавливаем максимальную ширину контейнера для ПК */
+     /* Центрируем контейнер (опционально) */
+}
+
+.wp-block-image img {
+    width: 100%; /* Устанавливаем ширину изображения в 100% от контейнера */
+    height: auto; /* Высота автоматически подстраивается под ширину, сохраняя пропорции */
+    object-fit: cover; /* Обрезает изображение, чтобы оно заполнило контейнер без искажения */
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+    .wp-block-image {
+        max-width: 200px; /* Устанавливаем максимальную ширину контейнера для мобильных устройств */
+    }
+}
+                                </style>
                                 <div class="js-post-load__container single-page__text-content">
                                     <figure class="wp-block-image size-full"><a href="{{ obzor.photo }}"
-                                            data-wpel-link="internal"><img width="800" height="450"
+                                            data-wpel-link="internal"><img width="200" height="200"
                                                 src="{{ obzor.photo }}"
                                                 alt="Заливаем трафик на киберспорт: The International Dota 2 в Copenhagen"
                                                 class="wp-image-115911"

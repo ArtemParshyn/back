@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class ApiUser(AbstractUser):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/avatar', default=None, blank=True)
     descr = models.CharField(max_length=128, default="Description", blank=True)
+    can_create_articles = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
@@ -68,6 +69,7 @@ class Article(models.Model):
     content = RichTextUploadingField()  # Поле CKEditor
     published_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(ApiUser, on_delete=models.CASCADE)
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

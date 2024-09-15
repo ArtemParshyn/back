@@ -6,7 +6,7 @@ from api import views
 from api.views import index, ProfileView
 from back import settings
 
-from .views import ArticleCreateView, UserArticleListView
+from .views import ArticleCreateView, UserArticleListView, enable_article_creation
 
 urlpatterns = [
     path('', index),
@@ -30,6 +30,7 @@ urlpatterns = [
     path('partner_cat/', views.partner_cat, name='partner_cat'),
     path('obzor/<int:obzor_id>/', views.obzor_detail, name='obzor_detail'),
     path('obzorp/<int:obzor_id>/', views.obzorp_detail, name='obzorp_detail'),
+    path('enable-article-creation/', enable_article_creation, name='enable_article_creation')
 ]
 
 if settings.DEBUG:

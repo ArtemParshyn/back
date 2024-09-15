@@ -13,8 +13,13 @@ from .models import Reklama, Service, Category, Obzor, Category_partner, Partner
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
+from django.views.generic import DeleteView
 from .models import Article
 from django.views.generic import ListView
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
+
 
 
 class ProfileView(View):
@@ -284,17 +289,29 @@ def service_cat(request):
 
 
 def create_article(request):
+    if not request.user.can_create_articles:
+        messages.error(request, 'У вас нет прав для создания статей.')
+        return redirect('profile')
+
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save(commit=False)  # Не сохраняем сразу
-            article.author = request.user  # Устанавливаем текущего пользователя как автора
-            article.save()  # Теперь сохраняем
-            return redirect('/articles')  # Перенаправляем пользователя после создания статьи
+            article = form.save(commit=False)
+            article.author = request.user
+            article.is_published = False  # Устанавливаем статус как "не опубликовано"
+            article.save()
+            messages.success(request, 'Ваша статья отправлена на модерацию.')
+            return redirect('article_list')
     else:
         form = ArticleForm()
 
     return render(request, 'create_article.html', {'form': form})
+
+def enable_article_creation(request):
+    user = request.user
+    user.can_create_articles = True
+    user.save()
+    return redirect('user_articles')  # Перенаправление на профиль пользователя или другую страницу
 
 
 class ArticleCreateView(CreateView):
@@ -305,7 +322,7 @@ class ArticleCreateView(CreateView):
 
 
 def article_list(request):
-    articles = Article.objects.all()  # Извлекаем все статьи
+    articles = Article.objects.filter(is_published=True)  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
 
 def user_article_list(request):
