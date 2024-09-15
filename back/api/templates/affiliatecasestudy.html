@@ -2,6 +2,7 @@
 <html lang="ru-RU" class="html">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -406,34 +407,38 @@
       box-shadow: 0 0 0 2px #3663e0;
       border-color: transparent;
     }
+
     @media (min-width: 991px) {
-    .d-lg-block {
+      .d-lg-block {
         height: 45px;
         display: block !important;
+      }
     }
-}
 
     .d-lg-block mr-2 d-none {
-        height: 30px;
+      height: 30px;
     }
 
     .logo2 {
-        width: 35px;
-        padding-bottom: 0px;
+      width: 35px;
+      padding-bottom: 0px;
     }
-    .logo {
-        width: 35px;
-        padding-bottom: 15px;
-    }
-    .logo-wrapper{
-        padding-left: 50px;
-    }
-    .text-logo{
 
-        bottom: 0px;
-        font-size: 35px;
-        font-family: Sans-serif;
-        font-weight: 700;
+    .logo {
+      width: 35px;
+      padding-bottom: 15px;
+    }
+
+    .logo-wrapper {
+      padding-left: 50px;
+    }
+
+    .text-logo {
+
+      bottom: 0px;
+      font-size: 35px;
+      font-family: Sans-serif;
+      font-weight: 700;
 
     }
   </style>
@@ -470,14 +475,14 @@
     <div class="container">
       <div class="d-flex align-items-stretch justify-content-between">
         <div class="col-item site-header__logo d-flex js-header__logo align-items-center mr-3">
-          <a href="/" data-wpel-link="internal"class="logo-wrapper">
+          <a href="/" data-wpel-link="internal" class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
-                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
+              <span class="text-logo">RUARB</span>
+              <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
             </span>
             <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
+              <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
                 data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
@@ -628,9 +633,10 @@
                 display: none;
               }
             }
+
             .new {
-                height: 15px;
-              }
+              height: 15px;
+            }
           </style>
           <div class="col-item userlog">
             <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
@@ -760,18 +766,18 @@
               тизерных сетей, Google Ads и других источников трафика.</p>
           </div>
         </div>
+        {% if articles %}
         <div class="row gutter-y-30">
+          {% for article in articles %}
           <div class="col-xl-3 col-md-4 col-sm-6">
             <div class="post">
               <div class="post__top">
                 <div class="post__cat">
                   <a class="cat" href="./articles" data-wpel-link="internal">
-                    25 Июн 24 </a>
+                    {{article.published_date.date}} </a>
                 </div>
-                <a class="post__thumb" href="./articles/keys-pohudalka-na_ispaniyu-114030.html"
-                  data-wpel-link="internal">
-                  <img src="https://protraffic.com/wp-content/uploads/2024/06/1719316470.jpeg"
-                    alt="Кейс: льем похудалку c Facebook на Испанию с профитом $725">
+                <a class="post__thumb" href="/articles/{{article.id}}" data-wpel-link="internal">
+                  <img src="{{article.image.url}}">
                 </a>
               </div>
               <div class="post__content d-flex flex-column justify-content-between">
@@ -780,99 +786,117 @@
                       title="FB-killa.pro" /></span>
                 </a>
                 <div class="col-item">
-                  <div class="tags">
-                    <div class="d-flex gutter-x-3 gutter-y-7">
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/facebook"
-                          data-wpel-link="internal">#Facebook</a>
-                      </div>
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/nutra-2"
-                          data-wpel-link="internal">#нутра</a>
-                      </div>
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/kejs-2" data-wpel-link="internal">#Кейс</a>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="post__title title"
-                    href="./articles/keys-pohudalka-na_ispaniyu-114030.html"
-                    data-wpel-link="internal">
-                    Кейс: льем похудалку c Facebook на Испанию с профитом $725 </a>
+                  <a class="post__title title" href="/articles/{{article.id}}" data-wpel-link="internal">
+                    Кейс: {{article.title}} </a>
                 </div>
                 <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                   <div class="col-item post_raiting upper-text record is--green">
                     <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                    <span class="ml-1"> 20</span>
+                    <span class="ml-1">{{article.rating}}</span>
                   </div>
                   <div class="post__author-name">
-                    <a class="upper-text link--gray" href="./author/fbkilla"
-                      data-wpel-link="internal">
+                    <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
                       FB-killa.pro </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-4 col-sm-6">
-            <div class="post">
-              <div class="post__top">
-                <div class="post__cat">
-                  <a class="cat" href="./affiliatecasestudy" data-wpel-link="internal">
-                    27 Ноя 23 </a>
-                </div>
-                <a class="post__thumb" href="./affiliatecasestudy/keis-gambling-fr-82733.html"
-                  data-wpel-link="internal">
-                  <img src="https://protraffic.com/wp-content/uploads/2023/11/1390x780-kj.png"
-                    alt="360% ROI на оффере Play Regal в ГЕО Франция">
-                </a>
-              </div>
-              <div class="post__content d-flex flex-column justify-content-between">
-                <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                  <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
-                      alt="ProTraffic" title="ProTraffic" /></span>
-                </a>
-                <div class="col-item">
-                  <div class="tags">
-                    <div class="d-flex gutter-x-3 gutter-y-7">
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/igaming"
-                          data-wpel-link="internal">#IGaming</a>
-                      </div>
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/kejs-2" data-wpel-link="internal">#Кейс</a>
-                      </div>
-                      <div class="col-item">
-                        <a class="ptf-tag" href="./tag/francziya"
-                          data-wpel-link="internal">#Франция</a>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="post__title title"
-                    href="./affiliatecasestudy/keis-gambling-fr-82733.html"
-                    data-wpel-link="internal">
-                    360% ROI на оффере Play Regal в ГЕО Франция </a>
-                </div>
-                <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                  <div class="col-item post_raiting upper-text record is--green">
-                    <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                    <span class="ml-1"> 19</span>
-                  </div>
-                  <div class="post__author-name">
-                    <a class="upper-text link--gray" href="./author/sasha"
-                      data-wpel-link="internal">
-                      ProTraffic </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="wp-pagenavi pagination">
-            <a href="./affiliatecasestudy/page/prev" data-wpel-link="internal"><<<</a> <a
-            href="./affiliatecasestudy/page/next" data-wpel-link="internal">>>></a> 
+          <a data-wpel-link="internal">
+            <<<</a>
+              <a data-wpel-link="internal">>>></a>
         </div>
+        {% else %}
+        <h1 class="page__text">Пока что здесь пусто</h1>
+        {% endif %}
+
       </div>
+
+      <script>
+        let category = "c"
+        document.addEventListener('DOMContentLoaded', function () {
+          const articlesContainer = document.querySelector('.row.gutter-y-30');
+          const prevPageBtn = document.querySelector('.pagination a:first-child');
+          const nextPageBtn = document.querySelector('.pagination a:last-child');
+          let currentPage = 1;
+          let articlesPerPage = 8;
+
+          function loadArticles(page) {
+            fetch(`/article_add?page=${page}&category=${category}`)
+              .then(response => response.json())
+              .then(data => {
+
+                if (data.length === 0 && page > 1) {
+                  currentPage--;
+
+                  return ;
+                }
+                articlesContainer.innerHTML = '';
+
+
+
+                data.forEach(article => {
+                  const articleHTML = `
+                    <div class="col-xl-3 col-md-4 col-sm-6">
+                        <div class="post">
+                            <div class="post__top">
+                                <div class="post__cat">
+                                    <a class="cat" href="./articles" data-wpel-link="internal">
+                                        ${new Date(article.published_date).toLocaleDateString()} </a>
+                                </div>
+                                <a class="post__thumb" href="/articles/${article.id}" data-wpel-link="internal">
+                                    <img src="${article.image}">
+                                </a>
+                            </div>
+                            <div class="post__content d-flex flex-column justify-content-between">
+                                <a class="post__author" href="./author/fbkilla" data-wpel-link="internal">
+                                    <span><img src="https://protraffic.com/wp-content/uploads/2023/08/1691054529.jpeg" alt="FB-killa.pro"
+                                        title="FB-killa.pro" /></span>
+                                </a>
+                                <div class="col-item">
+                                    <a class="post__title title" href="/articles/${article.id}" data-wpel-link="internal">
+                                        Кейс: ${article.title} </a>
+                                </div>
+                                <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                                    <div class="col-item post_raiting upper-text record is--green">
+                                        <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
+                                        <span class="ml-1">${article.rating}</span>
+                                    </div>
+                                    <div class="post__author-name">
+                                        <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
+                                            FB-killa.pro </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                  articlesContainer.insertAdjacentHTML('beforeend', articleHTML);
+                });
+              })
+              .catch(error => console.error('Error:', error));
+          }
+
+          prevPageBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+              currentPage--;
+              loadArticles(currentPage);
+            }
+          });
+
+          nextPageBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+             if (loadArticles(currentPage + 1) != 1){
+              currentPage++;
+             }
+          });
+        });
+
+
+      </script>
       <div class="section--theme-dark py-5 mt-5">
         <div class="container">
           <div class="row justify-content-center">
@@ -892,7 +916,8 @@
                   арбитражники используют блоги, внешний контент и медиа для манимейкинга — и понять, верна ли гипотеза
                   или не стоит тратить на нее время и деньги.</p>
                 <p><b>Узнать о новых источниках.</b> В рекламных сетях появляются новые форматы, развиваются новые
-                  платформы. О том, эффективно ли работают эти источники трафика, можно узнать из кейсов по арбитражу трафика.
+                  платформы. О том, эффективно ли работают эти источники трафика, можно узнать из кейсов по арбитражу
+                  трафика.
                   Посмотрели на огромные ROI в TikTok — и вовремя начали сливать трафик оттуда.</p>
                 <p><b>Проверить перспективы оффера.</b> Бывает, непонятно, прибыльный ли оффер: особенно если в CPA-сети
                   нет открытой статистики по всем вебмастерам. Тогда узнать, можно ли заработать на оффере, можно из
@@ -924,8 +949,8 @@
                 <h3>TikTok растет, но продвигаться там сложнее</h3>
                 <p>Популярность площадки доказана многочисленными кейсами по арбитражу в TikTok. Вебы настраивают
                   кампании в рекламном кабинете, занимаются спамом, продвигают видео в рекомендации и получают тонну
-                  трафика. Например, в январе на костюме от дождя Norfin Rain 
-                    получилось сделать ROI 175% при том, что товар продвигали не в сезон.</p>
+                  трафика. Например, в январе на костюме от дождя Norfin Rain
+                  получилось сделать ROI 175% при том, что товар продвигали не в сезон.</p>
                 <p>При этом с второго февраля 2022 года в TikTok начались
                   проблемы с модерацией и сливом трафика в целом. Аккаунты с серой товаркой массово попали под
                   баны, начали руинить агентские кабинеты, модерацию ужесточили в разы — под раздачу попали даже белые
@@ -935,7 +960,7 @@
                   приносят прибыль. Особенно это актуально для тех, кто только начинает путь в арбитраже трафика —
                   новички могут не терять лиды, а использовать трафик максимально эффективно.</p>
                 <p>Популярность смартлинков доказывает свежая
-                    подборка кейсов. В них вебы получали до 4 000 $ на разных источниках и офферах.</p>
+                  подборка кейсов. В них вебы получали до 4 000 $ на разных источниках и офферах.</p>
                 <h3>Сливать на гемблинг можно отовсюду</h3>
                 <p>С началом пандемии гемблинг стал популярнее, а в период крупных спортивных событий трафик растет в
                   разы. Получать лиды на гемблинг-офферы можно из большинства источников трафика: с Facebook Ads,
@@ -979,14 +1004,14 @@
           <div class="d-flex justify-content-between align-items-xs-center align-items-start">
             <div class="col-item">
               <a href data-wpel-link="internal"><span class="d-lg-block mr-2 d-none">
-                <span class="text-logo">RUARB</span>
-                <img class = "logo" src="https://i.imgur.com/6PxidVv.png"/>
-            </span>
-            <span class="d-lg-none mr-1 d-block">
+                  <span class="text-logo">RUARB</span>
+                  <img class="logo" src="https://i.imgur.com/6PxidVv.png" />
+                </span>
+                <span class="d-lg-none mr-1 d-block">
 
-              <img class = "logo2" src="https://i.imgur.com/6PxidVv.png"
-                data-dark-src="https://i.imgur.com/6PxidVv.png" />
-            </span></a>
+                  <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
+                    data-dark-src="https://i.imgur.com/6PxidVv.png" />
+                </span></a>
 
             </div>
             <div class="d-lg-none d-block">
@@ -1029,8 +1054,8 @@
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
                 href="/" data-wpel-link="internal">Главная</a></li>
             <li id="menu-item-16821"
-              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-                href="articles" data-wpel-link="internal">Статьи</a></li>
+              class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="articles"
+                data-wpel-link="internal">Статьи</a></li>
             <li id="menu-item-16824"
               class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824"><a
                 href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
@@ -1117,8 +1142,7 @@
                     data-action="close" data-show="login" data-wpel-link="internal">Отмена</a></span>
               </div>
             </div>
-            <form class="js-validation__login" name="loginform" id="loginform"
-              action="./wp-login.php" method="post">
+            <form class="js-validation__login" name="loginform" id="loginform" action="./wp-login.php" method="post">
               <div class="gutter-y-15">
                 <div class="col-item">
                   <div class="js-form__group">
@@ -1153,7 +1177,7 @@
               <input type="hidden" name="redirect_to" value="/affiliatecasestudy" />
               <input type="hidden" name="testcookie" value="1" />
             </form>
-            
+
           </div>
           <div class="js-login-popup__form login-popup__form-content none" data-content="reg">
             <div class="col-item">
@@ -1442,10 +1466,10 @@
     </div>
     <div class="menu-bar__content">
       <ul class="list--unstyled menu-bar__menu">
-        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
-            href="/" data-wpel-link="internal">Главная</a></li>
-        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-            href="articles" data-wpel-link="internal">Статьи</a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a href="/"
+            data-wpel-link="internal">Главная</a></li>
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="articles"
+            data-wpel-link="internal">Статьи</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824"><a
             href="affiliatep" data-wpel-link="internal">Партнерки</a></li>
         <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a

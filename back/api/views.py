@@ -322,7 +322,7 @@ class ArticleCreateView(CreateView):
 
 
 def article_list(request):
-    articles = Article.objects.filter(is_published=True)  # Извлекаем все статьи
+    articles = Article.objects.filter(is_published=True)[0:8]  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
 
 def user_article_list(request):
@@ -359,3 +359,38 @@ def obzor_detail(request, obzor_id):
 def obzorp_detail(request, obzor_id):
     obzor = get_object_or_404(Obzor_partner, id=obzor_id)
     return render(request, 'obzor.html', {'obzor': obzor})
+
+
+def afcases(request):
+    return render(request, 'affiliatecasestudy.html', context={"articles": Article.objects.all().filter(is_case=True)[0:8]})
+
+
+def article_add(request):
+    page = int(request.GET.get('page', 1))
+    category = request.GET.get('category', 1)
+    articles_per_page = 8
+    start = (page - 1) * articles_per_page
+    end = start + articles_per_page
+    print(start, end)
+
+    # Рассчитываем начало и конец выборки
+
+    # Получаем сервисы для текущей страницы
+    if category == "a":
+        articles = Article.objects.all()[start:end]
+    else:
+        articles = Article.objects.all().filter(is_case=True)[start:end]
+
+    articles_data = []
+
+    for article in articles:
+        articles_data.append({
+            "image": article.image.url,
+            "title": article.title,
+            "content": article.content,
+            "published_date": article.published_date,
+            "is_case": article.is_case,
+            "rating": article.rating,
+        })
+
+    return JsonResponse(articles_data, safe=False)

@@ -6,7 +6,7 @@ from api import views
 from api.views import index, ProfileView
 from back import settings
 
-from .views import ArticleCreateView, UserArticleListView, enable_article_creation
+from .views import ArticleCreateView
 
 urlpatterns = [
     path('', index),
@@ -16,7 +16,7 @@ urlpatterns = [
     #path('article1', TemplateView.as_view(template_name='article_details.html')),
     path('services', views.services, name='services'),
     path('partners', views.partners, name='partners'),
-    path('services/', views.services_add, name='services_add'),
+    path('article_add/', views.article_add, name='services_add'),
     path('register', views.register, name="register"),
     path('login', views.loginu, name='login'),
     path('logout', views.logout, name='logout'),
