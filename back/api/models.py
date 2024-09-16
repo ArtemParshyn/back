@@ -7,6 +7,7 @@ class ApiUser(AbstractUser):
     photo = models.ImageField(upload_to='images/%Y/%m/%d/avatar', default=None, blank=True)
     descr = models.CharField(max_length=128, default="Description", blank=True)
     can_create_articles = models.BooleanField(default=False)
+    is_partner = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
         return self.username

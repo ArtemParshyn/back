@@ -956,6 +956,7 @@
 
         <script>
           let category = "a"
+          
           document.addEventListener('DOMContentLoaded', function () {
             const articlesContainer = document.querySelector('.row.gutter-y-30');
             const prevPageBtn = document.querySelector('.pagination a:first-child');
@@ -991,13 +992,13 @@
                                 </a>
                             </div>
                             <div class="post__content d-flex flex-column justify-content-between">
-                                <a class="post__author" href="./author/fbkilla" data-wpel-link="internal">
+                                <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
                                     <span><img src="https://protraffic.com/wp-content/uploads/2023/08/1691054529.jpeg" alt="FB-killa.pro"
                                         title="FB-killa.pro" /></span>
                                 </a>
                                 <div class="col-item">
                                     <a class="post__title title" href="/articles/${article.id}" data-wpel-link="internal">
-                                        Кейс: ${article.title} </a>
+                                        ${article.title} </a>
                                 </div>
                                 <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                                     <div class="col-item post_raiting upper-text record is--green">
@@ -1006,7 +1007,7 @@
                                     </div>
                                     <div class="post__author-name">
                                         <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
-                                            FB-killa.pro </a>
+                                            {{ article.author.username }}</a>
                                     </div>
                                 </div>
                             </div>

@@ -296,6 +296,7 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
+
             article.is_published = False  # Устанавливаем статус как "не опубликовано"
             article.save()
             messages.success(request, 'Ваша статья отправлена на модерацию.')
