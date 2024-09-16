@@ -296,10 +296,13 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
-
-            article.is_published = False  # Устанавливаем статус как "не опубликовано"
-            article.save()
-            messages.success(request, 'Ваша статья отправлена на модерацию.')
+            if request.user.is_partner:
+                article.is_published = True  # Устанавливаем статус как "не опубликовано"
+                article.save()
+            else:
+                article.is_published = False  # Устанавливаем статус как "не опубликовано"
+                article.save()
+                messages.success(request, 'Ваша статья отправлена на модерацию.')
             return redirect('user_articles')
     else:
         form = ArticleForm()
@@ -322,7 +325,7 @@ class ArticleCreateView(CreateView):
 
 
 def article_list(request):
-    articles = Article.objects.filter(is_published=True)[0:8]  # Извлекаем все статьи
+    articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles})
 
 
@@ -387,7 +390,7 @@ def article_add(request):
 
     # Получаем сервисы для текущей страницы
     if category == "a":
-        articles = Article.objects.all()[start:end]
+        articles = Article.objects.all().filter(is_case=False)[start:end]
     else:
         articles = Article.objects.all().filter(is_case=True)[start:end]
 
@@ -401,6 +404,8 @@ def article_add(request):
             "published_date": article.published_date,
             "is_case": article.is_case,
             "rating": article.rating,
+            "username": article.author.username,
+            "avatar": article.author.photo.url if article.author.photo else "https://protraffic.com/wp-content/themes/ptf/images/user.svg",
         })
 
     return JsonResponse(articles_data, safe=False)

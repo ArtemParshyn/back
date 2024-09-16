@@ -774,7 +774,7 @@
               <div class="post__top">
                 <div class="post__cat">
                   <a class="cat" href="./articles" data-wpel-link="internal">
-                    {{article.published_date.date}} </a>
+                    {{ article.published_date|date:"d E y" }} </a>
                 </div>
                 <a class="post__thumb" href="/articles/{{article.id}}" data-wpel-link="internal">
                   <img src="{{article.image.url}}">
@@ -782,7 +782,7 @@
               </div>
               <div class="post__content d-flex flex-column justify-content-between">
                 <a class="post__author" href="./author/fbkilla" data-wpel-link="internal">
-                  <span><img src="https://protraffic.com/wp-content/uploads/2023/08/1691054529.jpeg" alt="FB-killa.pro"
+                  <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}" class="author-avatar" 
                       title="FB-killa.pro" /></span>
                 </a>
                 <div class="col-item">
@@ -796,7 +796,7 @@
                   </div>
                   <div class="post__author-name">
                     <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
-                      FB-killa.pro </a>
+                      {{ article.author.username }} </a>
                   </div>
                 </div>
               </div>
@@ -852,9 +852,8 @@
                                 </a>
                             </div>
                             <div class="post__content d-flex flex-column justify-content-between">
-                                <a class="post__author" href="./author/fbkilla" data-wpel-link="internal">
-                                    <span><img src="https://protraffic.com/wp-content/uploads/2023/08/1691054529.jpeg" alt="FB-killa.pro"
-                                        title="FB-killa.pro" /></span>
+                                <a class="post__author" href="/article_detail/${article.id}" data-wpel-link="internal">
+                                    <span><img src="${article.avatar}"/></span>
                                 </a>
                                 <div class="col-item">
                                     <a class="post__title title" href="/articles/${article.id}" data-wpel-link="internal">
@@ -867,7 +866,7 @@
                                     </div>
                                     <div class="post__author-name">
                                         <a class="upper-text link--gray" href="./author/fbkilla" data-wpel-link="internal">
-                                            FB-killa.pro </a>
+                                            ${article.username}</a>
                                     </div>
                                 </div>
                             </div>
