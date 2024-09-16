@@ -13,9 +13,6 @@ from .views import ArticleCreateView
 urlpatterns = [
     path('', index),
     path('articles/', views.article_list, name='article_list'),
-    #path('affiliatec', TemplateView.as_view(template_name='affiliatecasestudy.html')),
-    #path('affiliatep', TemplateView.as_view(template_name='affiliate_program.html')),
-    #path('article1', TemplateView.as_view(template_name='article_details.html')),
     path('services', views.services, name='services'),
     path('partners', views.partners, name='partners'),
     path('article_add/', views.article_add, name='services_add'),
