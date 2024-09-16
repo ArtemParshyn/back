@@ -46,6 +46,7 @@ class Service(models.Model):
     website = models.URLField(blank=True, default=None)
     costs = models.CharField(max_length=64, default=None, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="services")
+    to_index = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
         return self.descr
@@ -65,6 +66,8 @@ class Partner(models.Model):
 
 
 class Article(models.Model):
+    choices = [("1", "first"), ("2", "second"), ("3", "third")]
+
     image = models.ImageField(upload_to="images/%Y/%m/%d/preview", null=False, blank=False)  # Убрали default=None
     title = models.CharField(max_length=200)
     content = RichTextUploadingField()  # Поле CKEditor
@@ -73,6 +76,8 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     is_case = models.BooleanField(default=False, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=1, blank=True)
+    pos = models.CharField(choices=choices, blank=True, default=None, max_length=1)
+    preview_for_index = models.CharField(max_length=256, default=None, blank=True)
 
     def __str__(self):
         return self.title

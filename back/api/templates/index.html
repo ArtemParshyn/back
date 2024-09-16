@@ -306,7 +306,7 @@
     href="https://protraffic.com/wp-content/plugins/ajax-search-lite/css/style.basic.css" media="all" />
   <link rel="stylesheet" id="wpdreams-asl-instance-css"
     href="https://protraffic.com/wp-content/plugins/ajax-search-lite/css/style-underline.css" media="all" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
   <script>
@@ -547,7 +547,7 @@
       font-weight: 700;
       color: #3663e0;
       font-family: Montserrat, sans-serif, Arial;
-  }
+    }
   </style>
   <link rel="icon" href="https://protraffic.com/wp-content/uploads/2020/08/cropped-favicon_png-32x32.png"
     sizes="32x32" />
@@ -603,7 +603,7 @@
           .text-logo {
             font-size: 35px;
             font-weight: 700;
-            font-family: Montserrat, sans-serif, Arial ;
+            font-family: Montserrat, sans-serif, Arial;
           }
 
           .site-header.is--fixed .site-header__pin .ml-2:first-of-type {
@@ -797,12 +797,10 @@
               </div>
               <div class="user-dropdown__list">
                 <div class="user-dropdown__center">
-                  <a href="profile" data-view="login"
-                    data-wpel-link="internal">Профиль</a>
+                  <a href="profile" data-view="login" data-wpel-link="internal">Профиль</a>
                   <a href="user_articles" data-wpel-link="internal">Статьи</a>
 
-                  <a href="logout"
-                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+                  <a href="logout" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
                 </div>
               </div>
             </div>
@@ -936,50 +934,36 @@
           </div>
         </div>
         <div class="d-lg-flex home__post-big">
+          {% if positions %}
           <div class="col-item">
             <div class="row gutter-x-17 gutter-y-35 gutter-y-15-lg gutter-x-7-lg">
               <div class="col-md-8">
                 <div class="post d-flex flex-column justify-content-between h-100">
                   <div class="post__top post__top--full-height">
                     <div class="post__cat">
-                      <a class="cat " href="./articles">
+                      <a class="cat " href="/articles/{{positions.1.id}}">
+                        {{positions.1.published_date|date:"d E y"}}
                       </a>
                     </div>
-                    <a class="post__thumb" href="./articles/gajd-kak-zarabatyvat-na-ai-modelyah-115380.html"
-                      data-wpel-link="internal">
-                      <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-45.png"
-                        alt="ГАЙД: как зарабатывать на AI-моделях, — подробный разбор связки для УБТ с Instagram и слива на Patreon">
+                    <a class="post__thumb" href="/articles/{{positions.1.id}}" data-wpel-link="internal">
+                      <img src="{{positions.1.image.url}}">
                     </a>
                   </div>
                   <div class="post__content d-flex justify-content-between flex-column">
                     <div class="flex-grow-1">
-
-                      <div class="tags d-flex gutter-x-3 gutter-y-7 flex-wrap">
-                        <div class="col-item">
-                        </div>
-                        <div class="col-item">
-                        </div>
-                        <div class="col-item">
-                        </div>
-                        <div class="col-item">
-                        </div>
-                      </div>
-                      <a class="post__title title" href="./articles/gajd-kak-zarabatyvat-na-ai-modelyah-115380.html"
-                        data-wpel-link="internal">
-                        ГАЙД: как зарабатывать на AI-моделях, — подробный разбор связки для УБТ с Instagram и слива на
-                        Patreon </a>
+                      <a class="post__title title" href="/articles/{{positions.1.id}}" data-wpel-link="internal">
+                        {{positions.1.title}} </a>
                       <p class="post__text text">
-                        Условно-бесплатный трафик (УБТ) перестал быть синонимом мусора. Сегодня это мощный инструмент,
-                        который может приносить стабильный доход при правильном подходе. В этой статье расскажем, как
-                        использовать УБТ из Instagram для заработка...... </p>
+                        {{positions.1.preview_for_index}}</p>
                     </div>
                     <div class="post__bottom gutter-y-5 d-flex justify-content-between align-items-center">
                       <div class="col-item post_raiting upper-text record is--green">
-                        <span class="ml-1">RUARB</span>
+                        <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                        <span class="ml-1"> {{positions.1.rating}}</span>
                       </div>
                       <div class="post__author-name">
-                        <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                        </a>
+                        <a class="upper-text link--gray" data-wpel-link="internal">
+                          RUARB </a>
                       </div>
                     </div>
                   </div>
@@ -991,42 +975,30 @@
                     <div class="post">
                       <div class="post__top">
                         <div class="post__cat">
-                          <a class="cat" href="./articles" data-wpel-link="internal">
+                          <a class="cat" href="/articles/{{positions.2.id}}"
+                            data-wpel-link="internal">{{positions.2.published_date|date:"d E y"}}
                           </a>
                         </div>
-                        <a class="post__thumb" href="./articles/gajd-ubt-facebook-dating-115362.html"
-                          data-wpel-link="internal">
-                          <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-47.png"
-                            alt="Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024">
+                        <a class="post__thumb" href="/articles/{{positions.2.id}}" data-wpel-link="internal">
+                          <img src="{{positions.2.image.url}}">
                         </a>
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
 
                         <div class="col-item">
-                          <div class="tags">
-                            <div class="d-flex gutter-x-3 gutter-y-7">
-                              <div class="col-item">
-                              </div>
-                              <div class="col-item">
-                              </div>
-                              <div class="col-item">
-                              </div>
-                              <div class="col-item">
-                              </div>
-                            </div>
-                          </div>
-                          <a class="post__title title" href="./articles/gajd-ubt-facebook-dating-115362.html"
-                            data-wpel-link="internal">
-                            Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024 </a>
+                          <a class="post__title title" href="/articles/{{positions.2.id}}" data-wpel-link="internal">
+                            {{positions.2.title}} </a>
                         </div>
+
                         <div
                           class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                           <div class="col-item post_raiting upper-text record is--green">
-                            <span class="ml-1">RUARB</span>
+                            <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                            <span class="ml-1"> {{positions.2.rating}}</span>
                           </div>
                           <div class="post__author-name">
-                            <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                            </a>
+                            <a class="upper-text link--gray" data-wpel-link="internal">
+                              RUARB </a>
                           </div>
                         </div>
                       </div>
@@ -1036,41 +1008,30 @@
                     <div class="post">
                       <div class="post__top">
                         <div class="post__cat">
-                          <a class="cat" href="./articles" data-wpel-link="internal">
+                          <a class="cat" href="/articles/{{positions.3.id}}"
+                            data-wpel-link="internal">{{positions.3.published_date|date:"d E y"}}
                           </a>
                         </div>
-                        <a class="post__thumb" href="./articles/metod-progreva-youtube-kanalov-s-ubt-115346.html"
-                          data-wpel-link="internal">
-                          <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-46.png"
-                            alt="Метод прогрева YouTube-каналов для работы с условно-бесплатным трафиком">
+                        <a class="post__thumb" href="/articles/{{positions.3.id}}" data-wpel-link="internal">
+                          <img src="{{positions.3.image.url}}">
                         </a>
                       </div>
                       <div class="post__content d-flex flex-column justify-content-between">
 
                         <div class="col-item">
-                          <div class="tags">
-                            <div class="d-flex gutter-x-3 gutter-y-7">
-                              <div class="col-item">
-                              </div>
-                              <div class="col-item">
-                              </div>
-                              <div class="col-item">
-                              </div>
-                            </div>
-                          </div>
-                          <a class="post__title title"
-                            href="./articles/metod-progreva-youtube-kanalov-s-ubt-115346.html"
-                            data-wpel-link="internal">
-                            Метод прогрева YouTube-каналов для работы с условно-бесплатным трафиком </a>
+                          <a class="post__title title" href="/articles/{{positions.3.id}}" data-wpel-link="internal">
+                            {{positions.3.title}} </a>
                         </div>
+
                         <div
                           class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                           <div class="col-item post_raiting upper-text record is--green">
-                            <span class="ml-1"> RUARB</span>
+                            <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                            <span class="ml-1"> {{positions.3.rating}}</span>
                           </div>
                           <div class="post__author-name">
-                            <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                            </a>
+                            <a class="upper-text link--gray" data-wpel-link="internal">
+                              RUARB </a>
                           </div>
                         </div>
                       </div>
@@ -1080,6 +1041,9 @@
               </div>
             </div>
           </div>
+          {% else %}
+          <p> Тут пока что ничего нет </p>
+          {% endif %}
 
           <div class="home__banner-lg">
             <aside id="secondary" class="widget-area">
@@ -1095,21 +1059,22 @@
 
       <style>
         @media (max-width: 768px) {
-    .sub__info {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        padding-top: 200px;
-    }
-}
+          .sub__info {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            padding-top: 200px;
+          }
+        }
+
         @media (max-width: 768px) {
-    .sub__info img {
-        margin-right: 0;
-        margin-bottom: 25px;
-        max-width: 100px;
-        height: auto;
-    }
-}
+          .sub__info img {
+            margin-right: 0;
+            margin-bottom: 25px;
+            max-width: 100px;
+            height: auto;
+          }
+        }
       </style>
 
     </section>
@@ -1117,10 +1082,10 @@
       <div class="container">
         <div class="sub__wrapper">
           <div class="sub__info">
-            <img src="{% static 'svg/tg.png' %}" height="250px" width="250px"  alt />
+            <img src="{% static 'svg/tg.png' %}" height="250px" width="250px" alt />
             <div class="sub__inner">
               <h2 class="title section__title section__title--blue">Подпишись на нас в telegram</h2>
-              <p> Мы собрали все новости арбитражной и affiliate сферы в одном канале  </p>
+              <p> Мы собрали все новости арбитражной и affiliate сферы в одном канале </p>
               <div class="sub__links" style="display: none;">
                 <a href data-wpel-link="internal">
                   <span>Получить</span>
@@ -1148,23 +1113,27 @@
 
               <style>
                 .btn-link {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff; /* Цвет текста */
-    background-color: #3663e0; /* Синий фон */
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none; /* Убираем подчеркивание */
-    transition: background-color 0.3s ease;
-}
+                  display: inline-block;
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  color: #ffffff;
+                  /* Цвет текста */
+                  background-color: #3663e0;
+                  /* Синий фон */
+                  border: none;
+                  border-radius: 5px;
+                  text-align: center;
+                  text-decoration: none;
+                  /* Убираем подчеркивание */
+                  transition: background-color 0.3s ease;
+                }
 
-.btn-link:hover {
-    background-color: #0056b3; /* Темнее синий при наведении */
-    color: #ffffff;
-}
+                .btn-link:hover {
+                  background-color: #0056b3;
+                  /* Темнее синий при наведении */
+                  color: #ffffff;
+                }
               </style>
 
             </div>
@@ -1202,7 +1171,9 @@
           </div>
         </div>
         <div class="d-lg-block d-none">
+
           <div class="row gutter-y-30 gutter-x-7-lg">
+            {% for article in last_articles %}
             <div class="col-lg-3 col-4">
               <div class="post">
                 <div class="post__top">
@@ -1210,16 +1181,13 @@
                     <a class="cat" href="./articles" data-wpel-link="internal">
                     </a>
                   </div>
-                  <a class="post__thumb" href="./articles/kak-uvelichit-konversiyu-115539.html"
-                    data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2024/08/1724029510.png"
-                      alt="Как увеличить конверсию в 5 раз: план действий от Royal Partners">
+                  <a class="post__thumb" href="./articles/{{article.id}}" data-wpel-link="internal">
+                    <img src="{{article.image}}">
                   </a>
                 </div>
                 <div class="post__content d-flex flex-column justify-content-between">
-                  <a class="post__author" href="./author/royalpartners" data-wpel-link="internal">
-                    <span><img src="https://protraffic.com/wp-content/uploads/2024/08/1723550889.png"
-                        alt="RoyalPartners" title="RoyalPartners" /></span>
+                  <a class="post__author" data-wpel-link="internal">
+                    <span><img src="{{article.avatar}}" /></span>
                   </a>
                   <div class="col-item">
                     <div class="tags">
@@ -1230,74 +1198,22 @@
                         </div>
                       </div>
                     </div>
-                    <a class="post__title title" href="./articles/kak-uvelichit-konversiyu-115539.html"
-                      data-wpel-link="internal">
-                      Как увеличить конверсию в 5 раз: план действий от Royal Partners </a>
+                    <a class="post__title title" href="./articles/{{article.id}}" data-wpel-link="internal">
+                      {{article.title}} </a>
                   </div>
                   <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                     <div class="col-item post_raiting upper-text record is--green">
                       <span class="ml-1">RUARB</span>
                     </div>
                     <div class="post__author-name">
-                      <a class="upper-text link--gray" href="./author/royalpartners" data-wpel-link="internal">
+                      <a class="upper-text link--gray" data-wpel-link="internal">
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-4">
-              <div class="post">
-                <div class="post__top">
-                  <div class="post__cat">
-                    <a class="cat" href="./articles" data-wpel-link="internal">
-                      16 Авг 24 </a>
-                  </div>
-                  <a class="post__thumb" href="./articles/gajd-ubt-facebook-dating-115362.html"
-                    data-wpel-link="internal">
-                    <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-47.png"
-                      alt="Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024">
-                  </a>
-                </div>
-                <div class="post__content d-flex flex-column justify-content-between">
-                  <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                    <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png"
-                        alt="ProTraffic" title="ProTraffic" /></span>
-                  </a>
-                  <div class="col-item">
-                    <div class="tags">
-                      <div class="d-flex gutter-x-3 gutter-y-7">
-                        <div class="col-item">
-                          <a class="ptf-tag" href="./tag/ubt-2" data-wpel-link="internal">#убт</a>
-                        </div>
-                        <div class="col-item">
-                          <a class="ptf-tag" href="./tag/facebook" data-wpel-link="internal">#Facebook</a>
-                        </div>
-                        <div class="col-item">
-                          <a class="ptf-tag" href="./tag/dejting-2" data-wpel-link="internal">#дейтинг</a>
-                        </div>
-                        <div class="col-item">
-                          <a class="ptf-tag" href="./tag/gajd-2" data-wpel-link="internal">#гайд</a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="post__title title" href="./articles/gajd-ubt-facebook-dating-115362.html"
-                      data-wpel-link="internal">
-                      Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024 </a>
-                  </div>
-                  <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                    <div class="col-item post_raiting upper-text record is--green">
-                      <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                      <span class="ml-1"> 24</span>
-                    </div>
-                    <div class="post__author-name">
-                      <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                        ProTraffic </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -1709,7 +1625,7 @@
       </div>
     </div>
 
-    
+
     <section class="js-home__offers-slider offers-slider">
       <div class="container">
         <div class="d-flex home__section-title align-items-center justify-content-between">
@@ -1734,14 +1650,16 @@
             </div>
           </div>
         </div>
-        <div class="offer__thead d-md-block d-none">
-          <div class="row">
-            <div class="col-md-5">Оффер</div>
-            <div class="col-md-7">
-              <div class="row">
-                <div class="col-lg-3 col-4">ГЕО</div>
-                <div class="col-lg-3 col-4">Партнерка</div>
-                <div class="col-lg-3 col-4">Источник</div>
+        <div class="d-lg-block d-none">
+          <div class="table__thead service__thead">
+            <div class="row">
+              <div class="col-2">Сервис</div>
+              <div class="col-5">Описание</div>
+              <div class="col-2">
+                <div class="pl-xl3-3">Стоимость</div>
+              </div>
+              <div class="col-2">
+                <div class="pl-xl3-4">Промокод</div>
               </div>
             </div>
           </div>
@@ -1749,389 +1667,58 @@
       </div>
       <div class="container offers-slider__container">
         <div class="gutter-y-25 gutter-y-15-xl3 js-slider">
-          <div class="item">
-            <div class="col-item">
-              <div class="offer">
-                <div class="offer__col">
-                  <div class="row gutter-y-20">
-                    <div class="col-md-5">
-                      <a class="offer__title link--black title" href="https://lcpartners.me/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        Lotoclub RevShare 25% </a>
-                      <div class="offer__alert">
-                        25%,
-                        RevShare,
-                        Депозит </div>
-                      <div class="mt-2">
-                        <div class="badge" style="background: #20d1e5; color: white">
-                          Gambling </div>
-                      </div>
-                      <div class="mt-3 d-lg-none d-none d-md-block">
-                        <a href="https://lcpartners.me/" class="btn btn--theme-default" data-wpel-link="external"
-                          target="_blank" rel="nofollow external noopener noreferrer">Залить</a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="row gutter-y-10">
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Гео:</div>
-                            <div class="geos offer__geos flex-wrap">
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png"
-                                  alt="Казахстан" title="Казахстан">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Партнерка:</div>
-                            <div class="col-item">
-                              <a href="https://lcpartners.me/" class="link--default" target="_blank"
-                                rel="noopener noreferrer nofollow external" data-wpel-link="external">
-                                Lotoclub Partners </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Источник:</div>
-                            <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget"
-                                  title="Mytarget">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
-                                  title="Facebook">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
-                                  alt="Instagram" title="Instagram">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png"
-                                  alt="ЯндексДирект" title="ЯндексДирект">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png"
-                                  alt="Google " title="Google ">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC"
-                                  title="UAC">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png"
-                                  alt="Pop-Up" title="Pop-Up">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png"
-                                  alt="Тизерные сети" title="Тизерные сети">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы"
-                                  title="ВК группы">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ"
-                                  title="РСЯ">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png"
-                                  alt="In-App" title="In-App">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
-                                  title="SEO">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png"
-                                  alt="Push-уведомления" title="Push-уведомления">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/uploads/2020/05/target-1.png"
-                                  alt="Таргетированная реклама" title="Таргетированная реклама">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png"
-                                  alt="Email-рассылка" title="Email-рассылка">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bannernaya-reklama.png"
-                                  alt="Нативка/Баннерная реклама" title="Нативка/Баннерная реклама">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 d-lg-block d-none order-4 align-self-center">
-                          <a href="https://lcpartners.me/" class="btn btn--block btn--theme-default mt-md-0 mt-3"
-                            data-wpel-link="external" target="_blank"
-                            rel="nofollow external noopener noreferrer">Залить</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-md-none mt-3">
-                    <a href="https://lcpartners.me/" class="btn btn--block btn--theme-default mt-md-0 mt-3"
-                      data-wpel-link="external" target="_blank" rel="nofollow external noopener noreferrer">Залить</a>
+          {% for service in services %}
+          <div class="col-item">
+            <div class="service">
+              <div class="row align-items-center gutter-y-5">
+                <div class="col-lg-2">
+                  <a class="service__image" href="{{ service.website }}" data-wpel-link="internal">
+                    <img class="img--responsive img--hover" src="{{ service.photo }}" />
+                  </a>
+                </div>
+                <div class="col-lg-5">
+                  <div class="service__text text">
+                    <p>{{ service.descr }}</p>
                   </div>
                 </div>
-                <div class="offer__bottom panel__bottom">
-                  <span>
-                    Информации о подходе по сливу нет </span>
+                <div class="col-lg-2 col-sm-6 is--green">
+                  <div class="pl-xl3-3 d-flex align-items-center">
+                    <span class="d-lg-none upper-text">Стоимость:</span>
+                    <span class="pl-lg-0 pl-1">{{ service.costs }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-sm-6">
+                  <div class="pl-xl3-4">
+                    <div class="relative d-inline-block">
+                      <a class="js-service__link link--default upper-text" href="javascript:;" data-id="content-89260"
+                        data-wpel-link="internal">
+                        <span class="d-lg-none upper-text">Промокод:</span>
+                        <span class="pl-lg-0 pl-1">{{ service.promo }}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-1 d-lg-block d-none">
+                  <a class="arrow-btn ml-auto" href="{{ service.website }}" target="_blank" data-wpel-link="internal">
+                    {% if service.ifwebsite %}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M0.316406 17.6333L7.94974 10L0.316406 2.35L2.66641 0L12.6664 10L2.66641 20L0.316406 17.6333Z"
+                        fill="white"></path>
+                    </svg>
+                    {% else %}
+                    <p style="color: white; margin-top: 13px; margin-right: 3px">Обзор</p>
+
+                    {% endif %}
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="col-item">
-              <div class="offer">
-                <div class="offer__col">
-                  <div class="row gutter-y-20">
-                    <div class="col-md-5">
-                      <a class="offer__title link--black title" href="https://lcpartners.me/" target="_blank"
-                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        Lotoclub СРА </a>
-                      <div class="offer__alert">
-                        35$,
-                        CPA,
-                        Депозит </div>
-                      <div class="mt-2">
-                        <div class="badge" style="background: #20d1e5; color: white">
-                          Gambling </div>
-                      </div>
-                      <div class="mt-3 d-lg-none d-none d-md-block">
-                        <a href="https://lcpartners.me/" class="btn btn--theme-default" data-wpel-link="external"
-                          target="_blank" rel="nofollow external noopener noreferrer">Залить</a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="row gutter-y-10">
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Гео:</div>
-                            <div class="geos offer__geos flex-wrap">
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_kazakhstan.png"
-                                  alt="Казахстан" title="Казахстан">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Партнерка:</div>
-                            <div class="col-item">
-                              <a href="https://lcpartners.me/" class="link--default" target="_blank"
-                                rel="noopener noreferrer nofollow external" data-wpel-link="external">
-                                Lotoclub Partners </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Источник:</div>
-                            <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/mytarget.png" alt="Mytarget"
-                                  title="Mytarget">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
-                                  title="Facebook">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
-                                  alt="Instagram" title="Instagram">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/yandeksdirekt.png"
-                                  alt="ЯндексДирект" title="ЯндексДирект">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google__g__logo-1.png"
-                                  alt="Google " title="Google ">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2021/02/internet.png" alt="UAC"
-                                  title="UAC">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/07/icons8-popup-25.png"
-                                  alt="Pop-Up" title="Pop-Up">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/digital-campaign-1.png"
-                                  alt="Тизерные сети" title="Тизерные сети">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/group-3.png" alt="ВК группы"
-                                  title="ВК группы">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/rsya-1.png" alt="РСЯ"
-                                  title="РСЯ">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/smartphone-1.png"
-                                  alt="In-App" title="In-App">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
-                                  title="SEO">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bell-1.png"
-                                  alt="Push-уведомления" title="Push-уведомления">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/target-1.png"
-                                  alt="Таргетированная реклама" title="Таргетированная реклама">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/email-1.png"
-                                  alt="Email-рассылка" title="Email-рассылка">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/bannernaya-reklama.png"
-                                  alt="Нативка/Баннерная реклама" title="Нативка/Баннерная реклама">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 d-lg-block d-none order-4 align-self-center">
-                          <a href="https://lcpartners.me/" class="btn btn--block btn--theme-default mt-md-0 mt-3"
-                            data-wpel-link="external" target="_blank"
-                            rel="nofollow external noopener noreferrer">Залить</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-md-none mt-3">
-                    <a href="https://lcpartners.me/" class="btn btn--block btn--theme-default mt-md-0 mt-3"
-                      data-wpel-link="external" target="_blank" rel="nofollow external noopener noreferrer">Залить</a>
-                  </div>
-                </div>
-                <div class="offer__bottom panel__bottom">
-                  <span>
-                    Информации о подходе по сливу нет </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="col-item">
-              <div class="offer">
-                <div class="offer__col">
-                  <div class="row gutter-y-20">
-                    <div class="col-md-5">
-                      <a class="offer__title link--black title"
-                        href="https://3snet.co/affiliate-signup/?utm_company=ProTraffic&amp;utm_format=slotstoto"
-                        target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
-                        Slotstoto CPA </a>
-                      <div class="offer__alert">
-                        240 EUR,
-                        CPA,
-                        Депозит </div>
-                      <div class="mt-2">
-                        <div class="badge" style="background: #20d1e5; color: white">
-                          Gambling </div>
-                      </div>
-                      <div class="mt-3 d-lg-none d-none d-md-block">
-                        <a href="https://3snet.co/affiliate-signup/?utm_company=ProTraffic&amp;utm_format=slotstoto"
-                          class="btn btn--theme-default" data-wpel-link="external" target="_blank"
-                          rel="nofollow external noopener noreferrer">Залить</a>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="row gutter-y-10">
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Гео:</div>
-                            <div class="geos offer__geos flex-wrap">
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/at.png" alt="Австрия"
-                                  title="Австрия">
-                              </div>
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/flag_germany.png"
-                                  alt="Германия" title="Германия">
-                              </div>
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/it.png" alt="Италия"
-                                  title="Италия">
-                              </div>
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/es.png" alt="Испания"
-                                  title="Испания">
-                              </div>
-                              <div class="geo">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/06/gb.png" alt="Великобритания"
-                                  title="Великобритания">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Партнерка:</div>
-                            <div class="col-item">
-                              <a href="https://3snet.co/affiliate-signup/?utm_company=ProTraffic&amp;utm_format=slotstoto"
-                                class="link--default" target="_blank" rel="noopener noreferrer nofollow external"
-                                data-wpel-link="external">
-                                slotstoto </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4">
-                          <div class="d-flex">
-                            <div class="d-md-none offer__desc">Источник:</div>
-                            <div class="stream__social d-flex flex-wrap gutter-x-7 gutter-y-7">
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/facebook.png" alt="Facebook"
-                                  title="Facebook">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/instagram-sketched-1.png"
-                                  alt="Instagram" title="Instagram">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/google-ads-poisk.png"
-                                  alt="Google Ads (поиск)" title="Google Ads (поиск)">
-                              </div>
-                              <div class="col-item">
-                                <img src="https://protraffic.com/wp-content/uploads/2020/05/analysis-1.png" alt="SEO"
-                                  title="SEO">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 d-lg-block d-none order-4 align-self-center">
-                          <a href="https://3snet.co/affiliate-signup/?utm_company=ProTraffic&amp;utm_format=slotstoto"
-                            class="btn btn--block btn--theme-default mt-md-0 mt-3" data-wpel-link="external"
-                            target="_blank" rel="nofollow external noopener noreferrer">Залить</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-md-none mt-3">
-                    <a href="https://3snet.co/affiliate-signup/?utm_company=ProTraffic&amp;utm_format=slotstoto"
-                      class="btn btn--block btn--theme-default mt-md-0 mt-3" data-wpel-link="external" target="_blank"
-                      rel="nofollow external noopener noreferrer">Залить</a>
-                  </div>
-                </div>
-                <div class="offer__bottom panel__bottom">
-                  <span>
-                    Информации о подходе по сливу нет </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="section__btn">
-          <a class="btn btn--theme-default" href="/new-offers" data-wpel-link="internal">Показать все офферы</a>
+          <a class="btn btn--theme-default" href="/services" data-wpel-link="internal">Показать все сервисы</a>
         </div>
       </div>
     </section>
@@ -2140,32 +1727,31 @@
 
 
   </main>
-      <footer class="site-footer">
-        <div class="container">
-            <div class="row gutter-y-25">
-                <div class="col-lg-3">
-                    <div class="d-flex justify-content-between align-items-xs-center align-items-start">
-                        <div class="col-item">
-                            <a href="https://protraffic.com/personal-account" data-wpel-link="internal"><span
-                                    class="d-xs-block d-none"><img ./index1_files/protraffic-dark.svg"
-                                        alt=""></span><span class="d-xs-none"><img
-                                        ./index1_files/protraffic-dark-sm.svg" alt=""></span></a>
-                        </div>
-                        <div class="d-lg-none d-block">
-
-                        </div>
-                    </div>
-                    <div class="site-footer__text">RUARB — твой путеводитель по арбитражу трафика. Все фишки и
-                        экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
-                        лидерами рынка. Лей в плюс с RUARB!</div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-
-                </div>
-                <div class="site-footer__bottom">© 2019-2024, RUARB. Все права сохранены. Условия пользовательского
-                    соглашения</div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gutter-y-25">
+        <div class="col-lg-3">
+          <div class="d-flex justify-content-between align-items-xs-center align-items-start">
+            <div class="col-item">
+              <a href="https://protraffic.com/personal-account" data-wpel-link="internal"><span
+                  class="d-xs-block d-none"><img ./index1_files/protraffic-dark.svg" alt=""></span><span
+                  class="d-xs-none"><img ./index1_files/protraffic-dark-sm.svg" alt=""></span></a>
             </div>
-    </footer>
+            <div class="d-lg-none d-block">
+
+            </div>
+          </div>
+          <div class="site-footer__text">RUARB — твой путеводитель по арбитражу трафика. Все фишки и
+            экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
+            лидерами рынка. Лей в плюс с RUARB!</div>
+        </div>
+        <div class="col-lg-5 col-md-6">
+
+        </div>
+        <div class="site-footer__bottom">© 2019-2024, RUARB. Все права сохранены. Условия пользовательского
+          соглашения</div>
+      </div>
+  </footer>
   <div class="marquee ">
     <img class="marquee__img" src="https://protraffic.com/wp-content/themes/ptf/images/label.png" alt="label"
       width="344" height="135">
@@ -2425,29 +2011,26 @@
 
         {% if success %}
         <div class="col-item usermob">
-                    <div class="user-dropdown">
-                        <div class="d-lg-block d-none">
-                            <a href="/profile" class="thumb-author thumb-author--sm"
-                                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                data-wpel-link="internal"></a>
-                        </div>
-                        <div class="d-lg-none">
-                            <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                data-wpel-link="internal"></a>
-                        </div>
-                        <div class="user-dropdown__list">
-                            <div class="user-dropdown__center">
-                                <a href="profile" data-view="login"
-                                    data-wpel-link="internal">Профиль</a>
-                                <a href="user_articles"
-                                    data-wpel-link="internal">Статьи</a>
-                                <a href="logout"
-                                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="user-dropdown">
+            <div class="d-lg-block d-none">
+              <a href="/profile" class="thumb-author thumb-author--sm"
+                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                data-wpel-link="internal"></a>
+            </div>
+            <div class="d-lg-none">
+              <a href="javascript:;" class="thumb-author thumb-author--sm"
+                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                data-wpel-link="internal"></a>
+            </div>
+            <div class="user-dropdown__list">
+              <div class="user-dropdown__center">
+                <a href="profile" data-view="login" data-wpel-link="internal">Профиль</a>
+                <a href="user_articles" data-wpel-link="internal">Статьи</a>
+                <a href="logout" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endif %}
 
         {% if not success %}

@@ -205,11 +205,54 @@ def index(request):
         url = Reklama.objects.get(pos_reklama="1").url
         photo = Reklama.objects.get(pos_reklama="1").photo
 
+    a = []
+
+    for i in range(3):
+        a.append(Article.objects.all().filter(pos=str(i + 1)).exists())
+        print(i, Article.objects.all().filter(pos=str(i + 1)).exists())
+
+    if sum(a) == 3:
+        positions = {
+            '1': Article.objects.all().get(pos="1"),
+            '2': Article.objects.all().get(pos="2"),
+            '3': Article.objects.all().get(pos="3")}
+        print(positions["1"].id)
+    else:
+        positions = False
+
+    articles = []
+    for article in Article.objects.all().order_by('-published_date')[0:8]:
+        articles.append({
+            "image": article.image.url,
+            "title": article.title,
+            "content": article.content,
+            "published_date": article.published_date,
+            "is_case": article.is_case,
+            "rating": article.rating,
+            "username": article.author.username,
+            "avatar": article.author.photo.url if article.author.photo else "https://protraffic.com/wp-content/themes/ptf/images/user.svg",
+        })
+    services = []
+    for i in Service.objects.all().filter(to_index=True)[0:3]:
+        services.append({
+            'id': i.id,
+            'descr': i.descr,
+            'photo': i.photo.url,
+            'website': i.website if i.website else f"/obzor/{Obzor.objects.filter(to_service=i)[0].id}",
+            'promo': i.promo,
+            'costs': i.costs,
+            'category': i.category,
+            'ifwebsite': True if i.website else False,
+        })
+
     return render(request,
                   template_name="index.html",
                   context={"image": photo, "url_image": url,
                            "success": request.user.is_authenticated,
-                           'MEDIA_URL': settings.MEDIA_URL})
+                           'positions': positions,
+                           'MEDIA_URL': settings.MEDIA_URL,
+                           'last_articles': articles,
+                           'services': services})
 
 
 def register(request):
@@ -375,7 +418,8 @@ def obzorp_detail(request, obzor_id):
 
 
 def afcases(request):
-    return render(request, 'affiliatecasestudy.html', context={"articles": Article.objects.all().filter(is_case=True)[0:8]})
+    return render(request, 'affiliatecasestudy.html',
+                  context={"articles": Article.objects.all().filter(is_case=True)[0:8]})
 
 
 def article_add(request):
