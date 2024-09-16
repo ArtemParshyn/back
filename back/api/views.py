@@ -13,11 +13,9 @@ from .models import Reklama, Service, Category, Obzor, Category_partner, Partner
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
-from django.views.generic import DeleteView
 from .models import Article
 from django.views.generic import ListView
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class ProfileView(View):
