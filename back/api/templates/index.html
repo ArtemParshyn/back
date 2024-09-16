@@ -1092,18 +1092,35 @@
           </div>
         </div>
       </div>
+
+      <style>
+        @media (max-width: 768px) {
+    .sub__info {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        padding-top: 200px;
+    }
+}
+        @media (max-width: 768px) {
+    .sub__info img {
+        margin-right: 0;
+        margin-bottom: 25px;
+        max-width: 100px;
+        height: auto;
+    }
+}
+      </style>
+
     </section>
     <section class="sub">
       <div class="container">
         <div class="sub__wrapper">
           <div class="sub__info">
-            <img src="https://protraffic.com/wp-content/themes/ptf/images/folder.png" alt />
+            <img src="{% static 'svg/tg.png' %}" height="250px" width="250px"  alt />
             <div class="sub__inner">
-              <h2 class="title section__title section__title--blue">Получить годные кейсы и гайды по
-                заработку</h2>
-              <p> Бесплатно отправим подборку полезного контента о том, как заработать на арбитраже. Без
-                надоедливого
-                спама.</p>
+              <h2 class="title section__title section__title--blue">Подпишись на нас в telegram</h2>
+              <p> Мы собрали все новости арбитражной и affiliate сферы в одном канале  </p>
               <div class="sub__links" style="display: none;">
                 <a href data-wpel-link="internal">
                   <span>Получить</span>
@@ -1123,16 +1140,33 @@
                 </a>
               </div>
               <form class="ajax-form">
-                <input type="email" placeholder="e-mail" id="sub-email" name="email" required>
-                <label for="sub-email" style="display: none;">Email</label>
-                <button type="submit">Получить гайд</button>
-                <input type="checkbox" name="anticheck" id="anticheck" class="anticheck"
-                  style="display: none !important;" value="true" checked="checked">
-                <input type="hidden" name="form_name" value="subscribe_form">
-                <input type="hidden" name="action" value="form">
-                <input type="hidden" id="_nonce_subscribe_form" name="_nonce_subscribe_form" value="fa6ce6bcf7" /><input
-                  type="hidden" name="_wp_http_referer" value="/" />
+
+                <a href="https://example.com/guide" class="btn-link">Получить гайд</a>
+
+
               </form>
+
+              <style>
+                .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* Цвет текста */
+    background-color: #3663e0; /* Синий фон */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+    background-color: #0056b3; /* Темнее синий при наведении */
+    color: #ffffff;
+}
+              </style>
+
             </div>
           </div>
         </div>

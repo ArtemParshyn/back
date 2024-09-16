@@ -299,7 +299,7 @@ def create_article(request):
             article.is_published = False  # Устанавливаем статус как "не опубликовано"
             article.save()
             messages.success(request, 'Ваша статья отправлена на модерацию.')
-            return redirect('article_list')
+            return redirect('user_articles')
     else:
         form = ArticleForm()
 
@@ -350,7 +350,14 @@ class UserArticleListView(ListView):
 
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    return render(request, 'article_detail.html', {'article': article})
+
+    # Получаем количество статей автора
+    author_articles_count = Article.objects.filter(author=article.author).count()
+
+    return render(request, 'article_detail.html', {
+        'article': article,
+        'author_articles_count': author_articles_count
+    })
 
 
 def obzor_detail(request, obzor_id):
