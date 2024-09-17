@@ -8,10 +8,10 @@ from api import views
 from api.views import index, ProfileView, UserArticleListView, enable_article_creation
 from back import settings
 
-from .views import ArticleCreateView
+from .views import ArticleCreateView, index, PartnerArticleListView
 
 urlpatterns = [
-    path('', index),
+    path('', index, name='index'),
     path('articles/', views.article_list, name='article_list'),
     path('services', views.services, name='services'),
     path('partners', views.partners, name='partners'),
@@ -22,6 +22,7 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('createblog', views.createblog, name='createblog'),
     path('user_articles/', UserArticleListView.as_view(), name='user_articles'),
+    path('partner_articles/', PartnerArticleListView.as_view(), name='partner_articles'),
     path('create_blog', TemplateView.as_view(template_name='create_blog.html')),
     path('create/', views.create_article, name='create_article'),
     path('articles/<int:article_id>/', views.article_detail, name='article_detail'),

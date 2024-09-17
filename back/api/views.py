@@ -20,6 +20,14 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
+
+
+def index(request):
+    # Получаем текущего пользователя
+    user = request.user
+    # Передаем пользователя в шаблон
+    return render(request, 'index.html', {'user': user})
+
 class ProfileView(View):
     def get(self, request):
         if not request.user.is_authenticated:
@@ -350,6 +358,31 @@ class UserArticleListView(ListView):
             return Article.objects.filter(author=user)
         else:
             return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
+
+
+
+def partner_article_list(request):
+    # Получаем текущего пользователя
+    user = request.user
+    # Фильтруем статьи по автору
+    articles = Article.objects.all()
+    return render(request, 'partner_articles.html', {'articles': articles})
+
+
+class PartnerArticleListView(ListView):
+    model = Article
+    template_name = 'partner_articles.html'
+    context_object_name = 'articles'
+
+    def get_queryset(self):
+        # Получаем текущего пользователя
+        user = self.request.user
+        if user.is_authenticated:
+            # Фильтруем статьи по идентификатору автора
+            return Article.objects.filter(author=user)
+        else:
+            return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
+
 
 
 def article_detail(request, article_id):

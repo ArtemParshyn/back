@@ -1319,7 +1319,7 @@
                         </li>
                         <li id="menu-item-42431"
                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42431"><a
-                                href="../cases" data-wpel-link="internal">Кейсы</a>
+                                href="../keysi" data-wpel-link="internal">Кейсы</a>
                         </li>
                         
                         
@@ -2025,22 +2025,39 @@
                     <div class="user-dropdown">
                         <div class="d-lg-block d-none">
                             <a href="../profile" class="thumb-author thumb-author--sm"
-                                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                style="background-image: url({{ user.photo.url }})"
                                 data-wpel-link="internal"></a>
                         </div>
                         <div class="d-lg-none">
-                            <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                data-wpel-link="internal"></a>
+                            {% if user.photo %}
+
+                                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                                   style="background-image: url({{ user.photo.url }})"
+                                   data-wpel-link="internal">
+                                </a>
+
+                                {% else %}
+
+                                <a href="../profile" class="thumb-author thumb-author--sm"
+                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                    data-wpel-link="internal"></a>
+                                {% endif %}
                         </div>
                         <div class="user-dropdown__list">
                             <div class="user-dropdown__center">
-                                <a href="../profile" data-view="login"
-                                    data-wpel-link="internal">Профиль</a>
-                                <a href="../user_articles"
-                                    data-wpel-link="internal">Статьи</a>
-                                <a href="../logout"
-                                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+                                    <a href="../profile" data-view="login"
+                                        data-wpel-link="internal">Профиль</a>
+                                    {% if not user.can_create_articles %}
+                                    <a href="../create_blog"
+                                        data-wpel-link="internal">Создать блог</a>
+                                    {% endif %}
+
+                                    {% if user.can_create_articles %}
+                                    <a href="../user_articles"
+                                        data-wpel-link="internal">Статьи</a>
+                                    {% endif %}
+                                    <a href="../logout"
+                                        data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
                             </div>
                         </div>
                     </div>
@@ -2134,19 +2151,19 @@
         <div class="menu-bar__content">
             <ul class="list--unstyled menu-bar__menu">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
-                        href="https://protraffic.com/" data-wpel-link="internal">Главная</a></li>
+                        href="../" data-wpel-link="internal">Главная</a></li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-                        href="https://protraffic.com/articles" data-wpel-link="internal">Статьи</a></li>
+                        href="../articles" data-wpel-link="internal">Статьи</a></li>
     
                 <li
                     class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
-                    <a href="https://protraffic.com/affiliate_program" data-wpel-link="internal">Партнерки</a>
+                    <a href="../partners" data-wpel-link="internal">Партнерки</a>
                 </li>
                 <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
-                        href="https://protraffic.com/services" data-wpel-link="internal">Сервисы</a></li>
+                        href="../services" data-wpel-link="internal">Сервисы</a></li>
                
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-                        href="https://protraffic.com/affiliatecasestudy" data-wpel-link="internal">Кейсы по
+                        href="../keysi" data-wpel-link="internal">Кейсы по
                         арбитражу</a></li>
                 
                 
