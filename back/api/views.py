@@ -114,8 +114,9 @@ def partners(request):
             'category': category,
             'partners': category_partners,
         })
-
-    print(partners_prepared)  # Для отладки, чтобы увидеть результат
+    for i in partners_prepared:
+        for i1 in i.items():
+            print(i1)
     return render(request, "affiliate_program.html", context={"partners": partners_prepared})
 
 
