@@ -2024,9 +2024,19 @@
                 <div class="col-item usermob">
                     <div class="user-dropdown">
                         <div class="d-lg-block d-none">
-                            <a href="../profile" class="thumb-author thumb-author--sm"
-                                style="background-image: url({{ user.photo.url }})"
-                                data-wpel-link="internal"></a>
+                            {% if user.photo %}
+
+                                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                                   style="background-image: url({{ user.photo.url }})"
+                                   data-wpel-link="internal">
+                                </a>
+
+                                {% else %}
+
+                                <a href="../profile" class="thumb-author thumb-author--sm"
+                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                    data-wpel-link="internal"></a>
+                                {% endif %}
                         </div>
                         <div class="d-lg-none">
                             {% if user.photo %}
@@ -2083,7 +2093,7 @@
                                                     <td class="ya-site-form__search-input">
                                                         <table class="ya-site-form__search-input-layout">
                                                             <tbody>
-                                                                
+
                                                             </tbody>
                                                         </table>
                                                     </td>
@@ -2154,19 +2164,19 @@
                         href="../" data-wpel-link="internal">Главная</a></li>
                 <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
                         href="../articles" data-wpel-link="internal">Статьи</a></li>
-    
+
                 <li
                     class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
                     <a href="../partners" data-wpel-link="internal">Партнерки</a>
                 </li>
                 <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
                         href="../services" data-wpel-link="internal">Сервисы</a></li>
-               
+
                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
                         href="../keysi" data-wpel-link="internal">Кейсы по
                         арбитражу</a></li>
-                
-                
+
+
             </ul>
 
         </div>
