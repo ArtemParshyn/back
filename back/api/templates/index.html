@@ -954,6 +954,124 @@
         color: darkgray;
       }
     </style>
+
+<div class="banner-container">
+  <div class="banner large-banner" id="main-banner">
+    <a href="#" class="visit-site">Перейти на сайт</a>
+  </div>
+
+  <!-- Скрытые баннеры -->
+  <div class="banner small-banner" id="banner1">
+    <a href="#" class="visit-site">Перейти на сайт 1</a>
+  </div>
+  <div class="banner small-banner" id="banner2">
+    <a href="#" class="visit-site">Перейти на сайт 2</a>
+  </div>
+  <div class="banner small-banner" id="banner3">
+    <a href="#" class="visit-site">Перейти на сайт 3</a>
+  </div>
+</div>
+
+<!-- Контент ниже баннеров -->
+<div class="below-content">
+  <p></p>
+</div>
+
+
+
+
+    <style>
+.banner-container {
+  width: 1050px;
+  margin: 0 auto;
+  overflow: hidden; /* Чтобы скрывать баннеры до наведения */
+  transition: all 0.5s ease; /* Плавное изменение высоты */
+  max-height: 95px; /* Изначально высота только для одного баннера */
+}
+
+.banner {
+  width: 1050px;
+  height: 95px;
+  background-color: #f0f0f0;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
+  border-radius: 15px
+}
+
+.large-banner {
+  background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
+}
+
+.small-banner {
+  background-color: #e0e0e0;
+  background-size: cover;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.banner-container:hover {
+  max-height: 440px; /* Увеличиваем высоту для отображения всех баннеров */
+}
+
+.banner-container:hover .small-banner {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.visit-site {
+  position: absolute;
+  bottom: 30px;
+  right: 35px;
+  padding: 8px 15px;
+  background-color: rgba(255, 255, 255, 0.2); /* Прозрачный фон с эффектом */
+  color: green;
+  border-radius: 15px;
+  backdrop-filter: blur(10px); /* Эффект размытия */
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px; /* Фиксированная ширина для всех кнопок */
+  height: 40px; /* Фиксированная высота */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная рамка */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visit-site:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Эффект свечения при наведении */
+  color: green;
+}
+
+#banner1 {
+  background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
+}
+
+#banner2 {
+  background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
+}
+
+#banner3 {
+  background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
+}
+
+.below-content {
+  margin-top: 20px;
+}
+
+
+    </style>
+
+
+
     <section>
 
       <div class="container">
