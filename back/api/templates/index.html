@@ -2457,9 +2457,19 @@
                 <div class="col-item usermob">
                     <div class="user-dropdown">
                         <div class="d-lg-block d-none">
-                            <a href="../profile" class="thumb-author thumb-author--sm"
-                                style="background-image: url({{ user.photo.url }})"
-                                data-wpel-link="internal"></a>
+                            {% if user.photo %}
+
+                                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                                   style="background-image: url({{ user.photo.url }})"
+                                   data-wpel-link="internal">
+                                </a>
+
+                                {% else %}
+
+                                <a href="../profile" class="thumb-author thumb-author--sm"
+                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                    data-wpel-link="internal"></a>
+                                {% endif %}
                         </div>
                         <div class="d-lg-none">
                             {% if user.photo %}
