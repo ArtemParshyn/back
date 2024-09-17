@@ -70,22 +70,31 @@ class ProfileView(View):
 
 
 def partners(request):
+    # Определяем список допустимых значений для pos
+    allowed_pos = ["1", "2", "3", "4", "5"]
+
+    # Загружаем все категории партнёров
     categories = Category_partner.objects.all()
-    partners = {category: Partner.objects.filter(category_partner=category)[:5] for category in categories}
+
+    # Фильтруем и сортируем партнёров по категории и значению pos
+    partners = {
+        category: Partner.objects.filter(category_partner=category, pos__in=allowed_pos).order_by('pos')[:5]
+        for category in categories
+    }
 
     partners_prepared = []
 
     for category, partners_list in partners.items():
         category_partners = []
         for partner in partners_list:
-            # Try to find an Obzor object related to the current service
+            # Попытка найти связанный Obzor_partner объект для текущего партнёра
             obzor_id = ''
             if not partner.website:
                 obzor = Obzor_partner.objects.filter(to_partner=partner).first()
                 if obzor:
                     obzor_id = obzor.id
 
-            # Prepare the service dictionary
+            # Подготовка данных для вывода партнёра
             partners_data = {
                 'id': partner.id,
                 'descr': partner.descr,
@@ -100,11 +109,13 @@ def partners(request):
 
             category_partners.append(partners_data)
 
+        # Добавляем отфильтрованных и отсортированных партнёров в категорию
         partners_prepared.append({
             'category': category,
             'partners': category_partners,
         })
-    print(partners_prepared)
+
+    print(partners_prepared)  # Для отладки, чтобы увидеть результат
     return render(request, "affiliate_program.html", context={"partners": partners_prepared})
 
 

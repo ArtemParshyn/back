@@ -53,6 +53,7 @@ class Service(models.Model):
 
 
 class Partner(models.Model):
+    choices = [("1", "first"), ("2", "second"), ("3", "third"), ("4", "fourth"), ("5", "fifth")]
     photo = models.ImageField(upload_to='images/%Y/%m/%d/partner')
     descr = models.CharField(max_length=256)
     promo = models.CharField(max_length=64, default=None, blank=True)
@@ -60,6 +61,7 @@ class Partner(models.Model):
     costs = models.CharField(max_length=64, default=None, blank=True)
     category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="partners")
     rating = models.DecimalField(max_digits=2, decimal_places=1)
+    pos = models.CharField(choices=choices, max_length=1, blank=True, default=False)
 
     def __str__(self):
         return self.descr

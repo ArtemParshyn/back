@@ -4,16 +4,20 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from .models import Article
 
-
-
 admin.site.register(ApiUser)
 admin.site.register(Reklama)
 admin.site.register(Service)
 admin.site.register(Category)
 admin.site.register(Obzor)
 admin.site.register(Category_partner)
-admin.site.register(Partner)
 admin.site.register(Obzor_partner)
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('descr', 'promo', 'website', 'costs', 'category_partner', 'rating', 'pos')
+    list_filter = ('category_partner', 'pos')
+
 
 class ArticlesAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget())
@@ -35,5 +39,6 @@ class ArticleAdmin(admin.ModelAdmin):
     def unpublish_articles(self, request, queryset):
         rows_updated = queryset.update(is_published=False)
         self.message_user(request, f"{rows_updated} статьи были сняты с публикации.")
+
 
 admin.site.register(Article, ArticleAdmin)
