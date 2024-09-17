@@ -4357,7 +4357,7 @@
                                                 <span class="mr-2">Автор: {{ article.author.username }}</span>
                                                 <a class="link--default" href="https://protraffic.com/author/sasha"
                                                     data-wpel-link="internal">
-                                                     </a>
+                                                </a>
                                             </div>
 
                                             <div class="ml-lg-auto upper-text">
@@ -4391,10 +4391,10 @@
                                                 {{ article.published_date}} </div>
                                             <div class="ml-auto karma karma-right">
                                                 <div class="counter js-counter__container" id="karma_115907">
-                                                    
+
                                                     <div class="counter__content js-counter__input karma_positive">
                                                         19 </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -4406,13 +4406,12 @@
                                     <div class="col-lg-4 col-sm-5">
                                         <div class="d-flex">
                                             <div class="col-item">
-                                                <a class="thumb-author" href="#"
-                                                    data-wpel-link="internal">
+                                                <a class="thumb-author" href="#" data-wpel-link="internal">
                                                     <span>
                                                         {% if article.author.photo %}
 
-                                                        <img src="{{ article.author.photo.url }}"
-                                                            alt="ruarb" title="ruarb">
+                                                        <img src="{{ article.author.photo.url }}" alt="ruarb"
+                                                            title="ruarb">
 
                                                         {% else %}
 
@@ -4427,17 +4426,16 @@
                                             </div>
 
                                             <style>
-
-thumb-author img {
-    width: 100%;
-    height: 100%;
-    transition: .3s;
-    border-radius: 50px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    overflow: hidden;
-    transition: .3s;
-}
+                                                thumb-author img {
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    transition: .3s;
+                                                    border-radius: 50px;
+                                                    -o-object-fit: cover;
+                                                    object-fit: cover;
+                                                    overflow: hidden;
+                                                    transition: .3s;
+                                                }
                                             </style>
                                             <div class="ml-3 mt-sm-3 mt-2">
                                                 <div class="upper-text">Автор:</div>
@@ -4449,7 +4447,7 @@ thumb-author img {
                                                 <div class="d-sm-none">
                                                     <div class="mt-2 upper-text mb-1">Количество статей:</div>
                                                     <div class="upper-text is--gray">
-                                                         {{ author_articles_count }} </div>
+                                                        {{ author_articles_count }} </div>
                                                     <div class="mt-2 upper-text mb-1">Рейтинг автора:</div>
                                                     <div class="upper-text is--green karma">
 
@@ -4462,7 +4460,7 @@ thumb-author img {
                                     <div class="col-xl-3 col-sm-4 d-sm-block d-none">
                                         <div class="mt-3 upper-text mb-1">Количество статей:</div>
                                         <div class="upper-text is--gray">
-                                             {{ author_articles_count }} </div>
+                                            {{ author_articles_count }} </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-3 d-sm-block d-none">
                                         <div class="mt-3 upper-text mb-1">Рейтинг автора:</div>
@@ -4489,6 +4487,14 @@ thumb-author img {
                                 </div>
                             </div>
                         </div>
+                        {% if reklama %}
+                        <div>
+                            <a href = "{{reklama.url}}">
+                                <img style="width: 330px; height:550px"src="{{reklama.photo.url}}">
+                            
+                            </a>
+                        </div>
+                        {% endif %}
                     </div>
             </article>
         </div>

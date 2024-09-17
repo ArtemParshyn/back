@@ -842,144 +842,151 @@
       }
     </style>
     <section class="section">
+
       <div class="container">
         <div class="page__head">
           <div class="page__top-banner">
-            <div class="rec_banners_container rec_banners_container--h95">
-            </div>
-          </div>
-          <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <span class="kb_link" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/" data-wpel-link="internal">Главная</a>
-              <meta itemprop="item" content="." />
-              <meta itemprop="name" content="Главная" />
-              <meta itemprop="position" content="1" />
-            </span><span class="kb_sep">»</span>
-            <span class="kb_title" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <span>Статьи</span>
-              <meta itemprop="item" content="./articles" />
-              <meta itemprop="name" content="Статьи" />
-              <meta itemprop="position" content="2" />
-            </span>
-          </nav>
-          <h1 class="section__title title section__title--blue">Статьи</h1>
-          <ul class="case_menu">
-          </ul>
-          <div class="page__text">
-            <p>Читайте наш блог по арбитражу трафика &#8212; сборник самых актуальных статей для арбитражника.</p>
-          </div>
-        </div>
-
-        <div class="row gutter-y-30">
-          {% if articles %}
-          <!-- Цикл по статьям -->
-          {% for article in articles %}
-          <div class="col-xl-3 col-md-4 col-sm-6">
-            <div class="post">
-              <div class="post__top">
-                <div class="post__cat">
-                  <a class="cat" href="#" data-wpel-link="internal">
-                    {{ article.published_date|date:"d E y" }} </a>
-                </div>
-                <a class="post__thumb" href="{% url 'article_detail' article.id %}">
-                  <img src="{{ article.image.url }}" alt="{{ article.title }}">
+            {% if reklama %}
+            <div class="page__top-banner">
+              <div class="rec_banners_container--h95">
+                <a href="{{reklama.url}}">
+                  <img style="width: 1050; height:95px" src="{{reklama.photo.url}}">
                 </a>
               </div>
-              <div class="post__content d-flex flex-column justify-content-between">
-                {% if article.author.photo %}
-                <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
-                  <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}"
-                      class="author-avatar"></span>
-                </a>
-                {% else %}
+            </div>
+            {% endif %}
+            <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+              <span class="kb_link" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/" data-wpel-link="internal">Главная</a>
+                <meta itemprop="item" content="." />
+                <meta itemprop="name" content="Главная" />
+                <meta itemprop="position" content="1" />
+              </span><span class="kb_sep">»</span>
+              <span class="kb_title" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span>Статьи</span>
+                <meta itemprop="item" content="./articles" />
+                <meta itemprop="name" content="Статьи" />
+                <meta itemprop="position" content="2" />
+              </span>
+            </nav>
+            <h1 class="section__title title section__title--blue">Статьи</h1>
+            <ul class="case_menu">
+            </ul>
+            <div class="page__text">
+              <p>Читайте наш блог по арбитражу трафика &#8212; сборник самых актуальных статей для арбитражника.</p>
+            </div>
+          </div>
 
-                <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
-                  <span><img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="ProTraffic"
-                      title="ProTraffic"></span>
-                </a>
-                {% endif %}
-
-
-                <div class="col-item">
-                  <a class="post__title title" href="{% url 'article_detail' article.id %}">
-                    {{ article.title }}
+          <div class="row gutter-y-30">
+            {% if articles %}
+            <!-- Цикл по статьям -->
+            {% for article in articles %}
+            <div class="col-xl-3 col-md-4 col-sm-6">
+              <div class="post">
+                <div class="post__top">
+                  <div class="post__cat">
+                    <a class="cat" href="#" data-wpel-link="internal">
+                      {{ article.published_date|date:"d E y" }} </a>
+                  </div>
+                  <a class="post__thumb" href="{% url 'article_detail' article.id %}">
+                    <img src="{{ article.image.url }}" alt="{{ article.title }}">
                   </a>
                 </div>
-                <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                  <div class="col-item post_raiting upper-text record is--green">
-                    <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
-                    <span class="ml-1"> {{article.rating}}</span>
-                  </div>
-                  <div class="post__author-name">
-                    <a class="upper-text link--gray" href="https://protraffic.com/author/sasha"
-                      data-wpel-link="internal">
-                      {{ article.author.username }} </a>
-                  </div>
-                </div>
+                <div class="post__content d-flex flex-column justify-content-between">
+                  {% if article.author.photo %}
+                  <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                    <span><img src="{{ article.author.photo.url }}" alt="{{ article.author.username }}"
+                        class="author-avatar"></span>
+                  </a>
+                  {% else %}
 
-                <style>
-                  .post__author {
-                    width: 53px;
-                    height: 53px;
-                    border: 3px solid #fff;
-                    position: absolute;
-                    top: -40px;
-                    box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
-                    background: #fff;
-                    border-radius: 50%;
-                    right: 20px;
-                    display: block;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                  }
-                </style>
+                  <a class="post__author" href="{% url 'article_detail' article.id %}" data-wpel-link="internal">
+                    <span><img src="https://protraffic.com/wp-content/themes/ptf/images/user.svg" alt="ProTraffic"
+                        title="ProTraffic"></span>
+                  </a>
+                  {% endif %}
+
+
+                  <div class="col-item">
+                    <a class="post__title title" href="{% url 'article_detail' article.id %}">
+                      {{ article.title }}
+                    </a>
+                  </div>
+                  <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                    <div class="col-item post_raiting upper-text record is--green">
+                      <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt="">
+                      <span class="ml-1"> {{article.rating}}</span>
+                    </div>
+                    <div class="post__author-name">
+                      <a class="upper-text link--gray" href="https://protraffic.com/author/sasha"
+                        data-wpel-link="internal">
+                        {{ article.author.username }} </a>
+                    </div>
+                  </div>
+
+                  <style>
+                    .post__author {
+                      width: 53px;
+                      height: 53px;
+                      border: 3px solid #fff;
+                      position: absolute;
+                      top: -40px;
+                      box-shadow: 7px 7px 30px rgba(65, 121, 235, .3);
+                      background: #fff;
+                      border-radius: 50%;
+                      right: 20px;
+                      display: block;
+                      align-items: center;
+                      justify-content: center;
+                      overflow: hidden;
+                    }
+                  </style>
+                </div>
               </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <div style="padding-left: 15px;" class="page__text">
+              <p>Тут пока что пусто.</p>
+            </div>
+            {% endif %}
           </div>
-          {% endfor %}
-          {% else %}
-          <div style="padding-left: 15px;" class="page__text">
-            <p>Тут пока что пусто.</p>
+
+          {% if articles %}
+          <div class="pagination">
+            <a class="page-numbers" data-wpel-link="internal">
+              <<<< /a>
+                <a class="page-numbers" data-wpel-link="internal">>>></a>
           </div>
           {% endif %}
-        </div>
+          <!-- Проверка, есть ли статьи -->
 
-        {% if articles %}
-        <div class="pagination">
-          <a class="page-numbers" data-wpel-link="internal">
-            <<<</a>
-              <a class="page-numbers" data-wpel-link="internal">>>></a>
-        </div>
-        {% endif %}
-        <!-- Проверка, есть ли статьи -->
+          <script>
+            let category = "a"
 
-        <script>
-          let category = "a"
-          
-          document.addEventListener('DOMContentLoaded', function () {
-            const articlesContainer = document.querySelector('.row.gutter-y-30');
-            const prevPageBtn = document.querySelector('.pagination a:first-child');
-            const nextPageBtn = document.querySelector('.pagination a:last-child');
-            let currentPage = 1;
-            let articlesPerPage = 8;
+            document.addEventListener('DOMContentLoaded', function () {
+              const articlesContainer = document.querySelector('.row.gutter-y-30');
+              const prevPageBtn = document.querySelector('.pagination a:first-child');
+              const nextPageBtn = document.querySelector('.pagination a:last-child');
+              let currentPage = 1;
+              let articlesPerPage = 8;
 
-            function loadArticles(page) {
-              fetch(`/article_add?page=${page}&category=${category}`)
-                .then(response => response.json())
-                .then(data => {
+              function loadArticles(page) {
+                fetch(`/article_add?page=${page}&category=${category}`)
+                  .then(response => response.json())
+                  .then(data => {
 
-                  if (data.length === 0 && page > 1) {
-                    currentPage--;
+                    if (data.length === 0 && page > 1) {
+                      currentPage--;
 
-                    return;
-                  }
-                  articlesContainer.innerHTML = '';
+                      return;
+                    }
+                    articlesContainer.innerHTML = '';
 
 
 
-                  data.forEach(article => {
-                    const articleHTML = `
+                    data.forEach(article => {
+                      const articleHTML = `
                     <div class="col-xl-3 col-md-4 col-sm-6">
                         <div class="post">
                             <div class="post__top">
@@ -1012,29 +1019,29 @@
                             </div>
                         </div>
                     </div>`;
-                    articlesContainer.insertAdjacentHTML('beforeend', articleHTML);
-                  });
-                })
-                .catch(error => console.error('Error:', error));
-            }
-
-            prevPageBtn.addEventListener('click', function (e) {
-              e.preventDefault();
-              if (currentPage > 1) {
-                currentPage--;
-                loadArticles(currentPage);
+                      articlesContainer.insertAdjacentHTML('beforeend', articleHTML);
+                    });
+                  })
+                  .catch(error => console.error('Error:', error));
               }
-            });
 
-            nextPageBtn.addEventListener('click', function (e) {
-              e.preventDefault();
-              if (loadArticles(currentPage + 1) != 1) {
-                currentPage++;
-              }
+              prevPageBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage > 1) {
+                  currentPage--;
+                  loadArticles(currentPage);
+                }
+              });
+
+              nextPageBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (loadArticles(currentPage + 1) != 1) {
+                  currentPage++;
+                }
+              });
             });
-          });
-        </script>
-      </div>
+          </script>
+        </div>
   </main>
   <footer class="site-footer">
     <div class="container">

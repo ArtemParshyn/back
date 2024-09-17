@@ -1624,7 +1624,15 @@
         </div>
       </div>
     </div>
-
+    {% if reklama3 %}
+    <div class="page__top-banner">
+      <div class="rec_banners_container--h95">
+        <a href="{{reklama3.url}}">
+          <img style="width: 1050; height:95px" src="{{reklama3.photo.url}}">
+        </a>
+      </div>
+    </div>
+    {% endif %}
 
     <section class="js-home__offers-slider offers-slider">
       <div class="container">

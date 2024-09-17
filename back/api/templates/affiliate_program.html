@@ -732,10 +732,16 @@
     <section class="section">
       <div class="container">
         <div class="page__head">
+          {% if reklama %}
           <div class="page__top-banner">
-            <div class="rec_banners_container rec_banners_container--h95">
+            <div class="rec_banners_container--h95">
+              <a href="{{reklama.url}}">
+                <img style="width: 1050; height:95px" src="{{reklama.photo.url}}">
+              </a>
             </div>
           </div>
+          {% endif %}
+
           <ul class="list--unstyled breadcrumb">
             <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
               <span class="kb_link" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -812,9 +818,9 @@
                 <a class="link--arrow partner__link" href="{{ partner.website }}" target="_blank"
                   data-wpel-link="external" rel="nofollow external noopener noreferrer">
                   {% if partner.ifwebsite %}
-                    перейти на сайт
+                  перейти на сайт
                   {% else %}
-                    посмотреть обзор
+                  посмотреть обзор
                   {% endif %}
                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -827,7 +833,7 @@
           </div>
           {% endfor %}
         </div>
-        
+
       </div>
       <div class="d-flex justify-content-center">
         <a href="/partner_cat/?cat={{ category.category.id }}" class="btn btn--theme-default" data-wpel-link="internal">

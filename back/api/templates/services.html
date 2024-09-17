@@ -757,10 +757,15 @@
         <section class="section">
             <div class="container">
                 <div class="page__head">
+                    {% if reklama %}
                     <div class="page__top-banner">
-                        <div class="rec_banners_container rec_banners_container--h95">
+                        <div class="rec_banners_container--h95">
+                            <a href="{{reklama.url}}">
+                                <img style="width: 1050; height:95px" src="{{reklama.photo.url}}">
+                            </a>
                         </div>
                     </div>
+                    {% endif %}
                     <ul class="list--unstyled breadcrumb">
                         <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
                             <span class="kb_link" itemprop="itemListElement" itemscope
