@@ -12,7 +12,6 @@ admin.site.register(Service)
 admin.site.register(Category)
 admin.site.register(Obzor)
 admin.site.register(Category_partner)
-admin.site.register(Partner)
 admin.site.register(Obzor_partner)
 
 
