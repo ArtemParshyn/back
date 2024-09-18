@@ -79,22 +79,31 @@ class ProfileView(View):
 
 
 def partners(request):
+    # Определяем список допустимых значений для pos
+    allowed_pos = ["1", "2", "3", "4", "5"]
+
+    # Загружаем все категории партнёров
     categories = Category_partner.objects.all()
-    partners = {category: Partner.objects.filter(category_partner=category)[:5] for category in categories}
+
+    # Фильтруем и сортируем партнёров по категории и значению pos
+    partners = {
+        category: Partner.objects.filter(category_partner=category, pos__in=allowed_pos).order_by('pos')[:5]
+        for category in categories
+    }
 
     partners_prepared = []
 
     for category, partners_list in partners.items():
         category_partners = []
         for partner in partners_list:
-            # Try to find an Obzor object related to the current service
+            # Попытка найти связанный Obzor_partner объект для текущего партнёра
             obzor_id = ''
             if not partner.website:
                 obzor = Obzor_partner.objects.filter(to_partner=partner).first()
                 if obzor:
                     obzor_id = obzor.id
 
-            # Prepare the service dictionary
+            # Подготовка данных для вывода партнёра
             partners_data = {
                 'id': partner.id,
                 'descr': partner.descr,
@@ -109,12 +118,22 @@ def partners(request):
 
             category_partners.append(partners_data)
 
+        # Добавляем отфильтрованных и отсортированных партнёров в категорию
         partners_prepared.append({
             'category': category,
             'partners': category_partners,
         })
-    print(partners_prepared)
-    return render(request, "affiliate_program.html", context={"partners": partners_prepared})
+    for i in partners_prepared:
+        for i1 in i.items():
+            print(i1)
+    return render(request, "affiliate_program.html", context={"partners": partners_prepared,
+                                                              'reklama': Reklama.objects.all().get(
+                                                                  pos_reklama="1") if Reklama.objects.all().filter(
+                                                                  pos_reklama="1").exists() else False,
+                                                              "popup": Reklama.objects.all().get(
+                                                                  pos_reklama="4") if Reklama.objects.all().filter(
+                                                                  pos_reklama="4").exists() else False
+                                                              })
 
 
 def partner_cat(request):
@@ -176,7 +195,14 @@ def services(request):
             'services': category_services
         })
 
-    return render(request, "services.html", context={"services": services_prepared})
+    return render(request, "services.html", context={"services": services_prepared,
+                                                     'reklama': Reklama.objects.all().get(
+                                                         pos_reklama="1") if Reklama.objects.all().filter(
+                                                         pos_reklama="1").exists() else False,
+                                                     "popup": Reklama.objects.all().get(
+                                                         pos_reklama="4") if Reklama.objects.all().filter(
+                                                         pos_reklama="4").exists() else False
+                                                     })
 
 
 def services_add(request):
@@ -210,15 +236,64 @@ def index(request):
     print(request.user)
     photo = False
     url = False
-    if Reklama.objects.filter(pos_reklama="1").exists():
-        url = Reklama.objects.get(pos_reklama="1").url
-        photo = Reklama.objects.get(pos_reklama="1").photo
+    if Reklama.objects.filter(pos_reklama="2").exists():
+        url = Reklama.objects.get(pos_reklama="2").url
+        photo = Reklama.objects.get(pos_reklama="2").photo
+
+    a = []
+
+    for i in range(3):
+        a.append(Article.objects.all().filter(pos=str(i + 1)).exists())
+        print(i, Article.objects.all().filter(pos=str(i + 1)).exists())
+
+    if sum(a) == 3:
+        positions = {
+            '1': Article.objects.all().get(pos="1"),
+            '2': Article.objects.all().get(pos="2"),
+            '3': Article.objects.all().get(pos="3")}
+        print(positions["1"].id)
+    else:
+        positions = False
+
+    articles = []
+    for article in Article.objects.all().order_by('-published_date')[0:8]:
+        articles.append({
+            "image": article.image.url,
+            "title": article.title,
+            "content": article.content,
+            "published_date": article.published_date,
+            "is_case": article.is_case,
+            "rating": article.rating,
+            "username": article.author.username,
+            "avatar": article.author.photo.url if article.author.photo else "https://protraffic.com/wp-content/themes/ptf/images/user.svg",
+        })
+    services = []
+    for i in Service.objects.all().filter(to_index=True)[0:3]:
+        services.append({
+            'id': i.id,
+            'descr': i.descr,
+            'photo': i.photo.url,
+            'website': i.website if i.website else f"/obzor/{Obzor.objects.filter(to_service=i)[0].id}",
+            'promo': i.promo,
+            'costs': i.costs,
+            'category': i.category,
+            'ifwebsite': True if i.website else False,
+        })
 
     return render(request,
                   template_name="index.html",
                   context={"image": photo, "url_image": url,
                            "success": request.user.is_authenticated,
-                           'MEDIA_URL': settings.MEDIA_URL})
+                           'positions': positions,
+                           'MEDIA_URL': settings.MEDIA_URL,
+                           'last_articles': articles,
+                           'services': services,
+                           'reklama3': Reklama.objects.all().get(
+                               pos_reklama="3") if Reklama.objects.all().filter(
+                               pos_reklama="3").exists() else False,
+                           "popup": Reklama.objects.all().get(
+                               pos_reklama="4") if Reklama.objects.all().filter(
+                               pos_reklama="4").exists() else False})
 
 
 def register(request):
@@ -305,6 +380,10 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
+            article.pos = "none"
+            article.preview_for_index = "none"
+            print(article)
+            print(article)
             if request.user.is_partner:
                 article.is_published = True  # Устанавливаем статус как "не опубликовано"
                 article.save()
@@ -335,7 +414,12 @@ class ArticleCreateView(CreateView):
 
 def article_list(request):
     articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]  # Извлекаем все статьи
-    return render(request, 'articles.html', {'articles': articles})
+    return render(request, 'articles.html', {'articles': articles,
+    'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(pos_reklama="1").exists() else False,
+                                             "popup": Reklama.objects.all().get(
+                                                 pos_reklama="4") if Reklama.objects.all().filter(
+                                                 pos_reklama="4").exists() else False
+})
 
 
 def user_article_list(request):
@@ -394,7 +478,8 @@ def article_detail(request, article_id):
 
     return render(request, 'article_detail.html', {
         'article': article,
-        'author_articles_count': author_articles_count
+        'author_articles_count': author_articles_count,
+        'reklama': Reklama.objects.all().get(pos_reklama="2") if Reklama.objects.all().filter(pos_reklama="2").exists() else False
     })
 
 
@@ -409,7 +494,14 @@ def obzorp_detail(request, obzor_id):
 
 
 def afcases(request):
-    return render(request, 'affiliatecasestudy.html', context={"articles": Article.objects.all().filter(is_case=True)[0:8]})
+    return render(request, 'affiliatecasestudy.html',
+                  context={"articles": Article.objects.all().filter(is_case=True)[0:8],
+                           'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(
+                               pos_reklama="1").exists() else False,
+                           "popup": Reklama.objects.all().get(
+                               pos_reklama="4") if Reklama.objects.all().filter(
+                               pos_reklama="4").exists() else False
+                           })
 
 
 def article_add(request):

@@ -469,37 +469,49 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
         fill: #000;
     }
 
-    .gutenberg__close-partner{
-        display: none;
-    }
-    </style>
-<section class="section">
-<div class="container">
-<div class="page__head">
-<div class="page__top-banner">
-<div class="rec_banners_container rec_banners_container--h95" data-show-index="0">
-</div>
-</div>
-<ul class="list--unstyled breadcrumb">
-<nav class="kama_breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
-<span class="kb_link" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-<a href="https://protraffic.com" data-wpel-link="internal">Главная</a>
-<meta itemprop="item" content="https://protraffic.com">
-<meta itemprop="name" content="Главная">
-<meta itemprop="position" content="1">
-</span><span class="kb_sep">»</span>
-<span class="kb_title" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-<span>Сервисы</span>
-<meta itemprop="item" content="https://protraffic.com/services">
-<meta itemprop="name" content="Сервисы">
-<meta itemprop="position" content="2">
-</span></nav> </ul>
-<h1 class="section__title title section__title--blue"> Сервисы для арбитража трафика </h1>
-<div class="page__text">
-<p>В нашем рейтинге собраны лучшие сервисы для арбитража трафика — полезные инструменты, которые ускорят работу. Смотрите топ, выбирайте лучшие и создавайте прибыльные связки!</p>
-<p>Чтобы добавить свой сервис, пишите нам в <a href="https://t.me/d_medvedko" data-wpel-link="external" target="_blank" rel="nofollow external noopener noreferrer">Телеграм</a></p>
-</div>
-</div>
+            .gutenberg__close-partner {
+                display: none;
+            }
+        </style>
+        <section class="section">
+            <div class="container">
+                <div class="page__head">
+                    {% if reklama %}
+                    <div class="page__top-banner">
+                        <div class="rec_banners_container--h95">
+                            <a href="{{reklama.url}}">
+                                <img style="width: 1050; height:95px" src="{{reklama.photo.url}}">
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <ul class="list--unstyled breadcrumb">
+                        <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+                            <span class="kb_link" itemprop="itemListElement" itemscope
+                                itemtype="https://schema.org/ListItem">
+                                <a href="https://protraffic.com" data-wpel-link="internal">Главная</a>
+                                <meta itemprop="item" content="https://protraffic.com" />
+                                <meta itemprop="name" content="Главная" />
+                                <meta itemprop="position" content="1" />
+                            </span><span class="kb_sep">»</span>
+                            <span class="kb_title" itemprop="itemListElement" itemscope
+                                itemtype="https://schema.org/ListItem">
+                                <span>Сервисы</span>
+                                <meta itemprop="item" content="https://protraffic.com/services" />
+                                <meta itemprop="name" content="Сервисы" />
+                                <meta itemprop="position" content="2" />
+                            </span>
+                        </nav>
+                    </ul>
+                    <h1 class="section__title title section__title--blue"> Сервисы для арбитража трафика </h1>
+                    <div class="page__text">
+                        <p>В нашем рейтинге собраны лучшие сервисы для арбитража трафика — полезные инструменты, которые
+                            ускорят работу. Смотрите топ, выбирайте лучшие и создавайте прибыльные связки!</p>
+                        <p>Чтобы добавить свой сервис, пишите нам в <a href="https://t.me/d_medvedko"
+                                data-wpel-link="external" target="_blank"
+                                rel="nofollow external noopener noreferrer">Телеграм</a></p>
+                    </div>
+                </div>
 
     {% for category in services %}
                 <div class="page__section">

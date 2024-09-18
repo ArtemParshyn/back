@@ -15,6 +15,13 @@ admin.site.register(Category_partner)
 admin.site.register(Partner)
 admin.site.register(Obzor_partner)
 
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('descr', 'promo', 'website', 'costs', 'category_partner', 'rating', 'pos')
+    list_filter = ('category_partner', 'pos')
+
+
 class ArticlesAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget())
 
@@ -25,7 +32,7 @@ class ArticlesAdminForm(forms.ModelForm):
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'published_date', 'is_published', 'is_draft')
-    list_filter = ('is_published', 'published_date', 'is_draft')
+    list_filter = ('is_published', 'published_date', 'is_draft', 'pos')
     actions = ['publish_articles', 'unpublish_articles']
 
     def publish_articles(self, request, queryset):
@@ -35,5 +42,6 @@ class ArticleAdmin(admin.ModelAdmin):
     def unpublish_articles(self, request, queryset):
         rows_updated = queryset.update(is_published=False)
         self.message_user(request, f"{rows_updated} статьи были сняты с публикации.")
+
 
 admin.site.register(Article, ArticleAdmin)
