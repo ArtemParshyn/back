@@ -14,10 +14,14 @@ class ApiUser(AbstractUser):
 
 
 class Reklama(models.Model):
-    choices = [("1", "first"), ("2", "second"), ("3", "third")]
+    choices = [("1", "first"), ("2", "second"), ("3", "third"), ("4", "index_popup")]
     pos_reklama = models.CharField(choices=choices, max_length=1)
     photo = models.ImageField(upload_to='images/%Y/%m/%d/reklama', default=None)
-    url = models.CharField(max_length=64)
+    url = models.URLField()
+    button_text_index = models.CharField(max_length=15, default=None, blank=True)
+    text_index = models.CharField(max_length=80, default=None, blank=True)
+    tittle_index = models.CharField(max_length=45, default=None, blank=True)
+
 
     def __str__(self):
         return self.pos_reklama
@@ -61,7 +65,7 @@ class Partner(models.Model):
     costs = models.CharField(max_length=64, default=None, blank=True)
     category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="partners")
     rating = models.DecimalField(max_digits=2, decimal_places=1)
-    pos = models.CharField(choices=choices, max_length=1, blank=True, default=False)
+    pos = models.CharField(choices=choices, max_length=1, blank=True, default=None)
 
     def __str__(self):
         return self.descr
@@ -78,8 +82,8 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     is_case = models.BooleanField(default=False, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=1, blank=True)
-    pos = models.CharField(choices=choices, blank=True, default=None, max_length=1)
-    preview_for_index = models.CharField(max_length=256, default=None, blank=True)
+    pos = models.CharField(choices=choices, blank=True, max_length=1, null=True)
+    preview_for_index = models.CharField(max_length=256, blank=True, null=True)
 
     def __str__(self):
         return self.title

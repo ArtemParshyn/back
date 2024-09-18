@@ -120,7 +120,10 @@ def partners(request):
     return render(request, "affiliate_program.html", context={"partners": partners_prepared,
                                                               'reklama': Reklama.objects.all().get(
                                                                   pos_reklama="1") if Reklama.objects.all().filter(
-                                                                  pos_reklama="1").exists() else False
+                                                                  pos_reklama="1").exists() else False,
+                                                              "popup": Reklama.objects.all().get(
+                                                                  pos_reklama="4") if Reklama.objects.all().filter(
+                                                                  pos_reklama="4").exists() else False
                                                               })
 
 
@@ -186,7 +189,10 @@ def services(request):
     return render(request, "services.html", context={"services": services_prepared,
                                                      'reklama': Reklama.objects.all().get(
                                                          pos_reklama="1") if Reklama.objects.all().filter(
-                                                         pos_reklama="1").exists() else False
+                                                         pos_reklama="1").exists() else False,
+                                                     "popup": Reklama.objects.all().get(
+                                                         pos_reklama="4") if Reklama.objects.all().filter(
+                                                         pos_reklama="4").exists() else False
                                                      })
 
 
@@ -275,8 +281,10 @@ def index(request):
                            'services': services,
                            'reklama3': Reklama.objects.all().get(
                                pos_reklama="3") if Reklama.objects.all().filter(
-                               pos_reklama="3").exists() else False
-                           })
+                               pos_reklama="3").exists() else False,
+                           "popup": Reklama.objects.all().get(
+                               pos_reklama="4") if Reklama.objects.all().filter(
+                               pos_reklama="4").exists() else False})
 
 
 def register(request):
@@ -363,6 +371,10 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.author = request.user
+            article.pos = "none"
+            article.preview_for_index = "none"
+            print(article)
+            print(article)
             if request.user.is_partner:
                 article.is_published = True  # Устанавливаем статус как "не опубликовано"
                 article.save()
@@ -394,7 +406,10 @@ class ArticleCreateView(CreateView):
 def article_list(request):
     articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles,
-    'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(pos_reklama="1").exists() else False
+    'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(pos_reklama="1").exists() else False,
+                                             "popup": Reklama.objects.all().get(
+                                                 pos_reklama="4") if Reklama.objects.all().filter(
+                                                 pos_reklama="4").exists() else False
 })
 
 
@@ -448,7 +463,10 @@ def afcases(request):
     return render(request, 'affiliatecasestudy.html',
                   context={"articles": Article.objects.all().filter(is_case=True)[0:8],
                            'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(
-                               pos_reklama="1").exists() else False
+                               pos_reklama="1").exists() else False,
+                           "popup": Reklama.objects.all().get(
+                               pos_reklama="4") if Reklama.objects.all().filter(
+                               pos_reklama="4").exists() else False
                            })
 
 

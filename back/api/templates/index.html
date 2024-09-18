@@ -920,6 +920,85 @@
         color: darkgray;
       }
     </style>
+    {% if popup %}
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <div style="display: flex; align-items: center;">
+          <img style="width: 49px; margin-right: 10px;" src="{{popup.photo.url}}" alt="User Icon">
+          <span style="font-size: ;">{{popup.tittle_index}}</span>
+          <span class="close" style="margin-left: auto; cursor: pointer; font-size: 24px;">&times;</span>
+        </div>
+        <p style="padding-top: 20px;">{{popup.text_index}}</p>
+        <div class="section__btn1"><a class="btn btn--theme-default" href="{{popup.url}}"
+            data-wpel-link="internal">{{popup.button_text_index}}</a></div>
+      </div>
+
+    </div>
+    {% endif %}
+    <script>
+      var popup = document.getElementById('popup');
+      var closeBtn = document.getElementsByClassName('close')[0];
+
+      function showPopup() {
+        var lastClosed = localStorage.getItem('popupClosedTimestamp');
+
+        if (!lastClosed || (Date.now() - lastClosed) > 10800000) {
+          popup.style.display = "block";
+        }
+      }
+
+      closeBtn.onclick = function () {
+        popup.style.display = "none";
+        localStorage.setItem('popupClosedTimestamp', Date.now());
+        setTimeout(showPopup, 5000);
+      }
+
+      window.onclick = function (event) {
+        if (event.target == popup) {
+          popup.style.display = "none";
+          localStorage.setItem('popupClosedTimestamp', Date.now());
+          setTimeout(showPopup, 5000);
+        }
+      }
+
+      setTimeout(showPopup, 5000);
+    </script>
+    <style>
+      .popup {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .popup-content {
+        background-color: #fff;
+        padding: 30;
+        width: 400px;
+        height: 250px;
+        ;
+        text-align: left;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .section__btn1 {
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .close {
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
     <section>
 
       <div class="container">
