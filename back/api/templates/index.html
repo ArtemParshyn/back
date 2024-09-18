@@ -973,79 +973,88 @@
 
     <style>
 
-@media (min-width: 1024px) {
+     @media (min-width: 1024px) {
     .home section {
         padding-top: 100px;
     }
+}
 
+.banner-container {
+  width: 1050px;
+  margin: 0 auto;
+  overflow: hidden; /* Чтобы скрывать баннеры до наведения */
+  transition: all 0.5s ease; /* Плавное изменение высоты */
+  max-height: 95px; /* Изначально высота только для одного баннера */
+}
+
+.banner {
+  width: 1050px;
+  height: 95px;
+  background-color: #f0f0f0;
+  display: block; /* Ссылка будет занимать всю площадь баннера */
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
+  border-radius: 15px; /* Скругление углов */
+}
+
+.large-banner {
+  background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
+}
+
+.small-banner {
+  background-color: #e0e0e0;
+  background-size: cover;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.banner-container:hover {
+  max-height: 440px; /* Увеличиваем высоту для отображения всех баннеров */
+}
+
+.banner-container:hover .small-banner {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#banner1 {
+  background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
+}
+
+#banner2 {
+  background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
+}
+
+#banner3 {
+  background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
+}
+
+.below-content {
+  margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
     .banner-container {
-        width: 1050px;
-        margin: 0 auto;
-        overflow: hidden; /* Чтобы скрывать баннеры до наведения */
-        transition: all 0.5s ease; /* Плавное изменение высоты */
-        max-height: 95px; /* Изначально высота только для одного баннера */
+        width: 300px; /* Изменяем ширину контейнера на 200px */
+        max-height: 100px; /* Изначально высота для одного баннера 50px */
     }
 
     .banner {
-        width: 1050px;
-        height: 95px;
-        background-color: #f0f0f0;
-        display: block; /* Ссылка будет занимать всю площадь баннера */
-        position: relative;
-        margin-bottom: 10px;
-        cursor: pointer;
-        transition: all 0.5s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
-        border-radius: 10px; /* Скругление углов */
-    }
-
-    .large-banner {
-        background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
-    }
-
-    .small-banner {
-        background-color: #e0e0e0;
-        background-size: cover;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.5s ease;
-        pointer-events: none;
+        width: 300px; /* Ширина баннера 200px */
+        height: 100px; /* Высота баннера 50px */
     }
 
     .banner-container:hover {
-        max-height: 440px; /* Увеличиваем высоту для отображения всех баннеров */
-    }
-
-    .banner-container:hover .small-banner {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    #banner1 {
-        background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
-    }
-
-    #banner2 {
-        background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
-    }
-
-    #banner3 {
-        background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
-    }
-
-    .below-content {
-        margin-top: 20px;
+        max-height: 1000px; /* Увеличиваем высоту для отображения всех баннеров на мобильных устройствах */
     }
 }
-
-@media (max-width: 1024px) {
-    .banner-container {
-        display: none; /* Скрываем баннеры на устройствах с маленьким экраном */
-    }
-}
-
-
 
 
     </style>
