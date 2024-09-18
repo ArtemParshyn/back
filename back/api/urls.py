@@ -32,6 +32,9 @@ urlpatterns = [
     path('obzorp/<int:obzor_id>/', views.obzorp_detail, name='obzorp_detail'),
     path('enable-article-creation/', enable_article_creation, name='enable_article_creation'),
     path('keysi', views.afcases, name='cases'),
+    path('edit-article/<int:pk>/', views.edit_article, name='edit_article'),
+    path('articles/<int:pk>/unpublish/', views.unpublish_article, name='unpublish_article'),
+    path('articles/<int:pk>/publish/', views.publish_article, name='publish_article'),
 ]
 
 if settings.DEBUG:

@@ -24,8 +24,8 @@ class ArticlesAdminForm(forms.ModelForm):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'published_date', 'is_published')
-    list_filter = ('is_published', 'published_date')
+    list_display = ('title', 'author', 'published_date', 'is_published', 'is_draft')
+    list_filter = ('is_published', 'published_date', 'is_draft')
     actions = ['publish_articles', 'unpublish_articles']
 
     def publish_articles(self, request, queryset):

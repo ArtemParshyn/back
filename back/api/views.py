@@ -19,7 +19,8 @@ from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 
 def index(request):
@@ -442,3 +443,54 @@ def article_add(request):
         })
 
     return JsonResponse(articles_data, safe=False)
+
+
+
+@login_required
+def edit_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    # Проверяем, является ли пользователь автором статьи или суперпользователем
+    if request.user != article.author and not request.user.is_superuser:
+        return HttpResponseForbidden("У вас нет прав для редактирования этой статьи.")
+
+    if request.method == "POST":
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('user_articles')
+    else:
+        form = ArticleForm(instance=article)
+
+    return render(request, 'edit_article.html', {'form': form, 'article': article})
+
+
+@login_required
+def unpublish_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    # Проверяем права пользователя
+    if request.user != article.author and not request.user.is_superuser:
+        return HttpResponseForbidden("У вас нет прав для снятия статьи с публикации.")
+
+    # Снимаем статью с публикации: меняем is_published и is_draft
+    article.is_published = False
+    article.is_draft = True
+    article.save()
+
+    return redirect('user_articles')
+
+
+@login_required
+def publish_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    # Проверяем права пользователя
+    if request.user != article.author and not request.user.is_superuser:
+        return HttpResponseForbidden("У вас нет прав для публикации статьи.")
+
+    article.is_draft = False
+    article.save()
+
+    return redirect('user_articles')
+

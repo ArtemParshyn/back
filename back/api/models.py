@@ -73,6 +73,7 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
     is_case = models.BooleanField(default=False, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=1, blank=True)
+    is_draft = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

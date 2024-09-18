@@ -532,8 +532,11 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
     {% if article.is_published %}
 <div class="badge badge--green">
         Опубликовано
+    {% elif article.is_draft %}
+    <div class="badge badge--gray">
+        Черновик
     {% else %}
-    <div class="badge badge--orange">
+        <div class="badge badge--orange">
         На модерации
     {% endif %}
 </div> </div>
@@ -558,13 +561,15 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 <div class="mb-3">
 <div class="row gutter-x-5 gutter-y-10 justify-content-center">
 <div class="col-12">
-<a href="personal-account?function=post_edit&amp;post_id=116633" class="btn btn--size-lg btn--theme-border btn--block" data-wpel-link="internal">
+<a href="{% url 'edit_article' article.pk %}" class="btn btn--size-lg btn--theme-border btn--block" data-wpel-link="internal">
 Редактировать
 </a>
 </div>
 
+    {% if article.is_published %}
+
 <div class="col-12">
-<a href="" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
+<a href="{% url 'unpublish_article' article.pk %}" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
 <span class="mr-1">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="is--red" viewBox="0 0 16 16">
 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
@@ -573,6 +578,34 @@ var loadmore_params = {"ajaxurl":"https:\/\/protraffic.com\/wp-admin\/admin-ajax
 Снять с публикации
 </a>
 </div>
+
+    {% elif not article.is_draft %}
+
+<div class="col-12">
+<a href="{% url 'unpublish_article' article.pk %}" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
+<span class="mr-1">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="is--red" viewBox="0 0 16 16">
+<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+</svg>
+</span>
+Снять с публикации
+</a>
+</div>
+
+    {% elif article.is_draft %}
+    <div class="col-12">
+<a href="{% url 'publish_article' article.pk %}" class="btn btn--theme-border btn--block user_post__action btn--block btn--size-lg" data-action="private" data-post_id="116633" data-wpel-link="internal">
+<span class="mr-1">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+</svg>
+
+</span>
+Опубликовать
+</a>
+</div>
+    {% endif %}
+
 </div>
 </div>
 <div class="d-flex justify-content-between align-items-center">
