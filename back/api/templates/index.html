@@ -2242,6 +2242,8 @@
         <div class="col-item menu-bar__head">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="col-item menu-bar__title title">Меню</div>
+
+             {% if success %}
                 <div class="col-item usermob">
                     <div class="user-dropdown">
                         <div class="d-lg-block d-none">
@@ -2301,7 +2303,30 @@
                     </svg>
                 </div>
             </div>
+          {% endif %}
+
+          {% if not success %}
+          <div class="col-item usermob">
+<a class="d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle" href="javascript:;" data-action="open" data-wpel-link="internal">Войти
+</a>
+<a class="d-lg-none js-login-popup__toggle" href="javascript:;" data-action="open" data-wpel-link="internal">
+<svg viewBox="0 0 20 20" id="signin" width="25" height="25" class="site-header__user-icon ">
+<path d="M.25 10C.25 4.62 4.61.25 10 .25c5.38 0 9.75 4.37 9.75 9.75s-4.37 9.75-9.75 9.75c-2.29 0-4.39-.79-6.05-2.11a9.81 9.81 0 01-1.24-1.17A9.71 9.71 0 01.25 10zM10 18.25c2.14 0 4.1-.82 5.56-2.16-1.05-2.53-3.2-4.34-5.56-4.34-2.36 0-4.51 1.81-5.56 4.34A8.21 8.21 0 0010 18.25zM12.25 8c0-1.24-1.01-2.25-2.25-2.25S7.75 6.76 7.75 8s1.01 2.25 2.25 2.25S12.25 9.24 12.25 8zm-4.77 2.78A3.751 3.751 0 0110 4.25a3.751 3.751 0 012.52 6.53c1.74.75 3.2 2.23 4.14 4.09 1-1.37 1.59-3.05 1.59-4.87 0-4.56-3.69-8.25-8.25-8.25-4.56 0-8.25 3.69-8.25 8.25 0 1.82.59 3.51 1.59 4.87.94-1.86 2.4-3.34 4.14-4.09z"></path>
+</svg>
+</a>
+
+</div>
+          <div class="col-item js-menu-bar__toggle">
+<svg viewBox="0 0 25 25" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" id="close-icon">
+<rect x="2.82861" width="31" height="4" transform="rotate(45 2.82861 0)" fill="#3663E0"></rect>
+<rect y="21.9204" width="31" height="4" transform="rotate(-45 0 21.9204)" fill="#3663E0"></rect>
+</svg>
+</div>
+
+          {% endif %}
+
             <div class="mt-4 relative">
+
                 <div class="ya-site-form ya-site-form_bg_transparent ya-site-form_inited_yes" id="ya-site-form1">
                     <div class="ya-site-form__form">
                         <table class="ya-site-form__wrap" cellpadding="0" cellspacing="0">

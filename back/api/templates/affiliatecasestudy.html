@@ -321,6 +321,109 @@
     }
   </style>
 
+     <script>
+    $(document).ready(function () {
+
+      // Функция для получения CSRF токена
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      var csrftoken = getCookie('csrftoken');
+
+      // Обработка отправки формы авторизации
+      $('#loginform').on('submit', function (e) {
+        e.preventDefault();
+
+        var $form = $(this);
+        var $submitButton = $form.find('button[type="submit"]');
+        $submitButton.prop('disabled', true);
+
+        $.ajax({
+          url: $form.attr('action'),
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
+          data: $form.serialize(),
+          success: function (response) {
+            if (response.success) {
+              // Заменяем кнопку "Войти" на иконку профиля
+              // Показываем сообщение об успешном входе
+              $('.login-success-message').show();
+              window.location.pathname = '/';
+            } else {
+              // Показываем сообщение об ошибке
+              $('.login-form-errors').text(response.message).show();
+            }
+          },
+          error: function () {
+            alert('Ошибка при авторизации. Попробуйте снова.');
+          },
+          complete: function () {
+            $submitButton.prop('disabled', false);
+          }
+        });
+      });
+
+      $('#ptf_user_register_form').on('submit', function (e) {
+        e.preventDefault();
+
+        var $form = $(this);
+        var $submitButton = $form.find('button[type="submit"]');
+        $submitButton.prop('disabled', true);
+
+        $.ajax({
+          url: $form.attr('action'),
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
+          data: $form.serialize(),
+          success: function (response) {
+            if (response.success) {
+              // Показываем сообщение об успешном входе
+              $('.registration-success-messages').show();
+              window.location.pathname = '/';
+            } else {
+              // Показываем сообщение об ошибке
+              $('.registration-form-errors').text(response.message).show();
+            }
+          },
+          error: function () {
+            alert('Ошибка при регистрации. Попробуйте снова.');
+          },
+          complete: function () {
+            $submitButton.prop('disabled', false);
+          }
+        });
+      });
+
+      // Переключение видимости пароля
+      $('.js-input__toggle-type').on('click', function () {
+        var $input = $(this).siblings('input');
+        var type = $input.attr('type') === 'password' ? 'text' : 'password';
+        $input.attr('type', type);
+      });
+
+    });
+
+
+
+
+  </script>
+
   <script
     type="application/ld+json">[{"@context":"http:\/\/schema.org\/","@type":"WPHeader","url":"","headline":"Кейсы","description":"Актуальные кейсы по арбитражу трафика 2023. На этой странице вы найдете всевозможные успешные (и не очень) кейсы по..."},{"@context":"http:\/\/schema.org\/","@type":"WPFooter","url":"","headline":"Кейсы","description":"Актуальные кейсы по арбитражу трафика 2023. На этой странице вы найдете всевозможные успешные (и не очень) кейсы по..."}]</script>
 
@@ -1187,13 +1290,18 @@
                     data-action="close" data-show="login" data-wpel-link="internal">Отмена</a></span>
               </div>
             </div>
-            <form class="js-validation__login" name="loginform" id="loginform" action="./wp-login.php" method="post">
+            <form class="js-validation__login" name="loginform" id="loginform" action="{% url 'login' %}" method="post">
+              <div class="login-form-errors" style="display:none;"></div>
+              <div class="login-success-message" style="display:none;">Вы успешно вошли в систему!</div>
+              {% csrf_token %}
+              {{ form.as_p }}
               <div class="gutter-y-15">
                 <div class="col-item">
                   <div class="js-form__group">
                     <label class="form-label" for="Ваш логин">Ваш логин</label>
                     <div class="relative">
-                      <input class="form-input js-input undefined" name="log" id="user_login" required="required" />
+                      <input name="username" placeholder="username" type="text" class="form-input js-input"
+                        id="{{ form.username.id_for_label }}" required="required" />
                     </div>
                   </div>
                 </div>
@@ -1201,8 +1309,8 @@
                   <div class="js-form__group">
                     <label class="form-label" for="Ваш пароль">Ваш пароль</label>
                     <div class="relative js-input__container">
-                      <input class="form-input js-input undefined" type="password" name="pwd" id="user_pass"
-                        required="required" />
+                      <input autocomplete="new-password" placeholder="password" name="password" type="password"
+                        id="{{ form.password1.id_for_label }}" class="form-input js-input" required="required" />
                       <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
@@ -1212,14 +1320,10 @@
                     </div>
                   </div>
                 </div>
-                <input name="rememberme" type="checkbox" id="rememberme" value="forever">
-                <label for="rememberme" class>
-                  Запомнить меня
-                </label>
               </div>
               <button name="wp-submit" id="wp-submit" class="btn btn--theme-default btn--block"
                 type="submit">Войти</button>
-              <input type="hidden" name="redirect_to" value="/affiliatecasestudy" />
+              <input type="hidden" name="redirect_to" value="/" />
               <input type="hidden" name="testcookie" value="1" />
             </form>
 
@@ -1238,33 +1342,27 @@
               </p>
               <div class="user-popup__title_register"></div>
             </div>
-            <form id="ptf_user_register_form" class="js-validation__reg">
+            <form id="ptf_user_register_form" action="{% url 'register' %}" method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="registration-form-errors" style="display:none;"></div>
+              <div class="registration-success-messages" style="display:none;">Вы успешно зарегистрировались!</div>
               <div class="gutter-y-15">
                 <div class="col-item">
                   <div class="js-form__group">
-                    <label class="form-label" for="Ваш логин">Ваш логин</label>
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Ваш логин</label>
                     <div class="relative">
-
-                      <input name="user_name" type="text" class="form-input js-input undefined" required="required">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-item">
-                  <div class="js-form__group">
-                    <label class="form-label" for="Ваш логин">Ваш E-mail*</label>
-                    <div class="relative">
-                      <input type="email" name="user_email" id="user_email" class="form-input js-input undefined" value
-                        size="25" required="required">
+                      <input name="username" placeholder="username" type="text" class="form-input js-input"
+                        id="{{ form.username.id_for_label }}" required="required">
                     </div>
                   </div>
                 </div>
                 <div class="col-item js-input__container">
                   <div class="js-form__group">
-                    <label class="form-label" for="Ваш пароль">Ваш пароль</label>
+                    <label class="form-label" for="{{ form.password1.id_for_label }}">Ваш пароль</label>
                     <div class="relative js-input__container">
-
-                      <input autocomplete="new-password" name="user_pass" type="password" id="js-password-again"
-                        class="form-input js-input undefined js-input" required="required">
+                      <input autocomplete="new-password" placeholder="password" name="password1" type="password"
+                        id="{{ form.password1.id_for_label }}" class="form-input js-input" required="required">
                       <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
@@ -1276,25 +1374,25 @@
                 </div>
                 <div class="col-item js-input__container">
                   <div class="js-form__group">
-                    <label class="form-label" for="Повторить пароль">Повторить пароль</label>
+                    <label class="form-label" for="{{ form.password2.id_for_label }}">Повторить пароль</label>
                     <div class="relative js-input__container">
-
-                      <input autocomplete="new-password" name="user_pass_confirm" type="password"
-                        class="form-input js-input undefined js-input" required="required">
-                      <div class="js-input__toggle-type form-input__icon ">
+                      <input autocomplete="new-password" placeholder="confirm password" name="password2" type="password"
+                        id="{{ form.password2.id_for_label }}" class="form-input js-input" required="required">
+                      <div class="js-input__toggle-type form-input__icon">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#eye">
                           </use>
                         </svg>
                       </div>
                     </div>
+                    <div class="js-user-popup__alert mt-1 none color--red pass_err">Пароль и подтверждение пароля не
+                      совпадают</div>
                   </div>
-                  <div class="js-user-popup__alert mt-1 none color--red pass_err">Пароль и подтверждение пароля не
-                    совпадают</div>
                 </div>
               </div>
-              <input type="hidden" id="nonce_user_register" name="nonce_user_register" value="774ecc3990" /><input
-                type="hidden" name="_wp_http_referer" value="/affiliatecasestudy" /> <input name="surname" hidden>
+              <input type="hidden" id="nonce_user_register" name="nonce_user_register" value="774ecc3990" />
+              <input type="hidden" name="_wp_http_referer" value="/" />
+              <input name="surname" hidden>
               <button id="ptf_send_user_register"
                 class="btn btn--theme-default btn--block preloader__container js-preload__container" type="submit">
                 <span class="js-preload__text">Зарегистрироваться</span>
@@ -1304,6 +1402,7 @@
                 </div>
               </button>
             </form>
+
           </div>
         </div>
         <div class="login-popup__form">
@@ -1412,6 +1511,8 @@
         <div class="col-item menu-bar__head">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="col-item menu-bar__title title">Меню</div>
+
+             {% if success %}
                 <div class="col-item usermob">
                     <div class="user-dropdown">
                         <div class="d-lg-block d-none">
@@ -1471,7 +1572,30 @@
                     </svg>
                 </div>
             </div>
+          {% endif %}
+
+          {% if not success %}
+          <div class="col-item usermob">
+<a class="d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle" href="javascript:;" data-action="open" data-wpel-link="internal">Войти
+</a>
+<a class="d-lg-none js-login-popup__toggle" href="javascript:;" data-action="open" data-wpel-link="internal">
+<svg viewBox="0 0 20 20" id="signin" width="25" height="25" class="site-header__user-icon ">
+<path d="M.25 10C.25 4.62 4.61.25 10 .25c5.38 0 9.75 4.37 9.75 9.75s-4.37 9.75-9.75 9.75c-2.29 0-4.39-.79-6.05-2.11a9.81 9.81 0 01-1.24-1.17A9.71 9.71 0 01.25 10zM10 18.25c2.14 0 4.1-.82 5.56-2.16-1.05-2.53-3.2-4.34-5.56-4.34-2.36 0-4.51 1.81-5.56 4.34A8.21 8.21 0 0010 18.25zM12.25 8c0-1.24-1.01-2.25-2.25-2.25S7.75 6.76 7.75 8s1.01 2.25 2.25 2.25S12.25 9.24 12.25 8zm-4.77 2.78A3.751 3.751 0 0110 4.25a3.751 3.751 0 012.52 6.53c1.74.75 3.2 2.23 4.14 4.09 1-1.37 1.59-3.05 1.59-4.87 0-4.56-3.69-8.25-8.25-8.25-4.56 0-8.25 3.69-8.25 8.25 0 1.82.59 3.51 1.59 4.87.94-1.86 2.4-3.34 4.14-4.09z"></path>
+</svg>
+</a>
+
+</div>
+          <div class="col-item js-menu-bar__toggle">
+<svg viewBox="0 0 25 25" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" id="close-icon">
+<rect x="2.82861" width="31" height="4" transform="rotate(45 2.82861 0)" fill="#3663E0"></rect>
+<rect y="21.9204" width="31" height="4" transform="rotate(-45 0 21.9204)" fill="#3663E0"></rect>
+</svg>
+</div>
+
+          {% endif %}
+
             <div class="mt-4 relative">
+
                 <div class="ya-site-form ya-site-form_bg_transparent ya-site-form_inited_yes" id="ya-site-form1">
                     <div class="ya-site-form__form">
                         <table class="ya-site-form__wrap" cellpadding="0" cellspacing="0">
