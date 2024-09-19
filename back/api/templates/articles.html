@@ -827,25 +827,50 @@
                     </div>
                 </div>
                 <div class="col-item d-flex gutter-x-5">
-                    <style>
-                        .site-header .btn {
-                            min-width: auto;
-                        }
 
-                        @media only screen and (max-width: 991px) {
-                            .col-item.userlog {
-                                display: none;
-                            }
-                        }
-                    </style>
-                    <div class="col-item userlog">
-                        <div class="user-dropdown">
-                            <div class="d-lg-block d-none">
+          <style>
+            .site-header .btn {
+              min-width: auto;
+            }
 
+            @media only screen and (max-width: 991px) {
+              .col-item.userlog {
+                display: none;
+              }
+            }
 
+            .new {
+              height: 15px;
+            }
+          </style>
+          <!-- <div class="col-item userlog">
+            {% if success %}
+            <a href = "profile_main"><svg viewBox="0 0 20 20" id="signin" width="25" height="25" class="site-header__user-icon ">
+              <path
+                d="M.25 10C.25 4.62 4.61.25 10 .25c5.38 0 9.75 4.37 9.75 9.75s-4.37 9.75-9.75 9.75c-2.29 0-4.39-.79-6.05-2.11a9.81 9.81 0 01-1.24-1.17A9.71 9.71 0 01.25 10zM10 18.25c2.14 0 4.1-.82 5.56-2.16-1.05-2.53-3.2-4.34-5.56-4.34-2.36 0-4.51 1.81-5.56 4.34A8.21 8.21 0 0010 18.25zM12.25 8c0-1.24-1.01-2.25-2.25-2.25S7.75 6.76 7.75 8s1.01 2.25 2.25 2.25S12.25 9.24 12.25 8zm-4.77 2.78A3.751 3.751 0 0110 4.25a3.751 3.751 0 012.52 6.53c1.74.75 3.2 2.23 4.14 4.09 1-1.37 1.59-3.05 1.59-4.87 0-4.56-3.69-8.25-8.25-8.25-4.56 0-8.25 3.69-8.25 8.25 0 1.82.59 3.51 1.59 4.87.94-1.86 2.4-3.34 4.14-4.09z">
+              </path>
+            </svg></a>
 
+            {% endif %}
+            {% if not success %}
+            <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+              href="javascript:;" data-action="open" data-wpel-link="internal">
+              Войти
+            </a>
+            {% endif %}
+          </div>
+          <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+            <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+          </div>
+        </div>
+      </div>
+    </div> -->
 
-                                {% if user.photo %}
+          {% if success %}
+          <div class="col-item userlog">
+            <div class="user-dropdown">
+              <div class="d-lg-block d-none">
+                {% if user.photo %}
 
                                 <a href="javascript:;" class="thumb-author thumb-author--sm"
                                    style="background-image: url({{ user.photo.url }})"
@@ -854,48 +879,69 @@
 
                                 {% else %}
 
-                                <a href="../profile" class="thumb-author thumb-author--sm"
+                                <a href="../../profile" class="thumb-author thumb-author--sm"
                                     style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
                                     data-wpel-link="internal"></a>
                                 {% endif %}
-
-
-                            </div>
-
-                            <div class="d-lg-none">
+              </div>
+              <div class="d-lg-none">
+                {% if user.photo %}
 
                                 <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                   style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                   style="background-image: url({{ user.photo.url }})"
                                    data-wpel-link="internal">
                                 </a>
 
-                            </div>
-                            <div class="user-dropdown__list">
-                                <div class="user-dropdown__center">
-                                    <a href="../profile" data-view="login"
-                                        data-wpel-link="internal">Профиль</a>
-                                    {% if not user.can_create_articles %}
-                                    <a href="../create_blog"
+                                {% else %}
+
+                                <a href="../../profile" class="thumb-author thumb-author--sm"
+                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                                    data-wpel-link="internal"></a>
+                                {% endif %}
+              </div>
+              <div class="user-dropdown__list">
+                <div class="user-dropdown__center">
+                  <a href="../../profile" data-view="login"
+                    data-wpel-link="internal">Профиль</a>
+                  {% if not user.can_create_articles %}
+                                    <a href="../../create_blog"
                                         data-wpel-link="internal">Создать блог</a>
                                     {% endif %}
 
-                                    {% if user.can_create_articles %}
-                                    <a href="../user_articles"
+                                    {% if user.can_create_articles and user.is_partner == 1 %}
+                                    <a href="../../partner_articles"
+                                        data-wpel-link="internal">Статьи</a>
+
+                                    {% elif user.can_create_articles %}
+                                    <a href="../../user_articles"
                                         data-wpel-link="internal">Статьи</a>
                                     {% endif %}
-                                    <a href="../logout"
-                                        data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
-                        <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
-                        </svg>
-                    </div>
+
+                  <a href="../../logout"
+                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+            <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+          </div>
+          </svg>
         </div>
+      </div>
+    </div>
+    </div>
+    {% endif %}
+
+    {% if not success %}
+    <a class="new d-lg-block d-none site-header__login btn btn--size-md btn--theme-white js-login-popup__toggle"
+      href="javascript:;" data-action="open" data-wpel-link="internal">
+      Войти
+    </a>
+    <div class="d-lg-none js-menu-bar__toggle site-header__mob-toggle">
+      <img class="d-block" src="{% static 'svg/menu.svg' %}" height="50" width="50" alt="burger">
+    </div>
+    {% endif %}
     </header>
   <main class="site-main js-main-content">
     <style>
