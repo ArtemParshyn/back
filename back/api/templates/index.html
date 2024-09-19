@@ -792,53 +792,46 @@
               <div class="d-lg-block d-none">
                 {% if user.photo %}
 
-                                <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                   style="background-image: url({{ user.photo.url }})"
-                                   data-wpel-link="internal">
-                                </a>
+                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                  style="background-image: url({{ user.photo.url }})" data-wpel-link="internal">
+                </a>
 
-                                {% else %}
+                {% else %}
 
-                                <a href="../profile" class="thumb-author thumb-author--sm"
-                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                    data-wpel-link="internal"></a>
-                                {% endif %}
+                <a href="../profile" class="thumb-author thumb-author--sm"
+                  style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                  data-wpel-link="internal"></a>
+                {% endif %}
               </div>
               <div class="d-lg-none">
                 {% if user.photo %}
 
-                                <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                   style="background-image: url({{ user.photo.url }})"
-                                   data-wpel-link="internal">
-                                </a>
+                <a href="javascript:;" class="thumb-author thumb-author--sm"
+                  style="background-image: url({{ user.photo.url }})" data-wpel-link="internal">
+                </a>
 
-                                {% else %}
+                {% else %}
 
-                                <a href="../profile" class="thumb-author thumb-author--sm"
-                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                    data-wpel-link="internal"></a>
-                                {% endif %}
+                <a href="../profile" class="thumb-author thumb-author--sm"
+                  style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                  data-wpel-link="internal"></a>
+                {% endif %}
               </div>
               <div class="user-dropdown__list">
                 <div class="user-dropdown__center">
-                  <a href="profile" data-view="login"
-                    data-wpel-link="internal">Профиль</a>
+                  <a href="profile" data-view="login" data-wpel-link="internal">Профиль</a>
                   {% if not user.can_create_articles %}
-                                    <a href="/create_blog"
-                                        data-wpel-link="internal">Создать блог</a>
-                                    {% endif %}
+                  <a href="/create_blog" data-wpel-link="internal">Создать блог</a>
+                  {% endif %}
 
-                                    {% if user.can_create_articles and user.is_partner == 1 %}
-                                    <a href="/partner_articles"
-                                        data-wpel-link="internal">Статьи</a>
+                  {% if user.can_create_articles and user.is_partner == 1 %}
+                  <a href="/partner_articles" data-wpel-link="internal">Статьи</a>
 
-                                    {% elif user.can_create_articles %}
-                                    <a href="/user_articles"
-                                        data-wpel-link="internal">Статьи</a>
-                                    {% endif %}
+                  {% elif user.can_create_articles %}
+                  <a href="/user_articles" data-wpel-link="internal">Статьи</a>
+                  {% endif %}
 
-                  <a href="logout"
-                    data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+                  <a href="logout" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
                 </div>
               </div>
             </div>
@@ -1038,108 +1031,117 @@
       }
     </style>
 
-<div class="banner-container">
-  <a href="#" class="banner large-banner" id="main-banner"></a>
+    <div class="banner-container">
+      <a href="#" class="banner large-banner" id="main-banner"></a>
 
-  <!-- Скрытые баннеры -->
-  <a href="#" class="banner small-banner" id="banner1"></a>
-  <a href="#" class="banner small-banner" id="banner2"></a>
-  <a href="#" class="banner small-banner" id="banner3"></a>
-</div>
+      <!-- Скрытые баннеры -->
+      <a href="#" class="banner small-banner" id="banner1"></a>
+      <a href="#" class="banner small-banner" id="banner2"></a>
+      <a href="#" class="banner small-banner" id="banner3"></a>
+    </div>
 
-<!-- Контент ниже баннеров -->
-<div class="below-content">
-</div>
+    <!-- Контент ниже баннеров -->
+    <div class="below-content">
+    </div>
 
 
 
 
     <style>
+      @media (min-width: 1024px) {
+        .home section {
+          padding-top: 100px;
+        }
+      }
 
-     @media (min-width: 1024px) {
-    .home section {
-        padding-top: 100px;
-    }
-}
+      .banner-container {
+        width: 1050px;
+        margin: 0 auto;
+        overflow: hidden;
+        /* Чтобы скрывать баннеры до наведения */
+        transition: all 0.5s ease;
+        /* Плавное изменение высоты */
+        max-height: 95px;
+        /* Изначально высота только для одного баннера */
+      }
 
-.banner-container {
-  width: 1050px;
-  margin: 0 auto;
-  overflow: hidden; /* Чтобы скрывать баннеры до наведения */
-  transition: all 0.5s ease; /* Плавное изменение высоты */
-  max-height: 95px; /* Изначально высота только для одного баннера */
-}
+      .banner {
+        width: 1050px;
+        height: 95px;
+        background-color: #f0f0f0;
+        display: block;
+        /* Ссылка будет занимать всю площадь баннера */
+        position: relative;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        /* Добавляем тень */
+        border-radius: 15px;
+        /* Скругление углов */
+      }
 
-.banner {
-  width: 1050px;
-  height: 95px;
-  background-color: #f0f0f0;
-  display: block; /* Ссылка будет занимать всю площадь баннера */
-  position: relative;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
-  border-radius: 15px; /* Скругление углов */
-}
+      .large-banner {
+        background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
+      }
 
-.large-banner {
-  background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
-}
+      .small-banner {
+        background-color: #e0e0e0;
+        background-size: cover;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.5s ease;
+        pointer-events: none;
+      }
 
-.small-banner {
-  background-color: #e0e0e0;
-  background-size: cover;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: all 0.5s ease;
-  pointer-events: none;
-}
+      .banner-container:hover {
+        max-height: 440px;
+        /* Увеличиваем высоту для отображения всех баннеров */
+      }
 
-.banner-container:hover {
-  max-height: 440px; /* Увеличиваем высоту для отображения всех баннеров */
-}
+      .banner-container:hover .small-banner {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
 
-.banner-container:hover .small-banner {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+      #banner1 {
+        background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
+      }
 
-#banner1 {
-  background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
-}
+      #banner2 {
+        background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
+      }
 
-#banner2 {
-  background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
-}
+      #banner3 {
+        background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
+      }
 
-#banner3 {
-  background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
-}
-
-.below-content {
-  margin-top: 20px;
-}
-
-
-@media (max-width: 768px) {
-    .banner-container {
-        width: 300px; /* Изменяем ширину контейнера на 200px */
-        max-height: 100px; /* Изначально высота для одного баннера 50px */
-    }
-
-    .banner {
-        width: 300px; /* Ширина баннера 200px */
-        height: 100px; /* Высота баннера 50px */
-    }
-
-    .banner-container:hover {
-        max-height: 1000px; /* Увеличиваем высоту для отображения всех баннеров на мобильных устройствах */
-    }
-}
+      .below-content {
+        margin-top: 20px;
+      }
 
 
+      @media (max-width: 768px) {
+        .banner-container {
+          width: 300px;
+          /* Изменяем ширину контейнера на 200px */
+          max-height: 100px;
+          /* Изначально высота для одного баннера 50px */
+        }
+
+        .banner {
+          width: 300px;
+          /* Ширина баннера 200px */
+          height: 100px;
+          /* Высота баннера 50px */
+        }
+
+        .banner-container:hover {
+          max-height: 1000px;
+          /* Увеличиваем высоту для отображения всех баннеров на мобильных устройствах */
+        }
+      }
     </style>
 
 
@@ -1442,400 +1444,41 @@
         </div>
       </div>
       <div class="js-slider d-lg-none js-container__left slick--preloader posts-slider">
+        {% for article in last_articles %}
         <div class="col-item">
           <div class="post">
             <div class="post__top">
               <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  21 Авг 24 </a>
+                <a class="cat" href="./articles/{{article.id}}" data-wpel-link="internal">
+                  {{ article.published_date|date:"d E y" }} </a>
               </div>
-              <a class="post__thumb" href="./articles/kak-uvelichit-konversiyu-115539.html" data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1724029510.png"
-                  alt="Как увеличить конверсию в 5 раз: план действий от Royal Partners">
+              <a class="post__thumb" href="./articles/{{article.id}}" data-wpel-link="internal">
+                <img src="{{article.image}}" alt="Как увеличить конверсию в 5 раз: план действий от Royal Partners">
               </a>
             </div>
             <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/royalpartners" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2024/08/1723550889.png" alt="RoyalPartners"
-                    title="RoyalPartners" /></span>
+              <a class="post__author" data-wpel-link="internal">
+                <span><img src="{{article.avatar}}"></span>
               </a>
               <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/konversiya" data-wpel-link="internal">#конверсия</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/sovety" data-wpel-link="internal">#советы</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/kak-uvelichit-konversiyu-115539.html"
+                <a class="post__title title" href="articles/{{article.id}}"
                   data-wpel-link="internal">
-                  Как увеличить конверсию в 5 раз: план действий от Royal Partners </a>
+                  {{article.title}} </a>
               </div>
               <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
                 <div class="col-item post_raiting upper-text record is--green">
                   <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 17</span>
+                  <span class="ml-1"> {{article.rating}}</span>
                 </div>
                 <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/royalpartners" data-wpel-link="internal">
-                    RoyalPartners </a>
+                  <a class="upper-text link--gray" data-wpel-link="internal">
+                    RUARB </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  16 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/gajd-ubt-facebook-dating-115362.html" data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-47.png"
-                  alt="Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/ubt-2" data-wpel-link="internal">#убт</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/facebook" data-wpel-link="internal">#Facebook</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/dejting-2" data-wpel-link="internal">#дейтинг</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/gajd-2" data-wpel-link="internal">#гайд</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/gajd-ubt-facebook-dating-115362.html"
-                  data-wpel-link="internal">
-                  Гайд по заливу УБТ-трафика с Facebook на вертикаль Dating в 2024 </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 24</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  14 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/metod-progreva-youtube-kanalov-s-ubt-115346.html"
-                data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-46.png"
-                  alt="Метод прогрева YouTube-каналов для работы с условно-бесплатным трафиком">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/youtube" data-wpel-link="internal">#YouTube</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/ubt-2" data-wpel-link="internal">#убт</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/metody-progreva" data-wpel-link="internal">#методы прогрева</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/metod-progreva-youtube-kanalov-s-ubt-115346.html"
-                  data-wpel-link="internal">
-                  Метод прогрева YouTube-каналов для работы с условно-бесплатным трафиком </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 23</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  13 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/gajd-kak-zarabatyvat-na-ai-modelyah-115380.html"
-                data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1390x780-45.png"
-                  alt="ГАЙД: как зарабатывать на AI-моделях, — подробный разбор связки для УБТ с Instagram и слива на Patreon">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/instagram" data-wpel-link="internal">#Instagram</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/gajd-2" data-wpel-link="internal">#гайд</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/ubt-2" data-wpel-link="internal">#убт</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/ai-modeli" data-wpel-link="internal">#AI-модели</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/gajd-kak-zarabatyvat-na-ai-modelyah-115380.html"
-                  data-wpel-link="internal">
-                  ГАЙД: как зарабатывать на AI-моделях, — подробный разбор связки для УБТ с Instagram и слива на Patreon
-                </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 24</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  08 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/reddit-istochnik-vertikali-114874.html" data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/07/1390x780-44.png"
-                  alt="Reddit: разбираемся в источнике и узнаем, на какие вертикали льют арбитражники">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/vertikali" data-wpel-link="internal">#вертикали</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/istochniki" data-wpel-link="internal">#источники</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/arbitrazh-2-2" data-wpel-link="internal">#Арбитраж</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/reddit" data-wpel-link="internal">#Reddit</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/reddit-istochnik-vertikali-114874.html"
-                  data-wpel-link="internal">
-                  Reddit: разбираемся в источнике и узнаем, на какие вертикали льют арбитражники </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 22</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  07 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/kak-zalivat-in-app-trafik-114901.html" data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/07/1390x780-43.png"
-                  alt="Как заливать In-app трафик: популярные вертикали и сорсы">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/sorsy" data-wpel-link="internal">#сорсы</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/in-app" data-wpel-link="internal">#In-app</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/sovety" data-wpel-link="internal">#советы</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/kak-zalivat-in-app-trafik-114901.html"
-                  data-wpel-link="internal">
-                  Как заливать In-app трафик: популярные вертикали и сорсы </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 20</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  07 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/6-prichin-nizkoy-konversii-v-facebook-115281.html"
-                data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/08/1723028709.png"
-                  alt="6 причин низкой конверсии в Facebook">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/and1412" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2022/08/1660182606.jpeg" alt="Андрей Чепурной"
-                    title="Андрей Чепурной" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/facebook" data-wpel-link="internal">#Facebook</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/sovety" data-wpel-link="internal">#советы</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/konversiya" data-wpel-link="internal">#конверсия</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/6-prichin-nizkoy-konversii-v-facebook-115281.html"
-                  data-wpel-link="internal">
-                  6 причин низкой конверсии в Facebook </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 14</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/and1412" data-wpel-link="internal">
-                    Андрей Чепурной </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-item">
-          <div class="post">
-            <div class="post__top">
-              <div class="post__cat">
-                <a class="cat" href="./articles" data-wpel-link="internal">
-                  06 Авг 24 </a>
-              </div>
-              <a class="post__thumb" href="./articles/kibersport-i-arbitrazh-114919.html" data-wpel-link="internal">
-                <img src="https://protraffic.com/wp-content/uploads/2024/07/1390x780-42.png"
-                  alt="Индустрия киберспорта и арбитраж: кейсы, источники, советы">
-              </a>
-            </div>
-            <div class="post__content d-flex flex-column justify-content-between">
-              <a class="post__author" href="./author/sasha" data-wpel-link="internal">
-                <span><img src="https://protraffic.com/wp-content/uploads/2020/09/vk_yutub_tvitter.png" alt="ProTraffic"
-                    title="ProTraffic" /></span>
-              </a>
-              <div class="col-item">
-                <div class="tags">
-                  <div class="d-flex gutter-x-3 gutter-y-7">
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/igaming" data-wpel-link="internal">#IGaming</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/sovety" data-wpel-link="internal">#советы</a>
-                    </div>
-                    <div class="col-item">
-                      <a class="ptf-tag" href="./tag/kibersport" data-wpel-link="internal">#киберспорт</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="post__title title" href="./articles/kibersport-i-arbitrazh-114919.html"
-                  data-wpel-link="internal">
-                  Индустрия киберспорта и арбитраж: кейсы, источники, советы </a>
-              </div>
-              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
-                <div class="col-item post_raiting upper-text record is--green">
-                  <img src="https://protraffic.com/wp-content/themes/ptf/images/stars/star.png" alt>
-                  <span class="ml-1"> 21</span>
-                </div>
-                <div class="post__author-name">
-                  <a class="upper-text link--gray" href="./author/sasha" data-wpel-link="internal">
-                    ProTraffic </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="container">
         <div class="section__btn"><a class="btn btn--theme-default" href="/articles" data-wpel-link="internal">Показать
@@ -1858,7 +1501,7 @@
     </div>
     {% endif %}
 
-    
+
     <section class="js-home__offers-slider offers-slider">
       <div class="container">
         <div class="d-flex home__section-title align-items-center justify-content-between">
@@ -2238,169 +1881,162 @@
     }
   </style>
   <div class="menu-bar js-menu-bar">
-        <div class="col-item menu-bar__head">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="col-item menu-bar__title title">Меню</div>
-                <div class="col-item usermob">
-                    <div class="user-dropdown">
-                        <div class="d-lg-block d-none">
-                            {% if user.photo %}
+    <div class="col-item menu-bar__head">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="col-item menu-bar__title title">Меню</div>
+        <div class="col-item usermob">
+          <div class="user-dropdown">
+            <div class="d-lg-block d-none">
+              {% if user.photo %}
 
-                                <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                   style="background-image: url({{ user.photo.url }})"
-                                   data-wpel-link="internal">
-                                </a>
+              <a href="javascript:;" class="thumb-author thumb-author--sm"
+                style="background-image: url({{ user.photo.url }})" data-wpel-link="internal">
+              </a>
 
-                                {% else %}
+              {% else %}
 
-                                <a href="../profile" class="thumb-author thumb-author--sm"
-                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                    data-wpel-link="internal"></a>
-                                {% endif %}
-                        </div>
-                        <div class="d-lg-none">
-                            {% if user.photo %}
-
-                                <a href="javascript:;" class="thumb-author thumb-author--sm"
-                                   style="background-image: url({{ user.photo.url }})"
-                                   data-wpel-link="internal">
-                                </a>
-
-                                {% else %}
-
-                                <a href="../profile" class="thumb-author thumb-author--sm"
-                                    style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
-                                    data-wpel-link="internal"></a>
-                                {% endif %}
-                        </div>
-                        <div class="user-dropdown__list">
-                            <div class="user-dropdown__center">
-                                    <a href="../profile" data-view="login"
-                                        data-wpel-link="internal">Профиль</a>
-                                    {% if not user.can_create_articles %}
-                                    <a href="../create_blog"
-                                        data-wpel-link="internal">Создать блог</a>
-                                    {% endif %}
-
-                                    {% if user.can_create_articles %}
-                                    <a href="../user_articles"
-                                        data-wpel-link="internal">Статьи</a>
-                                    {% endif %}
-                                    <a href="../logout"
-                                        data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-item js-menu-bar__toggle">
-                    <svg viewBox="0 0 25 25" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        id="close-icon">
-                        <rect x="2.82861" width="31" height="4" transform="rotate(45 2.82861 0)" fill="#3663E0"></rect>
-                        <rect y="21.9204" width="31" height="4" transform="rotate(-45 0 21.9204)" fill="#3663E0"></rect>
-                    </svg>
-                </div>
+              <a href="../profile" class="thumb-author thumb-author--sm"
+                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                data-wpel-link="internal"></a>
+              {% endif %}
             </div>
-            <div class="mt-4 relative">
-                <div class="ya-site-form ya-site-form_bg_transparent ya-site-form_inited_yes" id="ya-site-form1">
-                    <div class="ya-site-form__form">
-                        <table class="ya-site-form__wrap" cellpadding="0" cellspacing="0">
-                            <tbody>
-                                <tr>
-                                    <td class="ya-site-form__search-wrap">
-                                        <table class="ya-site-form__search" cellpadding="0" cellspacing="0">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="ya-site-form__search-input">
-                                                        <table class="ya-site-form__search-input-layout">
-                                                            <tbody>
+            <div class="d-lg-none">
+              {% if user.photo %}
 
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="ya-site-form__gap">
-                                                        <div class="ya-site-form__gap-i"></div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <style>
-                    #ya-site-form1 .ya-site-form__form .ya-site-form__input-text {
-                        background: transparent !important;
-                        font-size: 14px !important;
-                        color: #000 !important;
-                        border: none;
-                        border-bottom: 1px solid #000 !important;
-                        opacity: 1;
-                        padding-bottom: 5px;
-                        border-radius: 0 !important;
-                    }
+              <a href="javascript:;" class="thumb-author thumb-author--sm"
+                style="background-image: url({{ user.photo.url }})" data-wpel-link="internal">
+              </a>
 
-                    #ya-site-form1 .ya-site-form__form .ya-site-form__input-text:focus {
-                        border: none !important;
-                        border-bottom: 1px solid #000 !important;
-                    }
+              {% else %}
 
-                    #ya-site-form1 .ya-site-form__form .ya-site-form__input-text::placeholder {
-                        color: #000;
-                        opacity: 0.4;
-                    }
-
-                    #ya-site-form1 .ya-site-form__submit.ya-site-form__submit_type_image {
-                        position: absolute;
-                        left: -29px;
-                        top: 10px;
-                        width: 16px;
-                        height: 16px;
-                        background: url("https://protraffic.com/wp-content/themes/ptf/images/icons/search-dark.svg") no-repeat center/15px;
-                        display: block;
-                    }
-
-                    #ya-site-form1 .ya-site-form__search-input {
-                        padding: 0;
-                    }
-
-                    #ya-site-form1 .ya-site-form__submit.ya-site-form__submit_type_image {
-                        left: -10px;
-                        top: 0px;
-                    }
-
-                    #ya-site-form1 .ya-site-form__form .ya-site-form__input-text {
-                        padding-left: 25px;
-                    }
-                </style>
+              <a href="../profile" class="thumb-author thumb-author--sm"
+                style="background-image: url(&#39;https://protraffic.com/wp-content/themes/ptf/images/user.svg&#39;)"
+                data-wpel-link="internal"></a>
+              {% endif %}
             </div>
+            <div class="user-dropdown__list">
+              <div class="user-dropdown__center">
+                <a href="../profile" data-view="login" data-wpel-link="internal">Профиль</a>
+                {% if not user.can_create_articles %}
+                <a href="../create_blog" data-wpel-link="internal">Создать блог</a>
+                {% endif %}
+
+                {% if user.can_create_articles %}
+                <a href="../user_articles" data-wpel-link="internal">Статьи</a>
+                {% endif %}
+                <a href="../logout" data-view="login" class="logout" data-wpel-link="internal">Выйти</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="menu-bar__content">
-            <ul class="list--unstyled menu-bar__menu">
-                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
-                        href="../" data-wpel-link="internal">Главная</a></li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a
-                        href="../articles" data-wpel-link="internal">Статьи</a></li>
-
-                <li
-                    class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
-                    <a href="../partners" data-wpel-link="internal">Партнерки</a>
-                </li>
-                <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
-                        href="../services" data-wpel-link="internal">Сервисы</a></li>
-
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a
-                        href="../keysi" data-wpel-link="internal">Кейсы по
-                        арбитражу</a></li>
-
-
-            </ul>
-
+        <div class="col-item js-menu-bar__toggle">
+          <svg viewBox="0 0 25 25" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"
+            id="close-icon">
+            <rect x="2.82861" width="31" height="4" transform="rotate(45 2.82861 0)" fill="#3663E0"></rect>
+            <rect y="21.9204" width="31" height="4" transform="rotate(-45 0 21.9204)" fill="#3663E0"></rect>
+          </svg>
         </div>
+      </div>
+      <div class="mt-4 relative">
+        <div class="ya-site-form ya-site-form_bg_transparent ya-site-form_inited_yes" id="ya-site-form1">
+          <div class="ya-site-form__form">
+            <table class="ya-site-form__wrap" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td class="ya-site-form__search-wrap">
+                    <table class="ya-site-form__search" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="ya-site-form__search-input">
+                            <table class="ya-site-form__search-input-layout">
+                              <tbody>
+
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="ya-site-form__gap">
+                            <div class="ya-site-form__gap-i"></div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+          #ya-site-form1 .ya-site-form__form .ya-site-form__input-text {
+            background: transparent !important;
+            font-size: 14px !important;
+            color: #000 !important;
+            border: none;
+            border-bottom: 1px solid #000 !important;
+            opacity: 1;
+            padding-bottom: 5px;
+            border-radius: 0 !important;
+          }
+
+          #ya-site-form1 .ya-site-form__form .ya-site-form__input-text:focus {
+            border: none !important;
+            border-bottom: 1px solid #000 !important;
+          }
+
+          #ya-site-form1 .ya-site-form__form .ya-site-form__input-text::placeholder {
+            color: #000;
+            opacity: 0.4;
+          }
+
+          #ya-site-form1 .ya-site-form__submit.ya-site-form__submit_type_image {
+            position: absolute;
+            left: -29px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            background: url("https://protraffic.com/wp-content/themes/ptf/images/icons/search-dark.svg") no-repeat center/15px;
+            display: block;
+          }
+
+          #ya-site-form1 .ya-site-form__search-input {
+            padding: 0;
+          }
+
+          #ya-site-form1 .ya-site-form__submit.ya-site-form__submit_type_image {
+            left: -10px;
+            top: 0px;
+          }
+
+          #ya-site-form1 .ya-site-form__form .ya-site-form__input-text {
+            padding-left: 25px;
+          }
+        </style>
+      </div>
     </div>
+    <div class="menu-bar__content">
+      <ul class="list--unstyled menu-bar__menu">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-16820"><a
+            href="../" data-wpel-link="internal">Главная</a></li>
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16821"><a href="../articles"
+            data-wpel-link="internal">Статьи</a></li>
+
+        <li class="menu-item menu-item-type-post_type_archive menu-item-object-affiliate_program menu-item-16824">
+          <a href="../partners" data-wpel-link="internal">Партнерки</a>
+        </li>
+        <li class="menu-item menu-item-type-post_type_archive menu-item-object-services menu-item-16850"><a
+            href="../services" data-wpel-link="internal">Сервисы</a></li>
+
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42430"><a href="../keysi"
+            data-wpel-link="internal">Кейсы по
+            арбитражу</a></li>
+
+
+      </ul>
+
+    </div>
+  </div>
   <script>var pseudo_links = document.querySelectorAll(".pseudo-clearfy-link"); for (var i = 0; i < pseudo_links.length; i++) { pseudo_links[i].addEventListener("click", function (e) { window.open(e.target.getAttribute("data-uri")); }); }</script>
 
   <script src="https://protraffic.com/wp-content/plugins/expert-review/assets/public/js/scripts.min.js"

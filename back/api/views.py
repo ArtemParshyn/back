@@ -258,6 +258,7 @@ def index(request):
     articles = []
     for article in Article.objects.all().order_by('-published_date')[0:8]:
         articles.append({
+            'id': article.id,
             "image": article.image.url,
             "title": article.title,
             "content": article.content,
