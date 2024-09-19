@@ -1038,13 +1038,14 @@
       }
     </style>
 
+
 <div class="banner-container">
-  <a href="#" class="banner large-banner" id="main-banner"></a>
+  <a href="{% if reklama5 %}{{ reklama5.url }}{% else %}#{% endif %}" class="banner large-banner" id="main-banner"></a>
 
   <!-- Скрытые баннеры -->
-  <a href="#" class="banner small-banner" id="banner1"></a>
-  <a href="#" class="banner small-banner" id="banner2"></a>
-  <a href="#" class="banner small-banner" id="banner3"></a>
+  <a href="{% if reklama6 %}{{ reklama6.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner1"></a>
+  <a href="{% if reklama7 %}{{ reklama7.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner2"></a>
+  <a href="{% if reklama8 %}{{ reklama8.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner3"></a>
 </div>
 
 <!-- Контент ниже баннеров -->
@@ -1057,9 +1058,9 @@
     <style>
 
      @media (min-width: 1024px) {
-    .home section {
-        padding-top: 100px;
-    }
+  .home section {
+      padding-top: 100px;
+  }
 }
 
 .banner-container {
@@ -1084,7 +1085,7 @@
 }
 
 .large-banner {
-  background: url("{% static 'svg/main-banner.jpg' %}") no-repeat center center / cover;
+  background: url("{% if reklama5 %}{{ reklama5.photo.url }}{% else %}{% static 'svg/main-banner.jpg' %}{% endif %}") no-repeat center center / cover;
 }
 
 .small-banner {
@@ -1107,15 +1108,15 @@
 }
 
 #banner1 {
-  background: url("{% static 'svg/banner1.jpg' %}") no-repeat center center / cover;
+  background: url("{% if reklama6 %}{{ reklama6.photo.url }}{% else %}{% static 'svg/banner1.jpg' %}{% endif %}") no-repeat center center / cover;
 }
 
 #banner2 {
-  background: url("{% static 'svg/banner2.jpg' %}") no-repeat center center / cover;
+  background: url("{% if reklama7 %}{{ reklama7.photo.url }}{% else %}{% static 'svg/banner2.jpg' %}{% endif %}") no-repeat center center / cover;
 }
 
 #banner3 {
-  background: url("{% static 'svg/banner3.jpg' %}") no-repeat center center / cover;
+  background: url("{% if reklama8 %}{{ reklama8.photo.url }}{% else %}{% static 'svg/banner3.jpg' %}{% endif %}") no-repeat center center / cover;
 }
 
 .below-content {

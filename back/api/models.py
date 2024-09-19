@@ -14,7 +14,7 @@ class ApiUser(AbstractUser):
 
 
 class Reklama(models.Model):
-    choices = [("1", "first"), ("2", "second"), ("3", "third"), ("4", "index_popup")]
+    choices = [("1", "first"), ("2", "second"), ("3", "third"), ("4", "index_popup"), ("5", "rotate1"), ("6", "rotate2"), ("7", "rotate3"), ("8", "rotate4")]
     pos_reklama = models.CharField(choices=choices, max_length=1)
     photo = models.ImageField(upload_to='images/%Y/%m/%d/reklama', default=None)
     url = models.URLField()

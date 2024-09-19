@@ -280,6 +280,12 @@ def index(request):
             'ifwebsite': True if i.website else False,
         })
 
+    reklama5 = Reklama.objects.filter(pos_reklama="5").first()
+    reklama6 = Reklama.objects.filter(pos_reklama="6").first()
+    reklama7 = Reklama.objects.filter(pos_reklama="7").first()
+    reklama8 = Reklama.objects.filter(pos_reklama="8").first()
+
+
     return render(request,
                   template_name="index.html",
                   context={"image": photo, "url_image": url,
@@ -293,7 +299,15 @@ def index(request):
                                pos_reklama="3").exists() else False,
                            "popup": Reklama.objects.all().get(
                                pos_reklama="4") if Reklama.objects.all().filter(
-                               pos_reklama="4").exists() else False})
+                               pos_reklama="4").exists() else False,
+
+                           'reklama5': reklama5,
+                           'reklama6': reklama6,
+                           'reklama7': reklama7,
+                           'reklama8': reklama8,
+
+
+                           })
 
 
 def register(request):
