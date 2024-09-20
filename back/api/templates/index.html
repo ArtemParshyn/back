@@ -1032,18 +1032,7 @@
       }
     </style>
 
-    {% if reklama5 %}
-    <div class="banner-container">
-      <a href="{% if reklama5 %}{{ reklama5.url }}{% else %}#{% endif %}" class="banner large-banner active-banner"
-        id="main-banner"></a>
 
-      <!-- Скрытые баннеры -->
-      <a href="{% if reklama6 %}{{ reklama6.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner1"></a>
-      <a href="{% if reklama7 %}{{ reklama7.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner2"></a>
-      <a href="{% if reklama8 %}{{ reklama8.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner3"></a>
-    </div>
-
-    {% endif %}
 
     <style>
       @media (min-width: 1024px) {
@@ -1052,9 +1041,12 @@
         }
       }
 
+
+
       .banner-container {
+        margin-bottom: 20px;
+        align-items: center;
         width: 1050px;
-        margin: 0 auto;
         overflow: hidden;
         /* Чтобы скрывать баннеры до наведения */
         transition: all 0.5s ease;
@@ -1191,7 +1183,7 @@
               </div>
               <div class="col-md-4">
                 <div class="row h-100 justify-content-between gutter-x-7-lg home__post-big-items">
-                  <div class="col-md-12 col-sm-6">
+                  <div style="margin-bottom: 0;" class="col-md-12 col-sm-6">
                     <div class="post">
                       <div class="post__top">
                         <div class="post__cat">
@@ -1361,13 +1353,103 @@
         </div>
       </div>
     </section>
-
-    <div class="home__banner-sm banner-95">
-      <div class="container">
-        <div class="rec_banners_container rec_banners_container--h95">
+    <div class="partners_container">
+      <div class="d-flex home__section-title justify-content-between">
+        <h2 class="title section__title section__title--blue">Лучшие партнерские программы</h2>
+        <div class="d-lg-none d-flex home__news-arrows">
+          <div class="col-item">
+            <a class="js-prev link--gray is--svg" href="javascript:;" data-wpel-link="internal">
+              <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#arrow-left">
+                </use>
+              </svg>
+            </a>
+          </div>
+          <div class="col-item">
+            <a class="js-next link--gray is--svg m-0" href="javascript:;" data-wpel-link="internal">
+              <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#arrow-right">
+                </use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mb-35">
+        <div class="page__section">
+          <div class="container" data-count="10">
+            <h2 class="h2 mb-35">
+              {{ category.category.name }}
+            </h2>
+            {% for partner in partners %}
+            <div class="partner">
+              <div class="partner__content">
+                <div class="partner__picture">
+                  <a href="{{ partner.website }}" data-wpel-link="internal">
+                    <img src="{{ partner.photo }}" alt="Masons Partners" />
+                  </a>
+                </div>
+                <div class="partner__wrapper">
+                  <div
+                    class="partner__top d-flex gutter-x-17 align-items-center gutter-x-5-lg justify-content-md-start justify-content-center">
+                    <div class="col-item">
+                      <a class="upper-text record is--default" href="https://cutt.ly/Qwg5VsuX" target="_blank"
+                        data-wpel-link="external" rel="nofollow external noopener noreferrer">
+                        <svg class="is--default" viewBox="0 0 14 14" width="14" height="14"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#web">
+                          </use>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="col-item">
+                      <a class="upper-text record is--grayLight" href="{{ partner.website }}" data-wpel-link="internal">
+                        <svg class="is--whiteDark" width="15" height="12" viewBox="0 0 15 12" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#answer">
+                          </use>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="partner__text">
+                    <p>{{ partner.descr }}</p>
+                  </div>
+                  <a class="link--arrow partner__link" href="{{ partner.website }}" target="_blank"
+                    data-wpel-link="external" rel="nofollow external noopener noreferrer">
+                    {% if partner.ifwebsite %}
+                    перейти на сайт
+                    {% else %}
+                    посмотреть обзор
+                    {% endif %}
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M0 9.61111V12.3889H16.6667L9.02778 20.0278L11 22L22 11L11 0L9.02778 1.97222L16.6667 9.61111H0Z"
+                        fill="#434343"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="/partners" class="btn btn--theme-default"
+            data-wpel-link="internal">
+            Все партнерские программы
+          </a>
         </div>
       </div>
     </div>
+    <style>
+      .partners_container {
+        margin-left: 49px;
+        paddin-left: 15px;
+        margin-top: 100px
+      }
+    </style>
+
     <section class="js-home__last-news-slider">
       <div class="container">
         <div class="d-flex home__section-title justify-content-between">
@@ -1376,7 +1458,8 @@
             <div class="col-item">
               <a class="js-prev link--gray is--svg" href="javascript:;" data-wpel-link="internal">
                 <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#arrow-left"></use>
+                  <use xlink:href="https://protraffic.com/wp-content/themes/ptf/images/svg-sprite.svg#arrow-left">
+                  </use>
                 </svg>
               </a>
             </div>
@@ -1393,7 +1476,7 @@
         <div class="d-lg-block d-none">
 
           <div class="row gutter-y-30 gutter-x-7-lg">
-            {% for article in last_articles %}
+            {% for article in last_articles1 %}
             <div class="col-lg-3 col-4">
               <div class="post">
                 <div class="post__top">
@@ -1406,9 +1489,74 @@
                   </a>
                 </div>
                 <div class="post__content d-flex flex-column justify-content-between">
-                  <a class="post__author" data-wpel-link="internal">
-                    <span><img src="{{article.avatar}}" /></span>
+
+                  <div class="col-item">
+                    <div class="tags">
+                      <div class="d-flex gutter-x-3 gutter-y-7">
+                        <div class="col-item">
+                        </div>
+                        <div class="col-item">
+                        </div>
+                      </div>
+                    </div>
+                    <a class="post__title title" href="./articles/{{article.id}}" data-wpel-link="internal">
+                      {{article.title}} </a>
+                  </div>
+                  <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                    <div class="col-item post_raiting upper-text record is--green">
+                      <span class="ml-1">RUARB</span>
+                    </div>
+                    <div class="post__author-name">
+                      <a class="upper-text link--gray" data-wpel-link="internal">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <center>
+          {% if reklama5 %}
+          <div class="banner-container">
+            <a href="{% if reklama5 %}{{ reklama5.url }}{% else %}#{% endif %}"
+              class="banner large-banner active-banner" id="main-banner"></a>
+
+            <!-- Скрытые баннеры -->
+            <a href="{% if reklama6 %}{{ reklama6.url }}{% else %}#{% endif %}" class="banner small-banner"
+              id="banner1"></a>
+            <a href="{% if reklama7 %}{{ reklama7.url }}{% else %}#{% endif %}" class="banner small-banner"
+              id="banner2"></a>
+            <a href="{% if reklama8 %}{{ reklama8.url }}{% else %}#{% endif %}" class="banner small-banner"
+              id="banner3"></a>
+          </div>
+
+          {% endif %}
+        </center>
+        <style>
+          .d-lg-block {
+            padding-bottom: 20px;
+            ;
+          }
+        </style>
+        <div class="d-lg-block d-none">
+
+          <div class="row gutter-y-30 gutter-x-7-lg">
+            {% for article in last_articles2 %}
+            <div class="col-lg-3 col-4">
+              <div class="post">
+                <div class="post__top">
+                  <div class="post__cat">
+                    <a class="cat" href="./articles" data-wpel-link="internal">
+                    </a>
+                  </div>
+                  <a class="post__thumb" href="./articles/{{article.id}}" data-wpel-link="internal">
+                    <img src="{{article.image}}">
                   </a>
+                </div>
+                <div class="post__content d-flex flex-column justify-content-between">
+
                   <div class="col-item">
                     <div class="tags">
                       <div class="d-flex gutter-x-3 gutter-y-7">
@@ -1437,8 +1585,37 @@
           </div>
         </div>
       </div>
+      </div>
       <div class="js-slider d-lg-none js-container__left slick--preloader posts-slider">
-        {% for article in last_articles %}
+        {% for article in last_articles2 %}
+        <div class="col-item">
+          <div class="post">
+            <div class="post__top">
+              <div class="post__cat">
+                <a class="cat" href="./articles/{{article.id}}" data-wpel-link="internal">
+                  {{ article.published_date|date:"d E y" }} </a>
+              </div>
+              <a class="post__thumb" href="./articles/{{article.id}}" data-wpel-link="internal">
+                <img src="{{article.image}}" alt="Как увеличить конверсию в 5 раз: план действий от Royal Partners">
+              </a>
+            </div>
+            <div class="post__content d-flex flex-column justify-content-between">
+              <div class="col-item">
+                <a class="post__title title" href="articles/{{article.id}}" data-wpel-link="internal">
+                  {{article.title}} </a>
+              </div>
+              <div class="post__bottom gutter-y-5 d-flex gutter-x-10 align-items-center justify-content-between">
+                <div class="post__author-name">
+                  <a class="upper-text link--gray" data-wpel-link="internal">
+                    RUARB </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for article in last_articles2 %}
         <div class="col-item">
           <div class="post">
             <div class="post__top">
@@ -1484,22 +1661,14 @@
         </div>
       </div>
     </div>
-    {% if reklama3 %}
-    <div class="page__top-banner">
-      <div class="rec_banners_container--h95">
-        <a href="{{reklama3.url}}">
-          <img style="width: 1050; height:95px" src="{{reklama3.photo.url}}">
-        </a>
-      </div>
-    </div>
-    {% endif %}
+
 
 
     <section class="js-home__offers-slider offers-slider">
       <div class="container">
         <div class="d-flex home__section-title align-items-center justify-content-between">
           <div class="col-item">
-            <h2 class="title section__title section__title--blue">ТОП-3 оффера</h2>
+            <h2 class="title section__title section__title--blue">ТОП-3 сервиса</h2>
           </div>
           <div class="col-item d-md-none">
             <div class="home__news-arrows d-flex">
@@ -1549,6 +1718,19 @@
                   <div class="service__text text">
                     <p>{{ service.descr }}</p>
                   </div>
+                  <a style="bottom: 0;" class="link--arrow partner__link" href="{{ service.website }}" target="_blank"
+                    data-wpel-link="external" rel="nofollow external noopener noreferrer">
+                    {% if service.ifwebsite %}
+                    перейти на сайт
+                    {% else %}
+                    посмотреть обзор
+                    {% endif %}
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M0 9.61111V12.3889H16.6667L9.02778 20.0278L11 22L22 11L11 0L9.02778 1.97222L16.6667 9.61111H0Z"
+                        fill="#434343"></path>
+                    </svg>
+                  </a>
                 </div>
                 <div class="col-lg-2 col-sm-6 is--green">
                   <div class="pl-xl3-3 d-flex align-items-center">
@@ -1568,20 +1750,9 @@
                   </div>
                 </div>
                 <div class="col-1 d-lg-block d-none">
-                  <a class="arrow-btn ml-auto" href="{{ service.website }}" target="_blank" data-wpel-link="internal">
-                    {% if service.ifwebsite %}
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M0.316406 17.6333L7.94974 10L0.316406 2.35L2.66641 0L12.6664 10L2.66641 20L0.316406 17.6333Z"
-                        fill="white"></path>
-                    </svg>
-                    {% else %}
-                    <p style="color: white; margin-top: 13px; margin-right: 3px">Обзор</p>
-
-                    {% endif %}
-                  </a>
                 </div>
               </div>
+
             </div>
           </div>
           {% endfor %}

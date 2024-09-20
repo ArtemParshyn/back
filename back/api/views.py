@@ -29,6 +29,7 @@ def index(request):
     # Передаем пользователя в шаблон
     return render(request, 'index.html', {'user': user})
 
+
 class ProfileView(View):
     def get(self, request):
         if not request.user.is_authenticated:
@@ -113,7 +114,6 @@ def partners(request):
                 'costs': partner.costs,
                 'category': partner.category_partner,
                 'ifwebsite': bool(partner.website),
-                'rating': partner.rating,
             }
 
             category_partners.append(partners_data)
@@ -150,7 +150,6 @@ def partner_cat(request):
             'costs': i.costs,
             'category': i.category_partner,
             'ifwebsite': bool(i.website),
-            'rating': i.rating,
 
         })
     return render(request, 'partners_cat.html',
@@ -286,14 +285,35 @@ def index(request):
     reklama7 = Reklama.objects.filter(pos_reklama="7").first()
     reklama8 = Reklama.objects.filter(pos_reklama="8").first()
 
+    partners = []
 
+    for partner in Partner.objects.all().filter(to_index=True):
+        if not partner.website:
+            obzor = Obzor_partner.objects.filter(to_partner=partner).first()
+            if obzor:
+                obzor_id = obzor.id
+        partners.append({
+            'id': partner.id,
+            'descr': partner.descr,
+            'photo': partner.photo.url,
+            'website': partner.website if partner.website else f"/obzorp/{obzor_id}",
+            'promo': partner.promo,
+            'costs': partner.costs,
+            'category': partner.category_partner,
+            'ifwebsite': bool(partner.website),
+        })
+
+    print(articles[0:4])
+    print(articles[4:8])
     return render(request,
                   template_name="index.html",
                   context={"image": photo, "url_image": url,
                            "success": request.user.is_authenticated,
                            'positions': positions,
                            'MEDIA_URL': settings.MEDIA_URL,
-                           'last_articles': articles,
+                           'partners': partners,
+                           'last_articles1': articles[0:4],
+                           'last_articles2': articles[4:8],
                            'services': services,
                            'reklama3': Reklama.objects.all().get(
                                pos_reklama="3") if Reklama.objects.all().filter(
@@ -306,7 +326,6 @@ def index(request):
                            'reklama6': reklama6,
                            'reklama7': reklama7,
                            'reklama8': reklama8,
-
 
                            })
 
@@ -430,11 +449,13 @@ class ArticleCreateView(CreateView):
 def article_list(request):
     articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]  # Извлекаем все статьи
     return render(request, 'articles.html', {'articles': articles,
-    'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(pos_reklama="1").exists() else False,
+                                             'reklama': Reklama.objects.all().get(
+                                                 pos_reklama="1") if Reklama.objects.all().filter(
+                                                 pos_reklama="1").exists() else False,
                                              "popup": Reklama.objects.all().get(
                                                  pos_reklama="4") if Reklama.objects.all().filter(
                                                  pos_reklama="4").exists() else False
-})
+                                             })
 
 
 def user_article_list(request):
@@ -460,7 +481,6 @@ class UserArticleListView(ListView):
             return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
 
 
-
 def partner_article_list(request):
     # Получаем текущего пользователя
     user = request.user
@@ -484,7 +504,6 @@ class PartnerArticleListView(ListView):
             return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
 
 
-
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
 
@@ -494,7 +513,8 @@ def article_detail(request, article_id):
     return render(request, 'article_detail.html', {
         'article': article,
         'author_articles_count': author_articles_count,
-        'reklama': Reklama.objects.all().get(pos_reklama="2") if Reklama.objects.all().filter(pos_reklama="2").exists() else False
+        'reklama': Reklama.objects.all().get(pos_reklama="2") if Reklama.objects.all().filter(
+            pos_reklama="2").exists() else False
     })
 
 
@@ -552,7 +572,6 @@ def article_add(request):
     return JsonResponse(articles_data, safe=False)
 
 
-
 @login_required
 def edit_article(request, pk):
     article = get_object_or_404(Article, pk=pk)
@@ -600,4 +619,3 @@ def publish_article(request, pk):
     article.save()
 
     return redirect('user_articles')
-

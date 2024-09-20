@@ -17,7 +17,7 @@ admin.site.register(Obzor_partner)
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ('descr', 'promo', 'website', 'costs', 'category_partner', 'rating', 'pos')
+    list_display = ('descr', 'promo', 'website', 'costs', 'category_partner', 'pos')
     list_filter = ('category_partner', 'pos')
 
 

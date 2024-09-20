@@ -64,8 +64,8 @@ class Partner(models.Model):
     website = models.URLField(blank=True, default=None)
     costs = models.CharField(max_length=64, default=None, blank=True)
     category_partner = models.ForeignKey(Category_partner, on_delete=models.CASCADE, related_name="partners")
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
-    pos = models.CharField(choices=choices, max_length=1, blank=True, default=None)
+    pos = models.CharField(choices=choices, max_length=1, blank=True, default=None)  # Fixed here
+    to_index = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
         return self.descr
