@@ -1041,7 +1041,7 @@
 
 
 <div class="banner-container">
-  <a href="{% if reklama5 %}{{ reklama5.url }}{% else %}#{% endif %}" class="banner large-banner" id="main-banner"></a>
+  <a href="{% if reklama5 %}{{ reklama5.url }}{% else %}#{% endif %}" class="banner large-banner active-banner" id="main-banner"></a>
 
   <!-- Скрытые баннеры -->
   <a href="{% if reklama6 %}{{ reklama6.url }}{% else %}#{% endif %}" class="banner small-banner" id="banner1"></a>
@@ -1050,99 +1050,94 @@
 </div>
 
 <!-- Контент ниже баннеров -->
-<div class="below-content">
-</div>
+<div class="below-content"></div>
 
-
-
-
-    <style>
-
-     @media (min-width: 1024px) {
-  .home section {
+<style>
+  @media (min-width: 1024px) {
+    .home section {
       padding-top: 100px;
+    }
   }
-}
 
-.banner-container {
-  width: 1050px;
-  margin: 0 auto;
-  overflow: hidden; /* Чтобы скрывать баннеры до наведения */
-  transition: all 0.5s ease; /* Плавное изменение высоты */
-  max-height: 95px; /* Изначально высота только для одного баннера */
-}
+  .banner-container {
+    width: 1050px;
+    margin: 0 auto;
+    overflow: hidden; /* Чтобы скрывать баннеры до наведения */
+    transition: all 0.5s ease; /* Плавное изменение высоты */
+    max-height: 95px; /* Изначально высота только для одного баннера */
+  }
 
-.banner {
-  width: 1050px;
-  height: 95px;
-  background-color: #f0f0f0;
-  display: block; /* Ссылка будет занимать всю площадь баннера */
-  position: relative;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
-  border-radius: 15px; /* Скругление углов */
-}
+  .banner {
+    width: 1050px;
+    height: 95px;
+    background-color: #f0f0f0;
+    display: none; /* Скрываем все баннеры по умолчанию */
+    position: relative;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
+    border-radius: 15px; /* Скругление углов */
+  }
 
-.large-banner {
-  background: url("{% if reklama5 %}{{ reklama5.photo.url }}{% else %}{% static 'svg/main-banner.jpg' %}{% endif %}") no-repeat center center / cover;
-}
+  .banner.active-banner {
+    display: block; /* Показываем только активный баннер */
+  }
 
-.small-banner {
-  background-color: #e0e0e0;
-  background-size: cover;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: all 0.5s ease;
-  pointer-events: none;
-}
+  .large-banner {
+    background: url("{% if reklama5 %}{{ reklama5.photo.url }}{% else %}{% static 'svg/main-banner.jpg' %}{% endif %}") no-repeat center center / cover;
+  }
 
-.banner-container:hover {
-  max-height: 440px; /* Увеличиваем высоту для отображения всех баннеров */
-}
+  #banner1 {
+    background: url("{% if reklama6 %}{{ reklama6.photo.url }}{% else %}{% static 'svg/banner1.jpg' %}{% endif %}") no-repeat center center / cover;
+  }
 
-.banner-container:hover .small-banner {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+  #banner2 {
+    background: url("{% if reklama7 %}{{ reklama7.photo.url }}{% else %}{% static 'svg/banner2.jpg' %}{% endif %}") no-repeat center center / cover;
+  }
 
-#banner1 {
-  background: url("{% if reklama6 %}{{ reklama6.photo.url }}{% else %}{% static 'svg/banner1.jpg' %}{% endif %}") no-repeat center center / cover;
-}
+  #banner3 {
+    background: url("{% if reklama8 %}{{ reklama8.photo.url }}{% else %}{% static 'svg/banner3.jpg' %}{% endif %}") no-repeat center center / cover;
+  }
 
-#banner2 {
-  background: url("{% if reklama7 %}{{ reklama7.photo.url }}{% else %}{% static 'svg/banner2.jpg' %}{% endif %}") no-repeat center center / cover;
-}
+  .below-content {
+    margin-top: 20px;
+  }
 
-#banner3 {
-  background: url("{% if reklama8 %}{{ reklama8.photo.url }}{% else %}{% static 'svg/banner3.jpg' %}{% endif %}") no-repeat center center / cover;
-}
-
-.below-content {
-  margin-top: 20px;
-}
-
-
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     .banner-container {
-        width: 300px; /* Изменяем ширину контейнера на 200px */
-        max-height: 100px; /* Изначально высота для одного баннера 50px */
+      width: 300px; /* Изменяем ширину контейнера */
+      max-height: 100px; /* Изначально высота для одного баннера */
     }
 
     .banner {
-        width: 300px; /* Ширина баннера 200px */
-        height: 100px; /* Высота баннера 50px */
+      width: 300px; /* Ширина баннера */
+      height: 100px; /* Высота баннера */
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let banners = document.querySelectorAll('.banner');
+    let currentIndex = 0;
+    let bannerInterval = 4000; // Интервал в миллисекундах для смены баннеров
+
+    function rotateBanners() {
+      // Скрываем текущий баннер
+      banners[currentIndex].classList.remove('active-banner');
+
+      // Увеличиваем индекс и возвращаемся к началу, если это последний баннер
+      currentIndex = (currentIndex + 1) % banners.length;
+
+      // Показываем следующий баннер
+      banners[currentIndex].classList.add('active-banner');
     }
 
-    .banner-container:hover {
-        max-height: 1000px; /* Увеличиваем высоту для отображения всех баннеров на мобильных устройствах */
-    }
-}
-
-
-    </style>
+    // Запускаем интервал для автоматической смены баннеров
+    setInterval(rotateBanners, bannerInterval);
+  });
+</script>
 
 
 
