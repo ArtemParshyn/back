@@ -15,11 +15,12 @@ class ApiUser(AbstractUser):
 
 class Reklama(models.Model):
     choices = [("1", "first"), ("2", "second"), ("3", "third"), ("4", "index_popup"), ("5", "rotate1"),
-               ("6", "rotate2"), ("7", "rotate3"), ("8", "rotate4")]
-    pos_reklama = models.CharField(choices=choices, max_length=1)
+               ("6", "rotate2"), ("7", "rotate3"), ("8", "rotate4"), ("9", "xlogo"), ("10", "header-button"), ("11", "main-banner"),
+               ("12", "side_rotate1"), ("13", "side_rotate2"), ("14", "side_rotate3"), ("15", "side_rotate4")]
+    pos_reklama = models.CharField(choices=choices, max_length=2)
     photo = models.ImageField(upload_to='images/%Y/%m/%d/reklama', default=None)
     url = models.URLField()
-    button_text_index = models.CharField(max_length=15, default=None, blank=True)
+    button_text_index = models.CharField(max_length=20, default=None, blank=True)
     text_index = models.CharField(max_length=80, default=None, blank=True)
     tittle_index = models.CharField(max_length=45, default=None, blank=True)
 

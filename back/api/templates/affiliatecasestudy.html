@@ -589,6 +589,24 @@
                 data-dark-src="https://i.imgur.com/6PxidVv.png" alt="Protraffic">
             </span>
           </a>
+
+          {% if reklama9 %}
+          <a href="{{ reklama9.url}}">
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <span style="font-weight: 800; 
+                  font-family: Montserrat, sans-serif, Arial;
+                  color: #3663e0; 
+                  padding-right: 10px;">X</span>
+          
+              <span>
+                <img src="{{ reklama9.photo.url }}" style="max-width: 100px; height: auto;" />
+
+              </span>
+          </div>
+
+          </a>
+          {% endif %}
+
         </div>
         <style>
           .site-header__pin img {
@@ -602,7 +620,7 @@
 
 
           .logo-text {
-            font-size: 35px;
+            font-size: 25px;
             font-weight: 700;
             color: #3663e0;
             font-family: Montserrat, sans-serif, Arial;
@@ -775,6 +793,22 @@
         </div>
       </div>
     </div> -->
+
+
+    {% if reklama10 %}
+    <a class="btn btn--size-md btn--custom site-header__btn click" href="{{reklama10.url}}" data-id="click" rel="sponsored" data-wpel-link="internal">
+
+      <style>
+        .btn--custom {
+          background: linear-gradient(87.69deg, rgb(0, 0, 0) -1.99%, rgb(0, 0, 0) 105.12%);
+          background: -webkit-gradient(linear, right top, left top, from(rgb(0, 0, 0)), to(rgb(0, 0, 0)));
+          color: rgb(255, 255, 255);
+          margin-right: 20px;
+      }
+      </style>
+
+      {{reklama10.button_text_index}} </a>
+      {% endif %}
 
           {% if success %}
           <div class="col-item userlog">
@@ -997,16 +1031,50 @@
         cursor: pointer;
       }
     </style>
+
+    {%if reklama11%}
+    <a href="{{reklama11.url}}">
+      <div class="branding_pinup14">
+          
+      </div>
+    </a>
+       
+    
+      {% endif %}
+    
+    <style>
+      @media only screen and (max-width: 1920px) {
+        .branding_pinup14 {
+            background-size: 100% 100%;
+        }
+    }
+    
+    @media (min-width: 991px) {
+      .col-lg-3 {
+          flex: 0 0 25%;
+          max-width: 25%;
+          margin-bottom: 20px;
+      }
+    }
+    
+    .branding_pinup14 {
+        position: relative;
+        height: 600px;
+        overflow: hidden;
+        background-image: url({{reklama11.photo.url}});
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 20px;
+        padding: 20 20px;
+        margin: 20px;
+    }
+    </style>
+
     <section class="section">
       <div class="container">
         <div class="page__head">
           <div class="page__top-banner">
-            <div class=" rec_banners_container--h95">
-              <a href="{{reklama.url}}"></a>
-              <img style="width: 1050; height:95px" src="{{reklama.photo.url}}">
-
-              </a>
-            </div>
+            
           </div>
           <nav class="kama_breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
             <span class="kb_link" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -1271,17 +1339,48 @@
 
             </div>
           </div>
-          <div class="site-footer__text">RUARB — твой путеводитель по арбитражу трафика. Все фишки и
-            экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
-            лидерами рынка. Лей в плюс с RUARB!</div>
+          <div class="site-footer__text">
+            <img class="logo" src="https://i.imgur.com/6PxidVv.png" alt="">
+          </div>
         </div>
-        <div class="col-lg-5 col-md-6">
 
+        <style>
+          .col-lg-5 {
+            font: 700 13px / 16px Montserrat, sans-serif, Arial;
+            color: #8f8f8f;
+            margin-top: 10px;
+          }
+
+          
+
+        </style>
+        <div class="col-lg-5 col-md-6">
+            RUARB — твой путеводитель по арбитражу трафика. Все фишки и
+            экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
+            лидерами рынка. Лей в плюс с RUARB!
         </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="site-footer__right">
+          
+          <div class="d-lg-block d-none">
+          <div class="social d-flex">
+          <a href="https://t.me/ruarb" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg" alt="Telegram - ProTraffic">
+          </a>
+          <a href="https://www.instagram.com/ru.arb?igsh=MTRyb3d3aThsYThmMQ%3D%3D&utm_source=qr" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg" alt="Instagram - ProTraffic">
+          </a>
+          <a href="" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg" alt="YouTube - ProTraffic">
+          
+          </div>
+          </div>
+          </div>
+          </div>
         <div class="site-footer__bottom">© 2019-2024, RUARB. Все права сохранены. Условия пользовательского
           соглашения</div>
       </div>
-  </footer>e
+  </footer>
   <div class="marquee ">
     <img class="marquee__img" src="https://protraffic.com/wp-content/themes/ptf/images/label.png" alt="label"
       width="344" height="135">

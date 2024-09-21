@@ -83,6 +83,10 @@ def partners(request):
     # Определяем список допустимых значений для pos
     allowed_pos = ["1", "2", "3", "4", "5"]
 
+
+    reklama9 = Reklama.objects.filter(pos_reklama="9").first()
+    reklama10 = Reklama.objects.filter(pos_reklama="10").first()
+    
     # Загружаем все категории партнёров
     categories = Category_partner.objects.all()
 
@@ -132,7 +136,9 @@ def partners(request):
                                                                   pos_reklama="1").exists() else False,
                                                               "popup": Reklama.objects.all().get(
                                                                   pos_reklama="4") if Reklama.objects.all().filter(
-                                                                  pos_reklama="4").exists() else False
+                                                                  pos_reklama="4").exists() else False,
+                                                                  'reklama9': reklama9,
+                                                                    'reklama10': reklama10,
                                                               })
 
 
@@ -161,6 +167,9 @@ def services(request):
     # Fetch categories and services more efficiently
     categories = Category.objects.all()
     services = {category: Service.objects.filter(category=category)[:5] for category in categories}
+
+    reklama9 = Reklama.objects.filter(pos_reklama="9").first()
+    reklama10 = Reklama.objects.filter(pos_reklama="10").first()
 
     services_prepared = []
 
@@ -200,7 +209,9 @@ def services(request):
                                                          pos_reklama="1").exists() else False,
                                                      "popup": Reklama.objects.all().get(
                                                          pos_reklama="4") if Reklama.objects.all().filter(
-                                                         pos_reklama="4").exists() else False
+                                                         pos_reklama="4").exists() else False,
+                                                         'reklama9': reklama9,
+                                                                    'reklama10': reklama10,
                                                      })
 
 
@@ -284,6 +295,13 @@ def index(request):
     reklama6 = Reklama.objects.filter(pos_reklama="6").first()
     reklama7 = Reklama.objects.filter(pos_reklama="7").first()
     reklama8 = Reklama.objects.filter(pos_reklama="8").first()
+    reklama9 = Reklama.objects.filter(pos_reklama="9").first()
+    reklama10 = Reklama.objects.filter(pos_reklama="10").first()
+    reklama11 = Reklama.objects.filter(pos_reklama="11").first()
+    reklama12 = Reklama.objects.filter(pos_reklama="12").first()
+    reklama13 = Reklama.objects.filter(pos_reklama="13").first()
+    reklama14 = Reklama.objects.filter(pos_reklama="14").first()
+    reklama15 = Reklama.objects.filter(pos_reklama="15").first()
 
     partners = []
 
@@ -326,6 +344,13 @@ def index(request):
                            'reklama6': reklama6,
                            'reklama7': reklama7,
                            'reklama8': reklama8,
+                           'reklama9': reklama9,
+                           'reklama10': reklama10,
+                           'reklama11': reklama11,
+                           'reklama12': reklama12,
+                           'reklama13': reklama13,
+                           'reklama14': reklama14,
+                           'reklama15': reklama15,
 
                            })
 
@@ -447,14 +472,24 @@ class ArticleCreateView(CreateView):
 
 
 def article_list(request):
-    articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]  # Извлекаем все статьи
+    articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]
+    
+    reklama9 = Reklama.objects.filter(pos_reklama="9").first()
+    reklama10 = Reklama.objects.filter(pos_reklama="10").first()
+    reklama11 = Reklama.objects.filter(pos_reklama="11").first()
+    
+      
     return render(request, 'articles.html', {'articles': articles,
                                              'reklama': Reklama.objects.all().get(
                                                  pos_reklama="1") if Reklama.objects.all().filter(
                                                  pos_reklama="1").exists() else False,
                                              "popup": Reklama.objects.all().get(
                                                  pos_reklama="4") if Reklama.objects.all().filter(
-                                                 pos_reklama="4").exists() else False
+                                                 pos_reklama="4").exists() else False,
+                                                 'reklama9': reklama9,
+                                                'reklama10': reklama10,
+                                                'reklama11': reklama11,
+
                                              })
 
 
@@ -510,11 +545,20 @@ def article_detail(request, article_id):
     # Получаем количество статей автора
     author_articles_count = Article.objects.filter(author=article.author).count()
 
+    reklama5 = Reklama.objects.filter(pos_reklama="5").first()
+    reklama6 = Reklama.objects.filter(pos_reklama="6").first()
+    reklama7 = Reklama.objects.filter(pos_reklama="7").first()
+    reklama8 = Reklama.objects.filter(pos_reklama="8").first()
+
     return render(request, 'article_detail.html', {
         'article': article,
         'author_articles_count': author_articles_count,
         'reklama': Reklama.objects.all().get(pos_reklama="2") if Reklama.objects.all().filter(
-            pos_reklama="2").exists() else False
+            pos_reklama="2").exists() else False,
+            'reklama5': reklama5,
+        'reklama6': reklama6,
+        'reklama7': reklama7,
+        'reklama8': reklama8
     })
 
 
@@ -529,13 +573,23 @@ def obzorp_detail(request, obzor_id):
 
 
 def afcases(request):
+
+    reklama9 = Reklama.objects.filter(pos_reklama="9").first()
+    reklama10 = Reklama.objects.filter(pos_reklama="10").first()
+    reklama11 = Reklama.objects.filter(pos_reklama="11").first()
+
     return render(request, 'affiliatecasestudy.html',
                   context={"articles": Article.objects.all().filter(is_case=True)[0:8],
                            'reklama': Reklama.objects.all().get(pos_reklama="1") if Reklama.objects.all().filter(
                                pos_reklama="1").exists() else False,
                            "popup": Reklama.objects.all().get(
                                pos_reklama="4") if Reklama.objects.all().filter(
-                               pos_reklama="4").exists() else False
+                               pos_reklama="4").exists() else False, 
+                               'reklama9': reklama9,
+                                'reklama10': reklama10,
+                                'reklama11': reklama11,
+
+
                            })
 
 

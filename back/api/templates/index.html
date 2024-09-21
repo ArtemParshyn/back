@@ -587,14 +587,37 @@
           <a href="/" data-wpel-link="internal" class="logo-wrapper">
             <span class="d-lg-block mr-2 d-none">
               <span class="text-logo">RUARB</span>
-
+              
+            
             </span>
+
+            
+            
             <span class="d-lg-none mr-1 d-block">
 
               <img class="logo2" src="https://i.imgur.com/6PxidVv.png"
                 data-dark-src="https://i.imgur.com/6PxidVv.png" />
             </span>
           </a>
+
+          {% if reklama9 %}
+          <a href="{{ reklama9.url}}">
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <span style="font-weight: 800; 
+                  font-family: Montserrat, sans-serif, Arial;
+                  color: #3663e0; 
+                  padding-right: 10px;">X</span>
+          
+              <span>
+                <img src="{{ reklama9.photo.url }}" style="max-width: 100px; height: auto;" />
+
+              </span>
+          </div>
+
+          </a>
+          {% endif %}
+        
+
         </div>
         <style>
           .site-header__pin img {
@@ -603,7 +626,7 @@
 
           .text-logo {
             color: #3663e0;
-            font-size: 35px;
+            font-size: 25px;
             font-weight: 700;
             font-family: Montserrat, sans-serif, Arial;
           }
@@ -787,6 +810,21 @@
       </div>
     </div> -->
 
+    {% if reklama10 %}
+    <a class="btn btn--size-md btn--custom site-header__btn click" href="{{reklama10.url}}" data-id="click" rel="sponsored" data-wpel-link="internal">
+
+      <style>
+        .btn--custom {
+          background: linear-gradient(87.69deg, rgb(0, 0, 0) -1.99%, rgb(0, 0, 0) 105.12%);
+          background: -webkit-gradient(linear, right top, left top, from(rgb(0, 0, 0)), to(rgb(0, 0, 0)));
+          color: rgb(255, 255, 255);
+          margin-right: 20px;
+      }
+      </style>
+
+      {{reklama10.button_text_index}} </a>
+      {% endif %}
+
           {% if success %}
           <div class="col-item userlog">
             <div class="user-dropdown">
@@ -935,6 +973,21 @@
         /* ПОКА ОТКЛЮЧЕНО СЕО СТОИТ ТАК: */
         display: none;
       }
+
+      @media (max-width: 1600px) {
+        .home__banner-lg {
+            max-width: 400px;
+            flex: 0 0 330px;
+        }
+    }
+
+    @media (max-width: 1600px) {
+      .home__post-big-items>div:first-child {
+          margin-bottom: 24px;
+          padding-bottom: 20px;
+      }
+  }
+
 
       .home__banner-sm {
         display: none;
@@ -1135,6 +1188,43 @@
       });
     </script>
 
+{%if reklama11%}
+<a href="{{reklama11.url}}">
+  <div class="branding_pinup14">
+      
+  </div>
+</a>
+   
+
+  {% endif %}
+
+<style>
+  @media only screen and (max-width: 1920px) {
+    .branding_pinup14 {
+        background-size: 100% 100%;
+    }
+}
+
+@media (min-width: 991px) {
+  .col-lg-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+      margin-bottom: 20px;
+  }
+}
+
+.branding_pinup14 {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    background-image: url({{reklama11.photo.url}});
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 20 20px;
+    margin: 20px;
+}
+</style>
 
 
     <section>
@@ -1153,9 +1243,7 @@
                 <div class="post d-flex flex-column justify-content-between h-100">
                   <div class="post__top post__top--full-height">
                     <div class="post__cat">
-                      <a class="cat " href="/articles/{{positions.1.id}}">
-                        {{positions.1.published_date|date:"d E y"}}
-                      </a>
+                      
                     </div>
                     <a class="post__thumb" href="/articles/{{positions.1.id}}" data-wpel-link="internal">
                       <img src="{{positions.1.image.url}}">
@@ -1187,9 +1275,7 @@
                     <div class="post">
                       <div class="post__top">
                         <div class="post__cat">
-                          <a class="cat" href="/articles/{{positions.2.id}}"
-                            data-wpel-link="internal">{{positions.2.published_date|date:"d E y"}}
-                          </a>
+                          
                         </div>
                         <a class="post__thumb" href="/articles/{{positions.2.id}}" data-wpel-link="internal">
                           <img src="{{positions.2.image.url}}">
@@ -1220,9 +1306,7 @@
                     <div class="post">
                       <div class="post__top">
                         <div class="post__cat">
-                          <a class="cat" href="/articles/{{positions.3.id}}"
-                            data-wpel-link="internal">{{positions.3.published_date|date:"d E y"}}
-                          </a>
+                          
                         </div>
                         <a class="post__thumb" href="/articles/{{positions.3.id}}" data-wpel-link="internal">
                           <img src="{{positions.3.image.url}}">
@@ -1259,13 +1343,44 @@
 
           <div class="home__banner-lg">
             <aside id="secondary" class="widget-area">
-              {% if image %}
-              <a href="{{ url_image }}">
-                <img src="{{MEDIA_URL}}{{image}}" alt="Menu Icon">
-              </a>
-              {% endif %}
+                {% if reklama12 %}
+                <a href="{{ reklama12.url }}" id="main-banner">
+                    <img id="ad-image" src="{{ reklama12.photo.url }}" alt="Ad Image">
+                </a>
+                {% endif %}
             </aside>
-          </div>
+        </div>
+        
+        <script>
+            // Массив с URL-ами и изображениями баннеров
+            const banners = [
+                { url: "{{ reklama12.url }}", img: "{{ reklama12.photo.url }}" },
+                { url: "{{ reklama13.url }}", img: "{{ reklama13.photo.url }}" },
+                { url: "{{ reklama14.url }}", img: "{{ reklama14.photo.url }}" },
+                { url: "{{ reklama15.url }}", img: "{{ reklama15.photo.url }}" }
+            ];
+        
+            let currentBannerIndex = 0;
+        
+            function rotateBanners() {
+                const mainBanner = document.getElementById('main-banner');
+                const adImage = document.getElementById('ad-image');
+        
+                // Меняем индекс и получаем следующий баннер
+                currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+        
+                // Обновляем URL ссылки и изображение
+                mainBanner.href = banners[currentBannerIndex].url;
+                adImage.src = banners[currentBannerIndex].img;
+        
+                // Меняем изображение каждые 3 секунды
+                setTimeout(rotateBanners, 3000);
+            }
+        
+            // Запуск ротации через 3 секунды
+            setTimeout(rotateBanners, 3000);
+        </script>
+        
         </div>
       </div>
 
@@ -1296,8 +1411,8 @@
           <div class="sub__info">
             <img src="{% static 'svg/tg.png' %}" height="250px" width="250px" alt />
             <div class="sub__inner">
-              <h2 class="title section__title section__title--blue">Подпишись на нас в telegram</h2>
-              <p> Мы собрали все новости арбитражной и affiliate сферы в одном канале </p>
+              <h2 class="title section__title section__title--blue" style="font-size: 50px">Подпишись на нас в telegram</h2>
+              
               <div class="sub__links" style="display: none;">
                 <a href data-wpel-link="internal">
                   <span>Получить</span>
@@ -1324,22 +1439,28 @@
               </form>
 
               <style>
+
                 .btn-link {
-                  display: inline-block;
+                  display: inline-flex; /* Используем inline-flex для центровки внутри строки */
+                  align-items: center; /* Вертикальное центрирование */
+                  justify-content: center; /* Горизонтальное центрирование (если нужно) */
                   padding: 10px 20px;
-                  font-size: 16px;
+                  font-size: 25px;
+                  margin: 50px;
                   font-weight: bold;
+                  height: 75px;
                   color: #ffffff;
-                  /* Цвет текста */
                   background-color: #3663e0;
-                  /* Синий фон */
                   border: none;
+                  width: 300px; /* Добавляем единицу измерения 'px' */
                   border-radius: 5px;
                   text-align: center;
                   text-decoration: none;
-                  /* Убираем подчеркивание */
                   transition: background-color 0.3s ease;
-                }
+              }
+              
+
+                
 
                 .btn-link:hover {
                   background-color: #0056b3;
@@ -1535,10 +1656,7 @@
           {% endif %}
         </center>
         <style>
-          .d-lg-block {
-            padding-bottom: 20px;
-            ;
-          }
+          
         </style>
         <div class="d-lg-block d-none">
 
@@ -1781,13 +1899,44 @@
 
             </div>
           </div>
-          <div class="site-footer__text">RUARB — твой путеводитель по арбитражу трафика. Все фишки и
-            экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
-            лидерами рынка. Лей в плюс с RUARB!</div>
+          <div class="site-footer__text">
+            <img class="logo" src="https://i.imgur.com/6PxidVv.png" alt="">
+          </div>
         </div>
-        <div class="col-lg-5 col-md-6">
 
+        <style>
+          .col-lg-5 {
+            font: 700 13px / 16px Montserrat, sans-serif, Arial;
+            color: #8f8f8f;
+            margin-top: 10px;
+          }
+
+          
+
+        </style>
+        <div class="col-lg-5 col-md-6">
+            RUARB — твой путеводитель по арбитражу трафика. Все фишки и
+            экспертный контент от практиков, актуальные новости и аналитика, обучающие видео и интервью с
+            лидерами рынка. Лей в плюс с RUARB!
         </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="site-footer__right">
+          
+          <div class="d-lg-block d-none">
+          <div class="social d-flex">
+          <a href="https://t.me/ruarb" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/telegram.svg" alt="Telegram - ProTraffic">
+          </a>
+          <a href="https://www.instagram.com/ru.arb?igsh=MTRyb3d3aThsYThmMQ%3D%3D&utm_source=qr" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/inst.svg" alt="Instagram - ProTraffic">
+          </a>
+          <a href="" target="_blank" data-wpel-link="external" rel="nofollow external noopener noreferrer">
+          <img src="https://protraffic.com/wp-content/themes/ptf/images/social/youtube.svg" alt="YouTube - ProTraffic">
+          
+          </div>
+          </div>
+          </div>
+          </div>
         <div class="site-footer__bottom">© 2019-2024, RUARB. Все права сохранены. Условия пользовательского
           соглашения</div>
       </div>
