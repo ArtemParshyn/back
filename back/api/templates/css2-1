@@ -1,28 +1,28 @@
-@font-face {
+﻿@font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v32/KFOkCnqEu92Fr1Mu52xP.ttf) format('truetype');
+  src: url(s/roboto/v32/KFOkCnqEu92Fr1Mu52xP.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+  src: url(s/roboto/v32/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmEU9vAw.ttf) format('truetype');
+  src: url(s/roboto/v32/KFOlCnqEu92Fr1MmEU9vAw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
+  src: url(s/roboto/v32/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
 }

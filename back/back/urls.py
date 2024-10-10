@@ -18,12 +18,24 @@ from django.contrib import admin
 from django.templatetags.static import static
 from django.urls import path, include
 
+
+from ckeditor_uploader import views as ckeditor_views
+from django.views.decorators.csrf import csrf_exempt
+
+from django.conf import settings
+from api import views
+from django.conf.urls.static import static
+
+
+
 import api
 from back import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("api.urls"))
-]
+    path('', include("api.urls")),
+    path('ckeditor/upload/', csrf_exempt(ckeditor_views.upload), name='ckeditor_upload'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+]  + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

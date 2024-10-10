@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="templates fix" />
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="final changes">
+    <list default="true" id="dadf4e87-f068-47af-adaa-b57c935c8ff7" name="Changes" comment="services_cat">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0002_apiuser_descr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0003_article.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0004_article_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/migrations/0005_alter_article_content.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/back/api/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,18 +24,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="api2_v2A" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -34,27 +48,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "create__api__2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;api2__v2A__services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/API/DJANGO/new_back/back&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\API\DJANGO\new_back\back\back\api\static\svg" />
+      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api" />
       <recent name="E:\API\DJANGO\new_back\back\back" />
-      <recent name="E:\API\DJANGO\new_back\back\back\api\static" />
       <recent name="E:\API\DJANGO\new_back\back\back\api\templates" />
-      <recent name="E:\API\DJANGO\new_back\back\back\staticfiles" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -77,7 +97,12 @@
       <workItem from="1724679153660" duration="35000" />
       <workItem from="1724679195908" duration="57000" />
       <workItem from="1724805064152" duration="2869000" />
-      <workItem from="1724838858363" duration="19595000" />
+      <workItem from="1724838858363" duration="19880000" />
+      <workItem from="1724931654042" duration="657000" />
+      <workItem from="1724966786714" duration="1400000" />
+      <workItem from="1725016309604" duration="741000" />
+      <workItem from="1725044219025" duration="1086000" />
+      <workItem from="1725131918188" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="startapp api">
       <option name="closed" value="true" />
@@ -127,7 +152,103 @@
       <option name="project" value="LOCAL" />
       <updated>1724886879484</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="templates fix">
+      <option name="closed" value="true" />
+      <created>1724887374906</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724887374906</updated>
+    </task>
+    <task id="LOCAL-00008" summary="settings.py">
+      <option name="closed" value="true" />
+      <created>1724966536751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724966536751</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+ templates + static">
+      <option name="closed" value="true" />
+      <created>1725045116651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725045116651</updated>
+    </task>
+    <task id="LOCAL-00010" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1725045645682</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725045645682</updated>
+    </task>
+    <task id="LOCAL-00011" summary="profile try">
+      <option name="closed" value="true" />
+      <created>1725135883006</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725135883006</updated>
+    </task>
+    <task id="LOCAL-00012" summary="reklama, profile.">
+      <option name="closed" value="true" />
+      <created>1725567426471</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725567426471</updated>
+    </task>
+    <task id="LOCAL-00013" summary="images">
+      <option name="closed" value="true" />
+      <created>1725567677570</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725567677570</updated>
+    </task>
+    <task id="LOCAL-00014" summary="updating profile done">
+      <option name="closed" value="true" />
+      <created>1725662490392</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1725662490392</updated>
+    </task>
+    <task id="LOCAL-00015" summary="services 1st try">
+      <option name="closed" value="true" />
+      <created>1725831422409</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725831422409</updated>
+    </task>
+    <task id="LOCAL-00016" summary="services 2st try">
+      <option name="closed" value="true" />
+      <created>1725836161285</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725836161285</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bug fix and 5 max">
+      <option name="closed" value="true" />
+      <created>1725867201788</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725867201788</updated>
+    </task>
+    <task id="LOCAL-00018" summary="services_cat">
+      <option name="closed" value="true" />
+      <created>1725869697050</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725869697050</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +262,23 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
                 </option>
               </RecentGroup>
             </list>
@@ -166,6 +303,18 @@
     <MESSAGE value=" &quot;use of templates&quot;: done" />
     <MESSAGE value="static" />
     <MESSAGE value="templates fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="templates fix" />
+    <MESSAGE value="login reg logic implementation, fixed bugs, templates." />
+    <MESSAGE value="settings.py" />
+    <MESSAGE value="+ templates + static" />
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="profile try" />
+    <MESSAGE value="reklama, profile." />
+    <MESSAGE value="images" />
+    <MESSAGE value="updating profile done" />
+    <MESSAGE value="services 1st try" />
+    <MESSAGE value="services 2st try" />
+    <MESSAGE value="bug fix and 5 max" />
+    <MESSAGE value="services_cat" />
+    <option name="LAST_COMMIT_MESSAGE" value="services_cat" />
   </component>
 </project>
