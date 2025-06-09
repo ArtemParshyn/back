@@ -13,20 +13,15 @@ from .models import Reklama, Service, Category, Obzor, Category_partner, Partner
 from django.shortcuts import get_object_or_404
 from .forms import ArticleForm
 from django.views.generic.edit import CreateView
-from django.views.generic import DeleteView
 from .models import Article
 from django.views.generic import ListView
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 
 
 def index(request):
-    # Получаем текущего пользователя
     user = request.user
-    # Передаем пользователя в шаблон
     return render(request, 'index.html', {'user': user})
 
 
@@ -44,7 +39,6 @@ class ProfileView(View):
             'user_about': user.photo,
         })
 
-        # Передаем URL фото пользователя, если оно есть, иначе URL по умолчанию
         photo_url = user.photo.url if user.photo else 'https://protraffic.com/wp-content/themes/ptf/images/user.svg'
 
         return render(request, 'profile_main.html', {
@@ -80,17 +74,13 @@ class ProfileView(View):
 
 
 def partners(request):
-    # Определяем список допустимых значений для pos
     allowed_pos = ["1", "2", "3", "4", "5"]
-
 
     reklama9 = Reklama.objects.filter(pos_reklama="9").first()
     reklama10 = Reklama.objects.filter(pos_reklama="10").first()
-    
-    # Загружаем все категории партнёров
+
     categories = Category_partner.objects.all()
 
-    # Фильтруем и сортируем партнёров по категории и значению pos
     partners = {
         category: Partner.objects.filter(category_partner=category, pos__in=allowed_pos).order_by('pos')[:5]
         for category in categories
@@ -101,14 +91,12 @@ def partners(request):
     for category, partners_list in partners.items():
         category_partners = []
         for partner in partners_list:
-            # Попытка найти связанный Obzor_partner объект для текущего партнёра
             obzor_id = ''
             if not partner.website:
                 obzor = Obzor_partner.objects.filter(to_partner=partner).first()
                 if obzor:
                     obzor_id = obzor.id
 
-            # Подготовка данных для вывода партнёра
             partners_data = {
                 'id': partner.id,
                 'descr': partner.descr,
@@ -122,7 +110,6 @@ def partners(request):
 
             category_partners.append(partners_data)
 
-        # Добавляем отфильтрованных и отсортированных партнёров в категорию
         partners_prepared.append({
             'category': category,
             'partners': category_partners,
@@ -137,8 +124,8 @@ def partners(request):
                                                               "popup": Reklama.objects.all().get(
                                                                   pos_reklama="4") if Reklama.objects.all().filter(
                                                                   pos_reklama="4").exists() else False,
-                                                                  'reklama9': reklama9,
-                                                                    'reklama10': reklama10,
+                                                              'reklama9': reklama9,
+                                                              'reklama10': reklama10,
                                                               })
 
 
@@ -164,7 +151,6 @@ def partner_cat(request):
 
 
 def services(request):
-    # Fetch categories and services more efficiently
     categories = Category.objects.all()
     services = {category: Service.objects.filter(category=category)[:5] for category in categories}
 
@@ -176,14 +162,12 @@ def services(request):
     for category, service_list in services.items():
         category_services = []
         for service in service_list:
-            # Try to find an Obzor object related to the current service
             obzor_id = ''
             if not service.website:
                 obzor = Obzor.objects.filter(to_service=service).first()
                 if obzor:
                     obzor_id = obzor.id
 
-            # Prepare the service dictionary
             service_data = {
                 'id': service.id,
                 'descr': service.descr,
@@ -210,8 +194,8 @@ def services(request):
                                                      "popup": Reklama.objects.all().get(
                                                          pos_reklama="4") if Reklama.objects.all().filter(
                                                          pos_reklama="4").exists() else False,
-                                                         'reklama9': reklama9,
-                                                                    'reklama10': reklama10,
+                                                     'reklama9': reklama9,
+                                                     'reklama10': reklama10,
                                                      })
 
 
@@ -461,24 +445,23 @@ def enable_article_creation(request):
     user = request.user
     user.can_create_articles = True
     user.save()
-    return redirect('user_articles')  # Перенаправление на профиль пользователя или другую страницу
+    return redirect('user_articles')
 
 
 class ArticleCreateView(CreateView):
     model = Article
     form_class = ArticleForm
     template_name = 'create_article.html'
-    success_url = '/articles'  # Замените на нужный URL
+    success_url = '/articles'
 
 
 def article_list(request):
     articles = Article.objects.filter(is_published=True).filter(is_case=False)[0:8]
-    
+
     reklama9 = Reklama.objects.filter(pos_reklama="9").first()
     reklama10 = Reklama.objects.filter(pos_reklama="10").first()
     reklama11 = Reklama.objects.filter(pos_reklama="11").first()
-    
-      
+
     return render(request, 'articles.html', {'articles': articles,
                                              'reklama': Reklama.objects.all().get(
                                                  pos_reklama="1") if Reklama.objects.all().filter(
@@ -486,17 +469,14 @@ def article_list(request):
                                              "popup": Reklama.objects.all().get(
                                                  pos_reklama="4") if Reklama.objects.all().filter(
                                                  pos_reklama="4").exists() else False,
-                                                 'reklama9': reklama9,
-                                                'reklama10': reklama10,
-                                                'reklama11': reklama11,
+                                             'reklama9': reklama9,
+                                             'reklama10': reklama10,
+                                             'reklama11': reklama11,
 
                                              })
 
 
 def user_article_list(request):
-    # Получаем текущего пользователя
-    user = request.user
-    # Фильтруем статьи по автору
     articles = Article.objects.all()
     return render(request, 'user_articles.html', {'articles': articles})
 
@@ -507,19 +487,14 @@ class UserArticleListView(ListView):
     context_object_name = 'articles'
 
     def get_queryset(self):
-        # Получаем текущего пользователя
         user = self.request.user
         if user.is_authenticated:
-            # Фильтруем статьи по идентификатору автора
             return Article.objects.filter(author=user)
         else:
-            return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
+            return Article.objects.none()
 
 
 def partner_article_list(request):
-    # Получаем текущего пользователя
-    user = request.user
-    # Фильтруем статьи по автору
     articles = Article.objects.all()
     return render(request, 'partner_articles.html', {'articles': articles})
 
@@ -530,19 +505,16 @@ class PartnerArticleListView(ListView):
     context_object_name = 'articles'
 
     def get_queryset(self):
-        # Получаем текущего пользователя
         user = self.request.user
         if user.is_authenticated:
-            # Фильтруем статьи по идентификатору автора
             return Article.objects.filter(author=user)
         else:
-            return Article.objects.none()  # Возвращаем пустой QuerySet для неаутентифицированных пользователей
+            return Article.objects.none()
 
 
 def article_detail(request, article_id):
     article = get_object_or_404(Article, id=article_id)
 
-    # Получаем количество статей автора
     author_articles_count = Article.objects.filter(author=article.author).count()
 
     reklama5 = Reklama.objects.filter(pos_reklama="5").first()
@@ -555,7 +527,7 @@ def article_detail(request, article_id):
         'author_articles_count': author_articles_count,
         'reklama': Reklama.objects.all().get(pos_reklama="2") if Reklama.objects.all().filter(
             pos_reklama="2").exists() else False,
-            'reklama5': reklama5,
+        'reklama5': reklama5,
         'reklama6': reklama6,
         'reklama7': reklama7,
         'reklama8': reklama8
@@ -573,7 +545,6 @@ def obzorp_detail(request, obzor_id):
 
 
 def afcases(request):
-
     reklama9 = Reklama.objects.filter(pos_reklama="9").first()
     reklama10 = Reklama.objects.filter(pos_reklama="10").first()
     reklama11 = Reklama.objects.filter(pos_reklama="11").first()
@@ -584,11 +555,10 @@ def afcases(request):
                                pos_reklama="1").exists() else False,
                            "popup": Reklama.objects.all().get(
                                pos_reklama="4") if Reklama.objects.all().filter(
-                               pos_reklama="4").exists() else False, 
-                               'reklama9': reklama9,
-                                'reklama10': reklama10,
-                                'reklama11': reklama11,
-
+                               pos_reklama="4").exists() else False,
+                           'reklama9': reklama9,
+                           'reklama10': reklama10,
+                           'reklama11': reklama11,
 
                            })
 
@@ -601,9 +571,6 @@ def article_add(request):
     end = start + articles_per_page
     print(start, end)
 
-    # Рассчитываем начало и конец выборки
-
-    # Получаем сервисы для текущей страницы
     if category == "a":
         articles = Article.objects.all().filter(is_case=False)[start:end]
     else:
@@ -630,7 +597,6 @@ def article_add(request):
 def edit_article(request, pk):
     article = get_object_or_404(Article, pk=pk)
 
-    # Проверяем, является ли пользователь автором статьи или суперпользователем
     if request.user != article.author and not request.user.is_superuser:
         return HttpResponseForbidden("У вас нет прав для редактирования этой статьи.")
 
@@ -649,11 +615,9 @@ def edit_article(request, pk):
 def unpublish_article(request, pk):
     article = get_object_or_404(Article, pk=pk)
 
-    # Проверяем права пользователя
     if request.user != article.author and not request.user.is_superuser:
         return HttpResponseForbidden("У вас нет прав для снятия статьи с публикации.")
 
-    # Снимаем статью с публикации: меняем is_published и is_draft
     article.is_published = False
     article.is_draft = True
     article.save()
@@ -665,7 +629,6 @@ def unpublish_article(request, pk):
 def publish_article(request, pk):
     article = get_object_or_404(Article, pk=pk)
 
-    # Проверяем права пользователя
     if request.user != article.author and not request.user.is_superuser:
         return HttpResponseForbidden("У вас нет прав для публикации статьи.")
 

@@ -1,14 +1,10 @@
-import math
-
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
-
 from api import views
-from api.views import index, ProfileView, UserArticleListView, enable_article_creation
+from api.views import ProfileView, UserArticleListView, enable_article_creation
 from back import settings
-
-from .views import ArticleCreateView, index, PartnerArticleListView
+from .views import index, PartnerArticleListView
 
 urlpatterns = [
     path('', index, name='index'),
